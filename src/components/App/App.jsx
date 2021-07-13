@@ -1,7 +1,7 @@
-
+import NavigationRoutes from '../Navigation/NavigationRoutes';
 
 const App = () => {
-  return <h1>App</h1>
-}
+    return <NavigationRoutes />;
+};
 
-export default App
+export default App;
