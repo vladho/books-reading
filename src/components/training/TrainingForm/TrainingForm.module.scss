@@ -1,3 +1,5 @@
+@import 'styles/shared.scss';
+
 .form {
     display: grid;
     align-items: start;
@@ -5,23 +7,22 @@
 
 .goBack {
     margin-bottom: 25px;
-    color: #ff6b08;
+    color: $accent;
 }
 
 .formTitle {
     height: 60px;
     margin-bottom: 20px;
-    margin-top: 0;
+    padding: 11px 0;
 
-    font-family: 'Monserrat', sans-serif;
     font-weight: 600;
-    font-style: 20px;
+    font-size: 20px;
     line-height: 1.9;
     text-align: center;
 
-    color: #ffffff;
-    background-color: #b1b5c2;
-    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+    color: $white;
+    background-color: $titleBg;
+    box-shadow: $boxShadowTitle;
 }
 
 .inputsGroup {
@@ -40,19 +41,17 @@
     width: 100%;
     height: 42px;
     padding: 5px 47px;
-    border: 1px solid #a6abb9;
+    border: $inputBorder;
     outline: none;
 
-    font-family: 'Monserrat', sans-serif;
-    font-weight: 500;
-    font-style: 14px;
+    font-weight: inherit;
     line-height: 2.71;
 
-    color: #a6abb9;
+    color: $inputTextColor;
     background-color: transparent;
 
     &::placeholder {
-        color: #a6abb9;
+        color: $inputTextColor;
     }
 }
 
@@ -64,7 +63,7 @@
     width: 20px;
     height: 20px;
 
-    color: #a6abb9;
+    color: $inputTextColor;
 }
 
 .chevronDownIcon {
@@ -75,14 +74,14 @@
     width: 20px;
     height: 20px;
 
-    color: #242a37;
+    color: $primaryText;
 }
 
 .selectContainer {
     position: relative;
     margin-bottom: 35px;
 
-    background-color: #ffffff;
+    background-color: $white;
 }
 
 .formSelect {
@@ -92,17 +91,15 @@
     border: none;
     outline: none;
 
-    font-family: 'Monserrat', sans-serif;
-    font-weight: 500;
-    font-style: 14px;
+    font-weight: inherit;
     line-height: 2.71;
 
-    color: #a6abb9;
+    color: $inputTextColor;
     background-color: transparent;
-    box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+    box-shadow: $boxShadowInput;
 
     &::placeholder {
-        color: #a6abb9;
+        color: $inputTextColor;
     }
 }
 
@@ -110,14 +107,11 @@
     height: 42px;
     justify-self: center;
     padding: 0 70px;
-    border: 1px solid #242a37;
+    border: 1px solid $primaryText;
 
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: inherit;
     line-height: 2.71;
 
-    color: #000000;
-    background: #f6f7fb;
+    color: $black;
+    background: $primaryBg;
 }
