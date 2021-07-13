@@ -1,0 +1,164 @@
+// @import 'styles/shared.scss';
+.Google {
+  width: 150px;
+  height: 40px;
+
+  background: #f5f7fa;
+  box-shadow: 0px 2px 2px rgba(9, 30, 63, 0.15);
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  // line-height: 38px;
+  text-align: center;
+  color: #707375;
+
+  margin-top: 39px;
+  margin-bottom: 14px;
+}
+
+.inputTitle {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  margin-bottom: 10px;
+  // font-size: 14px;
+  // line-height: 2.7%;
+  /* identical to box height, or 271% */
+
+  color: #898f9f;
+}
+
+main {
+  overflow: hidden;
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registerFormInput {
+  width: 320px;
+  height: 42px;
+  border: none;
+  background: #f5f7fa;
+  box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+  margin-bottom: 10px;
+  padding: 10px;
+
+  // border-bottom: 1px solid rgba(24, 28, 39, 0.2);
+  color: rgba(24, 28, 39, 0.6);
+  font-size: 16px;
+  line-height: 19, 5px;
+  letter-spacing: 0.04em;
+  background-color: transparent;
+  // margin-bottom: 48px;
+  outline: none;
+}
+.registerFormInput.isinvalid {
+  border-bottom: 1px solid red;
+  color: red;
+}
+
+// .registerFormTitle {
+//   font-family: Montserrat;
+//   font-weight: 500;
+//   font-size: 26px;
+//   line-height: 31, 69px;
+//   letter-spacing: 0.04em;
+//   color: #181c27;
+//   margin-top: 47px;
+//   margin-bottom: 30px;
+//   text-align: center;
+// }
+
+.registerPageButton {
+  cursor: pointer;
+  width: 320px;
+  height: 60px;
+  background: #ff6b08;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 38px;
+
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  margin-top: 36px;
+}
+
+.registerFormText {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.04em;
+  color: rgba(24, 28, 39, 0.6);
+}
+.errorMessageEmail {
+  position: absolute;
+  top: 216px;
+  color: rgba(24, 28, 39, 0.6);
+}
+.errorMessagePassword {
+  position: absolute;
+
+  top: 312px;
+  color: rgba(24, 28, 39, 0.6);
+}
+
+.errorMessageConfirmPassword {
+  position: absolute;
+
+  color: rgba(24, 28, 39, 0.6);
+  top: 412px;
+}
+@media (min-width: 768px) {
+  .formWraper {
+    width: 565px;
+    height: 850px;
+    padding-top: 92px;
+    background: rgba(9, 30, 63, 0.8);
+  }
+  .registerForm {
+    width: 400px;
+    height: 610px;
+
+    margin-left: auto;
+    margin-right: auto;
+    background: #fafafa;
+    box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+    border-radius: 5px;
+  }
+
+  .registerFormTitle {
+    font-size: 36px;
+  }
+  .errorMessageEmail {
+    top: 165px;
+  }
+
+  .errorMessagePassword {
+    top: 265px;
+  }
+
+  .errorMessageConfirmPassword {
+    top: 365px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .registerForm {
+    margin-top: 56px;
+    margin-bottom: 75px;
+  }
+  // .formWraper {
+  //   margin-top: 56px;
+  //   margin-bottom: 75px;
+  // }
+}
