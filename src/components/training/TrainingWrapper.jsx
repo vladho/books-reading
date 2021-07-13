@@ -1,14 +1,16 @@
 import React from 'react';
 
-import styles from './TrainingWrapper.module.scss';
-
 import TrainingForm from './TrainingForm/TrainingForm';
+import TrainingModal from './TrainingModal/TrainingModal';
+import styles from './TrainingWrapper.module.scss';
 
 const TrainingWrapper = () => {
     return (
         <>
             <div className={styles.wrapper}>
-                <TrainingForm />
+                <TrainingModal>
+                    <TrainingForm />
+                </TrainingModal>
             </div>
         </>
     );
