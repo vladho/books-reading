@@ -3,11 +3,19 @@
 .form {
     display: grid;
     align-items: start;
+
+    @media screen and (min-width: 768px) {
+        margin-bottom: 40px;
+    }
 }
 
 .goBack {
     margin-bottom: 25px;
     color: $accent;
+
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
 }
 
 .formTitle {
@@ -25,8 +33,16 @@
     box-shadow: $boxShadowTitle;
 }
 
-.inputsGroup {
+.calendarsContainer {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 20px;
+
+    @media screen and (min-width: 768px) {
+        margin-bottom: 25px;
+        flex-direction: row;
+        justify-content: center;
+    }
 }
 
 .inputContainer {
@@ -34,6 +50,11 @@
 
     &:not(:last-child) {
         margin-bottom: 20px;
+
+        @media screen and (min-width: 768px) {
+            margin-bottom: 0;
+            margin-right: 45px;
+        }
     }
 }
 
@@ -77,11 +98,26 @@
     color: $primaryText;
 }
 
+.selectAndButton {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+    }
+}
+
 .selectContainer {
     position: relative;
     margin-bottom: 35px;
 
     background-color: $white;
+
+    @media screen and (min-width: 768px) {
+        flex-grow: 1;
+        margin-bottom: 0;
+        margin-right: 25px;
+    }
 }
 
 .formSelect {
@@ -101,11 +137,15 @@
     &::placeholder {
         color: $inputTextColor;
     }
+
+    @media screen and (min-width: 768px) {
+        grid-row: 1 / 8;
+    }
 }
 
 .formButton {
     height: 42px;
-    justify-self: center;
+    align-self: center;
     padding: 0 70px;
     border: 1px solid $primaryText;
 
@@ -113,5 +153,9 @@
     line-height: 2.71;
 
     color: $black;
-    background: $primaryBg;
+    background: transparent;
+
+    @media screen and (min-width: 768px) {
+        grid-row: 8 / 12;
+    }
 }
