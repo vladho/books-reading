@@ -1,16 +1,19 @@
-import React from "react"
+import React from 'react';
 
-import Container from "../Container/Container"
-import styles from "./TrainingWrapper.module.scss"
+import TrainingForm from './TrainingForm/TrainingForm';
+import TrainingModal from './TrainingModal/TrainingModal';
+import styles from './TrainingWrapper.module.scss';
 
 const TrainingWrapper = () => {
-  return (
-    <div className={styles.wrapper}>
-      <Container>
-        <h1>Training Page</h1>
-      </Container>
-    </div>
-  )
-}
+    return (
+        <>
+            <div className={styles.wrapper}>
+                <TrainingModal>
+                    <TrainingForm />
+                </TrainingModal>
+            </div>
+        </>
+    );
+};
 
-export default TrainingWrapper
+export default TrainingWrapper;
