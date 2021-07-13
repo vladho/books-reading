@@ -1,6 +1,81 @@
+@import 'styles/shared.scss';
+
 .item {
     width: 100%;
-    padding: 22px 60px 9px;
 
-    background-color: honeydew;
+    @include for-size(mobile-only) {
+        padding: 22px 35px 9px;
+    }
+
+    @include for-size(tablet-only) {
+        padding: 11px 0px;
+    }
+
+    @include for-size(mobile-tablet) {
+        &:not(:last-child) {
+            border-bottom: 1px solid #e0e5eb;
+        }
+    }
+
+    @include for-size(tablet) {
+        display: flex;
+    }
+}
+
+.title {
+    font-size: 12px;
+    line-height: 1.25;
+
+    @include for-size(mobile-only) {
+        margin-bottom: 5px;
+    }
+
+    @include for-size(tablet) {
+        margin-right: 18px;
+
+        font-size: 14px;
+        line-height: 2.7;
+    }
+}
+
+.field {
+    font-size: 12px;
+    line-height: 2.5;
+
+    @include for-size(mobile-only) {
+        display: flex;
+    }
+
+    @include for-size(tablet) {
+        font-size: 14px;
+        line-height: 2.7;
+
+        &:not(:last-child) {
+            margin-right: 18px;
+        }
+    }
+}
+
+.author {
+    composes: field;
+}
+
+.year {
+    composes: field;
+}
+
+.pages {
+    composes: field;
+}
+
+.prefix {
+    flex-shrink: 0;
+    width: 60px;
+    margin-right: 11px;
+
+    color: $secondaryText;
+
+    @include for-size(tablet) {
+        display: none;
+    }
 }

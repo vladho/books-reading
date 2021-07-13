@@ -1,15 +1,15 @@
 import Container from '../Container/Container';
 import NavigationRoutes from '../Navigation/NavigationRoutes';
 
-// import books from '../../json/trainingListBooks.json';
-// import TrainingListItem from '../training/TrainingListItem';
+import books from '../../json/trainingListBooks.json';
+import TrainingListItem from '../training/TrainingListItem';
 
 const App = () => {
     return (
         <Container>
             <NavigationRoutes />
 
-            {/* <ul>
+            <ul>
                 {books.map(({ id, title, author, year, pages }) => (
                     <TrainingListItem
                         key={id}
@@ -19,7 +19,7 @@ const App = () => {
                         pages={pages}
                     />
                 ))}
-            </ul> */}
+            </ul>
         </Container>
     );
 };
