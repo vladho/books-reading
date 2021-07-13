@@ -7,6 +7,11 @@
     @media screen and (min-width: 768px) {
         margin-bottom: 40px;
     }
+
+    @media screen and (min-width: 1280px) {
+        margin-bottom: 25px;
+        margin-right: 40px;
+    }
 }
 
 .goBack {
@@ -31,6 +36,14 @@
     color: $white;
     background-color: $titleBg;
     box-shadow: $boxShadowTitle;
+
+    @media screen and (min-width: 768px) {
+        margin-bottom: 30px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        margin-bottom: 25px;
+    }
 }
 
 .calendarsContainer {
@@ -117,6 +130,10 @@
         flex-grow: 1;
         margin-bottom: 0;
         margin-right: 25px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        margin-right: 45px;
     }
 }
 
