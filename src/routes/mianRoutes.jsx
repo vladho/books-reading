@@ -1,14 +1,14 @@
 import { lazy } from 'react';
 
 export const mainRoutes = [
-    // {
-    //     name: 'Library',
-    //     exact: false,
-    //     path: '/library',
-    //     component: lazy(() => import('../pages/Library')),
-    //     isPrivate: true,
-    //     isRestricted: false,
-    // },
+    {
+        name: 'Library',
+        exact: false,
+        path: '/library',
+        component: lazy(() => import('../pages/LibraryPage')),
+        isPrivate: true,
+        isRestricted: false,
+    },
     {
         name: 'Training',
         exact: false,

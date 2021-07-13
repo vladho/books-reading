@@ -6,6 +6,7 @@ import PublicRoute from '../Routes/PublicRoute';
 
 const NavigationRoutes = () => {
     const isAuth = true;
+
     return (
         <Suspense fallback={<h2>Loading...</h2>}>
             <Switch>
