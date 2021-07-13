@@ -1,8 +1,111 @@
-// @import 'styles/shared.scss';
+@media (min-width: 1280px) {
+  .mainWraper {
+    display: flex;
+  }
+
+  .deskriptionWraper {
+    padding-left: 90px;
+
+    // text-align: center;
+    // align-items: center;
+  }
+
+  .formWraper {
+    width: 565px;
+    height: 850px;
+    padding-top: 92px;
+
+    background-image: linear-gradient(
+        rgba(9, 30, 63, 0.8),
+        rgba(9, 30, 63, 0.8)
+      ),
+      url("../../components/auth/backgraundImg/pic.png");
+  }
+
+  .deskriptionWraper {
+    padding-left: 90px;
+    min-width: 715px;
+    display: flex;
+    flex-direction: column;
+
+    // text-align: center;
+    // align-items: center;
+  }
+  .title {
+    margin-top: 133px;
+    margin-bottom: 52px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Abril Fatface;
+
+    font-size: 34px;
+    line-height: 38px;
+
+    color: #242a37;
+  }
+}
+
+@media (min-width: 768px) {
+  .deskriptionWraper {
+    padding-left: 146px;
+    width: 715px;
+
+    // text-align: center;
+    // align-items: center;
+  }
+
+  .title {
+    text-align: center;
+
+    font-family: Abril Fatface;
+
+    font-size: 34px;
+    line-height: 38px;
+
+    color: #242a37;
+  }
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+.listItem {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 271%;
+  /* identical to box height, or 271% */
+  padding-left: 15px;
+  color: #898f9f;
+  background-image: url("./backgraundImg/Vector.svg");
+  fill: #ff6b08;
+  background-repeat: no-repeat;
+  background-position-x: 0%;
+  background-position-y: 50%;
+}
+
+.secondaryTitle {
+  margin: 0;
+  font-family: Montserrat;
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 38px;
+
+  color: #242a37;
+}
+
+//---------------------------------FORM--------------------------------//
+.required {
+  color: #ff6b08;
+}
+
 .Google {
   width: 150px;
   height: 40px;
-
+  border: none;
   background: #f5f7fa;
   box-shadow: 0px 2px 2px rgba(9, 30, 63, 0.15);
 
@@ -16,22 +119,11 @@
 
   margin-top: 39px;
   margin-bottom: 14px;
-}
-
-.inputTitle {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
-  margin-bottom: 10px;
-  // font-size: 14px;
-  // line-height: 2.7%;
-  /* identical to box height, or 271% */
-
-  color: #898f9f;
-}
-
-main {
-  overflow: hidden;
+  background-image: url("./backgraundImg/googleIcon.png");
+  background-repeat: no-repeat;
+  // background-position: left 10px;
+  background-position-x: 10%;
+  background-position-y: 50%;
 }
 
 .registerForm {
@@ -49,31 +141,30 @@ main {
   margin-bottom: 10px;
   padding: 10px;
 
-  // border-bottom: 1px solid rgba(24, 28, 39, 0.2);
   color: rgba(24, 28, 39, 0.6);
   font-size: 16px;
   line-height: 19, 5px;
   letter-spacing: 0.04em;
   background-color: transparent;
-  // margin-bottom: 48px;
+
   outline: none;
 }
 .registerFormInput.isinvalid {
-  border-bottom: 1px solid red;
-  color: red;
+  border: 1px solid #ff6b08;
+  color: #ff6b08;
 }
 
-// .registerFormTitle {
-//   font-family: Montserrat;
-//   font-weight: 500;
-//   font-size: 26px;
-//   line-height: 31, 69px;
-//   letter-spacing: 0.04em;
-//   color: #181c27;
-//   margin-top: 47px;
-//   margin-bottom: 30px;
-//   text-align: center;
-// }
+.inputTitle {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: 40px;
+
+  color: #898f9f;
+}
 
 .registerPageButton {
   cursor: pointer;
@@ -94,36 +185,64 @@ main {
 
 .registerFormText {
   font-family: Montserrat;
-  font-weight: 400;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 38px;
+
+  text-align: center;
+
+  color: #898f9f;
+}
+
+.registerFormTextLinc {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 38px;
+
+  text-align: center;
+  color: #ff6b08;
+}
+
+.errorMessageName {
+  position: absolute;
   font-size: 12px;
-  line-height: 15px;
-  letter-spacing: 0.04em;
-  color: rgba(24, 28, 39, 0.6);
+  top: 266px;
+  color: rgba(248, 33, 33, 0.6);
 }
 .errorMessageEmail {
   position: absolute;
+  font-size: 12px;
   top: 216px;
-  color: rgba(24, 28, 39, 0.6);
+  color: rgba(248, 33, 33, 0.6);
 }
 .errorMessagePassword {
   position: absolute;
-
+  font-size: 12px;
   top: 312px;
-  color: rgba(24, 28, 39, 0.6);
+  color: rgba(248, 33, 33, 0.6);
 }
 
 .errorMessageConfirmPassword {
   position: absolute;
-
-  color: rgba(24, 28, 39, 0.6);
+  font-size: 12px;
+  color: rgba(248, 33, 33, 0.6);
   top: 412px;
 }
 @media (min-width: 768px) {
   .formWraper {
-    width: 565px;
-    height: 850px;
     padding-top: 92px;
-    background: rgba(9, 30, 63, 0.8);
+
+    background-image: linear-gradient(
+        rgba(9, 30, 63, 0.8),
+        rgba(9, 30, 63, 0.8)
+      ),
+      url("../../components/auth/backgraundImg/picTablet.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 790px;
   }
   .registerForm {
     width: 400px;
@@ -140,25 +259,14 @@ main {
     font-size: 36px;
   }
   .errorMessageEmail {
-    top: 165px;
+    top: 357px;
   }
 
   .errorMessagePassword {
-    top: 265px;
+    top: 447px;
   }
 
   .errorMessageConfirmPassword {
-    top: 365px;
+    top: 538px;
   }
-}
-
-@media (min-width: 1200px) {
-  .registerForm {
-    margin-top: 56px;
-    margin-bottom: 75px;
-  }
-  // .formWraper {
-  //   margin-top: 56px;
-  //   margin-bottom: 75px;
-  // }
 }

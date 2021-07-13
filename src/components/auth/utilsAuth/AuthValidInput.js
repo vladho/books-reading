@@ -1,24 +1,21 @@
 import * as Yup from "yup";
 
 export const regSchema = Yup.object().shape({
-  email: Yup.string()
-    .required("* Обов’язкове поле")
-    .email("Введіть коректну адресу"),
+  name: Yup.string().min(2, "Enter more than 2 characters").required(),
+  email: Yup.string().required().email("Please enter a valid address"),
   password: Yup.string()
-    .min(5, "Введіть більше 5 символів")
-    .max(10, "Введіть менше 10 символів")
-    .required("* Обов’язкове поле"),
+    .min(5, "Enter more than 5 characters")
+    .max(10, "Enter less than 10 characters")
+    .required(),
   confirmPassword: Yup.string()
-    .required("* Обов’язкове поле")
-    .oneOf([Yup.ref("password"), null], "Паролi повиннi спiвпадати!"),
+    .required()
+    .oneOf([Yup.ref("password"), null], "Passwords must match!"),
 });
 
 export const loginSchema = Yup.object().shape({
-  email: Yup.string()
-    .required("* Обов’язкове поле")
-    .email("Введіть коректну адресу"),
+  email: Yup.string().required().email("Please enter a valid address"),
   password: Yup.string()
-    .min(5, "Введіть більше 5 символів")
-    .max(10, "Введіть менше 10 символів")
-    .required("* Обов’язкове поле"),
+    .min(5, "Enter more than 5 characters")
+    .max(10, "Enter less than 10 characters")
+    .required(),
 });
