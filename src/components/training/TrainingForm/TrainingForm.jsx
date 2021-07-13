@@ -12,7 +12,7 @@ const TrainingForm = () => {
         <form className={styles.form} autoComplete="off">
             <HiOutlineArrowNarrowLeft fontSize="32" className={styles.goBack} />
             <h1 className={styles.formTitle}>My training</h1>
-            <div className={styles.inputsGroup}>
+            <div className={styles.calendarsContainer}>
                 <div className={styles.inputContainer}>
                     <input
                         type="text"
@@ -35,19 +35,21 @@ const TrainingForm = () => {
                 </div>
             </div>
 
-            <div className={styles.selectContainer}>
-                <input
-                    type="text"
-                    name="booksSelect"
-                    placeholder="Choose books from the library"
-                    className={styles.formSelect}
-                />
-                <HiChevronDown className={styles.chevronDownIcon} />
-            </div>
+            <div className={styles.selectAndButton}>
+                <div className={styles.selectContainer}>
+                    <input
+                        type="text"
+                        name="booksSelect"
+                        placeholder="Choose books from the library"
+                        className={styles.formSelect}
+                    />
+                    <HiChevronDown className={styles.chevronDownIcon} />
+                </div>
 
-            <button type="submit" className={styles.formButton}>
-                Add
-            </button>
+                <button type="submit" className={styles.formButton}>
+                    Add
+                </button>
+            </div>
         </form>
     );
 };
