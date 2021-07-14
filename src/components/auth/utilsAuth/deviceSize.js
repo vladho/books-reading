@@ -1,7 +1,7 @@
 import { useMediaQuery } from "react-responsive";
 
 export const size = {
-  mobile: "320px",
+  mobile: "300px",
   beforeTablet: "767px",
   tablet: "768px",
   beforeDesktop: "1199px",

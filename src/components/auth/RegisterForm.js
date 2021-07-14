@@ -4,12 +4,12 @@ import { NavLink } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { regSchema } from "./utilsAuth/AuthValidInput";
 import css from "./Auth.module.scss";
-// import useDeviceSizes from "./utilsAuth/useDeviceSize";
+import useDeviceSizes from "./utilsAuth/useDeviceSize";
 
 export default function Register() {
   // const dispatch = useDispatch();
 
-  // const { isTabletDevice, isDesktopDevice } = useDeviceSizes();
+  const { isMobileDevice } = useDeviceSizes();
 
   return (
     <div className={css.mainWraper}>
@@ -113,31 +113,35 @@ export default function Register() {
           )}
         </Formik>
       </div>
-      <div>
-        <h1 className={css.title}>Books Reading</h1>
-        <div className={css.deskriptionWraper}>
-          <h2 className={css.secondaryTitle}>Will help you to</h2>
-          <ul className={css.list}>
-            <li className={css.listItem}>
-              Create your goal faster and proceed to read
-            </li>
-            <li className={css.listItem}>
-              Divide process proportionally for each day{" "}
-            </li>
-            <li className={css.listItem}>Track your success</li>
-          </ul>
-          <h2 className={css.secondaryTitle}>You may also</h2>
-          <ul className={css.list}>
-            <li className={css.listItem}>
-              Pose your own independent point of view
-            </li>
-            <li className={css.listItem}>
-              Improve your professional skills according to new knowledge
-            </li>
-            <li className={css.listItem}>Become an interesting interlocutor</li>
-          </ul>
+      {!isMobileDevice && (
+        <div>
+          <h1 className={css.title}>Books Reading</h1>
+          <div className={css.deskriptionWraper}>
+            <h2 className={css.secondaryTitle}>Will help you to</h2>
+            <ul className={css.list}>
+              <li className={css.listItem}>
+                Create your goal faster and proceed to read
+              </li>
+              <li className={css.listItem}>
+                Divide process proportionally for each day{" "}
+              </li>
+              <li className={css.listItem}>Track your success</li>
+            </ul>
+            <h2 className={css.secondaryTitle}>You may also</h2>
+            <ul className={css.list}>
+              <li className={css.listItem}>
+                Pose your own independent point of view
+              </li>
+              <li className={css.listItem}>
+                Improve your professional skills according to new knowledge
+              </li>
+              <li className={css.listItem}>
+                Become an interesting interlocutor
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
