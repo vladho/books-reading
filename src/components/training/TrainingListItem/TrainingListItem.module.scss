@@ -3,22 +3,24 @@
 .item {
     width: 100%;
 
-    @include for-size(mobile-only) {
-        padding: 22px 35px;
-    }
-
-    @include for-size(tablet-only) {
-        padding: 11px 0px;
-    }
-
     @include for-size(mobile-tablet) {
         &:not(:last-child) {
             border-bottom: 1px solid #e0e5eb;
         }
     }
 
+    @include for-size(mobile) {
+        padding: 22px 35px;
+    }
+
     @include for-size(tablet) {
         display: flex;
+        align-items: center;
+        padding: 16px 0px;
+    }
+
+    @include for-size(desktop) {
+        padding: 7px 0px;
     }
 }
 
@@ -31,10 +33,14 @@
     }
 
     @include for-size(tablet) {
+        width: 206px;
         margin-right: 18px;
 
         font-size: 14px;
-        line-height: 2.7;
+    }
+
+    @include for-size(desktop) {
+        width: 304px;
     }
 }
 
@@ -52,7 +58,6 @@
 
     @include for-size(tablet) {
         font-size: 14px;
-        line-height: 2.7;
 
         &:not(:last-child) {
             margin-right: 18px;
@@ -62,14 +67,34 @@
 
 .author {
     composes: field;
+
+    @include for-size(tablet) {
+        width: 154px;
+    }
+
+    @include for-size(desktop) {
+        width: 194px;
+    }
 }
 
 .year {
     composes: field;
+
+    @include for-size(tablet) {
+        width: 42px;
+
+        text-align: right;
+    }
 }
 
 .pages {
     composes: field;
+
+    @include for-size(tablet) {
+        width: 76px;
+
+        text-align: right;
+    }
 }
 
 .prefix {
