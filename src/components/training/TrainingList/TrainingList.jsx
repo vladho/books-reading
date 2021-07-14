@@ -18,7 +18,7 @@ export default function TrainingList() {
                 <p className={css.pages}>Pages</p>
             </div>
 
-            <ul>
+            <ul className={css.list}>
                 {isArrayNotEmpty
                     ? books.map(({ id, title, author, year, pages }) => (
                           <TrainingListItem

@@ -1,13 +1,10 @@
 import Container from '../Container/Container';
-// import NavigationRoutes from '../Navigation/NavigationRoutes';
-
-import TrainingList from '../training/TrainingList';
+import NavigationRoutes from '../Navigation/NavigationRoutes';
 
 const App = () => {
     return (
         <Container>
-            {/* <NavigationRoutes /> */}
-            <TrainingList />
+            <NavigationRoutes />
         </Container>
     );
 };
