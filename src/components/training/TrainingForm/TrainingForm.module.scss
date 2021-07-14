@@ -4,11 +4,11 @@
     display: grid;
     align-items: start;
 
-    @media screen and (min-width: 768px) {
+    @include for-size(tablet) {
         margin-bottom: 40px;
     }
 
-    @media screen and (min-width: 1280px) {
+    @include for-size(desktop) {
         margin-bottom: 25px;
         margin-right: 40px;
     }
@@ -18,7 +18,7 @@
     margin-bottom: 25px;
     color: $accent;
 
-    @media screen and (min-width: 768px) {
+    @include for-size(tablet) {
         display: none;
     }
 }
@@ -37,11 +37,11 @@
     background-color: $titleBg;
     box-shadow: $boxShadowTitle;
 
-    @media screen and (min-width: 768px) {
+    @include for-size(tablet) {
         margin-bottom: 30px;
     }
 
-    @media screen and (min-width: 1280px) {
+    @include for-size(desktop) {
         margin-bottom: 25px;
     }
 }
@@ -51,7 +51,7 @@
     flex-direction: column;
     margin-bottom: 20px;
 
-    @media screen and (min-width: 768px) {
+    @include for-size(tablet) {
         margin-bottom: 25px;
         flex-direction: row;
         justify-content: center;
@@ -64,7 +64,7 @@
     &:not(:last-child) {
         margin-bottom: 20px;
 
-        @media screen and (min-width: 768px) {
+        @include for-size(tablet) {
             margin-bottom: 0;
             margin-right: 45px;
         }
@@ -115,7 +115,7 @@
     display: flex;
     flex-direction: column;
 
-    @media screen and (min-width: 768px) {
+    @include for-size(tablet) {
         flex-direction: row;
     }
 }
@@ -126,13 +126,13 @@
 
     background-color: $white;
 
-    @media screen and (min-width: 768px) {
+    @include for-size(tablet) {
         flex-grow: 1;
         margin-bottom: 0;
         margin-right: 25px;
     }
 
-    @media screen and (min-width: 1280px) {
+    @include for-size(desktop) {
         margin-right: 45px;
     }
 }
@@ -154,10 +154,6 @@
     &::placeholder {
         color: $inputTextColor;
     }
-
-    @media screen and (min-width: 768px) {
-        grid-row: 1 / 8;
-    }
 }
 
 .formButton {
@@ -171,8 +167,4 @@
 
     color: $black;
     background: transparent;
-
-    @media screen and (min-width: 768px) {
-        grid-row: 8 / 12;
-    }
 }
