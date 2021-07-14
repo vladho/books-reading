@@ -150,6 +150,7 @@
     color: $inputTextColor;
     background-color: transparent;
     box-shadow: $boxShadowInput;
+    cursor: pointer;
 
     &::placeholder {
         color: $inputTextColor;
@@ -167,4 +168,23 @@
 
     color: $black;
     background: transparent;
+}
+
+.booksList {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    padding: 13px;
+
+    background-color: $white;
+    box-shadow: $boxShadowInput;
+}
+
+.book {
+    cursor: pointer;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
 }
