@@ -175,16 +175,21 @@
     top: 50px;
     left: 0;
     width: 100%;
-    padding: 13px;
-
-    background-color: $white;
-    box-shadow: $boxShadowInput;
 }
 
 .book {
+    padding: 13px;
+
+    background-color: $white;
+    box-shadow: $boxShadow;
     cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        background-color: $inputBg;
+    }
 
     &:not(:last-child) {
-        margin-bottom: 20px;
+        margin-bottom: 5px;
     }
 }

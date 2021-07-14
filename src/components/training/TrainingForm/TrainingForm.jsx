@@ -14,10 +14,7 @@ const TrainingForm = () => {
     const [startDate, setStartDate] = useState(null);
     const [finishDate, setFinishDate] = useState(null);
     const [isBooksListShown, setIsBooksListShown] = useState(false);
-
-    const selectBooks = () => {
-        setIsBooksListShown(!isBooksListShown);
-    };
+    const [selectedBook, setSelectedBook] = useState('');
 
     return (
         <form className={styles.form} autoComplete="off">
@@ -55,8 +52,9 @@ const TrainingForm = () => {
                     <input
                         type="text"
                         name="booksSelect"
+                        value={selectedBook.title}
                         placeholder="Choose books from the library"
-                        onClick={selectBooks}
+                        onClick={e => setIsBooksListShown(!isBooksListShown)}
                         className={styles.formSelect}
                     />
                     <HiChevronDown className={styles.chevronDownIcon} />
@@ -64,8 +62,15 @@ const TrainingForm = () => {
                     {isBooksListShown && (
                         <ul className={styles.booksList}>
                             {trainingListBooks.map(book => (
-                                <li key={book.id} className={styles.book}>
-                                    <p>{book.title}</p>
+                                <li
+                                    key={book.id}
+                                    className={styles.book}
+                                    onClick={e => {
+                                        setSelectedBook(book);
+                                        setIsBooksListShown(!isBooksListShown);
+                                    }}
+                                >
+                                    {book.title}
                                 </li>
                             ))}
                         </ul>
