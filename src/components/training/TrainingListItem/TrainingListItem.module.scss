@@ -1,16 +1,14 @@
 @import 'styles/shared.scss';
 
 .item {
+    position: relative;
     width: 100%;
+    padding: 22px 35px;
 
     @include for-size(mobile-tablet) {
         &:not(:last-child) {
             border-bottom: 1px solid #e0e5eb;
         }
-    }
-
-    @include for-size(mobile) {
-        padding: 22px 35px;
     }
 
     @include for-size(tablet) {
@@ -24,23 +22,20 @@
     }
 }
 
-.title {
-    font-size: 12px;
-    line-height: 1.25;
+.bookIcon {
+    width: 22px;
+    height: 17px;
+
+    fill: $inputTextColor;
 
     @include for-size(mobile-only) {
-        margin-bottom: 17px;
+        position: absolute;
+        top: 25px;
+        left: 0;
     }
 
     @include for-size(tablet) {
-        width: 206px;
         margin-right: 18px;
-
-        font-size: 14px;
-    }
-
-    @include for-size(desktop) {
-        width: 304px;
     }
 }
 
@@ -50,26 +45,40 @@
 
     @include for-size(mobile-only) {
         display: flex;
-
-        &:not(:last-child) {
-            margin-bottom: 17px;
-        }
     }
 
     @include for-size(tablet) {
         font-size: 14px;
+    }
+}
 
-        &:not(:last-child) {
-            margin-right: 18px;
-        }
+.title {
+    composes: field;
+
+    @include for-size(mobile-only) {
+        margin-bottom: 17px;
+    }
+
+    @include for-size(tablet) {
+        width: 206px;
+        margin-right: 18px;
+    }
+
+    @include for-size(desktop) {
+        width: 304px;
     }
 }
 
 .author {
     composes: field;
 
+    @include for-size(mobile-only) {
+        margin-bottom: 17px;
+    }
+
     @include for-size(tablet) {
         width: 154px;
+        margin-right: 18px;
     }
 
     @include for-size(desktop) {
@@ -80,8 +89,13 @@
 .year {
     composes: field;
 
+    @include for-size(mobile-only) {
+        margin-bottom: 17px;
+    }
+
     @include for-size(tablet) {
         width: 42px;
+        margin-right: 18px;
 
         text-align: right;
     }
@@ -106,5 +120,27 @@
 
     @include for-size(tablet) {
         display: none;
+    }
+}
+
+.deleteBtn {
+    color: $secondaryText;
+
+    &:hover {
+        color: $accent;
+    }
+
+    @include for-size(mobile-only) {
+        position: absolute;
+        top: 25px;
+        right: 0;
+    }
+
+    @include for-size(tablet) {
+        margin-left: 48px;
+    }
+
+    @include for-size(desktop) {
+        margin-left: 116px;
     }
 }

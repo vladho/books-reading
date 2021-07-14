@@ -16,6 +16,7 @@ const App = () => {
                         author={author}
                         year={year}
                         pages={pages}
+                        onDelete={() => null}
                     />
                 ))}
             </ul>
