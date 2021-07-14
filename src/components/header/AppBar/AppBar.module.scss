@@ -1,0 +1,206 @@
+@import 'styles/shared.scss';
+
+// ========= Header ==============
+.headerContainer {
+    position: fixed;
+    z-index: 200;
+    width: 280px;
+    height: 60px;
+
+    @include for-size(tablet) {
+        width: 718px;
+    }
+    @include for-size(desktop) {
+        width: 1230px;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+
+    @include for-size(tablet) {
+        justify-content: space-between;
+        // margin-top: 19px;
+        // padding-bottom: 19px;
+    }
+}
+
+.logo {
+    font-family: Abril Fatface;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 1.35;
+    color: $primaryText;
+    // @include for-size(tablet) {
+    //     width: 140px;
+    //     height: 42px;
+    // }
+}
+
+// ========= AppBar ==============
+
+.appBar {
+    display: flex;
+    align-items: center;
+
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 2.71;
+    color: $primaryText;
+    // @include for-size(tablet) {
+    //     font-size: 14px;
+    // }
+}
+.menuBlock {
+    display: flex;
+}
+
+.menuBlock::after {
+    content: '';
+    border-right: 1px solid #e0e5eb;
+    margin-right: 14px;
+}
+
+.navButton {
+    display: flex;
+    align-items: center;
+    margin-right: 7px;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    border: none;
+    color: $inputTextColor;
+    background-color: transparent;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover {
+        transform: scale(1.2);
+        fill: $accent;
+        color: $accent;
+    }
+}
+
+.react-icons {
+    vertical-align: middle;
+    width: 2em;
+}
+
+.user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userIcon {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $primaryText;
+    background-color: $inputAuthBorder;
+    @include for-size(tablet) {
+        margin-right: 11px;
+    }
+}
+
+.userName {
+    display: none;
+    font-family: Montserrat;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $primaryText;
+    @include for-size(tablet) {
+        display: block;
+    }
+}
+
+// .userButton {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     margin-left: 14px;
+//     width: 30px;
+//     height: 30px;
+//     border-radius: 50%;
+//     border: none;
+//     color: $primaryText;
+//     // background-color: $inputAuthBorder;
+//     background-color: rgb(246, 247, 251);
+//     @include for-size(tablet) {
+//         display: none;
+//     }
+// }
+
+.logoutButton {
+    display: flex;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover .logoutSvg,
+    &:hover .logoutText {
+        transform: scale(1.2);
+        fill: $accent;
+        color: $accent;
+    }
+    // @include for-size(tablet) {
+    //     padding: 0;
+    //     margin-left: 77px;
+    //     width: 100px;
+    //     background: none;
+    //     background-color: transparent;
+    // }
+}
+
+.logoutText {
+    font-family: Montserrat;
+    font-size: 14px;
+    line-height: 1.14;
+    font-weight: 300;
+    color: $primaryText;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    @include for-size(tablet) {
+        display: block;
+        white-space: nowrap;
+        margin-left: 10px;
+        line-height: 2.71;
+    }
+}
+
+// .navUserMenu {
+//     display: flex;
+// }
+
+// .navList {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+// }
+// .navItem {
+//     margin-right: 7px;
+// }
+
+// .navLink {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     width: 33px;
+//     height: 33px;
+//     border-radius: 50%;
+//     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+// }
