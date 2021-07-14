@@ -10,19 +10,28 @@ export default function TrainingList() {
     const isArrayNotEmpty = Array.isArray(books) && books.length;
 
     return (
-        <ul className={css.list}>
-            {isArrayNotEmpty
-                ? books.map(({ id, title, author, year, pages }) => (
-                      <TrainingListItem
-                          key={id}
-                          title={title}
-                          author={author}
-                          year={year}
-                          pages={pages}
-                          onDelete={() => null}
-                      />
-                  ))
-                : placeholder}
-        </ul>
+        <div className={css.TrainingList}>
+            <div className={css.header}>
+                <p className={css.title}>Book title</p>
+                <p className={css.author}>Author</p>
+                <p className={css.year}>Year</p>
+                <p className={css.pages}>Pages</p>
+            </div>
+
+            <ul>
+                {isArrayNotEmpty
+                    ? books.map(({ id, title, author, year, pages }) => (
+                          <TrainingListItem
+                              key={id}
+                              title={title}
+                              author={author}
+                              year={year}
+                              pages={pages}
+                              onDelete={() => null}
+                          />
+                      ))
+                    : placeholder}
+            </ul>
+        </div>
     );
 }
