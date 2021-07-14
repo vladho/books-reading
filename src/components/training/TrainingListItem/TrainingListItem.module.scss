@@ -57,6 +57,7 @@
 
     @include for-size(mobile-only) {
         margin-bottom: 17px;
+        min-height: 15px;
     }
 
     @include for-size(tablet) {
