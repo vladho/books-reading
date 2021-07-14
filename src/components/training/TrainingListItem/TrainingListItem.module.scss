@@ -4,7 +4,7 @@
     width: 100%;
 
     @include for-size(mobile-only) {
-        padding: 22px 35px 9px;
+        padding: 22px 35px;
     }
 
     @include for-size(tablet-only) {
@@ -27,7 +27,7 @@
     line-height: 1.25;
 
     @include for-size(mobile-only) {
-        margin-bottom: 5px;
+        margin-bottom: 17px;
     }
 
     @include for-size(tablet) {
@@ -40,10 +40,14 @@
 
 .field {
     font-size: 12px;
-    line-height: 2.5;
+    line-height: 1.25;
 
     @include for-size(mobile-only) {
         display: flex;
+
+        &:not(:last-child) {
+            margin-bottom: 17px;
+        }
     }
 
     @include for-size(tablet) {
