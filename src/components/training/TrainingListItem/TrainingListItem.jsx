@@ -22,3 +22,18 @@ export default function TrainingListItem({ title, author, year, pages }) {
         </li>
     );
 }
+
+// import books from '../../json/trainingListBooks.json';
+// import TrainingListItem from '../training/TrainingListItem';
+
+// <ul>
+//     {books.map(({ id, title, author, year, pages }) => (
+//         <TrainingListItem
+//             key={id}
+//             title={title}
+//             author={author}
+//             year={year}
+//             pages={pages}
+//         />
+//     ))}
+// </ul>;
