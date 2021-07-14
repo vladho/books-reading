@@ -7,11 +7,14 @@ import {
     HiChevronDown,
 } from 'react-icons/hi';
 
+import trainingListBooks from '../../../json/trainingListBooks.json';
 import styles from './TrainingForm.module.scss';
 
 const TrainingForm = () => {
     const [startDate, setStartDate] = useState(null);
     const [finishDate, setFinishDate] = useState(null);
+    const [isBooksListShown, setIsBooksListShown] = useState(false);
+    const [selectedBook, setSelectedBook] = useState('');
 
     return (
         <form className={styles.form} autoComplete="off">
@@ -49,10 +52,29 @@ const TrainingForm = () => {
                     <input
                         type="text"
                         name="booksSelect"
+                        value={selectedBook.title}
                         placeholder="Choose books from the library"
+                        onClick={e => setIsBooksListShown(!isBooksListShown)}
                         className={styles.formSelect}
                     />
                     <HiChevronDown className={styles.chevronDownIcon} />
+
+                    {isBooksListShown && (
+                        <ul className={styles.booksList}>
+                            {trainingListBooks.map(book => (
+                                <li
+                                    key={book.id}
+                                    className={styles.book}
+                                    onClick={e => {
+                                        setSelectedBook(book);
+                                        setIsBooksListShown(!isBooksListShown);
+                                    }}
+                                >
+                                    {book.title}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </div>
 
                 <button type="submit" className={styles.formButton}>
