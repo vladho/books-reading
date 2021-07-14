@@ -23,6 +23,8 @@ const TrainingForm = () => {
                         selected={startDate}
                         onChange={date => setStartDate(date)}
                         placeholderText="Start"
+                        dateFormat="dd.MM.yyyy"
+                        minDate={new Date()}
                         className={styles.formInput}
                     />
                     <HiOutlineCalendar className={styles.calendarIcon} />
@@ -33,6 +35,8 @@ const TrainingForm = () => {
                         selected={finishDate}
                         onChange={date => setFinishDate(date)}
                         placeholderText="Finish"
+                        dateFormat="dd.MM.yyyy"
+                        minDate={new Date()}
                         className={styles.formInput}
                     />
                     <HiOutlineCalendar className={styles.calendarIcon} />
