@@ -1,16 +1,28 @@
-import React from "react"
+import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 
-import Container from "../Container/Container"
-import styles from "./TrainingWrapper.module.scss"
+import TrainingForm from './TrainingForm/TrainingForm';
+import TrainingModal from './TrainingModal/TrainingModal';
+import styles from './TrainingWrapper.module.scss';
 
 const TrainingWrapper = () => {
-  return (
-    <div className={styles.wrapper}>
-      <Container>
-        <h1>Training Page</h1>
-      </Container>
-    </div>
-  )
-}
+    const isMobile = useMediaQuery({
+        query: '(max-device-width: 767px)',
+    });
 
-export default TrainingWrapper
+    return (
+        <>
+            <div className={styles.wrapper}>
+                {isMobile ? (
+                    <TrainingModal>
+                        <TrainingForm />
+                    </TrainingModal>
+                ) : (
+                    <TrainingForm />
+                )}
+            </div>
+        </>
+    );
+};
+
+export default TrainingWrapper;
