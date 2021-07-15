@@ -1,0 +1,157 @@
+@import 'styles/shared.scss';
+
+.form {
+    width: 1117px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $secondaryText;
+}
+
+.labelName {
+    width: 346px;
+    height: 80px;
+}
+
+.labelNameTitle {
+    width: 92px;
+    height: 38px;
+}
+
+.labelNameInput {
+    width: 346px;
+    height: 42px;
+    background: $inputBg;
+    border: $inputBorder;
+    padding-left: 13px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $secondaryText;
+}
+
+.labelNameInput:hover,
+.labelNameInput:focus {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $secondaryText;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: $white;
+    box-shadow: $boxShadowInput;
+}
+
+.labelPage {
+    width: 134px;
+    height: 80px;
+    margin-left: 15px;
+    margin-right: 45px;
+}
+
+.labelPageTitle {
+    width: 134px;
+    height: 38px;
+}
+
+.labelPageInput {
+    width: 130px;
+    height: 42px;
+    background: $inputBg;
+    border: $inputBorder;
+    padding-left: 13px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $secondaryText;
+}
+
+.labelPageInput:hover,
+.labelPageInput:focus {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $secondaryText;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: $white;
+    box-shadow: $boxShadowInput;
+}
+
+.labelYear {
+    width: 130px;
+    height: 80px;
+    margin-left: 15px;
+}
+
+.labelYearTitle {
+    width: 86px;
+    height: 38px;
+}
+
+.labelYearInput {
+    width: 130px;
+    height: 42px;
+    background: $inputBg;
+    border: $inputBorder;
+    padding-left: 13px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $secondaryText;
+}
+
+.labelYearInput:hover,
+.labelYearInput:focus {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $secondaryText;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: $white;
+    box-shadow: $boxShadowInput;
+}
+
+.labelAuthor {
+    width: 250px;
+    height: 80px;
+    margin-left: 15px;
+}
+
+.labelAuthorTitle {
+    width: 93px;
+    height: 38px;
+}
+
+.labelAuthorInput {
+    width: 250px;
+    height: 42px;
+    background: $inputBg;
+    border: $inputBorder;
+    padding-left: 13px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $secondaryText;
+}
+
+.labelAuthorInput:hover,
+.labelAuthorInput:focus {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $secondaryText;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: $white;
+    box-shadow: $boxShadowInput;
+}

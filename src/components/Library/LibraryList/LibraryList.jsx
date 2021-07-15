@@ -1,18 +1,20 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 
-export class LibraryList extends Component {
-    static propTypes = {
-
-    }
-
-    render() {
-        return (
-            <div>
-                <p>Список категорий</p>
-            </div>
-        )
-    }
+function LibraryList({ books }) {
+    return (
+        <div>
+            <ul>{books.map(({ id, name, author, year, page }) =>
+                (
+                <li key={id}>
+                    <p>{name}</p>
+                    <p>{author}</p>
+                    <p>{year}</p>
+                    <p>{page}</p>
+                </li>
+            ))}</ul>
+        </div>
+    )
 }
 
 export default LibraryList
+
