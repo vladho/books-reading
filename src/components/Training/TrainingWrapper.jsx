@@ -3,6 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import TrainingForm from './TrainingForm/TrainingForm';
 import TrainingList from './TrainingList';
+import CircuitButton from '../common/CirciutButton/CircuitButton';
 import TrainingModal from './TrainingModal/TrainingModal';
 import styles from './TrainingWrapper.module.scss';
 
@@ -22,6 +23,7 @@ const TrainingWrapper = () => {
           <TrainingForm />
         )}
         <TrainingList />
+        <CircuitButton />
       </div>
     </>
   );
