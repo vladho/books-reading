@@ -1,46 +1,124 @@
 @import 'styles/shared.scss';
 
 .container {
-    outline: 1px solid $accent;
     width: 1202px;
     height: max-content;
     display: flex;
     justify-content: center;
     margin-top: 30px;
-}
-
-.category {
-    outline: 1px solid yellowgreen;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 678px;
+        margin-top: 124px;
+    }
 }
 
 .categoryTitle {
-    outline: 1px solid yellow;
+    width: max-content;
+    height: 38px;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 200%;
+    color: $primaryText;
 }
 
 .categoryListTitle {
-    outline: 1px solid orchid;
     width: 1202px;
     display: flex;
-    justify-content: left;
     font-weight: 500;
     font-size: 14px;
     line-height: 2.71;
     color: $secondaryText;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 678px;
+    }
 }
 
-.categoryListTitleItem {
-    outline: 1px solid blue;
+.categoryListTitleItemName {
+    width: 92px;
+    height: 38px;
+    margin-right: 534px;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        margin-right: 252px;
+    }
+}
+
+.categoryListTitleItemAuthor {
+    width: 45px;
+    height: 38px;
+    margin-right: 311px;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        margin-right: 146px;
+    }
+}
+
+.categoryListTitleItemYear {
+    width: 23px;
+    height: 38px;
+    margin-right: 73px;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        margin-right: 55px;
+    }
+}
+
+.categoryListTitleItemPage {
+    width: 39px;
+    height: 38px;
 }
 
 .bookList {
-    outline: 1px solid red;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 271%;
+    color: $primaryText;
 }
 
 .bookListItem {
-    outline: 1px solid green;
     display: flex;
-    justify-content: space-between;
+    width: 1202px;
+    height: 62px;
+    margin-bottom: 10px;
+    background: $white;
+    box-shadow: $boxShadowTitle;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 678px;
+    }
+}
+
+.bookListItemName {
+    display: flex;
+    align-items: center;
+    width: 430px;
+    margin-left: 60px;
+    margin-right: 136px;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        margin-right: 56px;
+        width: 228px;
+        height: max-content;
+    }
+}
+.bookListItemAuthor {
+    display: flex;
+    align-items: center;
+    width: 139px;
+    margin-right: 208px;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        margin-right: 43px;
+    }
+}
+.bookListItemYear {
+    display: flex;
+    align-items: center;
+    width: 32px;
+    margin-right: 95px;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        margin-right: 77px;
+    }
+}
+.bookListItemPage {
+    display: flex;
+    align-items: center;
+    width: 17px;
 }
