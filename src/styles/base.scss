@@ -1,11 +1,11 @@
-@import "styles/shared.scss";
+@import 'styles/shared.scss';
 
 ul,
 li,
 ol {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 h1,
@@ -15,28 +15,28 @@ h4,
 h5,
 h6,
 p {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 button:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 img {
-  display: block;
-  max-width: 100%;
-  height: auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  color: $primaryText;
-  background-color: $primaryBg;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: $primaryText;
+    background-color: $primaryBg;
 }

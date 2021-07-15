@@ -1,5 +1,13 @@
+
+import Container from '../Container/Container';
+import NavigationRoutes from '../Navigation/NavigationRoutes';
+
 const App = () => {
-    return <h1>App</h1>;
+    return (
+        <Container>
+            <NavigationRoutes />
+        </Container>
+    );
 };
 
 export default App;
