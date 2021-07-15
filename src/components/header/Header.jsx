@@ -14,7 +14,7 @@ const Header = () => {
     return (
         <header className={css.headerContainer}>
             <nav className={css.header}>
-                <NavLink exact to="/projects">
+                <NavLink exact to="/temporary">
                     <p className={css.logo}>BR</p>
                 </NavLink>
                 <AppBar />

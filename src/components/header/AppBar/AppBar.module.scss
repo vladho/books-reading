@@ -52,9 +52,9 @@
     font-weight: 600;
     line-height: 2.71;
     color: $primaryText;
-    // @include for-size(tablet) {
-    //     font-size: 14px;
-    // }
+    @include for-size(tablet) {
+        flex-grow: 1;
+    }
 }
 .menuBlock {
     display: flex;
@@ -93,6 +93,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @include for-size(tablet) {
+        justify-content: center;
+        order: -1;
+        flex-grow: 1;
+    }
 }
 
 .userIcon {
