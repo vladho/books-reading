@@ -23,7 +23,8 @@ const TrainingWrapper = () => {
           <TrainingForm />
         )}
         <TrainingList />
-        <CircuitButton />
+
+        {isMobile && <CircuitButton />}
       </div>
     </>
   );
