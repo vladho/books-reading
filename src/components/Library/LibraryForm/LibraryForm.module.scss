@@ -10,16 +10,37 @@
     font-size: 14px;
     line-height: 2.71;
     color: $secondaryText;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 594px;
+        height: 170px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 270px;
+        height: 350px;
+        flex-wrap: wrap;
+        margin-top: 52px;
+    }
 }
 
 .labelName {
     width: 346px;
     height: 80px;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 594px;
+    }
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 270px;
+    }
 }
 
 .labelNameTitle {
     width: 92px;
     height: 38px;
+    @media screen and (min-width: 320px) and (max-width: 1279px) {
+        width: 92px;
+    }
 }
 
 .labelNameInput {
@@ -32,6 +53,12 @@
     font-size: 14px;
     line-height: 2.71;
     color: $secondaryText;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 594px;
+    }
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 270px;
+    }
 }
 
 .labelNameInput:hover,
@@ -52,11 +79,22 @@
     height: 80px;
     margin-left: 15px;
     margin-right: 45px;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 145px;
+        margin: 0px;
+    }
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 270px;
+        margin: 0px;
+    }
 }
 
 .labelPageTitle {
     width: 134px;
     height: 38px;
+    @media screen and (min-width: 320px) and (max-width: 1279px) {
+        width: 134px;
+    }
 }
 
 .labelPageInput {
@@ -69,6 +107,12 @@
     font-size: 14px;
     line-height: 2.71;
     color: $secondaryText;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 145px;
+    }
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 270px;
+    }
 }
 
 .labelPageInput:hover,
@@ -88,11 +132,22 @@
     width: 130px;
     height: 80px;
     margin-left: 15px;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 145px;
+        margin: 0px;
+    }
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 270px;
+        margin: 0px;
+    }
 }
 
 .labelYearTitle {
     width: 86px;
     height: 38px;
+    @media screen and (min-width: 320px) and (max-width: 1279px) {
+        width: 86px;
+    }
 }
 
 .labelYearInput {
@@ -105,6 +160,12 @@
     font-size: 14px;
     line-height: 2.71;
     color: $secondaryText;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 145px;
+    }
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 270px;
+    }
 }
 
 .labelYearInput:hover,
@@ -124,11 +185,22 @@
     width: 250px;
     height: 80px;
     margin-left: 15px;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 250px;
+        margin: 0px;
+    }
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 270px;
+        margin: 0px;
+    }
 }
 
 .labelAuthorTitle {
     width: 93px;
     height: 38px;
+    @media screen and (min-width: 320px) and (max-width: 1279px) {
+        width: 93px;
+    }
 }
 
 .labelAuthorInput {
@@ -141,6 +213,12 @@
     font-size: 14px;
     line-height: 2.71;
     color: $secondaryText;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 250px;
+    }
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 270px;
+    }
 }
 
 .labelAuthorInput:hover,
