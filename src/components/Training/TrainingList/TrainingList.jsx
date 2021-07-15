@@ -1,16 +1,16 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import css from './TrainingList.module.scss';
 import TrainingListItem from '../TrainingListItem';
-import { booksSelectors } from '../../../redux/books';
+import { trainingSelectors, trainingActions } from '../../../redux/training';
 
 const placeholder = (
   <TrainingListItem title="..." author="..." year="..." pages="..." />
 );
 
 export default function TrainingList() {
-  const books = useSelector(booksSelectors.getAllBooks);
+  const dispatch = useDispatch();
 
-  const isArrayNotEmpty = Array.isArray(books) && books.length;
+  const books = useSelector(trainingSelectors.getSelectBooks);
 
   return (
     <div className={css.TrainingList}>
@@ -22,15 +22,15 @@ export default function TrainingList() {
       </div>
 
       <ul className={css.list}>
-        {isArrayNotEmpty
-          ? books.map(({ id, title, author, year, pages }) => (
+        {books.length
+          ? books.map(({ _id, title, author, year, totalPages }) => (
               <TrainingListItem
-                key={id}
+                key={_id}
                 title={title}
                 author={author}
                 year={year}
-                pages={pages}
-                onDelete={() => null}
+                pages={totalPages}
+                onDelete={() => dispatch(trainingActions.delSelectedId(_id))}
               />
             ))
           : placeholder}
