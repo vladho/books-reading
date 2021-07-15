@@ -49,7 +49,7 @@ const TrainingForm = () => {
             name="booksSelect"
             value={selectedBook.title}
             placeholder="Choose books from the library"
-            onClick={e => setIsBooksListShown(!isBooksListShown)}
+            onClick={() => setIsBooksListShown(!isBooksListShown)}
             className={styles.formSelect}
           />
           <HiChevronDown className={styles.chevronDownIcon} />
@@ -60,7 +60,7 @@ const TrainingForm = () => {
                 <li
                   key={book.id}
                   className={styles.book}
-                  onClick={e => {
+                  onClick={() => {
                     setSelectedBook(book);
                     setIsBooksListShown(!isBooksListShown);
                   }}

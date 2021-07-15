@@ -8,14 +8,16 @@ const TrainingModal = ({ isTrainingModalShown, setIsTrainingModalShown }) => {
   return (
     <>
       {isTrainingModalShown && (
-        <div className={styles.modalWrapper}>
-          <HiOutlineArrowNarrowLeft
-            fontSize="32"
-            arial-label="go back button"
-            onClick={() => setIsTrainingModalShown(!isTrainingModalShown)}
-            className={styles.goBack}
-          />
-          <TrainingForm />
+        <div className={styles.modalBackdrop}>
+          <div className={styles.modalWrapper}>
+            <HiOutlineArrowNarrowLeft
+              fontSize="32"
+              arial-label="go back button"
+              onClick={() => setIsTrainingModalShown(!isTrainingModalShown)}
+              className={styles.goBack}
+            />
+            <TrainingForm />
+          </div>
         </div>
       )}
     </>

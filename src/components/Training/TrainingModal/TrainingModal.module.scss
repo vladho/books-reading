@@ -1,12 +1,18 @@
 @import 'styles/shared.scss';
 
-.modalWrapper {
-  height: 100%;
-  width: 100%;
-  padding: 25px 0;
+.modalBackdrop {
+  position: fixed;
+  left: 25px;
+  right: 25px;
+  height: 100vh;
   margin-top: -30px;
+
   background-color: $primaryBg;
-  //   background-color: lawngreen;
+  z-index: 20;
+}
+
+.modalWrapper {
+  padding: 25px 0;
 }
 
 .goBack {
