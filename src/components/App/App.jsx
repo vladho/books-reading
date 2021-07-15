@@ -1,8 +1,5 @@
-// import Rgister from "../auth/LoginForm";
-import Rgister from "../auth/RegisterForm";
-
 const App = () => {
-  return <Rgister />;
+  return <h1>APP</h1>;
 };
 
 export default App;
