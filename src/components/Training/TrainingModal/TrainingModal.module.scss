@@ -1,8 +1,10 @@
 @import 'styles/shared.scss';
 
 .modalWrapper {
-    height: 100vh;
-    padding: 25px 0;
-    margin-top: -30px;
-    background-color: $primaryBg;
+  height: 100%;
+  width: 100%;
+  padding: 25px 0;
+  margin-top: -30px;
+  background-color: $primaryBg;
+  //   background-color: lawngreen;
 }

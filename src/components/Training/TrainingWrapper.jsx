@@ -13,20 +13,17 @@ const TrainingWrapper = () => {
   });
 
   return (
-    <>
-      <div className={styles.wrapper}>
-        {isMobile ? (
-          <TrainingModal>
-            <TrainingForm />
-          </TrainingModal>
-        ) : (
+    <div className={styles.wrapper}>
+      {isMobile ? (
+        <TrainingModal>
           <TrainingForm />
-        )}
-        <TrainingList />
-
-        {isMobile && <CircuitButton />}
-      </div>
-    </>
+        </TrainingModal>
+      ) : (
+        <TrainingForm />
+      )}
+      <TrainingList />
+      {isMobile && <CircuitButton />}
+    </div>
   );
 };
 
