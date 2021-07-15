@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import TrainingForm from './TrainingForm/TrainingForm';
@@ -12,17 +12,26 @@ const TrainingWrapper = () => {
     query: '(max-device-width: 767px)',
   });
 
+  const [isTrainingModalShown, setIsTrainingModalShown] = useState(false);
+
+  const openModal = () => {
+    setIsTrainingModalShown(!isTrainingModalShown);
+  };
+
   return (
     <div className={styles.wrapper}>
       {isMobile ? (
-        <TrainingModal>
+        <TrainingModal
+          isTrainingModalShown={isTrainingModalShown}
+          setIsTrainingModalShown={setIsTrainingModalShown}
+        >
           <TrainingForm />
         </TrainingModal>
       ) : (
         <TrainingForm />
       )}
       <TrainingList />
-      {isMobile && <CircuitButton />}
+      {isMobile && <CircuitButton openModal={openModal} />}
     </div>
   );
 };

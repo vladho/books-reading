@@ -8,3 +8,12 @@
   background-color: $primaryBg;
   //   background-color: lawngreen;
 }
+
+.goBack {
+  margin-bottom: 25px;
+  color: $accent;
+
+  @include for-size(tablet) {
+    display: none;
+  }
+}

@@ -14,15 +14,6 @@
   }
 }
 
-.goBack {
-  margin-bottom: 25px;
-  color: $accent;
-
-  @include for-size(tablet) {
-    display: none;
-  }
-}
-
 .formTitle {
   height: 60px;
   margin-bottom: 20px;
