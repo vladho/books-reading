@@ -1,0 +1,46 @@
+@import 'styles/shared.scss';
+
+.container {
+    outline: 1px solid $accent;
+    width: 1202px;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.category {
+    outline: 1px solid yellowgreen;
+}
+
+.categoryTitle {
+    outline: 1px solid yellow;
+}
+
+.categoryListTitle {
+    outline: 1px solid orchid;
+    width: 1202px;
+    display: flex;
+    justify-content: left;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $secondaryText;
+}
+
+.categoryListTitleItem {
+    outline: 1px solid blue;
+}
+
+.bookList {
+    outline: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.bookListItem {
+    outline: 1px solid green;
+    display: flex;
+    justify-content: space-between;
+}
