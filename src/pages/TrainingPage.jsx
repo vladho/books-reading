@@ -1,9 +1,7 @@
-import React from 'react';
-
 import TrainingWrapper from '../components/Training/TrainingWrapper';
 
 const TrainingPage = () => {
-    return <TrainingWrapper />;
+  return <TrainingWrapper />;
 };
 
 export default TrainingPage;
