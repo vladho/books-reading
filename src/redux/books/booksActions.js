@@ -9,10 +9,10 @@ const addBooksSuccess = createAction('books/add/success', book => ({
   payload: {
     book: {
       _id: new Date().getTime(),
-      title: book.name,
+      title: book.title,
       author: book.author,
       year: book.year,
-      page: book.page,
+      totalPages: book.totalPages,
       status: 'plan',
     },
   },
