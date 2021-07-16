@@ -1,44 +1,63 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useFormik } from 'formik';
+import moment from 'moment';
 import { HiOutlineCalendar, HiChevronDown } from 'react-icons/hi';
 
+import DatePickerInput from '../DatePicker/DatePicker';
 import trainingListBooks from '../../../json/trainingListBooks.json';
+import trainingFormSchema from '../../../helpers/validation/trainingFormSchema';
 import styles from './TrainingForm.module.scss';
 
 const TrainingForm = () => {
-  const [startDate, setStartDate] = useState(null);
-  const [finishDate, setFinishDate] = useState(null);
+  const [start, setStart] = useState(null);
+  const [end, setEnd] = useState(null);
+  const [selectedBooks, setSelectedBooks] = useState([]);
   const [isBooksListShown, setIsBooksListShown] = useState(false);
-  const [selectedBook, setSelectedBook] = useState('');
+
+  const formik = useFormik({
+    initialValues: {
+      start: '',
+      end: '',
+      book: '',
+    },
+    validationSchema: trainingFormSchema,
+    onSubmit: values => {
+      setSelectedBooks(prev => [...prev, values.book]);
+    },
+  });
+
+  const handleStartDate = date => {
+    const start = moment(date).format('YYYY-MM-DD');
+    formik.setFieldValue('start', start);
+    setStart(start);
+  };
+  const handleEndDate = date => {
+    const end = moment(date).format('YYYY-MM-DD');
+    formik.setFieldValue('end', end);
+    setEnd(end);
+  };
 
   return (
     <form className={styles.form} autoComplete="off">
       <h1 className={styles.formTitle}>My training</h1>
       <div className={styles.calendarsContainer}>
-        {/* <div className={styles.datePickerWrapper}>
-          <DatePicker
-            selected={startDate}
-            onChange={date => setStartDate(date)}
+        <div className={styles.datePickerWrapper}>
+          <DatePickerInput
+            value={formik.values.start}
             placeholderText="Start"
-            dateFormat="dd.MM.yyyy"
-            minDate={new Date()}
-            className={styles.datePicker}
+            onChange={handleStartDate}
+            pickedDate={start ? new Date(start) : ''}
           />
-          <HiOutlineCalendar className={styles.calendarIcon} />
-          <HiChevronDown className={styles.chevronDownIcon} />
-        </div> */}
-        <div className={styles.inputContainer}>
-          <DatePicker
-            selected={finishDate}
-            onChange={date => setFinishDate(date)}
+        </div>
+        <div className={styles.datePickerWrapper}>
+          <DatePickerInput
+            value={formik.values.start}
             placeholderText="Finish"
-            dateFormat="dd.MM.yyyy"
-            minDate={new Date()}
-            className={styles.formInput}
+            onChange={handleEndDate}
+            pickedDate={start ? new Date(start) : ''}
           />
-          <HiOutlineCalendar className={styles.calendarIcon} />
-          <HiChevronDown className={styles.chevronDownIcon} />
         </div>
       </div>
 
@@ -47,7 +66,7 @@ const TrainingForm = () => {
           <input
             type="text"
             name="booksSelect"
-            value={selectedBook.title}
+            // value={selectedBook.title}
             placeholder="Choose books from the library"
             onClick={() => setIsBooksListShown(!isBooksListShown)}
             className={styles.formSelect}
@@ -61,7 +80,7 @@ const TrainingForm = () => {
                   key={book.id}
                   className={styles.book}
                   onClick={() => {
-                    setSelectedBook(book);
+                    // setSelectedBook(book);
                     setIsBooksListShown(!isBooksListShown);
                   }}
                 >

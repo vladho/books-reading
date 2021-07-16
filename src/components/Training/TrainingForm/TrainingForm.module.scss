@@ -48,6 +48,20 @@
   }
 }
 
+.datePickerWrapper {
+  position: relative;
+  border: $inputBorder;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+
+    @include for-size(tablet) {
+      margin-bottom: 0;
+      margin-right: 45px;
+    }
+  }
+}
+
 .chevronDownIcon {
   position: absolute;
   top: 50%;
