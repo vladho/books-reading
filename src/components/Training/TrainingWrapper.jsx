@@ -8,6 +8,7 @@ import MyGoals from '../Statistics/MyGoals/MyGoals';
 import CircuitButton from '../common/CirciutButton/CircuitButton';
 import TrainingModal from './TrainingModal/TrainingModal';
 import styles from './TrainingWrapper.module.scss';
+import Timer from '../Timer/Timer';
 
 const TrainingWrapper = () => {
   const isMobile = useMediaQuery({
@@ -28,7 +29,8 @@ const TrainingWrapper = () => {
       </div>
 
       <div className={styles.myTraining}>
-        {isMobile ? (
+          <Timer/>
+        {/* {isMobile ? (
           <TrainingModal
             isTrainingModalShown={isTrainingModalShown}
             setIsTrainingModalShown={setIsTrainingModalShown}
@@ -37,7 +39,7 @@ const TrainingWrapper = () => {
           </TrainingModal>
         ) : (
           <TrainingForm setSelectedBooks={setSelectedBooks} />
-        )}
+        )} */}
         <TrainingList selectedBooks={selectedBooks} />
         {isMobile && <CircuitButton openModal={openModal} />}
       </div>
