@@ -8,8 +8,8 @@ const addBooksRequest = createAction('books/add/request');
 const addBooksSuccess = createAction('books/add/success', book => ({
   payload: {
     book: {
-      id: new Date().getTime(),
-      name: book.name,
+      _id: new Date().getTime(),
+      title: book.name,
       author: book.author,
       year: book.year,
       page: book.page,

@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import styles from './LibraryList.module.scss';
 
 function LibraryList({ books }) {
+  console.log(typeof books.find());
   return (
     <div className={styles.container}>
-      {books.length > 0 && (
+      {books.status === 'plan' && (
         <ul>
           <p className={styles.categoryTitle}>Маю намір прочитати</p>
           <ul className={styles.categoryListTitle}>
@@ -15,12 +16,12 @@ function LibraryList({ books }) {
             <li className={styles.categoryListTitleItemPage}>Стор.</li>
           </ul>
           <ul className={styles.bookList}>
-            {books.map(({ id, name, author, year, page }) => (
-              <li key={id} className={styles.bookListItem}>
-                <p className={styles.bookListItemName}>{name}</p>
+            {books.map(({ _id, title, author, year, totalPages }) => (
+              <li key={_id} className={styles.bookListItem}>
+                <p className={styles.bookListItemName}>{title}</p>
                 <p className={styles.bookListItemAuthor}>{author}</p>
                 <p className={styles.bookListItemYear}>{year}</p>
-                <p className={styles.bookListItemPage}>{page}</p>
+                <p className={styles.bookListItemPage}>{totalPages}</p>
               </li>
             ))}
           </ul>
