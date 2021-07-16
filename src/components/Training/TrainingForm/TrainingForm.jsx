@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import { useFormik } from 'formik';
 import moment from 'moment';
-import { HiOutlineCalendar, HiChevronDown } from 'react-icons/hi';
 
-import DatePickerInput from '../DatePicker/DatePicker';
-import trainingListBooks from '../../../json/trainingListBooks.json';
 import trainingFormSchema from '../../../helpers/validation/trainingFormSchema';
+import DatePickerInput from '../DatePicker/DatePicker';
+import BooksSelector from '../Select/BooksSelector';
 import styles from './TrainingForm.module.scss';
 
 const TrainingForm = () => {
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
   const [selectedBooks, setSelectedBooks] = useState([]);
-  const [isBooksListShown, setIsBooksListShown] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -33,10 +29,15 @@ const TrainingForm = () => {
     formik.setFieldValue('start', start);
     setStart(start);
   };
+
   const handleEndDate = date => {
     const end = moment(date).format('YYYY-MM-DD');
     formik.setFieldValue('end', end);
     setEnd(end);
+  };
+
+  const handleBook = value => {
+    formik.setFieldValue('book', value);
   };
 
   return (
@@ -50,6 +51,9 @@ const TrainingForm = () => {
             onChange={handleStartDate}
             pickedDate={start ? new Date(start) : ''}
           />
+          {formik.touched.start && formik.errors.start ? (
+            <p className={styles.error}>{formik.errors.start}</p>
+          ) : null}
         </div>
         <div className={styles.datePickerWrapper}>
           <DatePickerInput
@@ -58,37 +62,18 @@ const TrainingForm = () => {
             onChange={handleEndDate}
             pickedDate={end ? new Date(end) : ''}
           />
+          {formik.touched.end && formik.errors.end ? (
+            <p className={styles.error}>{formik.errors.end}</p>
+          ) : null}
         </div>
       </div>
 
       <div className={styles.selectAndButton}>
         <div className={styles.selectContainer}>
-          <input
-            type="text"
-            name="booksSelect"
-            // value={selectedBook.title}
-            placeholder="Choose books from the library"
-            onClick={() => setIsBooksListShown(!isBooksListShown)}
-            className={styles.formSelect}
-          />
-          <HiChevronDown className={styles.chevronDownIcon} />
-
-          {isBooksListShown && (
-            <ul className={styles.booksList}>
-              {trainingListBooks.map(book => (
-                <li
-                  key={book.id}
-                  className={styles.book}
-                  onClick={() => {
-                    // setSelectedBook(book);
-                    setIsBooksListShown(!isBooksListShown);
-                  }}
-                >
-                  {book.title}
-                </li>
-              ))}
-            </ul>
-          )}
+          <BooksSelector value={formik.values.book} onChange={handleBook} />
+          {formik.touched.book && formik.errors.book ? (
+            <p className={styles.error}>{formik.errors.book}</p>
+          ) : null}
         </div>
 
         <button type="submit" className={styles.formButton}>
