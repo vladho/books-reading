@@ -40,7 +40,11 @@ const TrainingForm = ({ setSelectedBooks }) => {
   };
 
   return (
-    <form className={styles.form} autoComplete="off">
+    <form
+      onSubmit={formik.handleSubmit}
+      className={styles.form}
+      autoComplete="off"
+    >
       <h1 className={styles.formTitle}>My training</h1>
       <div className={styles.calendarsContainer}>
         <div className={styles.datePickerWrapper}>
