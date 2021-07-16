@@ -7,7 +7,6 @@ import TrainingList from './TrainingList';
 import MyGoals from '../Statistics/MyGoals/MyGoals';
 import CircuitButton from '../common/CirciutButton/CircuitButton';
 import TrainingModal from './TrainingModal/TrainingModal';
-import TrainingList from './TrainingList';
 import styles from './TrainingWrapper.module.scss';
 
 const TrainingWrapper = () => {
