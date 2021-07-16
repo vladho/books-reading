@@ -16,18 +16,18 @@ const TrainingForm = () => {
     <form className={styles.form} autoComplete="off">
       <h1 className={styles.formTitle}>My training</h1>
       <div className={styles.calendarsContainer}>
-        <div className={styles.inputContainer}>
+        {/* <div className={styles.datePickerWrapper}>
           <DatePicker
             selected={startDate}
             onChange={date => setStartDate(date)}
             placeholderText="Start"
             dateFormat="dd.MM.yyyy"
             minDate={new Date()}
-            className={styles.formInput}
+            className={styles.datePicker}
           />
           <HiOutlineCalendar className={styles.calendarIcon} />
           <HiChevronDown className={styles.chevronDownIcon} />
-        </div>
+        </div> */}
         <div className={styles.inputContainer}>
           <DatePicker
             selected={finishDate}
