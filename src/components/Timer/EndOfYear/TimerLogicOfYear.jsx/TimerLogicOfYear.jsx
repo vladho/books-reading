@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState } from "react";
-import styles from "./TimerLogic.module.scss";
+import classnames from "classnames"
+import styles from "./TimerLogicOfYear.module.scss";
 
 
 const  TimerLogic =() => {
@@ -56,13 +57,13 @@ useEffect(() => {
 
 
     return <div className={styles.dateGroup}>
-    <div className={styles.date, styles.days}>{`${time.days}`}</div>
+    <div className={classnames(styles.date, styles.days)}>{`${time.days}`}</div>
     <div className={styles.date}>{`:`}</div>
-    <div className={styles.date}>{`${time.hours}`}</div>
+    <div className={classnames(styles.date, styles.hours)}>{`${time.hours}`}</div>
     <div className={styles.date}>{`:`}</div>
-    <div className={styles.date}>{`${time.minutes}`}</div>
+    <div className={classnames(styles.date, styles.minutes)}>{`${time.minutes}`}</div>
     <div className={styles.date}>{`:`}</div>
-    <div className={styles.date}>{`${time.seconds}`}</div>
+    <div className={classnames(styles.date, styles.seconds)}>{`${time.seconds}`}</div>
     </div>;
 }
 

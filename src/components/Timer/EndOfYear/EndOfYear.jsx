@@ -1,4 +1,4 @@
-import TimerLogic from "../TimerLogic.jsx/TimerLogic"
+import TimerLogic from "./TimerLogicOfYear.jsx/TimerLogicOfYear"
 import styles from "./EndOfYear.module.scss"
 
 const EndOfYear = () => {
