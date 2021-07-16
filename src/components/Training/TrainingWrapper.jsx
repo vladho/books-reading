@@ -37,7 +37,7 @@ const TrainingWrapper = () => {
           <TrainingForm />
         )}
         <TrainingList />
-        <TrainingCheckbox />
+        <TrainingCheckbox id="a" />
         {isMobile && <CircuitButton openModal={openModal} />}
       </div>
     </div>

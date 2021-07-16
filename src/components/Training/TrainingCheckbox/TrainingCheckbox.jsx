@@ -7,7 +7,7 @@ export default function TrainingCheckbox({ id, className, ...rest }) {
       <input
         id={id}
         type="checkbox"
-        className={cNames(css.checkbox, 'visually-hidden1')}
+        className={cNames(css.checkbox, 'visually-hidden')}
         {...rest}
       />
       <label htmlFor={id} className={cNames(css.label, className)}></label>
