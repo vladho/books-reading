@@ -1,12 +1,21 @@
 import Container from '../Container/Container';
 import NavigationRoutes from '../Navigation/NavigationRoutes';
+import { Header, HeaderWrapper } from '../Header';
 
 const App = () => {
-    return (
+  return (
+    <>
+      <HeaderWrapper>
         <Container>
-            <NavigationRoutes />
+          <Header />
         </Container>
-    );
+      </HeaderWrapper>
+
+      <Container>
+        <NavigationRoutes />
+      </Container>
+    </>
+  );
 };
 
 export default App;
