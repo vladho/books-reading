@@ -7,10 +7,9 @@ import DatePickerInput from '../DatePicker/DatePicker';
 import BooksSelector from '../Select/BooksSelector';
 import styles from './TrainingForm.module.scss';
 
-const TrainingForm = () => {
+const TrainingForm = ({ setSelectedBooks }) => {
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
-  const [selectedBooks, setSelectedBooks] = useState([]);
 
   const formik = useFormik({
     initialValues: {
