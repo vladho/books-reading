@@ -56,7 +56,7 @@ const TrainingForm = () => {
             value={formik.values.start}
             placeholderText="Finish"
             onChange={handleEndDate}
-            pickedDate={start ? new Date(start) : ''}
+            pickedDate={end ? new Date(end) : ''}
           />
         </div>
       </div>
