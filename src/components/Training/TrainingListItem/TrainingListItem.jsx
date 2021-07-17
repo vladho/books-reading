@@ -22,7 +22,11 @@ export default function TrainingListItem({
   return (
     <li className={css.item}>
       {isTrainStarted && !placeholder ? (
-        <TrainingCheckbox id={id} checked={status === 'done'} />
+        <TrainingCheckbox
+          id={id}
+          checked={status === 'done'}
+          className={css.checkbox}
+        />
       ) : (
         <BookIcon className={css.bookIcon} />
       )}
