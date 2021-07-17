@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import css from './TrainingList.module.scss';
 import TrainingListItem from '../TrainingListItem';
+
 import { trainingSelectors, trainingActions } from '../../../redux/training';
 
 const placeholder = (
@@ -11,7 +12,6 @@ export default function TrainingList() {
   const dispatch = useDispatch();
 
   const books = useSelector(trainingSelectors.getSelectBooks);
-
   return (
     <div className={css.TrainingList}>
       <div className={css.header}>
