@@ -1,1 +1,1 @@
-export { default as TrainingCheckbox } from './TrainingCheckbox';
+export { default } from './TrainingCheckbox';

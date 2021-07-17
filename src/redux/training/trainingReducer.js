@@ -5,11 +5,11 @@ const { addSelectedId, delSelectedId, clearSelectedIds } = trainingActions;
 
 // Идет ли тренировка
 
-const isStarted = createReducer(false, {});
+const isStarted = createReducer(true, {});
 
 // Книги в списке тренировки
 
-const selectedIds = createReducer([3, 4], {
+const selectedIds = createReducer([4, 5], {
   [addSelectedId]: (state, { payload }) => [...state, payload],
 
   [delSelectedId]: (state, { payload }) => state.filter(id => id !== payload),

@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import css from './TrainingList.module.scss';
 import TrainingListItem from '../TrainingListItem';
 import { trainingSelectors } from '../../../redux/training';
+import { booksSelectors } from '../../../redux/books';
 
 const placeholder = (
   <TrainingListItem
@@ -14,8 +15,13 @@ const placeholder = (
 );
 
 export default function TrainingList() {
-  const books = useSelector(trainingSelectors.getSelectBooks);
-  // const isTrainStarted = useSelector(trainingSelectors.getIsStarted);
+  const isTrainStarted = useSelector(trainingSelectors.getIsStarted);
+
+  const booksSelector = isTrainStarted
+    ? booksSelectors.getTrainBooks
+    : trainingSelectors.getSelectBooks;
+
+  const books = useSelector(booksSelector);
 
   return (
     <div className={css.TrainingList}>
