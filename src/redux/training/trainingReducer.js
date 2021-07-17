@@ -9,7 +9,7 @@ const isStarted = createReducer(false, {});
 
 // Книги в списке тренировки
 
-const selectedIds = createReducer([], {
+const selectedIds = createReducer([3, 4], {
   [addSelectedId]: (state, { payload }) => [...state, payload],
 
   [delSelectedId]: (state, { payload }) => state.filter(id => id !== payload),

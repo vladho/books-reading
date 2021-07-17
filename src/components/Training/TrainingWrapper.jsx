@@ -7,7 +7,6 @@ import MyGoals from '../Statistics/MyGoals/MyGoals';
 import CircuitButton from '../common/CirciutButton/CircuitButton';
 import TrainingModal from './TrainingModal/TrainingModal';
 import styles from './TrainingWrapper.module.scss';
-import TrainingCheckbox from './TrainingCheckbox/TrainingCheckbox';
 
 const TrainingWrapper = () => {
   const isMobile = useMediaQuery({
@@ -37,7 +36,6 @@ const TrainingWrapper = () => {
           <TrainingForm />
         )}
         <TrainingList />
-        <TrainingCheckbox id="a" />
         {isMobile && <CircuitButton openModal={openModal} />}
       </div>
     </div>
