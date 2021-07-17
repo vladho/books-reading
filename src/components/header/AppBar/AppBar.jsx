@@ -1,13 +1,13 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import { GoHome, GoBook } from 'react-icons/go';
-import { authSls, authOps } from '../../../redux/auth';
+// import { authSls, authOps } from '../../../redux/auth';
 
 import css from './AppBar.module.scss';
 import { NavLink } from 'react-router-dom';
 
 export default function AppBar() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const onLogout = () => dispatch(authOps.logOut());
 
   // const email = useSelector(authSls.getUserEmail);

@@ -1,5 +1,4 @@
-
-import  {useState}  from 'react';
+import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import TrainingForm from './TrainingForm/TrainingForm';
@@ -8,6 +7,8 @@ import MyGoals from '../Statistics/MyGoals/MyGoals';
 import CircuitButton from '../common/CirciutButton/CircuitButton';
 import TrainingModal from './TrainingModal/TrainingModal';
 import styles from './TrainingWrapper.module.scss';
+
+import ChartModal from '../../components/Chart/ChartModal/ChartModal';
 
 const TrainingWrapper = () => {
   const isMobile = useMediaQuery({
@@ -37,6 +38,7 @@ const TrainingWrapper = () => {
           <TrainingForm />
         )}
         <TrainingList />
+        <ChartModal />
         {isMobile && <CircuitButton openModal={openModal} />}
       </div>
     </div>
