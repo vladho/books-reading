@@ -6,7 +6,7 @@ import PublicRoute from '../Routes/PublicRoute';
 import Spinner from '../Spinner/Spinner';
 
 const NavigationRoutes = () => {
-  const isAuth = true;
+  const isAuth = false;
 
   return (
     <Suspense fallback={<Spinner />}>

@@ -1,15 +1,24 @@
+@import '../Container/Container.module.scss';
+
 .deskriptionWraper {
   padding-left: 90px;
   min-width: 715px;
   display: flex;
   flex-direction: column;
 }
+// .mainWraper {
+//   padding-left: 25px;
+//   padding-right: 25px;
+// }
+.conteiner {
+  padding: 0;
+}
 
 .formWraper {
   width: 100%;
   min-height: 648px;
   background-image: linear-gradient(rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)),
-    url("../../components/auth/backgraundImg/picMob.png");
+    url('../../assets/authImg/picMob.png');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -27,7 +36,7 @@
   /* identical to box height, or 271% */
   padding-left: 15px;
   color: #898f9f;
-  background-image: url("./backgraundImg/Vector.svg");
+  background-image: url('../../assets/authImg/Vector.svg');
   fill: #ff6b08;
   background-repeat: no-repeat;
   background-position-x: 0%;
@@ -43,6 +52,28 @@
   line-height: 38px;
 
   color: #242a37;
+}
+
+@media (min-width: 768px) {
+  .deskriptionWraper {
+    padding-left: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 715px;
+  }
+
+  .title {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    text-align: center;
+
+    font-family: Abril Fatface;
+
+    font-size: 34px;
+    line-height: 38px;
+
+    color: #242a37;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -63,7 +94,7 @@
         rgba(9, 30, 63, 0.8),
         rgba(9, 30, 63, 0.8)
       ),
-      url("../../components/auth/backgraundImg/pic.png");
+      url('../../assets/authImg/pic.png');
   }
 
   .title {
@@ -71,26 +102,6 @@
     margin-bottom: 52px;
     margin-left: auto;
     margin-right: auto;
-    font-family: Abril Fatface;
-
-    font-size: 34px;
-    line-height: 38px;
-
-    color: #242a37;
-  }
-}
-
-@media (min-width: 768px) {
-  .deskriptionWraper {
-    padding-left: 140px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 715px;
-  }
-
-  .title {
-    text-align: center;
-
     font-family: Abril Fatface;
 
     font-size: 34px;
@@ -122,7 +133,7 @@
 
   margin-top: 39px;
   margin-bottom: 14px;
-  background-image: url("./backgraundImg/googleIcon.png");
+  background-image: url('../../assets/authImg/googleIcon.png');
   background-repeat: no-repeat;
 
   background-position-x: 10%;
@@ -139,13 +150,10 @@
 
   margin-left: auto;
   margin-right: auto;
-
-  // background: #fafafa;
-  // box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
 }
 
 .registerFormInput {
-  width: 270px;
+  // width: 270px;
   height: 42px;
   border: none;
   background: #f5f7fa;
@@ -175,11 +183,13 @@
   // margin-right: 100%;
   // margin-left: 40px;
   color: #ffffff;
+  margin-left: 25px;
 }
 
 .registerPageButton {
   cursor: pointer;
-  width: 270px;
+
+  width: 220px;
   height: 60px;
   background: #ff6b08;
 
@@ -220,19 +230,19 @@
 .errorMessageName {
   position: absolute;
   font-size: 12px;
-  top: 176px;
+  top: 235px;
   color: rgba(248, 33, 33, 0.6);
 }
 .errorMessageEmail {
   position: absolute;
   font-size: 12px;
-  top: 268px;
+  top: 325px;
   color: rgba(248, 33, 33, 0.6);
 }
 .errorMessagePassword {
   position: absolute;
   font-size: 12px;
-  top: 356px;
+  top: 410px;
   color: rgba(248, 33, 33, 0.6);
 }
 
@@ -240,7 +250,7 @@
   position: absolute;
   font-size: 12px;
   color: rgba(248, 33, 33, 0.6);
-  top: 448px;
+  top: 500px;
 }
 @media (min-width: 768px) {
   .registerPageButton {
@@ -258,7 +268,7 @@
         rgba(9, 30, 63, 0.8),
         rgba(9, 30, 63, 0.8)
       ),
-      url("../../components/auth/backgraundImg/picTablet.png");
+      url('../../assets/authImg/picTablet.png');
     background-size: cover;
     background-repeat: no-repeat;
     height: 790px;
@@ -289,49 +299,51 @@
   }
 
   .errorMessageName {
-    top: 268px;
+    top: 326px;
   }
 
   .errorMessageEmail {
-    top: 357px;
+    top: 416px;
   }
 
   .errorMessagePassword {
-    top: 447px;
+    top: 504px;
   }
 
   .errorMessageConfirmPassword {
-    top: 538px;
+    top: 591px;
   }
 }
 
 //-----------------------------------------Login-----------------------//
 
 .deskriptionText {
+  position: relative;
   margin-top: 40px;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
-  font-size: 17px;
+  font-size: 14px;
   line-height: 2.7%;
   text-align: center;
 
   color: #898f9f;
 }
 
-.deskriptionText::before {
-  content: "";
+.deskriptionText::after {
+  content: '';
   background-color: rgba(36, 42, 55, 0.5);
   position: absolute;
   width: 100px;
   height: 1px;
   bottom: 13%;
-  left: 120px;
+  left: 85px;
   opacity: 1;
+  margin-bottom: 20px;
 }
 
 .deskriptionWraperLogin {
-  background-image: url("./backgraundImg/kovicki.svg");
+  background-image: url('../../assets/authImg/kovicki.svg');
   background-repeat: no-repeat;
 
   background-position-x: 49%;
@@ -344,7 +356,7 @@
   width: 100%;
   height: 420px;
   background-image: linear-gradient(rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)),
-    url("../../components/auth/backgraundImg/picMob.png");
+    url('../../assets/authImg//picMob.png');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -366,7 +378,7 @@
   font-style: normal;
   font-weight: 500;
 
-  font-size: 18px;
+  font-size: 14px;
   line-height: 17px;
   text-align: center;
   color: #242a37;
@@ -376,30 +388,29 @@
 .errorMessageEmailLogin {
   position: absolute;
   font-size: 12px;
-  top: 180px;
+  top: 236px;
   color: rgba(250, 4, 4, 0.6);
 }
 
 .errorMessagePasswordLogin {
   position: absolute;
   font-size: 12px;
-  top: 272px;
+  top: 323px;
   color: rgba(250, 4, 4, 0.6);
 }
 
 @media (min-width: 768px) {
-  .deskriptionText::before {
+  .deskriptionText::after {
     width: 150px;
-
     bottom: 10%;
-    left: 308px;
+    left: 264px;
   }
 
   .deskriptionText {
-    font-size: 26px;
+    font-size: 20px;
   }
   .deskriptionWraperLogin {
-    background-image: url("./backgraundImg/kovicki.svg");
+    background-image: url('../../assets/authImg/kovicki.svg');
     background-repeat: no-repeat;
 
     background-position-x: 49%;
@@ -414,23 +425,23 @@
         rgba(9, 30, 63, 0.8),
         rgba(9, 30, 63, 0.8)
       ),
-      url("../../components/auth/backgraundImg/picTablet.png");
+      url('../../assets/authImg/picTablet.png');
     background-size: cover;
     background-repeat: no-repeat;
     height: 620px;
   }
   .titleLogin {
-    font-size: 29px;
+    font-size: 24px;
     line-height: 158%;
   }
   .errorMessageEmailLogin {
     position: absolute;
 
-    top: 272px;
+    top: 326px;
   }
 
   .errorMessagePasswordLogin {
-    top: 362px;
+    top: 417px;
   }
 
   .registerFormLogin {
@@ -445,11 +456,10 @@
 }
 
 @media (min-width: 1280px) {
-  .deskriptionText::before {
+  .deskriptionText::after {
     width: 150px;
 
-    bottom: 39%;
-    left: 66%;
+    left: 32%;
   }
 
   .formWraperLogin {
@@ -462,14 +472,11 @@
         rgba(9, 30, 63, 0.8),
         rgba(9, 30, 63, 0.8)
       ),
-      url("../../components/auth/backgraundImg/pic.png");
+      url('../../assets/authImg/pic.png');
   }
-  // .titleLogin {
-  //   margin-top: 336px;
-  // }
 
   .deskriptionWraperLogin {
-    background-image: url("./backgraundImg/kovicki.svg");
+    background-image: url('../../assets/authImg/kovicki.svg');
     background-repeat: no-repeat;
 
     background-position-x: 49%;
@@ -477,5 +484,13 @@
     margin-left: auto;
     margin-right: auto;
     padding-top: 336px;
+  }
+
+  .errorMessageEmailLogin {
+    top: 419px;
+  }
+
+  .errorMessagePasswordLogin {
+    top: 509px;
   }
 }
