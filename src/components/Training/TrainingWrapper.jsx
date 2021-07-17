@@ -8,8 +8,6 @@ import CircuitButton from '../common/CirciutButton/CircuitButton';
 import TrainingModal from './TrainingModal/TrainingModal';
 import styles from './TrainingWrapper.module.scss';
 
-import ChartModal from '../../components/Chart/ChartModal/ChartModal';
-
 const TrainingWrapper = () => {
   const isMobile = useMediaQuery({
     query: '(max-device-width: 767px)',
@@ -38,7 +36,6 @@ const TrainingWrapper = () => {
           <TrainingForm />
         )}
         <TrainingList />
-        <ChartModal />
         {isMobile && <CircuitButton openModal={openModal} />}
       </div>
     </div>
