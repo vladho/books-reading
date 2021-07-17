@@ -1,0 +1,24 @@
+@import 'styles/shared.scss';
+
+.label {
+  display: inline-block;
+
+  &::before {
+    display: inline-block;
+    content: '';
+    width: 15px;
+    height: 15px;
+    padding: 1px;
+
+    border: 1px solid $inputTextColor;
+    background-clip: content-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .checkbox:checked + &::before {
+    background-image: url('../../../assets/training/checkboxIcon.svg');
+    border-color: $accent;
+  }
+}

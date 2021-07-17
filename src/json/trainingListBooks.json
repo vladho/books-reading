@@ -5,7 +5,8 @@
     "author": "Jeff Sutherland",
     "year": 2014,
     "totalPages": 25,
-    "status": "read"
+    "status": "done",
+    "training": false
   },
   {
     "_id": 2,
@@ -13,7 +14,8 @@
     "author": "Tom DeMarco",
     "year": 2006,
     "totalPages": 188,
-    "status": "done"
+    "status": "done",
+    "training": true
   },
   {
     "_id": 3,
@@ -21,7 +23,8 @@
     "author": "Patrick Lencioni",
     "year": 2011,
     "totalPages": 125,
-    "status": "plan"
+    "status": "read",
+    "training": true
   },
   {
     "_id": 4,
@@ -29,7 +32,8 @@
     "author": "Alex Osterwalder, Yves Pigneur",
     "year": 2013,
     "totalPages": 368,
-    "status": "plan"
+    "status": "plan",
+    "training": false
   },
   {
     "_id": 5,
@@ -37,7 +41,8 @@
     "author": "Roman Pichler",
     "year": 2010,
     "totalPages": 92,
-    "status": "plan"
+    "status": "plan",
+    "training": false
   },
   {
     "_id": 6,
@@ -45,6 +50,7 @@
     "author": "Cooper Alan",
     "year": 2009,
     "totalPages": 183,
-    "status": "plan"
+    "status": "plan",
+    "training": false
   }
 ]

@@ -3,6 +3,10 @@ import trainingActions from './trainingActions';
 
 const { addSelectedId, delSelectedId, clearSelectedIds } = trainingActions;
 
+// Идет ли тренировка
+
+const isStarted = createReducer(false, {});
+
 // Книги в списке тренировки
 
 const selectedIds = createReducer([], {
@@ -18,6 +22,7 @@ const loading = createReducer(false, {});
 const error = createReducer(null, {});
 
 export default combineReducers({
+  isStarted,
   selectedIds,
   loading,
   error,

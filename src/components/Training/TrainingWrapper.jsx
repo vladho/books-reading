@@ -1,5 +1,4 @@
-
-import  {useState}  from 'react';
+import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import TrainingForm from './TrainingForm/TrainingForm';
