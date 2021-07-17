@@ -13,6 +13,7 @@ const TrainingWrapper = () => {
     query: '(max-device-width: 767px)',
   });
 
+  const [selectedBooks, setSelectedBooks] = useState([]);
   const [isTrainingModalShown, setIsTrainingModalShown] = useState(false);
 
   const openModal = () => {
@@ -24,20 +25,23 @@ const TrainingWrapper = () => {
       <div className={styles.myGoals}>
         <MyGoals />
       </div>
+
       <div className={styles.myTraining}>
         {isMobile ? (
           <TrainingModal
             isTrainingModalShown={isTrainingModalShown}
             setIsTrainingModalShown={setIsTrainingModalShown}
           >
-            <TrainingForm />
+            <TrainingForm setSelectedBooks={setSelectedBooks} />
           </TrainingModal>
         ) : (
-          <TrainingForm />
+          <TrainingForm setSelectedBooks={setSelectedBooks} />
         )}
-        <TrainingList />
+        <TrainingList selectedBooks={selectedBooks} />
         {isMobile && <CircuitButton openModal={openModal} />}
       </div>
+
+      {/* <Chart/> */}
     </div>
   );
 };
