@@ -1,237 +1,238 @@
 @import 'styles/shared.scss';
 
 .form {
-    width: 1117px;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 2.71;
-    color: $secondaryText;
-    margin-top: 30px;
+  width: 1117px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  margin-top: 30px;
     @media screen and (min-width: 768px) and (max-width: 1279px) {
-        width: 594px;
-        height: 170px;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin-top: 20px;
-    }
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-        width: 270px;
-        height: 350px;
-        flex-wrap: wrap;
-        margin-top: 52px;
-    }
+    width: 594px;
+    height: 170px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 20px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 270px;
+    height: 350px;
+    flex-wrap: wrap;
+    margin-top: 52px;
+  }
 }
 
 .labelName {
-    width: 346px;
-    height: 80px;
-    @media screen and (min-width: 768px) and (max-width: 1279px) {
-        width: 594px;
-    }
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-        width: 270px;
-    }
+  width: 346px;
+  height: 80px;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 594px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 270px;
+  }
 }
 
 .labelNameTitle {
+  width: 92px;
+  height: 38px;
+  @media screen and (min-width: 320px) and (max-width: 1279px) {
     width: 92px;
-    height: 38px;
-    @media screen and (min-width: 320px) and (max-width: 1279px) {
-        width: 92px;
-    }
+  }
 }
 
 .labelNameInput {
-    width: 346px;
-    height: 42px;
-    background: $inputBg;
-    border: $inputBorder;
-    padding-left: 13px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 2.71;
-    color: $secondaryText;
-    @media screen and (min-width: 768px) and (max-width: 1279px) {
-        width: 594px;
-    }
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-        width: 270px;
-    }
+  width: 346px;
+  height: 42px;
+  background: $inputBg;
+  border: $inputBorder;
+  padding-left: 13px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 594px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 270px;
+  }
 }
 
 .labelNameInput:hover,
 .labelNameInput:focus {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 2.71;
-    color: $secondaryText;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    background: $white;
-    box-shadow: $boxShadowInput;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: $white;
+  box-shadow: $boxShadowInput;
 }
 
 .labelPage {
-    width: 134px;
-    height: 80px;
-    margin-left: 15px;
-    margin-right: 45px;
-    @media screen and (min-width: 768px) and (max-width: 1279px) {
-        width: 145px;
-        margin: 0px;
-    }
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-        width: 270px;
-        margin: 0px;
-    }
+  width: 134px;
+  height: 80px;
+  margin-left: 15px;
+  margin-right: 45px;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 145px;
+    margin: 0px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 270px;
+    margin: 0px;
+  }
 }
 
 .labelPageTitle {
+  width: 134px;
+  height: 38px;
+  @media screen and (min-width: 320px) and (max-width: 1279px) {
     width: 134px;
-    height: 38px;
-    @media screen and (min-width: 320px) and (max-width: 1279px) {
-        width: 134px;
-    }
+  }
 }
 
 .labelPageInput {
-    width: 130px;
-    height: 42px;
-    background: $inputBg;
-    border: $inputBorder;
-    padding-left: 13px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 2.71;
-    color: $secondaryText;
-    @media screen and (min-width: 768px) and (max-width: 1279px) {
-        width: 145px;
-    }
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-        width: 270px;
-    }
+  width: 130px;
+  height: 42px;
+  background: $inputBg;
+  border: $inputBorder;
+  padding-left: 13px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 145px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 270px;
+  }
 }
 
 .labelPageInput:hover,
 .labelPageInput:focus {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 2.71;
-    color: $secondaryText;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    background: $white;
-    box-shadow: $boxShadowInput;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: $white;
+  box-shadow: $boxShadowInput;
 }
 
 .labelYear {
-    width: 130px;
-    height: 80px;
-    margin-left: 15px;
-    @media screen and (min-width: 768px) and (max-width: 1279px) {
-        width: 145px;
-        margin: 0px;
-    }
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-        width: 270px;
-        margin: 0px;
-    }
+  width: 130px;
+  height: 80px;
+  margin-left: 15px;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 145px;
+    margin: 0px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 270px;
+    margin: 0px;
+  }
 }
 
 .labelYearTitle {
+  width: 86px;
+  height: 38px;
+  @media screen and (min-width: 320px) and (max-width: 1279px) {
     width: 86px;
-    height: 38px;
-    @media screen and (min-width: 320px) and (max-width: 1279px) {
-        width: 86px;
-    }
+  }
 }
 
 .labelYearInput {
-    width: 130px;
-    height: 42px;
-    background: $inputBg;
-    border: $inputBorder;
-    padding-left: 13px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 2.71;
-    color: $secondaryText;
-    @media screen and (min-width: 768px) and (max-width: 1279px) {
-        width: 145px;
-    }
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-        width: 270px;
-    }
+  width: 130px;
+  height: 42px;
+  background: $inputBg;
+  border: $inputBorder;
+  padding-left: 13px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 145px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 270px;
+  }
 }
 
 .labelYearInput:hover,
 .labelYearInput:focus {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 2.71;
-    color: $secondaryText;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    background: $white;
-    box-shadow: $boxShadowInput;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: $white;
+  box-shadow: $boxShadowInput;
 }
 
 .labelAuthor {
+  width: 250px;
+  height: 80px;
+  margin-left: 15px;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 250px;
-    height: 80px;
-    margin-left: 15px;
-    @media screen and (min-width: 768px) and (max-width: 1279px) {
-        width: 250px;
-        margin: 0px;
-    }
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-        width: 270px;
-        margin: 0px;
-    }
+    margin: 0px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 270px;
+    margin: 0px;
+  }
 }
 
 .labelAuthorTitle {
+  width: 93px;
+  height: 38px;
+  @media screen and (min-width: 320px) and (max-width: 1279px) {
     width: 93px;
-    height: 38px;
-    @media screen and (min-width: 320px) and (max-width: 1279px) {
-        width: 93px;
-    }
+  }
 }
 
 .labelAuthorInput {
+  width: 250px;
+  height: 42px;
+  background: $inputBg;
+  border: $inputBorder;
+  padding-left: 13px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 250px;
-    height: 42px;
-    background: $inputBg;
-    border: $inputBorder;
-    padding-left: 13px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 2.71;
-    color: $secondaryText;
-    @media screen and (min-width: 768px) and (max-width: 1279px) {
-        width: 250px;
-    }
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-        width: 270px;
-    }
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 270px;
+  }
 }
 
 .labelAuthorInput:hover,
 .labelAuthorInput:focus {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 2.71;
-    color: $secondaryText;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    background: $white;
-    box-shadow: $boxShadowInput;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: $white;
+  box-shadow: $boxShadowInput;
 }

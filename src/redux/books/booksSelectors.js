@@ -6,6 +6,10 @@ const getPlanBooks = createSelector([getAllBooks], books =>
   books.filter(({ status }) => status === 'plan'),
 );
 
+const getTrainBooks = createSelector([getAllBooks], books =>
+  books.filter(({ training }) => training),
+);
+
 const getLoading = state => state.books.loading;
 
 const getError = state => state.books.error;
@@ -13,6 +17,7 @@ const getError = state => state.books.error;
 const projectsSelectors = {
   getAllBooks,
   getPlanBooks,
+  getTrainBooks,
   getLoading,
   getError,
 };
