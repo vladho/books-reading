@@ -1,37 +1,52 @@
+import { useSelector } from 'react-redux';
 import css from './TrainingList.module.scss';
 import TrainingListItem from '../TrainingListItem';
-import books from '../../../json/trainingListBooks.json';
+import { trainingSelectors } from '../../../redux/training';
+import { booksSelectors } from '../../../redux/books';
 
 const placeholder = (
-    <TrainingListItem title="..." author="..." year="..." pages="..." />
+  <TrainingListItem
+    title="..."
+    author="..."
+    year="..."
+    pages="..."
+    placeholder
+  />
 );
 
 export default function TrainingList() {
-    const isArrayNotEmpty = Array.isArray(books) && books.length;
+  const isTrainStarted = useSelector(trainingSelectors.getIsStarted);
 
-    return (
-        <div className={css.TrainingList}>
-            <div className={css.header}>
-                <p className={css.title}>Book title</p>
-                <p className={css.author}>Author</p>
-                <p className={css.year}>Year</p>
-                <p className={css.pages}>Pages</p>
-            </div>
+  const booksSelector = isTrainStarted
+    ? booksSelectors.getTrainBooks
+    : trainingSelectors.getSelectBooks;
 
-            <ul className={css.list}>
-                {isArrayNotEmpty
-                    ? books.map(({ id, title, author, year, pages }) => (
-                          <TrainingListItem
-                              key={id}
-                              title={title}
-                              author={author}
-                              year={year}
-                              pages={pages}
-                              onDelete={() => null}
-                          />
-                      ))
-                    : placeholder}
-            </ul>
-        </div>
-    );
+  const books = useSelector(booksSelector);
+
+  return (
+    <div className={css.TrainingList}>
+      <div className={css.header}>
+        <p className={css.title}>Book title</p>
+        <p className={css.author}>Author</p>
+        <p className={css.year}>Year</p>
+        <p className={css.pages}>Pages</p>
+      </div>
+
+      <ul className={css.list}>
+        {books.length
+          ? books.map(({ _id, title, author, year, totalPages, status }) => (
+              <TrainingListItem
+                key={_id}
+                id={_id}
+                title={title}
+                author={author}
+                year={year}
+                status={status}
+                pages={totalPages}
+              />
+            ))
+          : placeholder}
+      </ul>
+    </div>
+  );
 }

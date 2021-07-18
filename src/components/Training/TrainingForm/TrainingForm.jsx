@@ -1,88 +1,94 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import {
-    HiOutlineArrowNarrowLeft,
-    HiOutlineCalendar,
-    HiChevronDown,
-} from 'react-icons/hi';
+import { useDispatch } from 'react-redux';
+import { useFormik } from 'formik';
+import moment from 'moment';
 
-import trainingListBooks from '../../../json/trainingListBooks.json';
+import trainingFormSchema from '../../../helpers/validation/trainingFormSchema';
+import DatePickerInput from '../DatePicker/DatePicker';
+import BooksSelector from '../Select/BooksSelector';
 import styles from './TrainingForm.module.scss';
+import trainingActions from '../../../redux/training/trainingActions';
 
 const TrainingForm = () => {
-    const [startDate, setStartDate] = useState(null);
-    const [finishDate, setFinishDate] = useState(null);
-    const [isBooksListShown, setIsBooksListShown] = useState(false);
-    const [selectedBook, setSelectedBook] = useState('');
+  const [start, setStart] = useState(null);
+  const [end, setEnd] = useState(null);
 
-    return (
-        <form className={styles.form} autoComplete="off">
-            <HiOutlineArrowNarrowLeft fontSize="32" className={styles.goBack} />
-            <h1 className={styles.formTitle}>My training</h1>
-            <div className={styles.calendarsContainer}>
-                <div className={styles.inputContainer}>
-                    <DatePicker
-                        selected={startDate}
-                        onChange={date => setStartDate(date)}
-                        placeholderText="Start"
-                        dateFormat="dd.MM.yyyy"
-                        minDate={new Date()}
-                        className={styles.formInput}
-                    />
-                    <HiOutlineCalendar className={styles.calendarIcon} />
-                    <HiChevronDown className={styles.chevronDownIcon} />
-                </div>
-                <div className={styles.inputContainer}>
-                    <DatePicker
-                        selected={finishDate}
-                        onChange={date => setFinishDate(date)}
-                        placeholderText="Finish"
-                        dateFormat="dd.MM.yyyy"
-                        minDate={new Date()}
-                        className={styles.formInput}
-                    />
-                    <HiOutlineCalendar className={styles.calendarIcon} />
-                    <HiChevronDown className={styles.chevronDownIcon} />
-                </div>
-            </div>
+  const dispatch = useDispatch();
 
-            <div className={styles.selectAndButton}>
-                <div className={styles.selectContainer}>
-                    <input
-                        type="text"
-                        name="booksSelect"
-                        value={selectedBook.title}
-                        placeholder="Choose books from the library"
-                        onClick={e => setIsBooksListShown(!isBooksListShown)}
-                        className={styles.formSelect}
-                    />
-                    <HiChevronDown className={styles.chevronDownIcon} />
+  const formik = useFormik({
+    initialValues: {
+      start: '',
+      end: '',
+      book: '',
+    },
+    validationSchema: trainingFormSchema,
+    onSubmit: values => {
+      dispatch(trainingActions.addSelectedId(values.book._id));
+    },
+  });
 
-                    {isBooksListShown && (
-                        <ul className={styles.booksList}>
-                            {trainingListBooks.map(book => (
-                                <li
-                                    key={book.id}
-                                    className={styles.book}
-                                    onClick={e => {
-                                        setSelectedBook(book);
-                                        setIsBooksListShown(!isBooksListShown);
-                                    }}
-                                >
-                                    {book.title}
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </div>
+  const handleStartDate = date => {
+    const start = moment(date).format('YYYY-MM-DD');
+    formik.setFieldValue('start', start);
+    setStart(start);
+  };
 
-                <button type="submit" className={styles.formButton}>
-                    Add
-                </button>
-            </div>
-        </form>
-    );
+  const handleEndDate = date => {
+    const end = moment(date).format('YYYY-MM-DD');
+    formik.setFieldValue('end', end);
+    setEnd(end);
+  };
+
+  const handleBook = value => {
+    formik.setFieldValue('book', value);
+  };
+
+  return (
+    <form
+      onSubmit={formik.handleSubmit}
+      className={styles.form}
+      autoComplete="off"
+    >
+      <h1 className={styles.formTitle}>My training</h1>
+      <div className={styles.calendarsContainer}>
+        <div className={styles.datePickerWrapper}>
+          <DatePickerInput
+            value={formik.values.start}
+            placeholderText="Start"
+            onChange={handleStartDate}
+            pickedDate={start ? new Date(start) : ''}
+          />
+          {formik.touched.start && formik.errors.start ? (
+            <p className={styles.error}>{formik.errors.start}</p>
+          ) : null}
+        </div>
+        <div className={styles.datePickerWrapper}>
+          <DatePickerInput
+            value={formik.values.start}
+            placeholderText="Finish"
+            onChange={handleEndDate}
+            pickedDate={end ? new Date(end) : ''}
+          />
+          {formik.touched.end && formik.errors.end ? (
+            <p className={styles.error}>{formik.errors.end}</p>
+          ) : null}
+        </div>
+      </div>
+
+      <div className={styles.selectAndButton}>
+        <div className={styles.selectContainer}>
+          <BooksSelector value={formik.values.book} onChange={handleBook} />
+          {formik.touched.book && formik.errors.book ? (
+            <p className={styles.error}>{formik.errors.book}</p>
+          ) : null}
+        </div>
+
+        <button type="submit" className={styles.formButton}>
+          Add
+        </button>
+      </div>
+    </form>
+  );
 };
 
 export default TrainingForm;
