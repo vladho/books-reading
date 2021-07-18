@@ -3,6 +3,8 @@ import { useMediaQuery } from 'react-responsive';
 
 import TrainingForm from './TrainingForm/TrainingForm';
 import TrainingList from './TrainingList';
+import StartTrainingBtn from './StartTrainingBtn/StartTrainingBtn';
+import ChartModal from '../Chart/ChartModal/ChartModal';
 import MyGoals from '../Statistics/MyGoals/MyGoals';
 import CircuitButton from '../common/CirciutButton/CircuitButton';
 import TrainingModal from './TrainingModal/TrainingModal';
@@ -37,6 +39,8 @@ const TrainingWrapper = () => {
           <TrainingForm />
         )}
         <TrainingList />
+        <StartTrainingBtn />
+        <ChartModal />
         {isMobile && <CircuitButton openModal={openModal} />}
       </div>
     </div>
