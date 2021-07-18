@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import moment from 'moment';
 
@@ -6,10 +7,13 @@ import trainingFormSchema from '../../../helpers/validation/trainingFormSchema';
 import DatePickerInput from '../DatePicker/DatePicker';
 import BooksSelector from '../Select/BooksSelector';
 import styles from './TrainingForm.module.scss';
+import trainingActions from '../../../redux/training/trainingActions';
 
-const TrainingForm = ({ setSelectedBooks }) => {
+const TrainingForm = () => {
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
+
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -19,7 +23,7 @@ const TrainingForm = ({ setSelectedBooks }) => {
     },
     validationSchema: trainingFormSchema,
     onSubmit: values => {
-      setSelectedBooks(prev => [...prev, values.book]);
+      dispatch(trainingActions.addSelectedId(values.book._id));
     },
   });
 

@@ -1,12 +1,10 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Select from 'react-select';
-
-import booksToRead from '../../../json/trainingListBooks.json'; //while redux is not finished
-// import { getBooksToRead } from '../../../redux/books/booksSelectors';
+import { trainingSelectors } from '../../../redux/training/';
 
 const BooksSelector = ({ onChange }) => {
-  // const booksToRead = useSelector(getBooksToRead); //when redux will be finished
+  const booksToRead = useSelector(trainingSelectors.getPlanNotSelectBooks);
 
   const bookSelect = booksToRead.map(book => ({
     ...book,

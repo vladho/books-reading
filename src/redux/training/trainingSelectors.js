@@ -1,6 +1,9 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { booksSelectors } from '../books';
 
+// Идет ли тренировка
+const getIsStarted = state => state.training.isStarted;
+
 // Массив id книг в списке тренировки
 const getSelectIds = state => state.training.selectedIds;
 
@@ -21,6 +24,7 @@ const getLoading = state => state.training.loading;
 const getError = state => state.training.error;
 
 const trainingSelectors = {
+  getIsStarted,
   getSelectIds,
   getSelectBooks,
   getPlanNotSelectBooks,
