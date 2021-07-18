@@ -48,7 +48,7 @@
   }
 }
 
-.inputContainer {
+.datePickerWrapper {
   position: relative;
   border: $inputBorder;
 
@@ -60,46 +60,6 @@
       margin-right: 45px;
     }
   }
-}
-
-.formInput {
-  width: 100%;
-  height: 42px;
-  padding: 5px 47px;
-  border: none;
-  outline: none;
-
-  font-weight: inherit;
-  line-height: 2.71;
-
-  color: $inputTextColor;
-  background-color: transparent;
-
-  &::placeholder {
-    color: $inputTextColor;
-  }
-}
-
-.calendarIcon {
-  position: absolute;
-  top: 50%;
-  left: 13px;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-
-  color: $inputTextColor;
-}
-
-.chevronDownIcon {
-  position: absolute;
-  top: 50%;
-  right: 13px;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-
-  color: $primaryText;
 }
 
 .selectAndButton {
@@ -128,26 +88,6 @@
   }
 }
 
-.formSelect {
-  width: 100%;
-  height: 42px;
-  padding: 5px 41px 5px 13px;
-  border: none;
-  outline: none;
-
-  font-weight: inherit;
-  line-height: 2.71;
-
-  color: $inputTextColor;
-  background-color: transparent;
-  box-shadow: $boxShadowInput;
-  cursor: pointer;
-
-  &::placeholder {
-    color: $inputTextColor;
-  }
-}
-
 .formButton {
   height: 42px;
   align-self: center;
@@ -166,24 +106,8 @@
   }
 }
 
-.booksList {
+.error {
   position: absolute;
-  top: 50px;
-  left: 0;
-  width: 100%;
-
-  background-color: $white;
-  box-shadow: $boxShadow;
-  z-index: 10;
-}
-
-.book {
-  padding: 13px;
-
-  cursor: pointer;
-  transition: all 0.3s;
-
-  &:hover {
-    background-color: $titleBg;
-  }
+  font-size: 11px;
+  color: $error;
 }

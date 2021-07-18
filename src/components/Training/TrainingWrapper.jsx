@@ -24,6 +24,7 @@ const TrainingWrapper = () => {
       <div className={styles.myGoals}>
         <MyGoals />
       </div>
+
       <div className={styles.myTraining}>
         {isMobile ? (
           <TrainingModal
