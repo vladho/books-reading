@@ -13,6 +13,7 @@ const TrainingForm = () => {
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
 
+  console.log(typeof start);
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -30,12 +31,14 @@ const TrainingForm = () => {
   const handleStartDate = date => {
     const start = moment(date).format('YYYY-MM-DD');
     formik.setFieldValue('start', start);
+    dispatch(trainingActions.trainingStartDate(start));
     setStart(start);
   };
 
   const handleEndDate = date => {
     const end = moment(date).format('YYYY-MM-DD');
     formik.setFieldValue('end', end);
+    dispatch(trainingActions.trainingEndDate(end));
     setEnd(end);
   };
 

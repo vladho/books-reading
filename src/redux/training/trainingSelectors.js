@@ -19,6 +19,9 @@ const getPlanNotSelectBooks = createSelector(
   (books, ids) => books.filter(({ _id }) => !ids.includes(_id)),
 );
 
+const getStartDate = state => state.training.startDate;
+const getEndDate = state => state.training.endDate;
+
 const getLoading = state => state.training.loading;
 
 const getError = state => state.training.error;
@@ -28,6 +31,8 @@ const trainingSelectors = {
   getSelectIds,
   getSelectBooks,
   getPlanNotSelectBooks,
+  getStartDate,
+  getEndDate,
   getLoading,
   getError,
 };

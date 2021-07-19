@@ -17,6 +17,7 @@
 
   color: $white;
   background-color: $accent;
+  transition: all 0.3s;
 
   @include for-size(tablet) {
     height: 40px;
@@ -24,5 +25,9 @@
 
     font-size: 16px;
     line-height: 2.375;
+  }
+
+  &:hover {
+    background-color: rgba($accent, 0.85);
   }
 }
