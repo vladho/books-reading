@@ -6,19 +6,18 @@ const getPlanBooks = createSelector([getAllBooks], books =>
   books.filter(({ status }) => status === 'plan'),
 );
 
-const getTrainBooks = createSelector([getAllBooks], books =>
-  books.filter(({ training }) => training),
-);
-
 const getLoading = state => state.books.loading;
 
 const getError = state => state.books.error;
 
-const projectsSelectors = {
+const booksSelectors = {
   getAllBooks,
   getPlanBooks,
-  getTrainBooks,
   getLoading,
   getError,
 };
-export default projectsSelectors;
+export default booksSelectors;
+
+// const getTrainBooks = createSelector([getAllBooks], books =>
+//   books.filter(({ training }) => training),
+// );
