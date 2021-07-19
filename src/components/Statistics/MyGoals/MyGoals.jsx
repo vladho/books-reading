@@ -1,11 +1,20 @@
+import { useSelector } from 'react-redux';
 import styles from './MyGoals.module.scss';
+import trainingSelectors from '../../../redux/training/trainingSelectors';
 
-const MyGoals = ({
-  books = 3,
-  days = 14,
-  booksLeft = 2,
-  isTraining = false,
-}) => {
+const MyGoals = () => {
+  const books = useSelector(trainingSelectors.getSelectBooks);
+
+  const start = useSelector(trainingSelectors.selectStartDate);
+  const end = useSelector(trainingSelectors.selectEndDate);
+  const startUnix = new Date(start.split('.').reverse().join('.')).getTime();
+  const endUnix = new Date(end.split('.').reverse().join('.')).getTime();
+  const days = (endUnix - startUnix) / 1000 / 60 / 60 / 24;
+
+  const booksLeft = books.filter(book => book.status === 'read');
+
+  const isTraining = useSelector(trainingSelectors.getIsStarted);
+
   return (
     <>
       {!isTraining ? (
@@ -17,7 +26,7 @@ const MyGoals = ({
             <ul className={styles.myGoalsStatsList}>
               <li className={styles.myGoalsStatsListitem}>
                 <span className={styles.myGoalsStatsDigitBox}>
-                  <p className={styles.myGoalsStatsDigit}>{books}</p>
+                  <p className={styles.myGoalsStatsDigit}>{books.length}</p>
                 </span>
                 <span className={styles.myGoalsStatsText}>Amount of books</span>
               </li>
@@ -52,7 +61,7 @@ const MyGoals = ({
               <li className={styles.myGoalsStatsListitem_training}>
                 <span className={styles.myGoalsStatsDigitBox_training}>
                   <p className={styles.myGoalsStatsDigit_training_accent}>
-                    {booksLeft}
+                    {booksLeft.length}
                   </p>
                 </span>
                 <span className={styles.myGoalsStatsText}>Books left</span>
