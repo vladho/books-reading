@@ -9,9 +9,15 @@ const delSelectedId = createAction('training/delSelectedId');
 // Очистка списка тренировки (при размонтировании страницы)
 const clearSelectedIds = createAction('training/clearSelectedIds');
 
+// Добавление даты начала и конца тренировки
+const trainingStartDate = createAction('training/trainingStartDate');
+const trainingEndDate = createAction('training/trainingEndDate');
+
 const trainingActions = {
   addSelectedId,
   delSelectedId,
   clearSelectedIds,
+  trainingStartDate,
+  trainingEndDate,
 };
 export default trainingActions;

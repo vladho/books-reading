@@ -1,7 +1,13 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import trainingActions from './trainingActions';
 
-const { addSelectedId, delSelectedId, clearSelectedIds } = trainingActions;
+const {
+  addSelectedId,
+  delSelectedId,
+  clearSelectedIds,
+  trainingStartDate,
+  trainingEndDate,
+} = trainingActions;
 
 // Идет ли тренировка
 
@@ -17,6 +23,14 @@ const selectedIds = createReducer([], {
   [clearSelectedIds]: () => [],
 });
 
+const startDate = createReducer('', {
+  [trainingStartDate]: (state, { payload }) => payload,
+});
+
+const endDate = createReducer('', {
+  [trainingEndDate]: (state, { payload }) => payload,
+});
+
 const loading = createReducer(false, {});
 
 const error = createReducer(null, {});
@@ -26,4 +40,6 @@ export default combineReducers({
   selectedIds,
   loading,
   error,
+  startDate,
+  endDate,
 });

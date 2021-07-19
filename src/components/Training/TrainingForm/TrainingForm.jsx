@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import moment from 'moment';
 
@@ -8,10 +8,14 @@ import DatePickerInput from '../DatePicker/DatePicker';
 import BooksSelector from '../Select/BooksSelector';
 import styles from './TrainingForm.module.scss';
 import trainingActions from '../../../redux/training/trainingActions';
+import trainingSelectors from '../../../redux/training/trainingSelectors';
 
 const TrainingForm = () => {
-  const [start, setStart] = useState(null);
-  const [end, setEnd] = useState(null);
+  // const [start, setStart] = useState(null);
+  // const [end, setEnd] = useState(null);
+
+  const start = useSelector(trainingSelectors.selectStartDate);
+  const end = useSelector(trainingSelectors.selectEndDate);
 
   const dispatch = useDispatch();
 
@@ -30,13 +34,15 @@ const TrainingForm = () => {
   const handleStartDate = date => {
     const start = moment(date).format('YYYY-MM-DD');
     formik.setFieldValue('start', start);
-    setStart(start);
+    dispatch(trainingActions.trainingStartDate(start));
+    // setStart(start);
   };
 
   const handleEndDate = date => {
     const end = moment(date).format('YYYY-MM-DD');
     formik.setFieldValue('end', end);
-    setEnd(end);
+    dispatch(trainingActions.trainingEndDate(end));
+    // setEnd(end);
   };
 
   const handleBook = value => {
