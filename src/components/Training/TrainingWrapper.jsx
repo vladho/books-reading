@@ -1,12 +1,16 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
 import TrainingForm from './TrainingForm/TrainingForm';
 import TrainingList from './TrainingList';
+import StartTrainingBtn from './StartTrainingBtn/StartTrainingBtn';
+import ChartModal from '../Chart/ChartModal/ChartModal';
 import MyGoals from '../Statistics/MyGoals/MyGoals';
 import CircuitButton from '../common/CirciutButton/CircuitButton';
 import TrainingModal from './TrainingModal/TrainingModal';
 import styles from './TrainingWrapper.module.scss';
+import trainingSelectors from '../../redux/training/trainingSelectors';
 
 const TrainingWrapper = () => {
   const isMobile = useMediaQuery({
@@ -18,6 +22,8 @@ const TrainingWrapper = () => {
   const openModal = () => {
     setIsTrainingModalShown(!isTrainingModalShown);
   };
+
+  const books = useSelector(trainingSelectors.getSelectBooks);
 
   return (
     <div className={styles.wrapper}>
@@ -37,6 +43,8 @@ const TrainingWrapper = () => {
           <TrainingForm />
         )}
         <TrainingList />
+        {books.length && <StartTrainingBtn />}
+        <ChartModal />
         {isMobile && <CircuitButton openModal={openModal} />}
       </div>
     </div>
