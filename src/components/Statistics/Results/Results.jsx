@@ -1,19 +1,32 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { HiChevronDown } from 'react-icons/hi';
+import moment from 'moment';
+
 import ResultItem from './ResultItem';
 import styles from './Results.module.scss';
+import trainingActions from '../../../redux/training/trainingActions';
+import trainingSelectors from '../../../redux/training/trainingSelectors';
 
 const Results = () => {
-  const data = [
-    { date: '22.02.2019', time: '08:10:23', pages: '40' },
-    { date: '11.11.2011', time: '11:11:11', pages: '111' },
-    { date: '30.10.2000', time: '00:00:00', pages: '200' },
-  ];
+  const dispatch = useDispatch();
+
+  const start = useSelector(trainingSelectors.selectStartDate);
+  const end = useSelector(trainingSelectors.selectEndDate);
+  const results = useSelector(trainingSelectors.getResults);
 
   const [resultDate, setResultDate] = useState(null);
   const [resultPages, setResultPages] = useState(null);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const date = e.target.resultDate.value;
+    const time = moment().format('h:mm:ss');
+    const pages = e.target.resultPages.value;
+    dispatch(trainingActions.addResult({ date, time, pages }));
+  };
 
   return (
     <div className={styles.resultsMainBox}>
@@ -24,13 +37,19 @@ const Results = () => {
       </div>
 
       <div>
-        <form className={styles.form} autoComplete="off">
+        <form
+          onSubmit={handleSubmit}
+          className={styles.form}
+          autoComplete="off"
+        >
           <div className={styles.inputsBox}>
             <DatePicker
+              name="resultDate"
               selected={resultDate}
               onChange={date => setResultDate(date)}
               dateFormat="dd.MM.yyyy"
-              minDate={new Date()}
+              minDate={start}
+              maxDate={end}
               className={styles.formInput}
             />
             <HiChevronDown className={styles.chevronDownIcon} />
@@ -46,17 +65,23 @@ const Results = () => {
           </button>
         </form>
       </div>
-      <div>
-        <h3 className={styles.statisticsHeading}>
-          <span className={styles.horizontalBarLeft}></span>Statistics
-          <span className={styles.horizontalBarRight}></span>
-        </h3>
-        <ul>
-          {data.map(item => (
-            <ResultItem date={item.date} time={item.time} pages={item.pages} />
-          ))}
-        </ul>
-      </div>
+      {results.length > 0 && (
+        <div>
+          <h3 className={styles.statisticsHeading}>
+            <span className={styles.horizontalBarLeft}></span>Statistics
+            <span className={styles.horizontalBarRight}></span>
+          </h3>
+          <ul>
+            {results.map(item => (
+              <ResultItem
+                date={item.date}
+                time={item.time}
+                pages={item.pages}
+              />
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

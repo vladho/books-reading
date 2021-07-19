@@ -7,7 +7,7 @@
   width: 270px;
   padding: 13px 13px 13px 17px;
   background: $white;
-  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  box-shadow: $boxShadowTitle;
 
   @include for-size(tablet-only) {
     width: 100%;
