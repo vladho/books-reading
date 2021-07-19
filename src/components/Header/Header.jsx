@@ -4,8 +4,6 @@ import { NavLink } from 'react-router-dom';
 
 // import { authSls } from '../../redux/auth';
 
-// import ChartModal from '../../components/Chart/ChartModal/ChartModal';
-
 import AppBar from './AppBar/AppBar';
 import css from './AppBar/AppBar.module.scss';
 
@@ -17,7 +15,6 @@ const Header = () => {
       <nav className={css.header}>
         <NavLink exact to="/login">
           <p className={css.logo}>BR</p>
-          {/* <ChartModal /> */}
         </NavLink>
         <AppBar />
         {/* <nav>{isAuth && <AppBar />}</nav> */}
