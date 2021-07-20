@@ -19,7 +19,7 @@ const addBooksSuccess = createAction('books/add/success', book => ({
 }));
 const addBooksError = createAction('books/add/error');
 
-export default {
+const booksActions = {
   addBooksRequest,
   addBooksSuccess,
   addBooksError,
@@ -27,3 +27,4 @@ export default {
   fetchBooksSuccess,
   fetchBooksError,
 };
+export default booksActions;

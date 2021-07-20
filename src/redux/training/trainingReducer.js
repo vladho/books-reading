@@ -24,12 +24,14 @@ const selectedIds = createReducer([], {
   [clearSelectedIds]: () => [],
 });
 
-const startDate = createReducer('', {
-  [trainingStartDate]: (state, { payload }) => payload,
+const books = createReducer([], {});
+
+const selectStartDate = createReducer('', {
+  [trainingStartDate]: (_, { payload }) => payload,
 });
 
-const endDate = createReducer('', {
-  [trainingEndDate]: (state, { payload }) => payload,
+const selectEndDate = createReducer('', {
+  [trainingEndDate]: (_, { payload }) => payload,
 });
 
 const loading = createReducer(false, {});
@@ -44,9 +46,10 @@ const results = createReducer([], {
 export default combineReducers({
   isStarted,
   selectedIds,
+  books,
+  selectStartDate,
+  selectEndDate,
   loading,
   error,
-  startDate,
-  endDate,
   results,
 });
