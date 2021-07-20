@@ -49,9 +49,6 @@ const NestingModal = ({
     // dispatch(addOperation(data));
   };
 
-  console.log(closeBtn);
-  console.log(saveBtn);
-
   return createPortal(
     showModal && (
       <div
@@ -60,8 +57,14 @@ const NestingModal = ({
         onClick={handleBackdropClick}
       >
         <div className={styles.container}>
-          {closeBtn && <form onSubmit={closeModal}>{children}</form>}
-          {saveBtn && <form onSubmit={onSave}>{children}</form>}
+          {/* {closeBtn && <form onClick={closeModal}>{children}</form>} */}
+          {/* {closeBtn && (
+            <form onSubmit={onSave} onClick={closeModal}>
+              {children}
+            </form>
+          )}
+          {saveBtn && <form onSubmit={onSave}>{children}</form>} */}
+          <form onSubmit={onSave}>{children}</form>
         </div>
       </div>
     ),

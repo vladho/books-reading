@@ -3,8 +3,8 @@ import styles from './FirstVisit.module.scss';
 import { ReactComponent as BookIcon } from '../../../assets/icons/bookUnRead.svg';
 import { ReactComponent as Flag } from '../../../assets/icons/Flag.svg';
 import { ReactComponent as ArrowRight } from '../../../assets/icons/ArrowRight.svg';
-import PrimaryButton from '../../common/ModalButton/DoneButton';
-import classNames from 'classnames';
+import {} from '../../../';
+import OkButton from '../../common/ModalButton/DoneButton/DoneButton';
 
 const FirstVisit = () => {
   return (
@@ -38,7 +38,7 @@ const FirstVisit = () => {
         </li>
       </ul>
 
-      <PrimaryButton styleBtn={styles.btn}>ok</PrimaryButton>
+      <OkButton styleBtn={styles.btn}>ok</OkButton>
     </div>
   );
 };

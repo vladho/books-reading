@@ -19,9 +19,6 @@ const ShowModal = ({
     setShowModal(true);
   };
 
-  console.log(closeBtn);
-  console.log(saveBtn);
-
   return (
     <>
       <button
