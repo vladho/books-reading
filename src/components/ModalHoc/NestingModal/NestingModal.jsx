@@ -12,13 +12,13 @@ const NestingModal = ({
   showModal,
   setShowModal,
   addOperation,
-  titleModal,
   data,
+  closeBtn,
+  saveBtn,
 }) => {
+  //   const modalRef = useRef();
 
-//   const modalRef = useRef();
-
-//   const dispatch = useDispatch();
+  //   const dispatch = useDispatch();
 
   useEffect(() => {
     const handleEsc = e => {
@@ -49,6 +49,9 @@ const NestingModal = ({
     // dispatch(addOperation(data));
   };
 
+  console.log(closeBtn);
+  console.log(saveBtn);
+
   return createPortal(
     showModal && (
       <div
@@ -57,33 +60,8 @@ const NestingModal = ({
         onClick={handleBackdropClick}
       >
         <div className={styles.container}>
-          {/* <button
-            type="button"
-            className="sidebar-modal__btn"
-            onClick={closeModal}
-          >
-            <svg className="sidebar-modal__icon">
-              <use href={sprite + '#close'} />
-            </svg>
-            close
-          </button> */}
-
-          {/* <h2 className="form__title">{titleModal}</h2> */}
-          {children}
-          {/* <form onSubmit={onSave}>
-            {children}
-            <div>
-              <FormButton>{language.sidebarModal.createButton}</FormButton>
-              <button
-                type="button"
-                onClick={closeModal}
-                className="sidebar-modal__link"
-              >
-                {language.sidebarModal.cancelButton}
-                save
-              </button>
-            </div>
-          </form> */}
+          {closeBtn && <form onSubmit={closeModal}>{children}</form>}
+          {saveBtn && <form onSubmit={onSave}>{children}</form>}
         </div>
       </div>
     ),

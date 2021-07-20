@@ -4,12 +4,23 @@ import NestingModal from '../NestingModal/NestingModal';
 // import sprite from '../../../assets/icons/sprite.svg';
 // import SidebarModal from '../sidebarModal/SidebarModal';
 
-const ShowModal = ({ children, title, addOperation, titleModal, data }) => {
+const ShowModal = ({
+  children,
+  title,
+  addOperation,
+  titleModal,
+  data,
+  closeBtn,
+  saveBtn,
+}) => {
   const [showModal, setShowModal] = useState(false);
 
   const toogleModal = () => {
     setShowModal(true);
   };
+
+  console.log(closeBtn);
+  console.log(saveBtn);
 
   return (
     <>
@@ -31,6 +42,8 @@ const ShowModal = ({ children, title, addOperation, titleModal, data }) => {
         showModal={showModal}
         setShowModal={setShowModal}
         addOperation={addOperation}
+        closeBtn={closeBtn}
+        saveBtn={saveBtn}
       >
         {children}
       </NestingModal>

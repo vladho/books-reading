@@ -66,4 +66,8 @@
 
   margin-top: 35px;
   margin-left: 71px;
+
+  @include for-size(tablet) {
+    display: none;
+  }
 }
