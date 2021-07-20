@@ -16,6 +16,7 @@ const TrainingForm = () => {
 
   const start = useSelector(trainingSelectors.selectStartDate);
   const end = useSelector(trainingSelectors.selectEndDate);
+  const selectedBooks = useSelector(trainingSelectors.getSelectBooks);
 
   const dispatch = useDispatch();
 
@@ -27,6 +28,10 @@ const TrainingForm = () => {
     },
     validationSchema: trainingFormSchema,
     onSubmit: values => {
+      if (selectedBooks.some(book => book._id === values.book._id)) {
+        return null;
+      }
+
       dispatch(trainingActions.addSelectedId(values.book._id));
     },
   });
