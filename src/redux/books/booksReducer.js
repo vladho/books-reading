@@ -2,7 +2,14 @@ import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import booksActions from './booksActions';
 import tempBooks from '../../json/trainingListBooks.json';
 
-const { fetchBooksRequest, fetchBooksSuccess, fetchBooksError } = booksActions;
+const {
+  fetchBooksRequest,
+  fetchBooksSuccess,
+  fetchBooksError,
+  addBooksRequest,
+  addBooksSuccess,
+  addBooksError,
+} = booksActions;
 
 const items = createReducer(tempBooks, {
   [fetchBooksRequest]: () => [],

@@ -85,7 +85,7 @@ class LibraryForm extends Component {
 }
 
 const mapDispatchToProps = {
-  onAddBook: booksOperations.addBooks,
+  onAddBook: booksOperations.addBook,
 };
 
 export default connect(null, mapDispatchToProps)(LibraryForm);

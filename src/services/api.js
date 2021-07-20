@@ -12,6 +12,8 @@ const formatError = ({ name, message, response }) => ({
 
 const getAllBooks = async () => (await axios.get('/books')).data;
 
+const postOneBook = async () => (await axios.post('/books'), {}).data;
+
 // 📌 Тренировки
 
 const getCurrTraining = async () => (await axios.get('/training')).data;
@@ -20,5 +22,6 @@ const api = {
   formatError,
   getAllBooks,
   getCurrTraining,
+  postOneBook,
 };
 export default api;

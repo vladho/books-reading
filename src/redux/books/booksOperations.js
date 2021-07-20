@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { api } from '../../services';
 import booksActions from './booksActions';
 
@@ -23,20 +22,27 @@ const fetchBooks = () => async dispatch => {
   }
 };
 
-const addBooks = book => async dispatch => {
+const addBook = book => async dispatch => {
   dispatch(addBooksRequest());
-  console.log('addBook:', book);
-  axios
-    .post('http://localhost:8080/api/books', { book })
-    .then(response => {
-      console.log('response addBook:', response);
-      dispatch(addBooksSuccess(response.data));
-    })
-    .catch(error => dispatch(addBooksError(api.formatError(error))));
+  console.log('addBook require body:', book);
+  try {
+    const data = await api.postOneBook({ book });
+    dispatch(addBooksSuccess(data));
+  } catch (error) {
+    dispatch(addBooksError(api.formatError(error)));
+  }
 };
 
 const booksOperations = {
   fetchBooks,
-  addBooks,
+  addBook,
 };
 export default booksOperations;
+
+// axios
+//   .post('http://localhost:8080/api/books', { book })
+//   .then(response => {
+//     console.log('response addBook:', response);
+//     dispatch(addBooksSuccess(response.data));
+//   })
+//   .catch(error => dispatch(addBooksError(api.formatError(error))));
