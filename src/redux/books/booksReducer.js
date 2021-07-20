@@ -9,10 +9,17 @@ const {
   addBookRequest,
   addBookSuccess,
   addBookError,
+  removeBookRequest,
+  removeBookSuccess,
+  removeBookError,
 } = booksActions;
 
 const addBook = (state = [], action) => {
   return [...state, action.payload];
+};
+
+const removeBook = (state, action) => {
+  return state.filter(book => book._id !== action.payload);
 };
 
 const items = createReducer(tempBooks, {
@@ -20,6 +27,7 @@ const items = createReducer(tempBooks, {
   // [fetchBooksSuccess]: (_, { payload }) => payload.data.result,
   [fetchBooksSuccess]: (state, action) => action.payload,
   [addBookSuccess]: addBook,
+  [removeBookSuccess]: removeBook,
 });
 
 const loading = createReducer(false, {
@@ -29,6 +37,9 @@ const loading = createReducer(false, {
   [addBookRequest]: () => true,
   [addBookSuccess]: () => false,
   [addBookError]: () => false,
+  [removeBookRequest]: () => true,
+  [removeBookSuccess]: () => false,
+  [removeBookError]: () => false,
 });
 
 const error = createReducer(null, {
