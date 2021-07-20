@@ -15,15 +15,16 @@ const formatError = ({ name, message, response }) => ({
 });
 
 const register = async credentials =>
-  (await axios.post('/api/users/signup', credentials)).data;
+  (await axios.post('/api/auth/register', credentials)).data.data;
 
 const login = async credentials =>
-  (await axios.post('/api/users/login', credentials)).data;
+  (await axios.post('/api/auth/login', credentials)).data.data;
 
 const logOut = async credentials =>
-  (await axios.post('/api/users/logout', credentials)).data;
+  (await axios.post('/api/auth/logout', credentials)).data.data;
 
-const refresh = async sid => (await axios.post('/auth/refresh', { sid })).data;
+const refresh = async sid =>
+  (await axios.post('/auth/refresh', { sid })).data.data;
 
 const api = {
   register,
