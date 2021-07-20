@@ -36,8 +36,14 @@ const addBook = book => async dispatch => {
   }
 };
 
-const removeBook = id => dispatch => {
+const removeBook = id => async dispatch => {
   dispatch(removeBookRequest());
+  try {
+    const data = await api.deleteOneBook(id);
+    dispatch(removeBookSuccess(data));
+  } catch (error) {
+    dispatch(fetchBooksError(api.formatError(error)));
+  }
 };
 
 const booksOperations = {
@@ -55,3 +61,7 @@ export default booksOperations;
 //     dispatch(addBooksSuccess(response.data));
 //   })
 //   .catch(error => dispatch(addBooksError(api.formatError(error))));
+
+// axios.delete(`http://localhost:8080/api/books/:{id}`)
+//   .then(() => dispatch(fetchBooksSuccess())})
+//   .catch(error => dispatch(fetchBooksError(api.formatError(error))));
