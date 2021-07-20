@@ -8,6 +8,9 @@ const {
   addBookRequest,
   addBookSuccess,
   addBookError,
+  removeBookRequest,
+  removeBookSuccess,
+  removeBookError,
 } = booksActions;
 
 const fetchBooks = () => async dispatch => {
@@ -33,10 +36,16 @@ const addBook = book => async dispatch => {
   }
 };
 
+const removeBook = id => dispatch => {
+  dispatch(removeBookRequest());
+};
+
 const booksOperations = {
   fetchBooks,
   addBook,
+  removeBook,
 };
+
 export default booksOperations;
 
 // axios
