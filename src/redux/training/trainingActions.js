@@ -13,11 +13,15 @@ const clearSelectedIds = createAction('training/clearSelectedIds');
 const trainingStartDate = createAction('training/trainingStartDate');
 const trainingEndDate = createAction('training/trainingEndDate');
 
+// Добавление результата
+const addResult = createAction('training/addResult');
+
 const trainingActions = {
   addSelectedId,
   delSelectedId,
   clearSelectedIds,
   trainingStartDate,
   trainingEndDate,
+  addResult,
 };
 export default trainingActions;

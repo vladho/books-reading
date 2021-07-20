@@ -26,6 +26,9 @@ const getLoading = state => state.training.loading;
 
 const getError = state => state.training.error;
 
+//Результаты
+const getResults = state => state.training.results;
+
 const trainingSelectors = {
   getIsStarted,
   getSelectIds,
@@ -35,5 +38,6 @@ const trainingSelectors = {
   selectEndDate,
   getLoading,
   getError,
+  getResults,
 };
 export default trainingSelectors;
