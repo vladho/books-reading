@@ -32,6 +32,7 @@ const api = {
   refresh,
   formatError,
   setToken,
+  unsetToken,
 };
 
 export default api;
