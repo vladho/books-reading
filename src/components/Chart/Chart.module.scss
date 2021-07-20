@@ -1,17 +1,66 @@
 @import 'styles/shared.scss';
 
-// .chartBox {
-//     padding: 20px;
-//     background-color: $accentTextColor;
-//     width: 100%;
-//     @include for-size(mobile-only) {
-//         width: 1000px;
-//     }
+.chartBox {
+  position: relative;
+  padding: 14px 22px;
+  background-color: $white;
 
-//     @include for-size(tablet) {
-//         border-radius: 5px;
-//     }
-// }
-// .title {
-//     margin: 0;
-// }
+  @include for-size(tablet) {
+    padding: 25px 35px;
+  }
+}
+.title,
+.lineList,
+.chartValue {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 2.5;
+  text-transform: uppercase;
+  color: $timerText;
+}
+.lineBox {
+  position: absolute;
+  height: auto;
+  right: 10px;
+  top: 145px;
+
+  @include for-size(tablet) {
+    top: 165px;
+  }
+  @include for-size(desktop) {
+    top: 215px;
+  }
+}
+.lineList {
+  padding: 0px;
+  margin: 0px;
+  text-align: right;
+}
+.lineItem {
+  margin-right: 10px;
+  background-color: rgba(245, 247, 250, 0.85); //добавить переменную в variables
+  box-shadow: $boxShadowTitle;
+  height: 30px;
+  width: 50px;
+  text-align: center;
+
+  @include for-size(tablet) {
+    margin-right: 45px;
+  }
+}
+
+.lineItem:not(:last-child) {
+  margin-bottom: 10px;
+  color: $accent;
+}
+
+.avaregePgesPerDay {
+  width: 25px;
+  height: 25px;
+  padding: 4px;
+  background: $inputBg;
+}
+.chartValue {
+  display: flex;
+  justify-content: flex-end;
+}

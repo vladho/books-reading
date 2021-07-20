@@ -1,26 +1,22 @@
 @import 'styles/shared.scss';
 
 .modalBox {
-  //   position: relative;
   background-color: $white;
   box-shadow: $boxShadowChart;
 
   @include for-size(mobile-only) {
-    // overflow-y: hidden;
-    // overflow-x: scroll;
-    margin: auto;
+    // width: 100%;
     width: 270px;
+    // max-height: 290px;
+    // margin-bottom: 40px;
     height: 290px;
   }
 
   @include for-size(tablet) {
-    // max-width: calc(100vw - 48px);
-    // max-height: calc(100vh - 24px);
     width: 678px;
     height: 340px;
   }
   @include for-size(desktop) {
     width: 886px;
-    // height: 461px;
   }
 }
