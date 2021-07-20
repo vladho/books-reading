@@ -27,7 +27,7 @@ const TrainingForm = () => {
     validationSchema: trainingFormSchema,
     onSubmit: values => {
       if (selectedBooks.some(book => book._id === values.book._id)) {
-        return null;
+        return;
       }
 
       dispatch(trainingActions.addSelectedId(values.book._id));
@@ -47,6 +47,7 @@ const TrainingForm = () => {
   };
 
   const handleBook = value => {
+    console.log(value);
     formik.setFieldValue('book', value);
   };
 
@@ -84,7 +85,11 @@ const TrainingForm = () => {
 
       <div className={styles.selectAndButton}>
         <div className={styles.selectContainer}>
-          <BooksSelector value={formik.values.book} onChange={handleBook} />
+          <BooksSelector
+            value={formik.values.book}
+            onChange={handleBook}
+            selectedBooks={selectedBooks}
+          />
           {formik.touched.book && formik.errors.book ? (
             <p className={styles.error}>{formik.errors.book}</p>
           ) : null}
