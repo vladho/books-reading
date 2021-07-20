@@ -1,8 +1,7 @@
-import { createReducer, combineReducers } from "@reduxjs/toolkit";
-import authActs from "./authActions";
-// import { projectsActs } from "../projects";
-// import { sprintsActs } from "../sprints";
-// import { tasksActs } from "../tasks";
+import { createReducer, combineReducers } from '@reduxjs/toolkit';
+import authActs from './authActions';
+// import { booksActs } from '../books';
+// import { trainingActions } from '../training';
 
 const {
   registerRequest,
@@ -18,120 +17,86 @@ const {
   refreshSuccess,
   refreshError,
 } = authActs;
+
 // const {
-//   getProjectsError,
-//   addProjectError,
-//   deleteProjectError,
-//   changeProjectError,
-//   addMemberError,
-// } = projectsActs;
-// const { sprintGetError, sprintAddError, sprintDeleteError, sprintChangeError } =
-//   sprintsActs;
-// const { taskGetError, taskAddError, taskDeleteError, taskChangeError } =
-//   tasksActs;
+//   addBooksRequest,
+//   addBooksSuccess,
+//   addBooksError,
+//   fetchBooksRequest,
+//   fetchBooksSuccess,
+//   fetchBooksError,
+// } = booksActs;
 
-// const initUser = { id: null, email: null };
+const initUser = { id: null, email: null };
 
-// const resetUserWhenInvalidSession = (
-//   state,
-//   { payload: { status, respMsg } }
-// ) => {
-//   if (typeof respMsg !== "string") return state;
+const resetUserWhenInvalidSession = (
+  state,
+  { payload: { status, respMsg } },
+) => {
+  if (typeof respMsg !== 'string') return state;
 
-//   const normRespMsg = respMsg.toLowerCase();
-//   const isIncludesSessionOrUser =
-//     normRespMsg.includes("session") || normRespMsg.includes("user");
+  const normRespMsg = respMsg.toLowerCase();
+  const isIncludesSessionOrUser =
+    normRespMsg.includes('session') || normRespMsg.includes('user');
 
-//   if (status === 404 && isIncludesSessionOrUser) {
-//     return initUser;
-//   }
+  if (status === 404 && isIncludesSessionOrUser) {
+    return initUser;
+  }
 
-//   return state;
-// };
+  return state;
+};
 
-// const user = createReducer(initUser, {
-//   [loginSuccess]: (_, { payload }) => {
-//     const { id, email } = payload.data;
-//     return { id, email };
-//   },
+const user = createReducer(initUser, {
+  [loginSuccess]: (_, { payload }) => {
+    const { id, email } = payload.data;
+    return { id, email };
+  },
 
-//   [logoutSuccess]: () => initUser,
-//   [logoutError]: resetUserWhenInvalidSession,
+  [logoutSuccess]: () => initUser,
+  [logoutError]: resetUserWhenInvalidSession,
 
-//   [refreshError]: () => initUser,
+  [refreshError]: () => initUser,
+});
 
-//   [getProjectsError]: resetUserWhenInvalidSession,
-//   [addProjectError]: resetUserWhenInvalidSession,
-//   [deleteProjectError]: resetUserWhenInvalidSession,
-//   [changeProjectError]: resetUserWhenInvalidSession,
-//   [addMemberError]: resetUserWhenInvalidSession,
+const initTokens = { accessToken: null, refreshToken: null, sid: null };
 
-//   [sprintGetError]: resetUserWhenInvalidSession,
-//   [sprintAddError]: resetUserWhenInvalidSession,
-//   [sprintDeleteError]: resetUserWhenInvalidSession,
-//   [sprintChangeError]: resetUserWhenInvalidSession,
+const resetTokensWhenInvalidSession = (
+  state,
+  { payload: { status, respMsg } },
+) => {
+  if (typeof respMsg !== 'string') return state;
 
-//   [taskGetError]: resetUserWhenInvalidSession,
-//   [taskAddError]: resetUserWhenInvalidSession,
-//   [taskDeleteError]: resetUserWhenInvalidSession,
-//   [taskChangeError]: resetUserWhenInvalidSession,
-// });
+  const normRespMsg = respMsg.toLowerCase();
+  const isIncludesSessionOrUser =
+    normRespMsg.includes('session') || normRespMsg.includes('user');
 
-// const initTokens = { accessToken: null, refreshToken: null, sid: null };
+  if (status === 404 && isIncludesSessionOrUser) {
+    return initTokens;
+  }
 
-// const resetTokensWhenInvalidSession = (
-//   state,
-//   { payload: { status, respMsg } }
-// ) => {
-//   if (typeof respMsg !== "string") return state;
+  return state;
+};
 
-//   const normRespMsg = respMsg.toLowerCase();
-//   const isIncludesSessionOrUser =
-//     normRespMsg.includes("session") || normRespMsg.includes("user");
+const tokens = createReducer(initTokens, {
+  [loginSuccess]: (_, { payload: { accessToken, refreshToken, sid } }) => ({
+    accessToken,
+    refreshToken,
+    sid,
+  }),
 
-//   if (status === 404 && isIncludesSessionOrUser) {
-//     return initTokens;
-//   }
+  [logoutSuccess]: () => initTokens,
+  [logoutError]: resetTokensWhenInvalidSession,
 
-//   return state;
-// };
-
-// const tokens = createReducer(initTokens, {
-//   [loginSuccess]: (_, { payload: { accessToken, refreshToken, sid } }) => ({
-//     accessToken,
-//     refreshToken,
-//     sid,
-//   }),
-
-//   [logoutSuccess]: () => initTokens,
-//   [logoutError]: resetTokensWhenInvalidSession,
-
-//   [refreshSuccess]: (
-//     _,
-//     { payload: { newAccessToken, newRefreshToken, newSid } }
-//   ) => ({
-//     accessToken: newAccessToken,
-//     refreshToken: newRefreshToken,
-//     sid: newSid,
-//   }),
-//   [refreshError]: () => initTokens,
-
-//   [getProjectsError]: resetTokensWhenInvalidSession,
-//   [addProjectError]: resetTokensWhenInvalidSession,
-//   [deleteProjectError]: resetTokensWhenInvalidSession,
-//   [changeProjectError]: resetTokensWhenInvalidSession,
-//   [addMemberError]: resetTokensWhenInvalidSession,
-
-//   [sprintGetError]: resetTokensWhenInvalidSession,
-//   [sprintAddError]: resetTokensWhenInvalidSession,
-//   [sprintDeleteError]: resetTokensWhenInvalidSession,
-//   [sprintChangeError]: resetTokensWhenInvalidSession,
-
-//   [taskGetError]: resetTokensWhenInvalidSession,
-//   [taskAddError]: resetTokensWhenInvalidSession,
-//   [taskDeleteError]: resetTokensWhenInvalidSession,
-//   [taskChangeError]: resetTokensWhenInvalidSession,
-// });
+  [refreshSuccess]: (
+    _,
+    { payload: { newAccessToken, newRefreshToken, newSid } },
+  ) => ({
+    accessToken: newAccessToken,
+    refreshToken: newRefreshToken,
+    sid: newSid,
+  }),
+  [refreshError]: () => initTokens,
+});
 
 const loading = createReducer(false, {
   [registerRequest]: () => true,
@@ -166,8 +131,8 @@ const error = createReducer(null, {
 });
 
 export default combineReducers({
-  // user,
-  // tokens,
+  user,
+  tokens,
   loading,
   error,
 });

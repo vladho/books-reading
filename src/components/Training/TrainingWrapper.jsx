@@ -28,7 +28,7 @@ const TrainingWrapper = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.myGoals}>
-        <MyGoals />
+        <MyGoals books={books.length} />
       </div>
 
       <div className={styles.myTraining}>

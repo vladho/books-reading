@@ -7,6 +7,7 @@ const {
   clearSelectedIds,
   trainingStartDate,
   trainingEndDate,
+  addResult,
 } = trainingActions;
 
 // Идет ли тренировка
@@ -37,6 +38,11 @@ const loading = createReducer(false, {});
 
 const error = createReducer(null, {});
 
+//Результаты
+const results = createReducer([], {
+  [addResult]: (state, { payload }) => [...state, payload],
+});
+
 export default combineReducers({
   isStarted,
   selectedIds,
@@ -45,4 +51,5 @@ export default combineReducers({
   selectEndDate,
   loading,
   error,
+  results,
 });
