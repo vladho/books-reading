@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import moment from 'moment';
+
+import trainingActions from '../../../redux/training/trainingActions';
+import trainingSelectors from '../../../redux/training/trainingSelectors';
 
 import trainingFormSchema from '../../../helpers/validation/trainingFormSchema';
 import DatePickerInput from '../DatePicker/DatePicker';
 import BooksSelector from '../Select/BooksSelector';
 import styles from './TrainingForm.module.scss';
-import trainingActions from '../../../redux/training/trainingActions';
-import trainingSelectors from '../../../redux/training/trainingSelectors';
 
 const TrainingForm = () => {
-  // const [start, setStart] = useState(null);
-  // const [end, setEnd] = useState(null);
-
   const start = useSelector(trainingSelectors.selectStartDate);
   const end = useSelector(trainingSelectors.selectEndDate);
+  const selectedBooks = useSelector(trainingSelectors.getSelectBooks);
 
   const dispatch = useDispatch();
 
@@ -27,6 +26,10 @@ const TrainingForm = () => {
     },
     validationSchema: trainingFormSchema,
     onSubmit: values => {
+      if (selectedBooks.some(book => book._id === values.book._id)) {
+        return;
+      }
+
       dispatch(trainingActions.addSelectedId(values.book._id));
     },
   });
@@ -35,17 +38,16 @@ const TrainingForm = () => {
     const start = moment(date).format('YYYY-MM-DD');
     formik.setFieldValue('start', start);
     dispatch(trainingActions.trainingStartDate(start));
-    // setStart(start);
   };
 
   const handleEndDate = date => {
     const end = moment(date).format('YYYY-MM-DD');
     formik.setFieldValue('end', end);
     dispatch(trainingActions.trainingEndDate(end));
-    // setEnd(end);
   };
 
   const handleBook = value => {
+    console.log(value);
     formik.setFieldValue('book', value);
   };
 
@@ -83,7 +85,11 @@ const TrainingForm = () => {
 
       <div className={styles.selectAndButton}>
         <div className={styles.selectContainer}>
-          <BooksSelector value={formik.values.book} onChange={handleBook} />
+          <BooksSelector
+            value={formik.values.book}
+            onChange={handleBook}
+            selectedBooks={selectedBooks}
+          />
           {formik.touched.book && formik.errors.book ? (
             <p className={styles.error}>{formik.errors.book}</p>
           ) : null}

@@ -19,6 +19,12 @@ const TrainingWrapper = () => {
 
   const [isTrainingModalShown, setIsTrainingModalShown] = useState(false);
 
+  const start = useSelector(trainingSelectors.selectStartDate);
+  const end = useSelector(trainingSelectors.selectEndDate);
+  const startUnix = new Date(start.split('.').reverse().join('.')).getTime();
+  const endUnix = new Date(end.split('.').reverse().join('.')).getTime();
+  const days = (endUnix - startUnix) / 1000 / 60 / 60 / 24;
+
   const openModal = () => {
     setIsTrainingModalShown(!isTrainingModalShown);
   };
@@ -28,7 +34,7 @@ const TrainingWrapper = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.myGoals}>
-        <MyGoals books={books.length} />
+        <MyGoals books={books.length} days={days} />
       </div>
 
       <div className={styles.myTraining}>
@@ -43,7 +49,7 @@ const TrainingWrapper = () => {
           <TrainingForm />
         )}
         <TrainingList />
-        {books.length && <StartTrainingBtn />}
+        {books.length && days >= 0 && <StartTrainingBtn />}
         <ChartModal />
         {isMobile && <CircuitButton openModal={openModal} />}
       </div>
