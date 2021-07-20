@@ -19,6 +19,10 @@ const addBooksSuccess = createAction('books/add/success', book => ({
 }));
 const addBooksError = createAction('books/add/error');
 
+const removeBookRequest = createAction('books/remove/request');
+const removeBookSuccess = createAction('books/remove/success');
+const removeBookError = createAction('books/remove/error');
+
 const booksActions = {
   addBooksRequest,
   addBooksSuccess,
@@ -26,5 +30,8 @@ const booksActions = {
   fetchBooksRequest,
   fetchBooksSuccess,
   fetchBooksError,
+  removeBookRequest,
+  removeBookSuccess,
+  removeBookError,
 };
 export default booksActions;

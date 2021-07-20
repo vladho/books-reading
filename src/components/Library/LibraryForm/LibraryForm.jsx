@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LibraryBookEditor from '../LibraryBookEditor/LibraryBookEditor';
-import booksActions from '../../../redux/books/booksActions';
+import booksOperations from '../../../redux/books/booksOperations';
 import styles from './LibraryForm.module.scss';
 
 const initialState = {
@@ -85,7 +85,7 @@ class LibraryForm extends Component {
 }
 
 const mapDispatchToProps = {
-  onAddBook: booksActions.addBooksSuccess,
+  onAddBook: booksOperations.addBooks,
 };
 
 export default connect(null, mapDispatchToProps)(LibraryForm);
