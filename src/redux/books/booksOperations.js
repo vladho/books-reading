@@ -42,7 +42,7 @@ const removeBook = id => async dispatch => {
     const data = await api.deleteOneBook(id);
     dispatch(removeBookSuccess(data));
   } catch (error) {
-    dispatch(fetchBooksError(api.formatError(error)));
+    dispatch(removeBookError(api.formatError(error)));
   }
 };
 
