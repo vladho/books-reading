@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
+import booksOperations from '../redux/books/booksOperations';
+import { connect } from 'react-redux';
 
-// import { connect } from 'react-redux';
-
+import Spinner from '../components/Spinner/Spinner';
 import LibraryForm from '../components/Library/LibraryForm/LibraryForm';
 import LibraryList from '../components/Library/LibraryList/LibraryList';
 
-export class LibraryPage extends Component {
+class LibraryPage extends Component {
   componentDidMount() {}
 
   render() {
     return (
       <div>
         <LibraryForm />
-        <LibraryList />
+        {this.props.isLoadingAddBook ? <Spinner /> : <LibraryList />}
       </div>
     );
   }
 }
 
-export default LibraryPage;
+const mapStateToProps = state => ({
+  isLoadingAddBook: state.books.loading,
+});
+
+export default connect(mapStateToProps)(LibraryPage);
