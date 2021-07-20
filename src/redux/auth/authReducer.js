@@ -1,7 +1,5 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import authActs from './authActions';
-// import { booksActs } from '../books';
-// import { trainingActions } from '../training';
 
 const {
   registerRequest,
@@ -18,16 +16,9 @@ const {
   refreshError,
 } = authActs;
 
-// const {
-//   addBooksRequest,
-//   addBooksSuccess,
-//   addBooksError,
-//   fetchBooksRequest,
-//   fetchBooksSuccess,
-//   fetchBooksError,
-// } = booksActs;
+const initUser = { email: null, name: null };
 
-const initUser = { id: null, email: null };
+const initTokens = { token: null };
 
 const resetUserWhenInvalidSession = (
   state,
@@ -46,20 +37,6 @@ const resetUserWhenInvalidSession = (
   return state;
 };
 
-const user = createReducer(initUser, {
-  [loginSuccess]: (_, { payload }) => {
-    const { id, email } = payload.data;
-    return { id, email };
-  },
-
-  [logoutSuccess]: () => initUser,
-  [logoutError]: resetUserWhenInvalidSession,
-
-  [refreshError]: () => initUser,
-});
-
-const initTokens = { accessToken: null, refreshToken: null, sid: null };
-
 const resetTokensWhenInvalidSession = (
   state,
   { payload: { status, respMsg } },
@@ -77,9 +54,31 @@ const resetTokensWhenInvalidSession = (
   return state;
 };
 
-const tokens = createReducer(initTokens, {
-  [loginSuccess]: (_, { payload: { accessToken, refreshToken, sid } }) => ({
-    accessToken,
+const user = createReducer(initUser, {
+  [loginSuccess]: (_, { payload }) => {
+    const { email, id, name } = payload.user;
+
+    return { email, id, name };
+  },
+
+  [logoutSuccess]: () => initUser,
+  [logoutError]: resetUserWhenInvalidSession,
+
+  [refreshError]: () => initUser,
+});
+
+const token = createReducer(initTokens, {
+  [loginSuccess]: (
+    _,
+    {
+      payload: {
+        user: { token: token },
+        refreshToken,
+        sid,
+      },
+    },
+  ) => ({
+    token,
     refreshToken,
     sid,
   }),
@@ -91,7 +90,7 @@ const tokens = createReducer(initTokens, {
     _,
     { payload: { newAccessToken, newRefreshToken, newSid } },
   ) => ({
-    accessToken: newAccessToken,
+    token: newAccessToken,
     refreshToken: newRefreshToken,
     sid: newSid,
   }),
@@ -132,7 +131,7 @@ const error = createReducer(null, {
 
 export default combineReducers({
   user,
-  tokens,
+  token,
   loading,
   error,
 });

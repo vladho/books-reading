@@ -9,7 +9,7 @@
   margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
-  border: none;
+  border: 1px solid $accent;
   outline: none;
 
   font-weight: 600;
@@ -28,6 +28,7 @@
   }
 
   &:hover {
-    background-color: rgba($accent, 0.85);
+    color: $accent;
+    background-color: transparent;
   }
 }

@@ -1,10 +1,10 @@
-const getAccessToken = state => state.auth.tokens.accessToken;
+const getAccessToken = state => state.auth.token.token;
 
 const getIsAuth = state => !!getAccessToken(state);
 
-const getRefreshToken = state => state.auth.tokens.refreshToken;
+const getRefreshToken = state => state.auth.token;
 
-const getSid = state => state.auth.tokens.sid;
+const getSid = state => state.auth.token.sid;
 
 const getUserEmail = state => state.auth.user.email;
 

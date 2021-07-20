@@ -22,7 +22,7 @@ export default function Login() {
         >
           {({ touched, errors, isSubmitting }) => (
             <Form className={css.registerFormLogin}>
-              <button className={css.Google} type="submit">
+              <button className={css.Google} type="button">
                 Google
               </button>
 

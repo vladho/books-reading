@@ -32,11 +32,11 @@ const register = credentials => async dispatch => {
 
 const login = credentials => async dispatch => {
   dispatch(loginRequest());
-
+  const { email, password } = credentials;
   try {
-    const data = await api.login(credentials);
-
-    api.setToken(data.accessToken);
+    const data = await api.login({ email, password });
+    // console.log(data);
+    api.setToken(data.user.token);
     dispatch(loginSuccess(data));
   } catch (error) {
     dispatch(loginError(api.formatError(error)));
@@ -49,7 +49,7 @@ const logOut = () => async dispatch => {
   try {
     await api.logOut();
 
-    api.unsetToken();
+    // api.unsetToken();
     dispatch(logoutSuccess());
   } catch (error) {
     dispatch(logoutError(api.formatError(error)));
@@ -79,5 +79,10 @@ const refreshToken = prevOps => async (dispatch, getState) => {
   }
 };
 
-const authOperations = { register, login, logOut, refreshToken };
+const authOperations = {
+  register,
+  login,
+  logOut,
+  refreshToken,
+};
 export default authOperations;
