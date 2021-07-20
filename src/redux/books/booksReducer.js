@@ -16,9 +16,9 @@ const addBook = (state = [], action) => {
 };
 
 const items = createReducer(tempBooks, {
-  [fetchBooksRequest]: () => [],
-  [fetchBooksSuccess]: (_, { payload }) => payload.data.result,
-
+  // [fetchBooksRequest]: () => [],
+  // [fetchBooksSuccess]: (_, { payload }) => payload.data.result,
+  [fetchBooksSuccess]: (state, action) => action.payload,
   [addBookSuccess]: addBook,
 });
 

@@ -7,7 +7,9 @@ import LibraryForm from '../components/Library/LibraryForm/LibraryForm';
 import LibraryList from '../components/Library/LibraryList/LibraryList';
 
 class LibraryPage extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.onFetchBooks();
+  }
 
   render() {
     return (
@@ -23,4 +25,8 @@ const mapStateToProps = state => ({
   isLoadingAddBook: state.books.loading,
 });
 
-export default connect(mapStateToProps)(LibraryPage);
+const mapDispatchToProps = {
+  onFetchBooks: booksOperations.fetchBooks,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LibraryPage);
