@@ -2,6 +2,9 @@ import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import trainingActions from './trainingActions';
 
 const {
+  getCurrTrainingRequest,
+  getCurrTrainingSuccess,
+  getCurrTrainingError,
   addSelectedId,
   delSelectedId,
   clearSelectedIds,
@@ -10,11 +13,19 @@ const {
   addResult,
 } = trainingActions;
 
-// Идет ли тренировка
+// 📌 Идет ли тренировка
 
 const isStarted = createReducer(false, {});
 
-// Книги в списке тренировки
+// 📌 Данные при активной тренировке
+
+const books = createReducer([], {});
+
+const startDate = createReducer('', {});
+
+const endDate = createReducer('', {});
+
+// 📌 Данные при неактивной тренировке
 
 const selectedIds = createReducer([], {
   [addSelectedId]: (state, { payload }) => [...state, payload],
@@ -24,8 +35,6 @@ const selectedIds = createReducer([], {
   [clearSelectedIds]: () => [],
 });
 
-const books = createReducer([], {});
-
 const selectStartDate = createReducer('', {
   [trainingStartDate]: (_, { payload }) => payload,
 });
@@ -33,6 +42,8 @@ const selectStartDate = createReducer('', {
 const selectEndDate = createReducer('', {
   [trainingEndDate]: (_, { payload }) => payload,
 });
+
+// 📌 Другое
 
 const loading = createReducer(false, {});
 
@@ -45,8 +56,10 @@ const results = createReducer([], {
 
 export default combineReducers({
   isStarted,
-  selectedIds,
   books,
+  startDate,
+  endDate,
+  selectedIds,
   selectStartDate,
   selectEndDate,
   loading,

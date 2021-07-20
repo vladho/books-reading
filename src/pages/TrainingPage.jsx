@@ -22,4 +22,4 @@ const TrainingPage = () => {
 export default TrainingPage;
 
 // axios.defaults.headers.common.Authorization =
-//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjY1ZDc2ZjAwMjYzMjUyNGY1NGU0YSIsImlhdCI6MTYyNjc1ODUxOCwiZXhwIjoxNjI2Nzg3MzE4fQ.J55-jjjeAp9RkDlqw6JaEh6hYqPZFBHTRmaAOixUt4o';
+//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjZjZmZkOTg1OGE2MzYyODE5YWIxZiIsImlhdCI6MTYyNjc4NzgzOCwiZXhwIjoxNjI2ODE2NjM4fQ.fgNk8VXXB9mvaRw9eo4LvTv0l59ZGpdArbcVxCBEZ6E';
