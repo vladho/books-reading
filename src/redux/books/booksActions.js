@@ -5,18 +5,7 @@ const fetchBooksSuccess = createAction('books/fetch/success');
 const fetchBooksError = createAction('books/fetch/error');
 
 const addBooksRequest = createAction('books/add/request');
-const addBooksSuccess = createAction('books/add/success', book => ({
-  payload: {
-    book: {
-      _id: new Date().getTime(),
-      title: book.title,
-      author: book.author,
-      year: book.year,
-      totalPages: book.totalPages,
-      status: 'plan',
-    },
-  },
-}));
+const addBooksSuccess = createAction('books/add/success');
 const addBooksError = createAction('books/add/error');
 
 const removeBookRequest = createAction('books/remove/request');

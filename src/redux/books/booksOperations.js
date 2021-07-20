@@ -23,14 +23,14 @@ const fetchBooks = () => async dispatch => {
   }
 };
 
-const addBooks = book => dispatch => {
+const addBooks = book => async dispatch => {
   dispatch(addBooksRequest());
-
+  console.log('addBook:', book);
   axios
     .post('http://localhost:8080/api/books', { book })
     .then(response => {
       console.log('response addBook:', response);
-      dispatch(addBooksSuccess());
+      dispatch(addBooksSuccess(response.data));
     })
     .catch(error => dispatch(addBooksError(api.formatError(error))));
 };

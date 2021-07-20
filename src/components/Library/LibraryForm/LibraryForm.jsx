@@ -5,10 +5,10 @@ import booksOperations from '../../../redux/books/booksOperations';
 import styles from './LibraryForm.module.scss';
 
 const initialState = {
-  title: '',
+  name: '',
   author: '',
   year: '',
-  totalPages: '',
+  pages: '',
 };
 
 class LibraryForm extends Component {
@@ -30,7 +30,7 @@ class LibraryForm extends Component {
   };
 
   render() {
-    const { title, author, year, totalPages } = this.state;
+    const { name, author, year, pages } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit} className={styles.form}>
@@ -39,8 +39,8 @@ class LibraryForm extends Component {
           <input
             type="text"
             placeholder="..."
-            name="title"
-            value={title}
+            name="name"
+            value={name}
             onChange={this.handleChange}
             className={styles.labelNameInput}
           />
@@ -72,8 +72,8 @@ class LibraryForm extends Component {
           <input
             type="text"
             placeholder="..."
-            name="totalPages"
-            value={totalPages}
+            name="pages"
+            value={pages}
             onChange={this.handleChange}
             className={styles.labelPageInput}
           />
