@@ -5,9 +5,9 @@ const {
   fetchBooksRequest,
   fetchBooksSuccess,
   fetchBooksError,
-  addBooksRequest,
-  addBooksSuccess,
-  addBooksError,
+  addBookRequest,
+  addBookSuccess,
+  addBookError,
 } = booksActions;
 
 const fetchBooks = () => async dispatch => {
@@ -23,13 +23,13 @@ const fetchBooks = () => async dispatch => {
 };
 
 const addBook = book => async dispatch => {
-  dispatch(addBooksRequest());
+  dispatch(addBookRequest());
   console.log('addBook require body:', book);
   try {
     const data = await api.postOneBook({ book });
-    dispatch(addBooksSuccess(data));
+    dispatch(addBookSuccess(data));
   } catch (error) {
-    dispatch(addBooksError(api.formatError(error)));
+    dispatch(addBookError(api.formatError(error)));
   }
 };
 

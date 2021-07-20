@@ -6,24 +6,29 @@ const {
   fetchBooksRequest,
   fetchBooksSuccess,
   fetchBooksError,
-  addBooksRequest,
-  addBooksSuccess,
-  addBooksError,
+  addBookRequest,
+  addBookSuccess,
+  addBookError,
 } = booksActions;
+
+const addBook = (state = [], action) => {
+  return [...state, action.payload];
+};
 
 const items = createReducer(tempBooks, {
   [fetchBooksRequest]: () => [],
   [fetchBooksSuccess]: (_, { payload }) => payload.data.result,
 
-  [booksActions.addBooksSuccess]: (state = [], action) => {
-    return [...state, action.payload.book];
-  },
+  [addBookSuccess]: addBook,
 });
 
 const loading = createReducer(false, {
   [fetchBooksRequest]: () => true,
   [fetchBooksSuccess]: () => false,
   [fetchBooksError]: () => false,
+  [addBookRequest]: () => true,
+  [addBookSuccess]: () => false,
+  [addBookError]: () => false,
 });
 
 const error = createReducer(null, {
