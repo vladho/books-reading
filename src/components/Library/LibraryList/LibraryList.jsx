@@ -90,7 +90,11 @@ function LibraryList({ books, onRemove }) {
                     <p className={styles.bookListItemAuthor}>{author}</p>
                     <p className={styles.bookListItemYear}>{year}</p>
                     <p className={styles.bookListItemPage}>{totalPages}</p>
-                    <button type="button" onClick={() => onRemove(_id)}>
+                    <button
+                      type="button"
+                      onClick={() => onRemove(_id)}
+                      className={styles.btnTrash}
+                    >
                       <ReactSVG src={trash} className={styles.trash} />
                     </button>
                   </li>
