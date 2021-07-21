@@ -16,7 +16,7 @@ class LibraryPage extends Component {
     return (
       <div>
         <LibraryForm />
-        {/* {this.props.isLoadingAddBook ? <Spinner /> : <LibraryList />} */}
+        {this.props.isLoadingAddBook ? <Spinner /> : <LibraryList />}
       </div>
     );
   }

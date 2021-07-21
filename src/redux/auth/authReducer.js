@@ -65,12 +65,6 @@ const user = createReducer(initUser, {
   [logoutError]: resetUserWhenInvalidSession,
 
   [refreshError]: () => initUser,
-
-  // [logoutSuccess]: () => initUser,
-  // // [logoutError]: resetUserWhenInvalidSession,
-  // [logoutError]: initUser,
-
-  // [refreshError]: () => initUser,
 });
 
 const token = createReducer(initTokens, {
