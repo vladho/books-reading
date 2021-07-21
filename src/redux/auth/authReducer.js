@@ -56,26 +56,21 @@ const resetTokensWhenInvalidSession = (
 
 const user = createReducer(initUser, {
   [loginSuccess]: (_, { payload }) => {
-    const { email, id, name } = payload.user;
+    const { email, name } = payload.user;
 
-    return { email, id, name };
+    return { email, name };
   },
 
   [logoutSuccess]: () => initUser,
   [logoutError]: resetUserWhenInvalidSession,
 
-  // [refreshSuccess]: (_, { payload }) => {
-  //   const { email, id, name } = payload.user;
-
-  //   return { email, id, name };
-  // },
-  // [refreshError]: (_, { payload }) => {
-  //   const { email, id, name } = payload.user;
-
-  //   return { email, id, name };
-  // },
-
   [refreshError]: () => initUser,
+
+  // [logoutSuccess]: () => initUser,
+  // // [logoutError]: resetUserWhenInvalidSession,
+  // [logoutError]: initUser,
+
+  // [refreshError]: () => initUser,
 });
 
 const token = createReducer(initTokens, {
