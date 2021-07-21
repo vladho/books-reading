@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { api } from '../../services';
+import axios from 'axios';
 import booksActions from './booksActions';
 
 const {
@@ -29,21 +29,21 @@ const fetchBooks = () => async dispatch => {
 const addBook = book => async dispatch => {
   dispatch(addBookRequest());
   console.log('addBook require body:', book);
-  try {
-    const data = await api.postOneBook({ book });
-    console.log('addBook response:', data);
-    dispatch(addBookSuccess(data));
-  } catch (error) {
-    dispatch(addBookError(api.formatError(error)));
-  }
+  // try {
+  //   const data = await api.postOneBook({ book });
+  //   console.log('addBook response:', data);
+  //   dispatch(addBookSuccess(data));
+  // } catch (error) {
+  //   dispatch(addBookError(api.formatError(error)));
+  // }
 
-  // axios
-  //   .post('http://localhost:8080/api/books', { book })
-  //   .then(response => {
-  //     console.log('response addBook:', response);
-  //     dispatch(addBookSuccess(response.data));
-  //   })
-  //   .catch(error => dispatch(addBookError(api.formatError(error))));
+  axios
+    .post('http://localhost:8080/api/books', book)
+    .then(response => {
+      console.log('response addBook:', response.data);
+      dispatch(addBookSuccess(response.data));
+    })
+    .catch(error => dispatch(addBookError(api.formatError(error))));
 };
 
 const removeBook = id => async dispatch => {
