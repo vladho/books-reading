@@ -1,14 +1,35 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import {
+  useDispatch,
+  // useSelector
+} from 'react-redux';
 import TrainingWrapper from '../components/Training/TrainingWrapper';
-import { trainingActions } from '../redux/training';
+import {
+  // trainingOperations,
+  trainingActions,
+  // trainingSelectors,
+} from '../redux/training';
 // import { booksOperations } from '../redux/books';
+
+// import axios from 'axios';
+// axios.defaults.headers.common.Authorization =
+//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjdhYzQwYjNhNjUxMzM0MGY2ZDNkMiIsImlhdCI6MTYyNjg0NDIyNCwiZXhwIjoxNjI2ODczMDI0fQ.kRM4aCqHJXCYtlslHWVtrQgfux4sDp23EOX5-1UeGTk';
 
 const TrainingPage = () => {
   const dispatch = useDispatch();
 
+  // const isTrainStarted = useSelector(trainingSelectors.getIsStarted);
+  // console.log(isTrainStarted);
+
   useEffect(() => {
-    // dispatch(booksOperations.fetchBooks());
+    // const fff = async () => {
+    //   await dispatch(trainingOperations.getCurrTraining());
+
+    //   console.log('next operation');
+    //   dispatch(booksOperations.fetchBooks());
+    // };
+
+    // fff();
 
     return () => {
       // Очищаем список тренировки перед уходом
@@ -20,6 +41,3 @@ const TrainingPage = () => {
 };
 
 export default TrainingPage;
-
-// axios.defaults.headers.common.Authorization =
-//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjY1ZDc2ZjAwMjYzMjUyNGY1NGU0YSIsImlhdCI6MTYyNjc1ODUxOCwiZXhwIjoxNjI2Nzg3MzE4fQ.J55-jjjeAp9RkDlqw6JaEh6hYqPZFBHTRmaAOixUt4o';

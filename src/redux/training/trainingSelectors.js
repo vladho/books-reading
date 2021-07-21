@@ -1,13 +1,21 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { booksSelectors } from '../books';
 
-// Идет ли тренировка
+// 📌 Идет ли тренировка
+
 const getIsStarted = state => state.training.isStarted;
 
-// Массив id книг в списке тренировки
+// 📌 Данные при активной тренировке
+
+const getBooks = state => state.training.books;
+
+const getStartDate = state => state.training.startDate;
+const getEndDate = state => state.training.endDate;
+
+// 📌 Данные при неактивной тренировке
+
 const getSelectIds = state => state.training.selectedIds;
 
-// Массив объектов книг в списке тренировки
 const getSelectBooks = createSelector(
   [booksSelectors.getAllBooks, getSelectIds],
   (books, ids) =>
@@ -18,16 +26,15 @@ const getSelectBooks = createSelector(
     }, []),
 );
 
-// Массив объектов книг в селекте добавления к тренировке
 const getPlanNotSelectBooks = createSelector(
   [booksSelectors.getPlanBooks, getSelectIds],
   (books, ids) => books.filter(({ _id }) => !ids.includes(_id)),
 );
 
-const getBooks = state => state.training.books;
-
 const selectStartDate = state => state.training.selectStartDate;
 const selectEndDate = state => state.training.selectEndDate;
+
+// 📌 Другое
 
 const getLoading = state => state.training.loading;
 
@@ -38,10 +45,12 @@ const getResults = state => state.training.results;
 
 const trainingSelectors = {
   getIsStarted,
+  getBooks,
+  getStartDate,
+  getEndDate,
   getSelectIds,
   getSelectBooks,
   getPlanNotSelectBooks,
-  getBooks,
   selectStartDate,
   selectEndDate,
   getLoading,
