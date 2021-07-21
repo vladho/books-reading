@@ -1,16 +1,16 @@
 import React from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { GoHome, GoBook } from 'react-icons/go';
-// import { authSls, authOps } from '../../../redux/auth';
+import { authSls, authOps } from '../../../redux/auth';
 
 import css from './AppBar.module.scss';
 import { NavLink } from 'react-router-dom';
 
 export default function AppBar() {
-  // const dispatch = useDispatch();
-  // const onLogout = () => dispatch(authOps.logOut());
+  const dispatch = useDispatch();
+  const onLogout = () => dispatch(authOps.logOut());
 
-  // const email = useSelector(authSls.getUserEmail);
+  const email = useSelector(authSls.getUserEmail);
   return (
     <div className={css.appBar}>
       <div className={css.menuBlock}>
@@ -32,11 +32,7 @@ export default function AppBar() {
         {/* <p className={css.userName}>{email}</p> */}
       </div>
 
-      <button
-        type="button"
-        className={css.logoutButton}
-        // onClick={onLogout}
-      >
+      <button type="button" className={css.logoutButton} onClick={onLogout}>
         <span className={css.logoutText}>Log Out</span>
       </button>
     </div>

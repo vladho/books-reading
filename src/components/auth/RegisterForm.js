@@ -23,14 +23,14 @@ export default function Register() {
           }}
           validationSchema={regSchema}
           onSubmit={values => {
-            const { email, password } = values;
+            const { name, email, password } = values;
 
-            dispatch(authOps.register({ email, password }));
+            dispatch(authOps.register({ name, email, password }));
           }}
         >
           {({ touched, errors, isSubmitting }) => (
             <Form className={css.registerForm}>
-              <button className={css.Google} type="submit">
+              <button className={css.Google} type="button">
                 Google
               </button>
               <label className={css.inputTitle}>

@@ -102,7 +102,9 @@
   transition: all 0.3s;
 
   &:hover {
-    background-color: $titleBg;
+    border: 1px solid $accent;
+    color: $white;
+    background-color: $accent;
   }
 }
 
