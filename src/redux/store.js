@@ -13,6 +13,8 @@ import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/authReducer';
 import { booksReducer } from './books';
 import { trainingReducer } from './training';
+import { authSls } from '../redux/auth';
+import api from '../services/api';
 
 const persistAuthConfig = {
   key: 'root',
@@ -37,4 +39,9 @@ export const store = configureStore({
     }),
 });
 
-export const persistor = persistStore(store);
+export const persistor = persistStore(store, null, () => {
+  const token = authSls.getAccessToken(store.getState());
+  if (token) api.setToken(token);
+});
+
+// export const persistor = persistStore(store);
