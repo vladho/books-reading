@@ -4,7 +4,7 @@ import { ReactComponent as BookIcon } from '../../../assets/icons/bookUnRead.svg
 import { ReactComponent as Flag } from '../../../assets/icons/Flag.svg';
 import { ReactComponent as ArrowRight } from '../../../assets/icons/ArrowRight.svg';
 import {} from '../../../';
-import OkButton from '../../common/ModalButton/DoneButton/DoneButton';
+import DoneButton from '../../common/ModalButton/DoneButton/DoneButton';
 
 const FirstVisit = () => {
   return (
@@ -38,7 +38,7 @@ const FirstVisit = () => {
         </li>
       </ul>
 
-      <OkButton styleBtn={styles.btn}>ok</OkButton>
+      <DoneButton styleBtn={styles.btn}>ok</DoneButton>
     </div>
   );
 };
