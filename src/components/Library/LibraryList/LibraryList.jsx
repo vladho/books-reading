@@ -9,6 +9,7 @@ import styles from './LibraryList.module.scss';
 import bookUnRead from '../../../assets/icons/bookUnRead.svg';
 import bookRead from '../../../assets/icons/bookRead.svg';
 import bookReadDone from '../../../assets/icons/bookReadDone.svg';
+import trash from '../../../assets/icons/delete.svg';
 
 function LibraryList({ books, onRemove }) {
   return (
@@ -90,7 +91,7 @@ function LibraryList({ books, onRemove }) {
                     <p className={styles.bookListItemYear}>{year}</p>
                     <p className={styles.bookListItemPage}>{totalPages}</p>
                     <button type="button" onClick={() => onRemove(_id)}>
-                      X
+                      <ReactSVG src={trash} className={styles.trash} />
                     </button>
                   </li>
                 ),
