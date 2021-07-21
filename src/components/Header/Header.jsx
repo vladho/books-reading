@@ -1,14 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-// import { authSls } from '../../redux/auth';
+import { authSls } from '../../redux/auth';
 
 import AppBar from './AppBar/AppBar';
 import css from './AppBar/AppBar.module.scss';
 
 const Header = () => {
-  // const isAuth = useSelector(authSls.getIsAuth);
+  const isAuth = useSelector(authSls.getIsAuth);
 
   return (
     <header className={css.headerContainer}>
@@ -16,8 +16,7 @@ const Header = () => {
         <NavLink exact to="/login">
           <p className={css.logo}>BR</p>
         </NavLink>
-        <AppBar />
-        {/* <nav>{isAuth && <AppBar />}</nav> */}
+        <nav>{isAuth && <AppBar />}</nav>
       </nav>
     </header>
   );
