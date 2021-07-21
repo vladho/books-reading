@@ -1,20 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import booksOperations from '../redux/books/booksOperations';
+import booksSelectors from '../redux/books/booksSelectors';
 
+import Spinner from '../components/Spinner/Spinner';
 import LibraryForm from '../components/Library/LibraryForm/LibraryForm';
 import LibraryList from '../components/Library/LibraryList/LibraryList';
 
-export class LibraryPage extends Component {
-  componentDidMount() {}
+class LibraryPage extends Component {
+  componentDidMount() {
+    this.props.onFetchBooks();
+  }
 
   render() {
     return (
       <div>
         <LibraryForm />
-        <LibraryList />
+        {this.props.isLoadingAddBook ? <Spinner /> : <LibraryList />}
       </div>
     );
   }
 }
 
-export default LibraryPage;
+const mapStateToProps = state => ({
+  isLoadingAddBook: booksSelectors.getLoading(state),
+});
+
+const mapDispatchToProps = {
+  onFetchBooks: booksOperations.fetchBooks,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LibraryPage);

@@ -1,5 +1,5 @@
 import { authSls } from './index';
-import api from '../../components/auth/servisesAuth';
+import api from '../../services/api';
 import authActs from './authActions';
 
 const {
@@ -49,7 +49,7 @@ const logOut = () => async dispatch => {
   try {
     await api.logOut();
 
-    // api.unsetToken();
+    api.unsetToken();
     dispatch(logoutSuccess());
   } catch (error) {
     dispatch(logoutError(api.formatError(error)));

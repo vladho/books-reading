@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
+import booksSelectors from '../../../redux/books/booksSelectors';
+
 import styles from './LibraryList.module.scss';
 import bookUnRead from '../../../assets/icons/bookUnRead.svg';
 import bookRead from '../../../assets/icons/bookRead.svg';
@@ -102,7 +104,7 @@ function LibraryList({ books }) {
 }
 
 const mapStateToProps = state => ({
-  books: state.books.items,
+  books: booksSelectors.getAllBooks(state),
 });
 
 export default connect(mapStateToProps)(LibraryList);

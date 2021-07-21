@@ -2,6 +2,9 @@ import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import trainingActions from './trainingActions';
 
 const {
+  getCurrTrainingRequest,
+  getCurrTrainingSuccess,
+  getCurrTrainingError,
   addSelectedId,
   delSelectedId,
   clearSelectedIds,
@@ -10,11 +13,38 @@ const {
   addResult,
 } = trainingActions;
 
-// Идет ли тренировка
+// 📌 Идет ли тренировка
 
-const isStarted = createReducer(false, {});
+const isStarted = createReducer(false, {
+  [getCurrTrainingRequest]: () => false,
+  [getCurrTrainingSuccess]: (_, { payload: { data } }) =>
+    !!data?.result?.[0]?.inProgress,
+});
 
-// Книги в списке тренировки
+// 📌 Данные при активной тренировке
+
+const books = createReducer([], {
+  [getCurrTrainingRequest]: () => [],
+  [getCurrTrainingSuccess]: (_, { payload: { data } }) => {
+    const books = data?.result?.[0]?.books;
+
+    return Array.isArray(books) ? books : [];
+  },
+});
+
+const startDate = createReducer('', {
+  [getCurrTrainingRequest]: () => '',
+  [getCurrTrainingSuccess]: (_, { payload: { data } }) =>
+    data?.result?.[0]?.startDate || '',
+});
+
+const endDate = createReducer('', {
+  [getCurrTrainingRequest]: () => '',
+  [getCurrTrainingSuccess]: (_, { payload: { data } }) =>
+    data?.result?.[0]?.finishDate || '',
+});
+
+// 📌 Данные при неактивной тренировке
 
 const selectedIds = createReducer([], {
   [addSelectedId]: (state, { payload }) => [...state, payload],
@@ -24,8 +54,6 @@ const selectedIds = createReducer([], {
   [clearSelectedIds]: () => [],
 });
 
-const books = createReducer([], {});
-
 const selectStartDate = createReducer('', {
   [trainingStartDate]: (_, { payload }) => payload,
 });
@@ -34,9 +62,18 @@ const selectEndDate = createReducer('', {
   [trainingEndDate]: (_, { payload }) => payload,
 });
 
-const loading = createReducer(false, {});
+// 📌 Другое
 
-const error = createReducer(null, {});
+const loading = createReducer(false, {
+  [getCurrTrainingRequest]: () => true,
+  [getCurrTrainingSuccess]: () => false,
+  [getCurrTrainingError]: () => false,
+});
+
+const error = createReducer(null, {
+  [getCurrTrainingRequest]: () => null,
+  [getCurrTrainingError]: (_, { payload }) => payload,
+});
 
 //Результаты
 const results = createReducer([], {
@@ -45,8 +82,10 @@ const results = createReducer([], {
 
 export default combineReducers({
   isStarted,
-  selectedIds,
   books,
+  startDate,
+  endDate,
+  selectedIds,
   selectStartDate,
   selectEndDate,
   loading,
