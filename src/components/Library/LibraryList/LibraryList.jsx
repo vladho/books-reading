@@ -15,17 +15,17 @@ function LibraryList({ books, onRemove }) {
   return (
     <div className={styles.container}>
       {books.some(book => book.status === 'done') && (
-        <ul className={styles.category}>
-          <p className={styles.categoryTitle}>Прочитано</p>
-          <ul className={styles.categoryListTitle}>
+        <div className={styles.category}>
+          <h2 className={styles.categoryTitle}>Прочитано</h2>
+          <div className={styles.categoryListTitle}>
             <li className={styles.categoryListTitleItemNameDone}>
               Назва книги
             </li>
-            <li className={styles.categoryListTitleItemAuthorDone}>Автор</li>
-            <li className={styles.categoryListTitleItemYearDone}>Рік</li>
-            <li className={styles.categoryListTitleItemPageDone}>Стор.</li>
-            <li className={styles.categoryListTitleItemRate}>Рейтинг книги</li>
-          </ul>
+            <h3 className={styles.categoryListTitleItemAuthorDone}>Автор</h3>
+            <h3 className={styles.categoryListTitleItemYearDone}>Рік</h3>
+            <h3 className={styles.categoryListTitleItemPageDone}>Стор.</h3>
+            <h3 className={styles.categoryListTitleItemRate}>Рейтинг книги</h3>
+          </div>
           <ul className={styles.bookList}>
             {books.map(
               ({ _id, title, author, year, totalPages, status }) =>
@@ -44,7 +44,7 @@ function LibraryList({ books, onRemove }) {
                 ),
             )}
           </ul>
-        </ul>
+        </div>
       )}
       {books.some(book => book.status === 'read') && (
         <ul className={styles.category}>
