@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TrainingWrapper from '../components/Training/TrainingWrapper';
 import {
@@ -11,22 +11,28 @@ import { booksOperations } from '../redux/books';
 const TrainingPage = () => {
   const dispatch = useDispatch();
 
+  const [isRequestBooks, setIsRequestBooks] = useState(false);
+
   const isTrainStarted = useSelector(trainingSelectors.getIsStarted);
 
   useEffect(() => {
-    const fff = async () => {
-      await dispatch(trainingOperations.getCurrTraining());
-
-      // dispatch(booksOperations.fetchBooks());
-    };
-
-    fff();
+    dispatch(trainingOperations.getCurrTraining()).then(() =>
+      setIsRequestBooks(true),
+    );
 
     return () => {
       // Очищаем список тренировки перед уходом
       dispatch(trainingActions.clearSelectedIds());
+      console.log('размонтирование');
     };
   }, [dispatch]);
+
+  if (isRequestBooks) {
+    console.log('in condition:', isTrainStarted);
+    if (!isTrainStarted) dispatch(booksOperations.fetchBooks());
+
+    setIsRequestBooks(false);
+  }
 
   return <TrainingWrapper />;
 };
