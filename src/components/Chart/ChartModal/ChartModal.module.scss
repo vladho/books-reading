@@ -16,6 +16,7 @@
     width: 678px;
     height: 340px;
   }
+
   @include for-size(desktop) {
     width: 886px;
   }

@@ -1,6 +1,7 @@
 @import 'styles/shared.scss';
 
 .wrapper {
+  position: relative;
   padding-top: 30px;
   padding-bottom: 50px;
 
@@ -13,16 +14,18 @@
     justify-content: space-between;
 
     padding-top: 50px;
-    padding-bottom: 35px;
+    padding-bottom: 40px;
   }
 }
 
-.myTraining {
-  order: -1;
+.rightPart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-  @include for-size(desktop) {
-    margin-right: 40px;
-    margin-bottom: 40px;
-    width: 886px;
-  }
+.leftPart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
