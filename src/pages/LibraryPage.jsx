@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import booksOperations from '../redux/books/booksOperations';
 import { connect } from 'react-redux';
+import booksOperations from '../redux/books/booksOperations';
+import booksSelectors from '../redux/books/booksSelectors';
 
 import Spinner from '../components/Spinner/Spinner';
 import LibraryForm from '../components/Library/LibraryForm/LibraryForm';
@@ -22,7 +23,7 @@ class LibraryPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  isLoadingAddBook: state.books.loading,
+  isLoadingAddBook: booksSelectors.getLoading(state),
 });
 
 const mapDispatchToProps = {
