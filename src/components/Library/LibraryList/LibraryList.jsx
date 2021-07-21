@@ -89,9 +89,9 @@ function LibraryList({ books, onRemove }) {
                     <p className={styles.bookListItemAuthor}>{author}</p>
                     <p className={styles.bookListItemYear}>{year}</p>
                     <p className={styles.bookListItemPage}>{totalPages}</p>
-                    {/* <button type="submit" onClick={onRemove}>
+                    <button type="button" onClick={() => onRemove(_id)}>
                       X
-                    </button> */}
+                    </button>
                   </li>
                 ),
             )}
@@ -111,8 +111,8 @@ const mapStateToProps = state => ({
   books: booksSelectors.getAllBooks(state),
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onRemove: () => dispatch(booksOperations.removeBook(ownProps._id)),
-});
+const mapDispatchToProps = {
+  onRemove: booksOperations.removeBook,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LibraryList);
