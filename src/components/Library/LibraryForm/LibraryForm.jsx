@@ -8,10 +8,10 @@ import booksOperations from '../../../redux/books/booksOperations';
 import styles from './LibraryForm.module.scss';
 
 const initialState = {
-  name: '',
+  title: '',
   author: '',
   year: '',
-  pages: '',
+  totalPages: '',
 };
 
 // const schema = Yup.object().shape({
@@ -56,7 +56,7 @@ class LibraryForm extends Component {
   };
 
   render() {
-    const { name, author, year, pages } = this.state;
+    const { title, author, year, totalPages } = this.state;
 
     return (
       <>
@@ -66,8 +66,8 @@ class LibraryForm extends Component {
             <input
               type="text"
               placeholder="..."
-              name="name"
-              value={name}
+              name="title"
+              value={title}
               onChange={this.handleChange}
               className={styles.labelNameInput}
             />
@@ -99,8 +99,8 @@ class LibraryForm extends Component {
             <input
               type="text"
               placeholder="..."
-              name="pages"
-              value={pages}
+              name="totalPages"
+              value={totalPages}
               onChange={this.handleChange}
               className={styles.labelPageInput}
             />

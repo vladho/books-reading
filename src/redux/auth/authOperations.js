@@ -32,10 +32,10 @@ const register = credentials => async dispatch => {
 
 const login = credentials => async dispatch => {
   dispatch(loginRequest());
-  const { email, password } = credentials;
   try {
+    const { email, password } = credentials;
     const data = await api.login({ email, password });
-    // console.log(data);
+
     api.setToken(data.user.token);
     dispatch(loginSuccess(data));
   } catch (error) {
