@@ -13,20 +13,22 @@ import trash from '../../../assets/icons/delete.svg';
 
 function LibraryList({ books, onRemove }) {
   return (
-    <div className={styles.container}>
+    <>
       {books.some(book => book.status === 'done') && (
         <div className={styles.category}>
           <h2 className={styles.categoryTitle}>Прочитано</h2>
           <div className={styles.categoryListTitle}>
-            <li className={styles.categoryListTitleItemNameDone}>
+            <h3 className={styles.categoryListTitleItemNameDone}>
               Назва книги
-            </li>
+            </h3>
             <h3 className={styles.categoryListTitleItemAuthorDone}>Автор</h3>
             <h3 className={styles.categoryListTitleItemYearDone}>Рік</h3>
             <h3 className={styles.categoryListTitleItemPageDone}>Стор.</h3>
-            <h3 className={styles.categoryListTitleItemRate}>Рейтинг книги</h3>
+            <h3 className={styles.categoryListTitleItemRateDone}>
+              Рейтинг книги
+            </h3>
           </div>
-          <ul className={styles.bookList}>
+          <ul>
             {books.map(
               ({ _id, title, author, year, totalPages, status }) =>
                 status === 'done' && (
@@ -55,7 +57,7 @@ function LibraryList({ books, onRemove }) {
             <h3 className={styles.categoryListTitleItemYear}>Рік</h3>
             <h3 className={styles.categoryListTitleItemPage}>Стор.</h3>
           </div>
-          <ul className={styles.bookList}>
+          <ul>
             {books.map(
               ({ _id, title, author, year, totalPages, status }) =>
                 status === 'read' && (
@@ -80,7 +82,7 @@ function LibraryList({ books, onRemove }) {
             <h3 className={styles.categoryListTitleItemYear}>Рік</h3>
             <h3 className={styles.categoryListTitleItemPage}>Стор.</h3>
           </div>
-          <ul className={styles.bookList}>
+          <ul>
             {books.map(
               ({ _id, title, author, year, totalPages, status }) =>
                 status === 'plan' && (
@@ -108,7 +110,7 @@ function LibraryList({ books, onRemove }) {
           </NavLink>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
