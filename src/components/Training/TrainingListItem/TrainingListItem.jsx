@@ -25,6 +25,7 @@ export default function TrainingListItem({
         <TrainingCheckbox
           id={id}
           checked={status === 'done'}
+          readOnly
           className={css.checkbox}
         />
       ) : (
