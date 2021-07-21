@@ -15,6 +15,7 @@ const {
 } = booksActions;
 
 const addBook = (state = [], action) => {
+  console.log('addBook action.payload:', action.payload);
   return [...state, action.payload];
 };
 
@@ -22,10 +23,10 @@ const removeBook = (state, action) => {
   return state.filter(book => book._id !== action.payload);
 };
 
-const items = createReducer(tempBooks, {
+const items = createReducer([], {
   // [fetchBooksRequest]: () => [],
   // [fetchBooksSuccess]: (_, { payload }) => payload.data.result,
-  [fetchBooksSuccess]: (state, action) => action.payload,
+  [fetchBooksSuccess]: (state, action) => action.payload.data.result,
   [addBookSuccess]: addBook,
   [removeBookSuccess]: removeBook,
 });
