@@ -47,14 +47,14 @@ function LibraryList({ books, onRemove }) {
         </div>
       )}
       {books.some(book => book.status === 'read') && (
-        <ul className={styles.category}>
-          <p className={styles.categoryTitle}>Читаю</p>
-          <ul className={styles.categoryListTitle}>
-            <li className={styles.categoryListTitleItemName}>Назва книги</li>
-            <li className={styles.categoryListTitleItemAuthor}>Автор</li>
-            <li className={styles.categoryListTitleItemYear}>Рік</li>
-            <li className={styles.categoryListTitleItemPage}>Стор.</li>
-          </ul>
+        <div className={styles.category}>
+          <h2 className={styles.categoryTitle}>Читаю</h2>
+          <div className={styles.categoryListTitle}>
+            <h3 className={styles.categoryListTitleItemName}>Назва книги</h3>
+            <h3 className={styles.categoryListTitleItemAuthor}>Автор</h3>
+            <h3 className={styles.categoryListTitleItemYear}>Рік</h3>
+            <h3 className={styles.categoryListTitleItemPage}>Стор.</h3>
+          </div>
           <ul className={styles.bookList}>
             {books.map(
               ({ _id, title, author, year, totalPages, status }) =>
@@ -69,17 +69,17 @@ function LibraryList({ books, onRemove }) {
                 ),
             )}
           </ul>
-        </ul>
+        </div>
       )}
       {books.some(book => book.status === 'plan') && (
-        <ul className={styles.category}>
-          <p className={styles.categoryTitle}>Маю намір прочитати</p>
-          <ul className={styles.categoryListTitle}>
-            <li className={styles.categoryListTitleItemName}>Назва книги</li>
-            <li className={styles.categoryListTitleItemAuthor}>Автор</li>
-            <li className={styles.categoryListTitleItemYear}>Рік</li>
-            <li className={styles.categoryListTitleItemPage}>Стор.</li>
-          </ul>
+        <div className={styles.category}>
+          <h2 className={styles.categoryTitle}>Маю намір прочитати</h2>
+          <div className={styles.categoryListTitle}>
+            <h3 className={styles.categoryListTitleItemName}>Назва книги</h3>
+            <h3 className={styles.categoryListTitleItemAuthor}>Автор</h3>
+            <h3 className={styles.categoryListTitleItemYear}>Рік</h3>
+            <h3 className={styles.categoryListTitleItemPage}>Стор.</h3>
+          </div>
           <ul className={styles.bookList}>
             {books.map(
               ({ _id, title, author, year, totalPages, status }) =>
@@ -106,7 +106,7 @@ function LibraryList({ books, onRemove }) {
               Далі
             </button>
           </NavLink>
-        </ul>
+        </div>
       )}
     </div>
   );
