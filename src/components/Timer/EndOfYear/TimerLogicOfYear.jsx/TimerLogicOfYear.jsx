@@ -8,8 +8,8 @@ const TimerLogic = () => {
   const year = new Date(new Date().getFullYear() + 1, 0, 1).getTime();
   //   console.log(year);
 
-  const endDate = useSelector(trainingSelectors.getEndDate);
-  console.log(endDate);
+  // const endDate = useSelector(trainingSelectors.getEndDate);
+  // console.log(endDate);
 
   const [dateTime, setDateTime] = useState(new Date());
 

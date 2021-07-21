@@ -16,7 +16,10 @@
 }
 
 .date:first-child {
-  margin-left: 38px;
+  margin-left: auto;
+}
+.date:last-child {
+  margin-right: auto;
 }
 
 .days,
