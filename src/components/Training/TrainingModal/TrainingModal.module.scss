@@ -3,9 +3,11 @@
 .modalBackdrop {
   position: fixed;
   top: 60px;
-  left: 25px;
-  right: 25px;
+  left: 0;
+  right: 0;
   height: 100vh;
+  padding-right: 25px;
+  padding-left: 25px;
 
   background-color: $primaryBg;
   z-index: 20;
