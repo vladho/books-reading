@@ -18,7 +18,7 @@ const {
 const isStarted = createReducer(false, {
   [getCurrTrainingRequest]: () => false,
   [getCurrTrainingSuccess]: (_, { payload: { data } }) =>
-    !!data?.result?.[0]?.inProgress,
+    !!data?.result?.inProgress,
 });
 
 // 📌 Данные при активной тренировке
@@ -26,7 +26,7 @@ const isStarted = createReducer(false, {
 const books = createReducer([], {
   [getCurrTrainingRequest]: () => [],
   [getCurrTrainingSuccess]: (_, { payload: { data } }) => {
-    const books = data?.result?.[0]?.books;
+    const books = data?.result?.books;
 
     return Array.isArray(books) ? books : [];
   },
@@ -35,13 +35,13 @@ const books = createReducer([], {
 const startDate = createReducer('', {
   [getCurrTrainingRequest]: () => '',
   [getCurrTrainingSuccess]: (_, { payload: { data } }) =>
-    data?.result?.[0]?.startDate || '',
+    data?.result?.startDate || '',
 });
 
 const endDate = createReducer('', {
   [getCurrTrainingRequest]: () => '',
   [getCurrTrainingSuccess]: (_, { payload: { data } }) =>
-    data?.result?.[0]?.finishDate || '',
+    data?.result?.finishDate || '',
 });
 
 // 📌 Данные при неактивной тренировке

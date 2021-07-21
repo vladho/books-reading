@@ -23,9 +23,9 @@ const removeBook = (state, action) => {
 };
 
 const items = createReducer(tempBooks, {
-  // [fetchBooksRequest]: () => [],
-  // [fetchBooksSuccess]: (_, { payload }) => payload.data.result,
-  [fetchBooksSuccess]: (state, action) => action.payload,
+  [fetchBooksRequest]: () => [],
+  [fetchBooksSuccess]: (_, { payload }) => payload.data.result,
+  // [fetchBooksSuccess]: (state, action) => action.payload,
   [addBookSuccess]: addBook,
   [removeBookSuccess]: removeBook,
 });

@@ -11,8 +11,6 @@ const getCurrTraining = () => async dispatch => {
     const data = await api.getCurrTraining();
 
     dispatch(getCurrTrainingSuccess(data));
-
-    // console.log('current operation');
   } catch (error) {
     dispatch(getCurrTrainingError(api.formatError(error)));
   }
