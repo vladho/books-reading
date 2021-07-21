@@ -11,7 +11,7 @@
   line-height: 2.71;
   color: $secondaryText;
   margin-top: 30px;
-    @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 594px;
     height: 170px;
     flex-wrap: wrap;
@@ -25,6 +25,10 @@
     flex-wrap: wrap;
     margin-top: 52px;
   }
+}
+
+.FormError {
+  color: orchid;
 }
 
 .labelName {
