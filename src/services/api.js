@@ -28,9 +28,9 @@ const refresh = async sid => (await axios.post('/refresh', { sid })).data.data;
 
 const getAllBooks = async () => (await axios.get('/books')).data;
 
-const postOneBook = async () => (await axios.post('/books'), {}).data;
+// const postOneBook = async () => (await axios.post('/books'), {book}).data;
 
-const deleteOneBook = async () => await axios.delete(`/books/:{id}`);
+// const deleteOneBook = async () => await axios.delete(`/books/:{id}`);
 
 // 📌 Тренировки
 
@@ -48,7 +48,7 @@ const api = {
 
   getAllBooks,
   getCurrTraining,
-  postOneBook,
-  deleteOneBook,
+  // postOneBook,
+  // deleteOneBook,
 };
 export default api;

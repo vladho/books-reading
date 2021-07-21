@@ -1,6 +1,6 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import booksActions from './booksActions';
-import tempBooks from '../../json/trainingListBooks.json';
+// import tempBooks from '../../json/trainingListBooks.json';
 
 const {
   fetchBooksRequest,
@@ -15,7 +15,6 @@ const {
 } = booksActions;
 
 const addBook = (state = [], action) => {
-  console.log('addBook action.payload:', action.payload);
   return [...state, action.payload.data.book];
 };
 

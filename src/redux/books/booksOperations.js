@@ -28,29 +28,22 @@ const fetchBooks = () => async dispatch => {
 
 const addBook = book => async dispatch => {
   dispatch(addBookRequest());
-  console.log('addBook require body:', book);
-  // try {
-  //   const data = await api.postOneBook({ book });
-  //   console.log('addBook response:', data);
-  //   dispatch(addBookSuccess(data));
-  // } catch (error) {
-  //   dispatch(addBookError(api.formatError(error)));
-  // }
-
-  axios
-    .post('http://localhost:8080/api/books', book)
-    .then(response => {
-      console.log('response addBook:', response.data);
+  try {
+    axios.post('http://localhost:8080/api/books', book).then(response => {
       dispatch(addBookSuccess(response.data));
-    })
-    .catch(error => dispatch(addBookError(api.formatError(error))));
+    });
+  } catch (error) {
+    dispatch(addBookError(api.formatError(error)));
+  }
 };
 
 const removeBook = id => async dispatch => {
   dispatch(removeBookRequest());
+  console.log('operations id:', id);
   try {
-    const data = await api.deleteOneBook(id);
-    dispatch(removeBookSuccess(data));
+    axios
+      .delete(`http://localhost:8080/api/books/${id}`)
+      .then(() => dispatch(removeBookSuccess(id)));
   } catch (error) {
     dispatch(removeBookError(api.formatError(error)));
   }
@@ -63,7 +56,3 @@ const booksOperations = {
 };
 
 export default booksOperations;
-
-// axios.delete(`http://localhost:8080/api/books/:{id}`)
-//   .then(() => dispatch(fetchBooksSuccess())})
-//   .catch(error => dispatch(fetchBooksError(api.formatError(error))));

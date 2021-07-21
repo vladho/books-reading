@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import booksSelectors from '../../../redux/books/booksSelectors';
+import booksOperations from '../../../redux/books/booksOperations';
 
 import styles from './LibraryList.module.scss';
 import bookUnRead from '../../../assets/icons/bookUnRead.svg';
 import bookRead from '../../../assets/icons/bookRead.svg';
 import bookReadDone from '../../../assets/icons/bookReadDone.svg';
 
-function LibraryList({ books }) {
-  console.log('LibraryList book:', books);
+function LibraryList({ books, onRemove }) {
   return (
     <div className={styles.container}>
       {books.some(book => book.status === 'done') && (
@@ -89,6 +89,9 @@ function LibraryList({ books }) {
                     <p className={styles.bookListItemAuthor}>{author}</p>
                     <p className={styles.bookListItemYear}>{year}</p>
                     <p className={styles.bookListItemPage}>{totalPages}</p>
+                    {/* <button type="submit" onClick={onRemove}>
+                      X
+                    </button> */}
                   </li>
                 ),
             )}
@@ -108,4 +111,8 @@ const mapStateToProps = state => ({
   books: booksSelectors.getAllBooks(state),
 });
 
-export default connect(mapStateToProps)(LibraryList);
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onRemove: () => dispatch(booksOperations.removeBook(ownProps._id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LibraryList);
