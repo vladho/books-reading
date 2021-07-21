@@ -91,25 +91,26 @@ const TrainingWrapper = () => {
       <Desktop>
         {isTrainingStarted ? (
           <>
-            <div className={styles.leftPart}>
+            <div className={styles.rightPart}>
               <Timer />
               <TrainingList />
               <ChartModal />
             </div>
-            <div className={styles.rightPart}>
+
+            <div className={styles.leftPart}>
               <MyGoals books={books.length} days={days} />
               <Results />
             </div>
           </>
         ) : (
           <>
-            <div className={styles.trainingInfo}>
+            <div>
               <TrainingForm />
               <TrainingList />
               {books.length && days >= 0 && <StartTrainingBtn />}
               <ChartModal />
             </div>
-            <div className={styles.resultsInfo}>
+            <div>
               <MyGoals books={books.length} days={days} />
             </div>
           </>

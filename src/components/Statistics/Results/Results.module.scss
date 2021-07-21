@@ -1,6 +1,3 @@
-// * {
-//   outline: 1px solid tomato;
-// }
 @import 'styles/shared.scss';
 
 .resultsMainBox {
@@ -18,6 +15,7 @@
 
   @include for-size(desktop) {
     width: 275px;
+    margin-top: 0;
     padding: 25px 16px 17px 19px;
   }
 }

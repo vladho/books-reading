@@ -20,6 +20,7 @@
 .goBack {
   margin-bottom: 25px;
   color: $accent;
+  cursor: pointer;
 
   @include for-size(tablet) {
     display: none;
