@@ -5,9 +5,7 @@ import { useSelector } from 'react-redux';
 import { trainingSelectors } from '../../../../redux/training';
 
 const TimerLogic = () => {
-  //   const year = new Date(new Date().getFullYear() + 1, 0, 1).getTime();
-
-  const endDate = useSelector(trainingSelectors.selectEndDate);
+  const endDate = useSelector(trainingSelectors.getEndDate);
 
   const goal = new Date(endDate).getTime();
 
