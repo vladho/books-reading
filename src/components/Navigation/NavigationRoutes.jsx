@@ -4,9 +4,11 @@ import { mainRoutes } from '../../routes/mianRoutes';
 import PrivateRoute from '../Routes/PrivateRoute';
 import PublicRoute from '../Routes/PublicRoute';
 import Spinner from '../Spinner/Spinner';
+import { useSelector } from 'react-redux';
+import { authSls } from '../../redux/auth';
 
 const NavigationRoutes = () => {
-  const isAuth = true;
+  const isAuth = useSelector(authSls.getIsAuth);
 
   return (
     <Suspense fallback={<Spinner />}>
