@@ -64,6 +64,17 @@ const user = createReducer(initUser, {
   [logoutSuccess]: () => initUser,
   [logoutError]: resetUserWhenInvalidSession,
 
+  // [refreshSuccess]: (_, { payload }) => {
+  //   const { email, id, name } = payload.user;
+
+  //   return { email, id, name };
+  // },
+  // [refreshError]: (_, { payload }) => {
+  //   const { email, id, name } = payload.user;
+
+  //   return { email, id, name };
+  // },
+
   [refreshError]: () => initUser,
 });
 
