@@ -10,6 +10,7 @@ import bookRead from '../../../assets/icons/bookRead.svg';
 import bookReadDone from '../../../assets/icons/bookReadDone.svg';
 
 function LibraryList({ books }) {
+  console.log('LibraryList book:', books);
   return (
     <div className={styles.container}>
       {books.some(book => book.status === 'done') && (
