@@ -3,7 +3,6 @@
 .modalBox {
   background-color: $white;
   box-shadow: $boxShadowChart;
-  margin-bottom: 30px;
 
   @include for-size(mobile-only) {
     // width: 100%;
@@ -20,6 +19,5 @@
 
   @include for-size(desktop) {
     width: 886px;
-    margin-bottom: 0;
   }
 }

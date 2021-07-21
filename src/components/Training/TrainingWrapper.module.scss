@@ -1,6 +1,7 @@
 @import 'styles/shared.scss';
 
 .wrapper {
+  position: relative;
   padding-top: 30px;
   padding-bottom: 50px;
 
@@ -17,13 +18,13 @@
   }
 }
 
-.leftPart {
+.trainingInfo {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.rightPart {
+.resultsInfo {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

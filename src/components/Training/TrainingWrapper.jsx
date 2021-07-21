@@ -37,7 +37,7 @@ const TrainingWrapper = () => {
 
   const books = useSelector(trainingSelectors.getSelectBooks);
   // const isTrainingStarted = useSelector(trainingSelectors.getIsStarted)
-  const isTrainingStarted = false;
+  const isTrainingStarted = true;
 
   return (
     <div className={styles.wrapper}>
@@ -103,13 +103,13 @@ const TrainingWrapper = () => {
           </>
         ) : (
           <>
-            <div className={styles.leftPart}>
+            <div className={styles.trainingInfo}>
               <TrainingForm />
               <TrainingList />
               {books.length && days >= 0 && <StartTrainingBtn />}
               <ChartModal />
             </div>
-            <div className={styles.rightPart}>
+            <div className={styles.resultsInfo}>
               <MyGoals books={books.length} days={days} />
             </div>
           </>
