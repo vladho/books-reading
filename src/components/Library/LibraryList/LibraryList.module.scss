@@ -24,12 +24,16 @@
   outline: none;
   display: flex;
   background-color: white;
-  outline: 2px solid red;
+  fill: #a6abb9;
 }
 
-.trash {
-  border: none;
+.btnTrash:hover {
   outline: none;
+  fill: $accent;
+}
+.trash {
+  // border: none;
+  // outline: none;
   display: flex;
 }
 
