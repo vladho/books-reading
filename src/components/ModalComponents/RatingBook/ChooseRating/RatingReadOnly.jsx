@@ -1,24 +1,19 @@
 import styles from './ChooseRating.module.scss';
 import ReactStars from 'react-rating-stars-component';
 
-const ChooseRating = ({ rating = 0, setRating }) => {
+const RatingReadOnly = ({ rating = 0 }) => {
   return (
     <div className={styles.mainBox}>
       <ReactStars
         size="20"
-        count="5"
         value={rating}
-        color="#6D7A8D"
+        edit={false}
         activeColor="#FF6B08"
-        a11y="true"
         emptyIcon={<span className={styles.empty}></span>}
         filledIcon={<span className={styles.filled}></span>}
-        onChange={newValue => {
-          setRating(newValue);
-        }}
       />
     </div>
   );
 };
 
-export default ChooseRating;
+export default RatingReadOnly;
