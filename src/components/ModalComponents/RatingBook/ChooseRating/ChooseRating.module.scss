@@ -1,0 +1,21 @@
+.mainBox {
+  width: 85px;
+}
+
+.empty {
+  display: block;
+  content: '';
+  width: 17px;
+  height: 17px;
+  background-image: url('../../../../assets//icons//starEmpty.svg');
+  background-repeat: no-repeat;
+}
+
+.filled {
+  display: block;
+  content: '';
+  width: 17px;
+  height: 17px;
+  background-image: url('../../../../assets//icons//starFull.svg');
+  background-repeat: no-repeat;
+}
