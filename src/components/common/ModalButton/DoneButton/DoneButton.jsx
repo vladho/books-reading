@@ -4,7 +4,9 @@ import styles from './DoneButton.module.scss';
 
 const DoneButton = ({ children, styleBtn }) => {
   return (
-    <button className={classNames(styles.btn, styleBtn)}>{children}</button>
+    <button type="submit" className={classNames(styles.btn, styleBtn)}>
+      {children}
+    </button>
   );
 };
 
