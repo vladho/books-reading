@@ -13,17 +13,22 @@
     margin-right: 30px;
   }
 
-  @include for-size(tablet) {
+  @include for-size(desktop) {
     margin-right: 68px;
+  }
+
+  @include for-size(mobile-only) {
+    margin-bottom: 49px;
   }
 }
 
 .box::before {
-  content: 'До закінчення року залишилось';
+  content: 'Year countdown';
 
   position: absolute;
   top: -38px;
-  left: 25px;
+  left: 50%;
+  transform: translateX(-50%);
 
   line-height: 2.71;
   font-size: 14px;

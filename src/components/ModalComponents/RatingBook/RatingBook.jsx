@@ -3,7 +3,9 @@ import DoneButton from '../../common/ModalButton/DoneButton/DoneButton';
 import ChooseRating from './ChooseRating/ChooseRating';
 import styles from './RatingBook.module.scss';
 
-const RatingBook = () => {
+const RatingBook = ({ closeModal }) => {
+  console.log(closeModal);
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Choose rating of the book</h2>

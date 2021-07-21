@@ -3,9 +3,9 @@
 .wrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 34px;
+  margin-bottom: 44px;
 
-  @include for-size(desktop) {
-    margin-bottom: 44px;
+  @include for-size(mobile-only) {
+    flex-wrap: wrap;
   }
 }
