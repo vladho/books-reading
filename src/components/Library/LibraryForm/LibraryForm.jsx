@@ -62,7 +62,7 @@ class LibraryForm extends Component {
       <>
         <form onSubmit={this.handleSubmit} className={styles.form}>
           <label className={styles.labelName}>
-            <p className={styles.labelNameTitle}>Назва книги</p>
+            <p className={styles.labelNameTitle}>Book title</p>
             <input
               type="text"
               placeholder="..."
@@ -73,7 +73,7 @@ class LibraryForm extends Component {
             />
           </label>
           <label className={styles.labelAuthor}>
-            <p className={styles.labelAuthorTitle}>Автор книги</p>
+            <p className={styles.labelAuthorTitle}>Author</p>
             <input
               type="text"
               placeholder="..."
@@ -84,7 +84,7 @@ class LibraryForm extends Component {
             />
           </label>
           <label className={styles.labelYear}>
-            <p className={styles.labelYearTitle}>Рік випуску</p>
+            <p className={styles.labelYearTitle}>Publication date</p>
             <input
               type="text"
               placeholder="..."
@@ -95,7 +95,7 @@ class LibraryForm extends Component {
             />
           </label>
           <label className={styles.labelPage}>
-            <p className={styles.labelPageTitle}>Кількість сторінок</p>
+            <p className={styles.labelPageTitle}>Amount of pages</p>
             <input
               type="text"
               placeholder="..."
