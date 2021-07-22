@@ -93,6 +93,21 @@
   margin-left: 15px;
 }
 
+.iconDone {
+  composes: icons;
+  fill: #6d7a8d;
+}
+
+.iconRead {
+  composes: icons;
+  fill: #ff6b08;
+}
+
+.iconPlan {
+  composes: icons;
+  fill: #a6abb9;
+}
+
 .bookListItemNames {
   composes: categoryListTitleItems;
   color: $primaryText;

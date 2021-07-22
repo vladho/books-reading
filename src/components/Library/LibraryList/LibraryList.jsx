@@ -6,9 +6,7 @@ import booksSelectors from '../../../redux/books/booksSelectors';
 import booksOperations from '../../../redux/books/booksOperations';
 
 import styles from './LibraryList.module.scss';
-import bookUnRead from '../../../assets/icons/bookUnRead.svg';
-import bookRead from '../../../assets/icons/bookRead.svg';
-import bookReadDone from '../../../assets/icons/bookReadDone.svg';
+import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
 
 function LibraryList({ books, onRemove }) {
@@ -29,7 +27,7 @@ function LibraryList({ books, onRemove }) {
               ({ _id, title, author, year, totalPages, status }) =>
                 status === 'done' && (
                   <li key={_id} className={styles.bookListItem}>
-                    <ReactSVG src={bookReadDone} className={styles.icons} />
+                    <ReactSVG src={book} className={styles.iconDone} />
                     <p className={styles.bookListItemNameDone}>{title}</p>
                     <p className={styles.bookListItemAuthorDone}>{author}</p>
                     <p className={styles.bookListItemYearDone}>{year}</p>
@@ -58,7 +56,7 @@ function LibraryList({ books, onRemove }) {
               ({ _id, title, author, year, totalPages, status }) =>
                 status === 'read' && (
                   <li key={_id} className={styles.bookListItem}>
-                    <ReactSVG src={bookRead} className={styles.icons} />
+                    <ReactSVG src={book} className={styles.iconRead} />
                     <p className={styles.bookListItemName}>{title}</p>
                     <p className={styles.bookListItemAuthor}>{author}</p>
                     <p className={styles.bookListItemYear}>{year}</p>
@@ -83,7 +81,7 @@ function LibraryList({ books, onRemove }) {
               ({ _id, title, author, year, totalPages, status }) =>
                 status === 'plan' && (
                   <li key={_id} className={styles.bookListItem}>
-                    <ReactSVG src={bookUnRead} className={styles.icons} />
+                    <ReactSVG src={book} className={styles.iconPlan} />
                     <p className={styles.bookListItemName}>{title}</p>
                     <p className={styles.bookListItemAuthor}>{author}</p>
                     <p className={styles.bookListItemYear}>{year}</p>
