@@ -11,7 +11,7 @@ export default function AppBar() {
   const onLogout = () => dispatch(authOps.logOut());
 
   const userName = useSelector(authSls.getUserName);
-  const userFirstLetter = userName.substring(0, 1);
+  const userFirstLetter = userName?.substring(0, 1);
 
   return (
     <div className={css.appBar}>
