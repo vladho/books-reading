@@ -107,14 +107,27 @@
     height: max-content;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
     margin-top: 10px;
   }
+}
+
+.bookListItemMob {
+  display: flex;
+  width: 46px;
+  height: 38px;
+  color: #898f9f;
+  margin-right: 25px;
 }
 
 .icons {
   margin: auto 15px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     margin: auto 20px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    display: none;
   }
 }
 
@@ -142,6 +155,13 @@
     // outline: solid;
     margin: 0px;
   }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 3.17;
+    text-align: start;
+    align-items: center;
+  }
 }
 
 .bookListItemNameDone {
@@ -153,11 +173,9 @@
     margin-right: 21px;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
-    width: 180px;
-    height: max-content;
-    font-weight: 500;
-    font-size: 12px;
     line-height: 1.25;
+    margin: auto;
+    width: fit-content;
   }
 }
 
@@ -168,14 +186,9 @@
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     margin-right: 29px;
   }
-}
-
-.bookListItemAuthorDoneMob {
-  @media screen and (min-width: 768px) {
-    display: none;
-  }
   @media screen and (min-width: 320px) and (max-width: 767px) {
-    display: flex;
+    margin: auto;
+    width: fit-content;
   }
 }
 
@@ -186,6 +199,10 @@
   justify-content: flex-end;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     margin-right: 45px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin: auto;
+    width: fit-content;
   }
 }
 
@@ -198,6 +215,10 @@
     width: 28px;
     margin-right: 16px;
   }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin: auto;
+    width: fit-content;
+  }
 }
 
 .stars {
@@ -206,6 +227,10 @@
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 97px;
     margin-right: 18px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin: auto;
+    width: fit-content;
   }
 }
 
@@ -234,6 +259,7 @@
     margin-bottom: 30px;
   }
 }
+
 .buttonRezume:hover {
   outline: none;
   opacity: 1;

@@ -28,14 +28,25 @@ function LibraryList({ books, onRemove }) {
                 status === 'done' && (
                   <li key={_id} className={styles.bookListItem}>
                     <ReactSVG src={book} className={styles.iconDone} />
-                    <p className={styles.bookListItemNameDone}>{title}</p>
-                    <span className={styles.bookListItemAuthorDoneMob}>
-                      Author:
-                    </span>
-                    <p className={styles.bookListItemAuthorDone}>{author}</p>
-                    <p className={styles.bookListItemYearDone}>{year}</p>
-                    <p className={styles.bookListItemPageDone}>{totalPages}</p>
-                    <div className={styles.stars}></div>
+                    <p className={styles.bookListItemNameDone}>
+                      <span>Book title:</span>
+                      {title}
+                    </p>
+                    <p className={styles.bookListItemAuthorDone}>
+                      <span>Author:</span>
+                      {author}
+                    </p>
+                    <p className={styles.bookListItemYearDone}>
+                      <span>Year:</span>
+                      {year}
+                    </p>
+                    <p className={styles.bookListItemPageDone}>
+                      <span>Pages:</span>
+                      {totalPages}
+                    </p>
+                    <div className={styles.stars}>
+                      <span>Rating:</span>
+                    </div>
                     <button type="button" className={styles.buttonRezume}>
                       Resume
                     </button>
