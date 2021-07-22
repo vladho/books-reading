@@ -214,8 +214,8 @@
 
 .bookListItemAuthorDone {
   composes: bookListItemNames;
-  width: 87px;
-  margin-right: 130px;
+  width: 177px;
+  margin-right: 40px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     margin-right: 29px;
   }
@@ -357,8 +357,8 @@
 
 .bookListItemAuthor {
   composes: bookListItemNames;
-  width: 139px;
-  margin-right: 208px;
+  width: 307px;
+  margin-right: 40px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 143px;
     margin-right: 40px;
@@ -477,6 +477,8 @@
   outline: none;
   fill: $accent;
 }
+
 .trash {
   display: flex;
+  margin: auto;
 }

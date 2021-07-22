@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Formik, Form, Field, ErrorMessage } from 'formik';
-// import * as Yup from 'yup';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 import LibraryBookEditor from '../LibraryBookEditor/LibraryBookEditor';
 import booksOperations from '../../../redux/books/booksOperations';
@@ -107,91 +107,6 @@ class LibraryForm extends Component {
           </label>
           <LibraryBookEditor onAddBook={this.handleSubmit} />
         </form>
-
-        {/* <Formik
-          initialValues={{
-            name: '',
-            author: '',
-            year: '',
-            pages: '',
-          }}
-          validateOnBlur
-          validationSchema={schema}
-          onSubmit={(values, actions) => {
-            this.handleSubmit({ ...values });
-            actions.resetForm({ ...initialState });
-          }}
-          // onSubmit={(values, actions) => {
-          //   onHandlerSubmit({ ...values, bloodType: Number(values.bloodType) });
-
-          //   actions.resetForm({ ...state });
-          // }}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            isValid,
-            handleSubmit,
-            dirty,
-          }) => (
-            <Form className={styles.form}>
-              <label className={styles.labelName}>
-                <p className={styles.labelNameTitle}>Назва книги</p>
-                <Field
-                  type="text"
-                  placeholder="..."
-                  name="name"
-                  value={values.name}
-                  // onChange={this.handleChange}
-                  className={styles.labelNameInput}
-                />
-                <ErrorMessage
-                  className="styles.FormError"
-                  component="div"
-                  name="name"
-                />
-              </label>
-              <label className={styles.labelAuthor}>
-                <p className={styles.labelAuthorTitle}>Автор книги</p>
-                <input
-                  type="text"
-                  placeholder="..."
-                  name="author"
-                  value={author}
-                  onChange={this.handleChange}
-                  className={styles.labelAuthorInput}
-                />
-              </label>
-              <label className={styles.labelYear}>
-                <p className={styles.labelYearTitle}>Рік випуску</p>
-                <input
-                  type="text"
-                  placeholder="..."
-                  name="year"
-                  value={year}
-                  onChange={this.handleChange}
-                  className={styles.labelYearInput}
-                />
-              </label>
-              <label className={styles.labelPage}>
-                <p className={styles.labelPageTitle}>Кількість сторінок</p>
-                <input
-                  type="text"
-                  placeholder="..."
-                  name="pages"
-                  value={pages}
-                  onChange={this.handleChange}
-                  className={styles.labelPageInput}
-                />
-              </label>
-              <LibraryBookEditor onAddBook={this.handleSubmit} />
-            </Form>
-          )}
-        </Formik>
-       */}
       </>
     );
   }
