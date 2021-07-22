@@ -37,7 +37,7 @@ const TrainingWrapper = () => {
 
   const books = useSelector(trainingSelectors.getSelectBooks);
   // const isTrainingStarted = useSelector(trainingSelectors.getIsStarted)
-  const isTrainingStarted = true;
+  const isTrainingStarted = false;
 
   return (
     <div className={styles.wrapper}>

@@ -20,12 +20,13 @@ const TrainingForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      start: '',
-      end: '',
+      start: start ? start : '',
+      end: end ? end : '',
       book: '',
     },
     validationSchema: trainingFormSchema,
     onSubmit: values => {
+      console.log(values);
       if (selectedBooks.some(book => book._id === values.book._id)) {
         return;
       }
@@ -47,7 +48,6 @@ const TrainingForm = () => {
   };
 
   const handleBook = value => {
-    console.log(value);
     formik.setFieldValue('book', value);
   };
 
@@ -72,7 +72,7 @@ const TrainingForm = () => {
         </div>
         <div className={styles.datePickerWrapper}>
           <DatePickerInput
-            value={formik.values.start}
+            value={formik.values.end}
             placeholderText="Finish"
             onChange={handleEndDate}
             pickedDate={end ? new Date(end) : ''}
