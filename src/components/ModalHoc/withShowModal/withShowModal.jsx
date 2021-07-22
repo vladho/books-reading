@@ -5,9 +5,7 @@ import NestingModal from '../NestingModal/NestingModal';
 // import SidebarModal from '../sidebarModal/SidebarModal';
 
 const withShowModal = WrappedComponent => props => {
-  // { addOperation, data, closeBtn, saveBtn })
   const { children: Component, ...rest } = props;
-  console.log(Component);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -46,17 +44,6 @@ const withShowModal = WrappedComponent => props => {
           toogleModal={toogleModal}
         />
       )}
-      {/* 
-      <NestingModal
-        data={data}
-        showModal={showModal}
-        setShowModal={setShowModal}
-        addOperation={addOperation}
-        closeBtn={closeBtn}
-        saveBtn={saveBtn}
-      >
-        {children}
-      </NestingModal> */}
     </>
   );
 };
