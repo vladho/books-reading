@@ -29,6 +29,9 @@ function LibraryList({ books, onRemove }) {
                   <li key={_id} className={styles.bookListItem}>
                     <ReactSVG src={book} className={styles.iconDone} />
                     <p className={styles.bookListItemNameDone}>{title}</p>
+                    <span className={styles.bookListItemAuthorDoneMob}>
+                      Author:
+                    </span>
                     <p className={styles.bookListItemAuthorDone}>{author}</p>
                     <p className={styles.bookListItemYearDone}>{year}</p>
                     <p className={styles.bookListItemPageDone}>{totalPages}</p>
