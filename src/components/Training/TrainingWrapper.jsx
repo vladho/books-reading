@@ -37,7 +37,7 @@ const TrainingWrapper = () => {
 
   const books = useSelector(trainingSelectors.getSelectBooks);
   // const isTrainingStarted = useSelector(trainingSelectors.getIsStarted)
-  const isTrainingStarted = true;
+  const isTrainingStarted = false;
 
   return (
     <div className={styles.wrapper}>
@@ -54,7 +54,7 @@ const TrainingWrapper = () => {
           <>
             <MyGoals books={books.length} days={days} />
             <TrainingList />
-            {books.length && days >= 0 && <StartTrainingBtn />}
+            {!!books.length && days >= 0 && <StartTrainingBtn />}
             <ChartModal />
             <CircuitButton openModal={openModal} />
             <TrainingModal
@@ -72,7 +72,7 @@ const TrainingWrapper = () => {
           <>
             <Timer />
             <MyGoals books={books.length} days={days} />
-            <TrainingForm />
+            {/* <TrainingForm /> */}
             <TrainingList />
             <ChartModal />
             <Results />
@@ -82,7 +82,7 @@ const TrainingWrapper = () => {
             <MyGoals books={books.length} days={days} />
             <TrainingForm />
             <TrainingList />
-            {books.length && days >= 0 && <StartTrainingBtn />}
+            {!!books.length && days >= 0 && <StartTrainingBtn />}
             <ChartModal />
           </>
         )}
@@ -92,8 +92,10 @@ const TrainingWrapper = () => {
         {isTrainingStarted ? (
           <>
             <div className={styles.rightPart}>
-              <Timer />
-              <TrainingList />
+              <div>
+                <Timer />
+                <TrainingList />
+              </div>
               <ChartModal />
             </div>
 
@@ -104,13 +106,15 @@ const TrainingWrapper = () => {
           </>
         ) : (
           <>
-            <div>
-              <TrainingForm />
-              <TrainingList />
-              {books.length && days >= 0 && <StartTrainingBtn />}
+            <div className={styles.rightPart}>
+              <div>
+                <TrainingForm />
+                <TrainingList />
+              </div>
+              {!!books.length && days >= 0 && <StartTrainingBtn />}
               <ChartModal />
             </div>
-            <div>
+            <div className={styles.leftPart}>
               <MyGoals books={books.length} days={days} />
             </div>
           </>

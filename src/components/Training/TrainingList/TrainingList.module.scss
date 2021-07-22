@@ -64,6 +64,10 @@
     padding-bottom: 12px;
   }
 
+  @include for-size(desktop) {
+    max-height: 173px; // comment zavalniuk
+  }
+
   // 📌 Скроллбар Chrome
 
   &::-webkit-scrollbar {
