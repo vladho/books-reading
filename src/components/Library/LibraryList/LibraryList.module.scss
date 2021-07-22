@@ -6,7 +6,6 @@
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 678px;
     margin-top: 40px;
-    background-color: orchid;
   }
 }
 
@@ -30,6 +29,11 @@
   line-height: 2.71;
   color: $secondaryText;
   height: 38px;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    line-height: 1.21;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .categoryListTitleItemNameDone {
@@ -90,7 +94,10 @@
 }
 
 .icons {
-  margin-left: 15px;
+  margin: auto 15px;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    margin: auto 20px;
+  }
 }
 
 .iconDone {
@@ -100,12 +107,12 @@
 
 .iconRead {
   composes: icons;
-  fill: #ff6b08;
+  fill: $accent;
 }
 
 .iconPlan {
   composes: icons;
-  fill: #a6abb9;
+  fill: $inputTextColor;
 }
 
 .bookListItemNames {
@@ -113,12 +120,15 @@
   color: $primaryText;
   display: flex;
   align-items: center;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    // outline: solid;
+    margin: 0px;
+  }
 }
 
 .bookListItemNameDone {
   composes: bookListItemNames;
   width: 260px;
-  margin-left: 15px;
   margin-right: 41px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 135px;
@@ -134,23 +144,25 @@
     margin-right: 29px;
   }
 }
+
 .bookListItemYearDone {
   composes: bookListItemNames;
   width: 40px;
   margin-right: 68px;
   justify-content: flex-end;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-right: 52px;
+    margin-right: 45px;
   }
 }
+
 .bookListItemPageDone {
   composes: bookListItemNames;
   width: 40px;
   margin-right: 110px;
   justify-content: flex-end;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-right: 21px;
-    width: min-content;
+    width: 28px;
+    margin-right: 16px;
   }
 }
 
@@ -176,6 +188,7 @@
   opacity: 0.8;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 80px;
+    line-height: 1.21;
   }
 }
 .buttonRezume:hover {
@@ -185,54 +198,55 @@
 
 .categoryListTitleItemName {
   composes: categoryListTitleItems;
-  width: 92px;
-  margin-right: 534px;
+  width: 69px;
+  margin-right: 557px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-right: 252px;
+    margin-right: 275px;
   }
 }
 
 .categoryListTitleItemAuthor {
   composes: categoryListTitleItems;
-  width: 45px;
-  margin-right: 311px;
+  width: 50px;
+  margin-right: 298px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-right: 146px;
+    margin-right: 133px;
   }
 }
 
 .categoryListTitleItemYear {
   composes: categoryListTitleItems;
-  width: 23px;
-  margin-right: 73px;
+  width: 31px;
+  margin-right: 68px;
   justify-content: flex-end;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-right: 55px;
+    margin-right: 50px;
   }
 }
 
 .categoryListTitleItemPage {
   composes: categoryListTitleItems;
-  width: 39px;
+  width: 44px;
   justify-content: flex-end;
 }
 
 .bookListItemName {
   composes: bookListItemNames;
   width: 430px;
-  margin-left: 15px;
   margin-right: 136px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-right: 56px;
-    width: 228px;
+    width: 244px;
+    margin-right: 40px;
   }
 }
+
 .bookListItemAuthor {
   composes: bookListItemNames;
   width: 139px;
   margin-right: 208px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-right: 43px;
+    width: 143px;
+    margin-right: 40px;
   }
 }
 
@@ -242,13 +256,13 @@
   margin-right: 68px;
   justify-content: flex-end;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-right: 77px;
+    margin-right: 40px;
+    justify-content: flex-end;
   }
 }
 .bookListItemPage {
   composes: bookListItemNames;
   width: 40px;
-  margin-right: 40px;
   justify-content: flex-end;
 }
 
@@ -261,25 +275,30 @@
   width: 200px;
   height: 40px;
   background: $accent;
+  font-style: normal;
   font-weight: 600;
   font-size: 16px;
-  line-height: 2.37px;
+  line-height: 2.37;
   color: $white;
   border: none;
-  opacity: 0.8;
 }
 .button:hover {
   outline: none;
-  background-color: $accent;
-  opacity: 1;
+  background-color: $white;
+  color: $accent;
+  border: 1px solid $accent;
 }
 
 .btnTrash {
   border: none;
   outline: none;
   display: flex;
+  margin-left: 35px;
   background-color: $white;
   fill: $inputTextColor;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    margin-left: 5px;
+  }
 }
 
 .btnTrash:hover {
