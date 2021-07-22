@@ -26,7 +26,6 @@ const TrainingForm = () => {
     },
     validationSchema: trainingFormSchema,
     onSubmit: values => {
-      console.log(values);
       if (selectedBooks.some(book => book._id === values.book._id)) {
         return;
       }
