@@ -28,12 +28,12 @@ function LibraryList({ books, onRemove }) {
                 status === 'done' && (
                   <li key={_id} className={styles.bookListItem}>
                     <ReactSVG src={book} className={styles.iconDone} />
-                    <p className={styles.bookListItemNameDone}>
+                    <div className={styles.bookListItemNameDone}>
                       <span>
                         <ReactSVG src={book} className={styles.iconDoneMob} />
                       </span>
                       {title}
-                    </p>
+                    </div>
                     <p className={styles.bookListItemAuthorDone}>
                       <span className={styles.bookListItemMob}>Author:</span>
                       {author}
@@ -73,12 +73,12 @@ function LibraryList({ books, onRemove }) {
                 status === 'read' && (
                   <li key={_id} className={styles.bookListItem}>
                     <ReactSVG src={book} className={styles.iconRead} />
-                    <p className={styles.bookListItemName}>
+                    <div className={styles.bookListItemName}>
                       <span>
                         <ReactSVG src={book} className={styles.iconReadMob} />
                       </span>
                       {title}
-                    </p>
+                    </div>
                     <p className={styles.bookListItemAuthor}>
                       <span className={styles.bookListItemMob}>Author:</span>
                       {author}
@@ -112,12 +112,12 @@ function LibraryList({ books, onRemove }) {
                 status === 'plan' && (
                   <li key={_id} className={styles.bookListItem}>
                     <ReactSVG src={book} className={styles.iconPlan} />
-                    <p className={styles.bookListItemName}>
+                    <div className={styles.bookListItemName}>
                       <span>
                         <ReactSVG src={book} className={styles.iconPlanMob} />
                       </span>
                       {title}
-                    </p>
+                    </div>
                     <p className={styles.bookListItemAuthor}>
                       <span className={styles.bookListItemMob}>Author:</span>
                       {author}
