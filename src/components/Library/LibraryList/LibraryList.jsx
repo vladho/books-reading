@@ -16,17 +16,13 @@ function LibraryList({ books, onRemove }) {
     <>
       {books.some(book => book.status === 'done') && (
         <div className={styles.category}>
-          <h2 className={styles.categoryTitle}>Прочитано</h2>
+          <h2 className={styles.categoryTitle}>Already read</h2>
           <div className={styles.categoryListTitle}>
-            <h3 className={styles.categoryListTitleItemNameDone}>
-              Назва книги
-            </h3>
-            <h3 className={styles.categoryListTitleItemAuthorDone}>Автор</h3>
-            <h3 className={styles.categoryListTitleItemYearDone}>Рік</h3>
-            <h3 className={styles.categoryListTitleItemPageDone}>Стор.</h3>
-            <h3 className={styles.categoryListTitleItemRateDone}>
-              Рейтинг книги
-            </h3>
+            <h3 className={styles.categoryListTitleItemNameDone}>Book title</h3>
+            <h3 className={styles.categoryListTitleItemAuthorDone}>Author</h3>
+            <h3 className={styles.categoryListTitleItemYearDone}>Year</h3>
+            <h3 className={styles.categoryListTitleItemPageDone}>Pages</h3>
+            <h3 className={styles.categoryListTitleItemRateDone}>Rating</h3>
           </div>
           <ul>
             {books.map(
@@ -40,7 +36,7 @@ function LibraryList({ books, onRemove }) {
                     <p className={styles.bookListItemPageDone}>{totalPages}</p>
                     <div className={styles.stars}></div>
                     <button type="button" className={styles.buttonRezume}>
-                      Резюме
+                      Resume
                     </button>
                   </li>
                 ),
@@ -50,12 +46,12 @@ function LibraryList({ books, onRemove }) {
       )}
       {books.some(book => book.status === 'read') && (
         <div className={styles.category}>
-          <h2 className={styles.categoryTitle}>Читаю</h2>
+          <h2 className={styles.categoryTitle}>Reading now</h2>
           <div className={styles.categoryListTitle}>
-            <h3 className={styles.categoryListTitleItemName}>Назва книги</h3>
-            <h3 className={styles.categoryListTitleItemAuthor}>Автор</h3>
-            <h3 className={styles.categoryListTitleItemYear}>Рік</h3>
-            <h3 className={styles.categoryListTitleItemPage}>Стор.</h3>
+            <h3 className={styles.categoryListTitleItemName}>Book title</h3>
+            <h3 className={styles.categoryListTitleItemAuthor}>Author</h3>
+            <h3 className={styles.categoryListTitleItemYear}>Year</h3>
+            <h3 className={styles.categoryListTitleItemPage}>Pages</h3>
           </div>
           <ul>
             {books.map(
@@ -75,12 +71,12 @@ function LibraryList({ books, onRemove }) {
       )}
       {books.some(book => book.status === 'plan') && (
         <div className={styles.category}>
-          <h2 className={styles.categoryTitle}>Маю намір прочитати</h2>
+          <h2 className={styles.categoryTitle}>Going to read</h2>
           <div className={styles.categoryListTitle}>
-            <h3 className={styles.categoryListTitleItemName}>Назва книги</h3>
-            <h3 className={styles.categoryListTitleItemAuthor}>Автор</h3>
-            <h3 className={styles.categoryListTitleItemYear}>Рік</h3>
-            <h3 className={styles.categoryListTitleItemPage}>Стор.</h3>
+            <h3 className={styles.categoryListTitleItemName}>Book title</h3>
+            <h3 className={styles.categoryListTitleItemAuthor}>Author</h3>
+            <h3 className={styles.categoryListTitleItemYear}>Year</h3>
+            <h3 className={styles.categoryListTitleItemPage}>Pages</h3>
           </div>
           <ul>
             {books.map(
@@ -105,7 +101,7 @@ function LibraryList({ books, onRemove }) {
           </ul>
           <NavLink to="/training" className={styles.link}>
             <button type="button" className={styles.button}>
-              Далі
+              Next
             </button>
           </NavLink>
         </div>
