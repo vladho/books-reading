@@ -109,16 +109,25 @@
     flex-wrap: wrap;
     flex-direction: column;
     align-content: center;
-    margin-top: 10px;
+    margin-top: 15px;
+    padding-bottom: 15px;
   }
 }
 
 .bookListItemMob {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
   display: flex;
   width: 46px;
   height: 38px;
-  color: #898f9f;
+  margin-left: 55px;
   margin-right: 25px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #898f9f;
+  align-items: center;
 }
 
 .icons {
@@ -136,13 +145,35 @@
   fill: #6d7a8d;
 }
 
+.iconDoneMob {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    display: flex;
+    fill: #6d7a8d;
+    margin-left: 20px;
+    margin-right: 15px;
+  }
+}
+
 .iconRead {
   composes: icons;
   fill: $accent;
 }
 
+.iconReadMob {
+  composes: iconDoneMob;
+  fill: $accent;
+}
+
 .iconPlan {
   composes: icons;
+  fill: $inputTextColor;
+}
+
+.iconPlanMob {
+  composes: iconDoneMob;
   fill: $inputTextColor;
 }
 
@@ -152,7 +183,6 @@
   display: flex;
   align-items: center;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    // outline: solid;
     margin: 0px;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
@@ -161,6 +191,7 @@
     line-height: 3.17;
     text-align: start;
     align-items: center;
+    padding-right: 25px;
   }
 }
 
@@ -174,8 +205,10 @@
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
     line-height: 1.25;
-    margin: auto;
-    width: fit-content;
+    margin: 0px;
+    width: 270px;
+    height: max-content;
+    padding-top: 20px;
   }
 }
 
@@ -187,8 +220,10 @@
     margin-right: 29px;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
-    margin: auto;
-    width: fit-content;
+    line-height: 1.25;
+    margin: 0px;
+    width: 270px;
+    height: max-content;
   }
 }
 
@@ -201,8 +236,9 @@
     margin-right: 45px;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
-    margin: auto;
-    width: fit-content;
+    margin: 0px;
+    width: 270px;
+    justify-content: end;
   }
 }
 
@@ -216,12 +252,14 @@
     margin-right: 16px;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
-    margin: auto;
-    width: fit-content;
+    margin: 0px;
+    width: 270px;
+    justify-content: end;
   }
 }
 
 .stars {
+  composes: bookListItemNames;
   width: 110px;
   margin-right: 50px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -229,8 +267,9 @@
     margin-right: 18px;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
-    margin: auto;
-    width: fit-content;
+    display: flex;
+    margin: 0px;
+    width: 270px;
   }
 }
 
@@ -244,7 +283,7 @@
   background: #6d7a8d;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border: none;
-  opacity: 0.8;
+
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 80px;
     line-height: 1.21;
@@ -255,14 +294,14 @@
     display: flex;
     justify-content: center;
     margin: auto;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
   }
 }
 
 .buttonRezume:hover {
   outline: none;
-  opacity: 1;
+  background-color: $accent;
 }
 
 .categoryListTitleItemName {
@@ -307,6 +346,13 @@
     width: 244px;
     margin-right: 40px;
   }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    line-height: 1.25;
+    margin: 0px;
+    width: 270px;
+    height: max-content;
+    padding-top: 20px;
+  }
 }
 
 .bookListItemAuthor {
@@ -316,6 +362,12 @@
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 143px;
     margin-right: 40px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    line-height: 1.25;
+    margin: 0px;
+    width: 270px;
+    height: max-content;
   }
 }
 
@@ -328,18 +380,56 @@
     margin-right: 40px;
     justify-content: flex-end;
   }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin: 0px;
+    width: 270px;
+    justify-content: end;
+  }
 }
+
 .bookListItemPage {
   composes: bookListItemNames;
   width: 40px;
   justify-content: flex-end;
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin: 0px;
+    width: 270px;
+    justify-content: end;
+  }
 }
 
 .link {
   display: flex;
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin: auto;
+  }
 }
 
-.button {
+.btnAddMob {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-bottom: 15px;
+    margin-left: 110px;
+    width: 52px;
+    height: 52px;
+    background: $accent;
+    border-style: none;
+    border-radius: 50%;
+    justify-content: center;
+    align-content: center;
+    color: $white;
+    font-weight: 400;
+    font-size: 31px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.btnNext {
   margin: 40px auto;
   width: 200px;
   height: 40px;
@@ -350,8 +440,17 @@
   line-height: 2.37;
   color: $white;
   border: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 171px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
 }
-.button:hover {
+.btnNext:hover {
   outline: none;
   background-color: $white;
   color: $accent;
@@ -367,6 +466,10 @@
   fill: $inputTextColor;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     margin-left: 5px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin: auto;
+    margin-right: 20px;
   }
 }
 
