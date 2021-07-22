@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 // import sprite from '../../../assets/icons/sprite.svg';
 // import FormButton from '../formButton/FormButton';
 import { useDispatch } from 'react-redux';
+import CancelButton from '../../common/ModalButton/CancelButton/CancelButton';
 import styles from './NestingModal.module.scss';
 
 const modalRoot = document.querySelector('#modal_root');
@@ -16,7 +17,7 @@ const NestingModal = ({
   closeBtn,
   saveBtn,
 }) => {
-  //   const modalRef = useRef();
+  const modalRef = useRef();
 
   //   const dispatch = useDispatch();
 
@@ -40,20 +41,25 @@ const NestingModal = ({
 
   const closeModal = () => {
     setShowModal(false);
+    console.log('cancel button');
   };
 
   const onSave = e => {
     e.preventDefault();
     closeModal();
+    console.log('save btn');
 
     // dispatch(addOperation(data));
   };
+
+  // console.log(closeBtn);
+  // console.log(saveBtn);
 
   return createPortal(
     showModal && (
       <div
         className={styles.modal}
-        // ref={modalRef}
+        ref={modalRef}
         onClick={handleBackdropClick}
       >
         <div className={styles.container}>
@@ -64,7 +70,19 @@ const NestingModal = ({
             </form>
           )}
           {saveBtn && <form onSubmit={onSave}>{children}</form>} */}
-          <form onSubmit={onSave}>{children}</form>
+          <form onSubmit={onSave}>
+            {/* {closeBtn && (
+              <button type="button" onClick={closeModal}>
+                Cancel
+              </button>
+            )} */}
+            {/* {closeBtn && (
+              <CancelButton type="button" closeModal={closeModal}>
+                Cancel
+              </CancelButton>
+            )} */}
+            {children}
+          </form>
         </div>
       </div>
     ),

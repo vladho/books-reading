@@ -85,20 +85,21 @@
 
 .user {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+
   @include for-size(tablet) {
     justify-content: center;
     order: -1;
-    flex-grow: 1;
+    width: 478px;
+  }
+  @include for-size(desktop) {
+    width: 1000px;
   }
 }
 
 .userIcon {
   display: flex;
-
   justify-content: center;
-
   align-items: center;
   width: 33px;
   height: 33px;
@@ -156,26 +157,3 @@
     line-height: 2.71;
   }
 }
-
-// .navUserMenu {
-//     display: flex;
-// }
-
-// .navList {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-// }
-// .navItem {
-//     margin-right: 7px;
-// }
-
-// .navLink {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     width: 33px;
-//     height: 33px;
-//     border-radius: 50%;
-//     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-// }

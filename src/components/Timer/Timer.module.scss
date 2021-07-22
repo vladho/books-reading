@@ -1,5 +1,11 @@
+@import 'styles/shared.scss';
+
 .wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 44px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 44px;
+
+  @include for-size(mobile-only) {
+    flex-wrap: wrap;
+  }
 }

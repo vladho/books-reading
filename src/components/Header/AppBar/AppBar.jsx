@@ -10,7 +10,9 @@ export default function AppBar() {
   const dispatch = useDispatch();
   const onLogout = () => dispatch(authOps.logOut());
 
-  const email = useSelector(authSls.getUserEmail);
+  const userName = useSelector(authSls.getUserName);
+  const userFirstLetter = userName.substring(0, 1);
+
   return (
     <div className={css.appBar}>
       <div className={css.menuBlock}>
@@ -27,9 +29,8 @@ export default function AppBar() {
       </div>
 
       <div className={css.user}>
-        <p className={css.userIcon}>R</p>
-        <p className={css.userName}>Reanu Keeves</p>
-        {/* <p className={css.userName}>{email}</p> */}
+        <p className={css.userIcon}>{userFirstLetter}</p>
+        <p className={css.userName}>{userName}</p>
       </div>
 
       <button type="button" className={css.logoutButton} onClick={onLogout}>
