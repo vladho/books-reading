@@ -2,11 +2,12 @@ import classNames from 'classnames';
 import React from 'react';
 import styles from './CancelButton.module.scss';
 
-const CancelButton = ({ closeModal, children, styleBtn }) => {
+const CancelButton = ({ onCbClick, children, styleBtn }) => {
+  console.log('close modal');
   return (
     <button
       type="button"
-      onClick={closeModal}
+      onClick={onCbClick}
       className={classNames(styles.btn, styleBtn)}
     >
       {children}

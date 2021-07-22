@@ -5,13 +5,16 @@ import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 import CancelButton from '../../common/ModalButton/CancelButton/CancelButton';
 import styles from './NestingModal.module.scss';
+import withShowModal from '../withShowModal/withShowModal';
 
 const modalRoot = document.querySelector('#modal_root');
 
 const NestingModal = ({
+  component: Component,
   children,
   showModal,
-  setShowModal,
+  toogleModal,
+  handleBackdropClick,
   addOperation,
   data,
   closeBtn,
@@ -21,73 +24,31 @@ const NestingModal = ({
 
   //   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const handleEsc = e => {
-      if (e.code === 'Escape') {
-        setShowModal(false);
-      }
-    };
-    window.addEventListener('keydown', handleEsc);
-    return () => {
-      window.removeEventListener('keydown', handleEsc);
-    };
-  }, [setShowModal]);
-
-  const handleBackdropClick = e => {
-    if (e.target === e.currentTarget) {
-      setShowModal(false);
-    }
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-    console.log('cancel button');
-  };
+  // const closeModal = () => {
+  //   toogleModal();
+  //   console.log('cancel button');
+  // };
 
   const onSave = e => {
     e.preventDefault();
-    closeModal();
+    // closeModal();
+    toogleModal();
     console.log('save btn');
 
     // dispatch(addOperation(data));
   };
 
-  // console.log(closeBtn);
-  // console.log(saveBtn);
-
   return createPortal(
-    showModal && (
-      <div
-        className={styles.modal}
-        ref={modalRef}
-        onClick={handleBackdropClick}
-      >
-        <div className={styles.container}>
-          {/* {closeBtn && <form onClick={closeModal}>{children}</form>} */}
-          {/* {closeBtn && (
-            <form onSubmit={onSave} onClick={closeModal}>
-              {children}
-            </form>
-          )}
-          {saveBtn && <form onSubmit={onSave}>{children}</form>} */}
-          <form onSubmit={onSave}>
-            {/* {closeBtn && (
-              <button type="button" onClick={closeModal}>
-                Cancel
-              </button>
-            )} */}
-            {/* {closeBtn && (
-              <CancelButton type="button" closeModal={closeModal}>
-                Cancel
-              </CancelButton>
-            )} */}
-            {children}
-          </form>
-        </div>
+    <div className={styles.modal} ref={modalRef} onClick={handleBackdropClick}>
+      <div className={styles.container}>
+        <form onSubmit={onSave}>
+          {/* {children} */}
+          <Component />
+        </form>
       </div>
-    ),
+    </div>,
     modalRoot,
   );
 };
 
-export default NestingModal;
+export default withShowModal(NestingModal);
