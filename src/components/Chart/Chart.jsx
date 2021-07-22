@@ -157,7 +157,7 @@ const Chart = () => {
         display: false,
       },
     },
-    // maintainAspectRatio: false,
+    maintainAspectRatio: false,
     // responsive: false,
   };
   return (
@@ -175,7 +175,9 @@ const Chart = () => {
             <li className={css.lineItem}>Act</li>
           </ul>
         </div>
-        {/* <Line data={chartData} width={1772} height={886} /> */}
+        {/* <Line data={chartData} options={options} width={250} height={225} /> */}
+        {/* <Line data={chartData} options={options} width={650} height={240} /> */}
+        {/* <Line data={chartData} options={options} width={870} height={247} /> */}
         <Line data={chartData} options={options} />
         <p className={css.chartValue}>Time</p>
       </div>
