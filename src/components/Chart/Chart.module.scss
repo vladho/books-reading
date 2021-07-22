@@ -13,6 +13,7 @@
     padding: 25px 35px;
     // width: 678px;
     // height: 290px;
+
     height: 90%;
   }
 
@@ -51,6 +52,7 @@
   height: 30px;
   width: 50px;
   text-align: center;
+  color: $accent;
 
   @include for-size(tablet) {
     margin-right: 45px;
@@ -59,7 +61,7 @@
 
 .lineItem:not(:last-child) {
   margin-bottom: 10px;
-  color: $accent;
+  color: $primaryText;
 }
 
 .avaregePgesPerDay {
