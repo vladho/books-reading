@@ -28,50 +28,83 @@ const Chart = () => {
   // ===== кол-во дней
   const getResults = [
     {
-      date: '2021-07-20',
-      pages: '25',
-    },
-    {
-      date: '2021-07-22',
-      pages: '50',
-    },
-    {
       date: '2021-07-23',
-      pages: '38',
-    },
-    {
-      date: '2021-07-23',
-      pages: '42',
+      planedPages: 20,
+      factPages: 70,
+      stats: [
+        {
+          time: '12:08:26',
+          pages: 25,
+        },
+        {
+          time: '13:09:25',
+          pages: 25,
+        },
+        {
+          time: '14:10:25',
+          pages: 20,
+        },
+      ],
     },
     {
       date: '2021-07-24',
-      pages: '70',
+      planedPages: 60,
+      factPages: 90,
+      stats: [
+        {
+          time: '12:08:26',
+          pages: 25,
+        },
+        {
+          time: '13:09:25',
+          pages: 45,
+        },
+        {
+          time: '14:10:25',
+          pages: 20,
+        },
+      ],
+    },
+    {
+      date: '2021-07-25',
+      planedPages: 19,
+      factPages: 50,
+      stats: [
+        {
+          time: '12:08:26',
+          pages: 25,
+        },
+        {
+          time: '13:09:25',
+          pages: 15,
+        },
+        {
+          time: '14:10:25',
+          pages: 10,
+        },
+      ],
     },
   ];
 
   // ==== общее кол-во страниц
-  const planedPagesArray = () => {
-    return getSelectBooks.map(trainingBook => {
-      return trainingBook.totalPages;
-    });
-  };
-  const totalPages = planedPagesArray().reduce((acc, planedPage) => {
-    return acc + planedPage;
-  }, 0);
-  // console.log(totalPages);
-
-  const dateNowStr = moment().format('YYYY-MM-DD');
-
-  // сравнение текущей даты с датой старта
-  // const actualStartDate = (dateNowStr, startDate) => {
-  //   return dateNowStr > startDate ? dateNowStr === startDate : startDate;
+  // const planedPagesArray = () => {
+  //   return getSelectBooks.map(trainingBook => {
+  //     return trainingBook.totalPages;
+  //   });
   // };
-  // console.log('actualStartDate :>> ', actualStartDate());
+  const totalPages = getSelectBooks
+    .map(({ totalPages }) => totalPages)
+    .reduce((acc, planedPage) => {
+      return acc + planedPage;
+    }, 0);
+  // console.log(planedPagesArray);
+
+  const dateNowStr = moment('2021-07-22').format('YYYY-MM-DD');
 
   const getResultForDay = resultsDate =>
     getResults
       .filter(({ date }) => date === resultsDate)
-      .reduce((acc, { pages }) => (acc += Number(pages)), 0);
+      .reduce((acc, { factPages }) => (acc += Number(factPages)), 0);
 
   const getReadedStats = ({ totalPages, endDate }) => {
     const endDateUpdate = endDate.split('-').join('');
@@ -93,40 +126,18 @@ const Chart = () => {
   const stats = getReadedStats({ totalPages, endDate });
   // console.log('stats :>> ', stats);
 
-  // ==== Массив дат графика====
-
-  // const startDtUpdate = startDate.split('-').join('');
-  // const endDtUpdate = endDate.split('-').join('');
-  // console.log('startDtUpdate :>> ', startDtUpdate);
-  // console.log('endDtUpdate :>> ', endDtUpdate);
-
-  // const getDatesArray = (startDate, endDate) => {
-  // let dateArray = [];
-  //   let currentDate = moment(startDate).format('YYYY-MM-DD');
-  //   const lastDate = moment(endDate).format('YYYY-MM-DD');
-  //   console.log('currentDate :>> ', currentDate);
-  //   console.log('lastDate :>> ', lastDate);
-  // while (currentDate <= lastDate) {
-  //   dateArray.push(moment(currentDate).format('YYYY-MM-DD'));
-  //   currentDate = moment(currentDate).add(1, 'days');
-  //     // console.log('whilecurrentDate :>> ', currentDate);
-  //   }
-  //   return dateArray;
-  // };
-  // console.log('getDatesArray :>> ', getDatesArray());
-
   //  ================ Пример узла диапазона моментов: ===================
 
   const momentArr = extendMoment(moment);
-  // const start = moment(startDate).format('YYYY-MM-DD');
-  // const end = moment(endDate).format('YYYY-MM-DD');
   const start = startDate;
   const end = endDate;
   const getDates = moment.range(momentArr(start), momentArr(end));
   // console.log('getDates>> ', getDates);
 
   const getDatesArray = () => {
-    return Array.from(getDates.by('day'));
+    return Array.from(getDates.by('day')).map(({ _i: date }) => {
+      return date;
+    });
   };
   // console.log('getDatesArray :>> ', getDatesArray());
   // ===================================================================
@@ -145,7 +156,6 @@ const Chart = () => {
 
   const chartLine = () => {
     setChartData({
-      // labels: ['Start', ...getDatesArray()],
       labels: ['Start', ...getDatesArray()],
       datasets: [
         {
@@ -158,6 +168,7 @@ const Chart = () => {
           pointRadius: 8,
           pointHitRadius: 10,
           data: [...getPlanedLine()],
+          // data: [70, 26, 98, 75, 56],
         },
         {
           label: 'Act',
@@ -175,11 +186,11 @@ const Chart = () => {
   };
 
   const options = {
-    scales: {
-      yAxis: {
-        display: false,
-      },
-    },
+    // scales: {
+    //   yAxis: {
+    //     display: false,
+    //   },
+    // },
     plugins: {
       legend: {
         display: false,
