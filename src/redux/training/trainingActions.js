@@ -1,8 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const getCurrTrainingRequest = createAction('projects/getCurrTraining/request');
-const getCurrTrainingSuccess = createAction('projects/getCurrTraining/success');
-const getCurrTrainingError = createAction('projects/getCurrTraining/error');
+const getCurrTrainingRequest = createAction('training/getCurrTraining/request');
+const getCurrTrainingSuccess = createAction('training/getCurrTraining/success');
+const getCurrTrainingError = createAction('training/getCurrTraining/error');
 
 // Добавление книги в список тренировки
 const addSelectedId = createAction('training/addSelectedId');

@@ -1,5 +1,6 @@
 import { api } from '../../services';
-import trainingActions from './trainingActions';
+import { trainingActions, trainingSelectors } from '.';
+import { booksOperations } from '../books';
 
 const { getCurrTrainingRequest, getCurrTrainingSuccess, getCurrTrainingError } =
   trainingActions;
@@ -16,7 +17,16 @@ const getCurrTraining = () => async dispatch => {
   }
 };
 
+const getTrainingPageData = () => async (dispatch, getState) => {
+  await dispatch(getCurrTraining());
+
+  const isTrainStarted = trainingSelectors.getIsStarted(getState());
+
+  if (!isTrainStarted) dispatch(booksOperations.fetchBooks());
+};
+
 const trainingOperations = {
   getCurrTraining,
+  getTrainingPageData,
 };
 export default trainingOperations;
