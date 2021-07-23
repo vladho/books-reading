@@ -36,19 +36,24 @@ const schemaValidAddBook = Yup.object().shape({
 class LibraryForm extends Component {
   state = { ...initialState };
 
-  handleChange = ({ target }) => {
-    const { name, value } = target;
-    this.setState({ [name]: value });
-  };
+  // handleChange = ({ target }) => {
+  //   const { name, value } = target;
+  //   this.setState({ [name]: value });
+  // };
 
-  handleSubmit = evt => {
-    evt.preventDefault();
-    this.props.onAddBook(this.state);
-    this.setState({ ...initialState });
-  };
+  // handleSubmit = evt => {
+  //   evt.preventDefault();
+  //   this.props.onAddBook(this.state);
+  //   this.setState({ ...initialState });
+  // };
 
   render() {
-    const { title, author, year, totalPages } = this.state;
+    // const { title, author, year, totalPages } = this.state;
+
+    const onHandleSubmit = values => {
+      console.log('onHandleSubmit values:', values);
+      this.props.onAddBook(values);
+    };
 
     return (
       <>
@@ -57,7 +62,8 @@ class LibraryForm extends Component {
           validationSchema={schemaValidAddBook}
           validateOnBlur
           onSubmit={(values, actions) => {
-            console.log('Formik onSubmit:', values, actions);
+            // console.log('Formik onSubmit:', values, actions);
+            onHandleSubmit({ ...values });
             actions.resetForm({ initialState });
           }}
         >
@@ -65,18 +71,18 @@ class LibraryForm extends Component {
             <Form>
               <div className={styles.form}>
                 <label className={styles.labelName}>
-                  <p className={styles.labelNameTitle}>Title</p>
+                  <p className={styles.labelNameTitle}>Book title</p>
                   <Field
                     className={styles.labelNameInput}
                     type="text"
                     placeholder="..."
                     value={values.title}
-                    name={'title'}
+                    name="title"
                   />
                   <ErrorMessage name="title" />
                 </label>
-                <label className={styles.labelName}>
-                  <p className={styles.labelNameTitle}>Author</p>
+                <label className={styles.labelAuthor}>
+                  <p className={styles.labelAuthorTitle}>Author</p>
                   <Field
                     className={styles.labelAuthorInput}
                     type="text"
@@ -108,14 +114,15 @@ class LibraryForm extends Component {
                   />
                   <ErrorMessage name="totalPages" />
                 </label>
-                <button type="submit">Ok</button>
-                <LibraryBookEditor onAddBook={this.handleSubmit} />
+                <button type="submit" className={styles.btnAddForm}>
+                  Add
+                </button>
               </div>
             </Form>
           )}
         </Formik>
 
-        <form onSubmit={this.handleSubmit} className={styles.form}>
+        {/* <form onSubmit={this.handleSubmit} className={styles.form}>
           <label className={styles.labelName}>
             <p className={styles.labelNameTitle}>Book title</p>
             <input
@@ -162,6 +169,7 @@ class LibraryForm extends Component {
           </label>
           <LibraryBookEditor onAddBook={this.handleSubmit} />
         </form>
+      </> */}
       </>
     );
   }
@@ -172,53 +180,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(null, mapDispatchToProps)(LibraryForm);
-
-// <>
-//   <form onSubmit={this.handleSubmit} className={styles.form}>
-//     <label className={styles.labelName}>
-//       <p className={styles.labelNameTitle}>Book title</p>
-//       <input
-//         type="text"
-//         placeholder="..."
-//         name="title"
-//         value={title}
-//         onChange={this.handleChange}
-//         className={styles.labelNameInput}
-//       />
-//     </label>
-//     <label className={styles.labelAuthor}>
-//       <p className={styles.labelAuthorTitle}>Author</p>
-//       <input
-//         type="text"
-//         placeholder="..."
-//         name="author"
-//         value={author}
-//         onChange={this.handleChange}
-//         className={styles.labelAuthorInput}
-//       />
-//     </label>
-//     <label className={styles.labelYear}>
-//       <p className={styles.labelYearTitle}>Publication date</p>
-//       <input
-//         type="text"
-//         placeholder="..."
-//         name="year"
-//         value={year}
-//         onChange={this.handleChange}
-//         className={styles.labelYearInput}
-//       />
-//     </label>
-//     <label className={styles.labelPage}>
-//       <p className={styles.labelPageTitle}>Amount of pages</p>
-//       <input
-//         type="text"
-//         placeholder="..."
-//         name="totalPages"
-//         value={totalPages}
-//         onChange={this.handleChange}
-//         className={styles.labelPageInput}
-//       />
-//     </label>
-//     <LibraryBookEditor onAddBook={this.handleSubmit} />
-//   </form>
-// </>
