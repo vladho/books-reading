@@ -17,7 +17,7 @@ const {
 
 const isStarted = createReducer(false, {
   [getCurrTrainingRequest]: () => false,
-  [getCurrTrainingSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
+  // [getCurrTrainingSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
 });
 
 // 📌 Данные при активной тренировке

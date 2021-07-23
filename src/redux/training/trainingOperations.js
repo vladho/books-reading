@@ -2,8 +2,14 @@ import { api } from '../../services';
 import { trainingActions, trainingSelectors } from '.';
 import { booksOperations } from '../books';
 
-const { getCurrTrainingRequest, getCurrTrainingSuccess, getCurrTrainingError } =
-  trainingActions;
+const {
+  getCurrTrainingRequest,
+  getCurrTrainingSuccess,
+  getCurrTrainingError,
+  startTrainingRequest,
+  startTrainingSuccess,
+  startTrainingError,
+} = trainingActions;
 
 const getCurrTraining = () => async dispatch => {
   dispatch(getCurrTrainingRequest());
@@ -25,8 +31,21 @@ const getTrainingPageData = () => async (dispatch, getState) => {
   if (!isTrainStarted) dispatch(booksOperations.fetchBooks());
 };
 
+const startTraining = details => async dispatch => {
+  dispatch(startTrainingRequest());
+
+  try {
+    const data = await api.startTraining(details);
+
+    dispatch(startTrainingSuccess(data));
+  } catch (error) {
+    dispatch(startTrainingError(api.formatError(error)));
+  }
+};
+
 const trainingOperations = {
   getCurrTraining,
   getTrainingPageData,
+  startTraining,
 };
 export default trainingOperations;

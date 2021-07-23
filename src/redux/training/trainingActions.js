@@ -4,6 +4,10 @@ const getCurrTrainingRequest = createAction('training/getCurrTraining/request');
 const getCurrTrainingSuccess = createAction('training/getCurrTraining/success');
 const getCurrTrainingError = createAction('training/getCurrTraining/error');
 
+const startTrainingRequest = createAction('training/startTraining/request');
+const startTrainingSuccess = createAction('training/startTraining/success');
+const startTrainingError = createAction('training/startTraining/error');
+
 // Добавление книги в список тренировки
 const addSelectedId = createAction('training/addSelectedId');
 
@@ -24,6 +28,9 @@ const trainingActions = {
   getCurrTrainingRequest,
   getCurrTrainingSuccess,
   getCurrTrainingError,
+  startTrainingRequest,
+  startTrainingSuccess,
+  startTrainingError,
   addSelectedId,
   delSelectedId,
   clearSelectedIds,
