@@ -37,8 +37,10 @@ const TrainingWrapper = () => {
 
   const books = useSelector(trainingSelectors.getSelectBooks);
   // const isTrainingStarted = useSelector(trainingSelectors.getIsStarted)
-  const isTrainingStarted = false;
+  const isTrainingStarted = true;
 
+  const isListNotEmpty = !!books.length;
+  console.log(isListNotEmpty);
   return (
     <div className={styles.wrapper}>
       <Mobile>
@@ -89,34 +91,34 @@ const TrainingWrapper = () => {
 
       <Desktop>
         {isTrainingStarted ? (
-          <>
-            <div className={styles.rightPart}>
-              <div>
+          <div className={styles.innerWrapper}>
+            <div className={styles.upperPart}>
+              <div className={styles.trainingInfo}>
                 <Timer />
-                <TrainingList />
+                <TrainingList booklist={isListNotEmpty} />
               </div>
-              <ChartModal />
+              <MyGoals books={books.length} days={days} />
             </div>
 
-            <div className={styles.leftPart}>
-              <MyGoals books={books.length} days={days} />
+            <div className={styles.lowerPart}>
+              <ChartModal />
               <Results />
             </div>
-          </>
+          </div>
         ) : (
-          <>
-            <div className={styles.rightPart}>
-              <div>
+          <div className={styles.innerWrapper}>
+            <div className={styles.upperPart}>
+              <div className={styles.trainingInfo}>
                 <TrainingForm />
                 <TrainingList />
+                {!!books.length && !!days && <StartTrainingBtn />}
               </div>
-              {!!books.length && !!days && <StartTrainingBtn />}
-              <ChartModal />
-            </div>
-            <div className={styles.leftPart}>
               <MyGoals books={books.length} days={days} />
             </div>
-          </>
+            <div className={styles.lowerPart}>
+              <ChartModal />
+            </div>
+          </div>
         )}
       </Desktop>
     </div>
