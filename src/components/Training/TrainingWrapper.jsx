@@ -36,8 +36,8 @@ const TrainingWrapper = () => {
   };
 
   const books = useSelector(trainingSelectors.getSelectBooks);
-  // const isTrainingStarted = useSelector(trainingSelectors.getIsStarted)
-  const isTrainingStarted = true;
+  const isTrainingStarted = useSelector(trainingSelectors.getIsStarted);
+  // const isTrainingStarted = true;
 
   const isListNotEmpty = !!books.length;
   console.log(isListNotEmpty);
