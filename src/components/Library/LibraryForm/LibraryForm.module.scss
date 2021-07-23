@@ -28,7 +28,11 @@
 }
 
 .formError {
-  color: red;
+  // padding-top: 5px;
+  padding-left: 5px;
+  color: $accent;
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 .label {
@@ -41,6 +45,7 @@
   height: 80px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 594px;
+    margin-bottom: 10px;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
     width: 270px;

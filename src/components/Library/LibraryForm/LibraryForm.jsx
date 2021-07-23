@@ -15,42 +15,35 @@ const initialState = {
 
 const schemaValidAddBook = Yup.object().shape({
   title: Yup.string()
+    .matches(/^[aA-zZ\s]+$/, 'Must be a string!')
     .min(2, 'Too short title !')
     .max(100, 'Too long title, no more than 100 letters!')
-    .required('Fill Book Title, please!'),
+    .required('Fill the gap, please!')
+    .typeError('Must be a string.'),
   author: Yup.string()
+    .matches(/^[aA-zZ\s]+$/, 'Must be a string!')
     .min(2, 'Too short author"s name!')
     .max(50, 'Too long author"s name, no more than 50 letters!')
-    .required('Fill Book Author, please!'),
+    .required('Fill the gap, please!')
+    .typeError('Must be a string.'),
   year: Yup.number()
-    .min(1445, 'Too old! Typographic printing in Europe invented in 1445!')
-    .max(2022, 'Not yet printed!')
-    .required('Fill year, please!'),
+    .min(1445, 'Books have been publishing since 1445!')
+    .max(2021, 'Not yet printed!')
+    .required('Fill the gap, please!')
+    .typeError('Must be a number.'),
   totalPages: Yup.number()
-    .min(2, 'Too Short Book!')
-    .max(10000, 'Too Long Book!')
-    .required('Enter pages!'),
+    .min(10, 'Too little pages bad for you!')
+    .max(4000, 'Too many pages. Be careful!')
+    .required('Fill the gap, please!')
+    .typeError('Must be a number.'),
 });
 
 class LibraryForm extends Component {
   state = { ...initialState };
 
-  // handleChange = ({ target }) => {
-  //   const { name, value } = target;
-  //   this.setState({ [name]: value });
-  // };
-
-  // handleSubmit = evt => {
-  //   evt.preventDefault();
-  //   this.props.onAddBook(this.state);
-  //   this.setState({ ...initialState });
-  // };
-
   render() {
-    // const { title, author, year, totalPages } = this.state;
-
     const onHandleSubmit = values => {
-      console.log('onHandleSubmit values:', values);
+      console.log(values);
       this.props.onAddBook(values);
     };
 
@@ -61,7 +54,6 @@ class LibraryForm extends Component {
           validationSchema={schemaValidAddBook}
           validateOnBlur
           onSubmit={(values, actions) => {
-            // console.log('Formik onSubmit:', values, actions);
             onHandleSubmit({ ...values });
             actions.resetForm({ initialState });
           }}
@@ -78,7 +70,11 @@ class LibraryForm extends Component {
                     value={values.title}
                     name="title"
                   />
-                  <ErrorMessage name="title" />
+                  <ErrorMessage
+                    name="title"
+                    className={styles.formError}
+                    component="div"
+                  />
                 </label>
                 <label className={styles.labelAuthor}>
                   <p className={styles.labelAuthorTitle}>Author</p>
@@ -89,7 +85,11 @@ class LibraryForm extends Component {
                     value={values.author}
                     name="author"
                   />
-                  <ErrorMessage name="author" className={styles.formError} />
+                  <ErrorMessage
+                    name="author"
+                    className={styles.formError}
+                    component="div"
+                  />
                 </label>
                 <label className={styles.labelYear}>
                   <p className={styles.labelYearTitle}>Publication date</p>
@@ -100,7 +100,11 @@ class LibraryForm extends Component {
                     name="year"
                     value={values.year}
                   />
-                  <ErrorMessage name="year" />
+                  <ErrorMessage
+                    name="year"
+                    className={styles.formError}
+                    component="div"
+                  />
                 </label>
                 <label className={styles.labelPage}>
                   <p className={styles.labelPageTitle}>Amount of pages</p>
@@ -111,7 +115,11 @@ class LibraryForm extends Component {
                     name="totalPages"
                     value={values.totalPages}
                   />
-                  <ErrorMessage name="totalPages" />
+                  <ErrorMessage
+                    name="totalPages"
+                    className={styles.formError}
+                    component="div"
+                  />
                 </label>
                 <button type="submit" className={styles.btnAddForm}>
                   Add
@@ -120,55 +128,6 @@ class LibraryForm extends Component {
             </Form>
           )}
         </Formik>
-
-        {/* <form onSubmit={this.handleSubmit} className={styles.form}>
-          <label className={styles.labelName}>
-            <p className={styles.labelNameTitle}>Book title</p>
-            <input
-              type="text"
-              placeholder="..."
-              name="title"
-              value={title}
-              onChange={this.handleChange}
-              className={styles.labelNameInput}
-            />
-          </label>
-          <label className={styles.labelAuthor}>
-            <p className={styles.labelAuthorTitle}>Author</p>
-            <input
-              type="text"
-              placeholder="..."
-              name="author"
-              value={author}
-              onChange={this.handleChange}
-              className={styles.labelAuthorInput}
-            />
-          </label>
-          <label className={styles.labelYear}>
-            <p className={styles.labelYearTitle}>Publication date</p>
-            <input
-              type="text"
-              placeholder="..."
-              name="year"
-              value={year}
-              onChange={this.handleChange}
-              className={styles.labelYearInput}
-            />
-          </label>
-          <label className={styles.labelPage}>
-            <p className={styles.labelPageTitle}>Amount of pages</p>
-            <input
-              type="text"
-              placeholder="..."
-              name="totalPages"
-              value={totalPages}
-              onChange={this.handleChange}
-              className={styles.labelPageInput}
-            />
-          </label>
-          <LibraryBookEditor onAddBook={this.handleSubmit} />
-        </form>
-      </> */}
       </>
     );
   }
