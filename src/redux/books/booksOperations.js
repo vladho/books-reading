@@ -39,7 +39,6 @@ const addBook = book => async dispatch => {
 
 const removeBook = id => async dispatch => {
   dispatch(removeBookRequest());
-  console.log('operations id:', id);
   try {
     axios
       .delete(`http://localhost:8080/api/books/${id}`)

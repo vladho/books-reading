@@ -18,7 +18,6 @@ class LibraryForm extends Component {
 
   render() {
     const onHandleSubmit = values => {
-      console.log(values);
       this.props.onAddBook(values);
     };
 

@@ -19,8 +19,6 @@ const addBook = (state = [], action) => {
 };
 
 const removeBook = (state, action) => {
-  console.log('remove state:', state);
-  console.log('remove payload:', action.payload);
   return state.filter(book => book._id !== action.payload);
 };
 
