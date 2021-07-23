@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import booksSelectors from '../../../redux/books/booksSelectors';
 import booksOperations from '../../../redux/books/booksOperations';
+import RatingReadOnly from '../../ModalComponents/RatingBook/ChooseRating/RatingReadOnly';
 
 import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
@@ -24,7 +25,7 @@ function LibraryList({ books, onRemove }) {
           </div>
           <ul>
             {books.map(
-              ({ _id, title, author, year, totalPages, status }) =>
+              ({ _id, title, author, year, totalPages, status, rating }) =>
                 status === 'done' && (
                   <li key={_id} className={styles.bookListItem}>
                     <ReactSVG src={book} className={styles.iconDone} />
@@ -48,6 +49,7 @@ function LibraryList({ books, onRemove }) {
                     </p>
                     <div className={styles.stars}>
                       <span className={styles.bookListItemMob}>Rating:</span>
+                      <RatingReadOnly rating={rating} />
                     </div>
                     <button type="button" className={styles.buttonRezume}>
                       Resume

@@ -61,7 +61,7 @@
   width: 45px;
   margin-right: 184px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-right: 84px;
+    margin-right: 76px;
   }
 }
 
@@ -70,7 +70,7 @@
   width: 25px;
   margin-right: 70px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-right: 36px;
+    margin-right: 37px;
   }
 }
 
@@ -79,7 +79,7 @@
   width: 39px;
   margin-right: 110px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-right: 21px;
+    margin-right: 26px;
   }
 }
 
@@ -87,7 +87,7 @@
   composes: categoryListTitleItems;
   width: 110px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    width: 62px;
+    width: 48px;
   }
 }
 
@@ -182,6 +182,7 @@
   color: $primaryText;
   display: flex;
   align-items: center;
+
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     margin: 0px;
   }
@@ -199,9 +200,17 @@
   composes: bookListItemNames;
   width: 260px;
   margin-right: 41px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 135px;
     margin-right: 21px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: none;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
     line-height: 1.25;
@@ -209,14 +218,29 @@
     width: 270px;
     height: max-content;
     padding-top: 20px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: none;
+  }
+}
+
+.bookListItemNameDone:hover {
+  white-space: normal;
+  overflow: visible;
+  line-height: 1.25;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: none;
   }
 }
 
 .bookListItemAuthorDone {
   composes: bookListItemNames;
-  width: 87px;
-  margin-right: 130px;
+  width: 177px;
+  margin-right: 40px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 87px;
     margin-right: 29px;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
@@ -233,7 +257,7 @@
   margin-right: 68px;
   justify-content: flex-end;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    margin-right: 45px;
+    margin-right: 48px;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
     margin: 0px;
@@ -342,9 +366,16 @@
   composes: bookListItemNames;
   width: 430px;
   margin-right: 136px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 244px;
     margin-right: 40px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: none;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
     line-height: 1.25;
@@ -352,13 +383,22 @@
     width: 270px;
     height: max-content;
     padding-top: 20px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: none;
   }
+}
+
+.bookListItemName:hover {
+  white-space: normal;
+  overflow: visible;
+  line-height: 1.25;
 }
 
 .bookListItemAuthor {
   composes: bookListItemNames;
-  width: 139px;
-  margin-right: 208px;
+  width: 307px;
+  margin-right: 40px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 143px;
     margin-right: 40px;
@@ -477,6 +517,8 @@
   outline: none;
   fill: $accent;
 }
+
 .trash {
   display: flex;
+  margin: auto;
 }

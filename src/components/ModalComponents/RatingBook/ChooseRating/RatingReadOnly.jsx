@@ -1,11 +1,11 @@
 import styles from './ChooseRating.module.scss';
 import ReactStars from 'react-rating-stars-component';
 
-const RatingReadOnly = ({ rating = 0 }) => {
+const RatingReadOnly = ({ rating }) => {
   return (
     <div className={styles.mainBox}>
       <ReactStars
-        size="20"
+        size={20}
         value={rating}
         edit={false}
         activeColor="#FF6B08"
