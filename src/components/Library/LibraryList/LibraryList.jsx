@@ -4,11 +4,11 @@ import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import booksSelectors from '../../../redux/books/booksSelectors';
 import booksOperations from '../../../redux/books/booksOperations';
+import RatingReadOnly from '../../ModalComponents/RatingBook/ChooseRating/RatingReadOnly';
 
 import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
-import RatingReadOnly from '../../ModalComponents/RatingBook/ChooseRating/RatingReadOnly';
 
 function LibraryList({ books, onRemove }) {
   return (

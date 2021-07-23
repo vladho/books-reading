@@ -14,34 +14,26 @@ const initialState = {
   totalPages: '',
 };
 
-// const schema = Yup.object().shape({
-//   name: Yup.string()
-//     .min(2, 'Min значение 2')
-//     .max(100, 'Max значение 100')
-//     .required('Заполните поле "Название книги"')
-//     .typeError('Введите наименование от 2х символов'),
-//   author: Yup.string()
-//     .min(2, 'Min значение 2')
-//     .max(100, 'Max значение 100')
-//     .required('Заполните поле "Автор книги"')
-//     .typeError('Введите наименование от 2х символов'),
-//   year: Yup.number()
-//     .min(1000, 'Min значение 1000')
-//     .max(2021, 'Max значение 2021')
-//     .required('Заполните поле "Год"')
-//     .typeError('Введите число от 1000 до 2021'),
-//   pages: Yup.number()
-//     .min(2, 'Min значение 2')
-//     .max(10000, 'Max значение 10000')
-//     .required('Заполните поле "Pages"')
-//     .typeError('Введите число от 2 до 10000'),
-// });
+const schemaValidAddBook = Yup.object().shape({
+  title: Yup.string()
+    .min(2, 'Too short title !')
+    .max(100, 'Too long title, no more than 100 letters!')
+    .required('Fill Book Title, please!'),
+  author: Yup.string()
+    .min(2, 'Too short author"s name!')
+    .max(50, 'Too long author"s name, no more than 50 letters!')
+    .required('Fill Book Author, please!'),
+  year: Yup.number()
+    .min(1445, 'Too old! Typographic printing in Europe invented in 1445!')
+    .max(2022, 'Not yet printed!')
+    .required('Fill year, please!'),
+  totalPages: Yup.number()
+    .min(2, 'Too Short Book!')
+    .max(10000, 'Too Long Book!')
+    .required('Enter pages!'),
+});
 
 class LibraryForm extends Component {
-  //   static defaultProps = {};
-
-  //   static propTypes = {};
-
   state = { ...initialState };
 
   handleChange = ({ target }) => {
@@ -60,6 +52,69 @@ class LibraryForm extends Component {
 
     return (
       <>
+        <Formik
+          initialValues={initialState}
+          validationSchema={schemaValidAddBook}
+          validateOnBlur
+          onSubmit={(values, actions) => {
+            console.log('Formik onSubmit:', values, actions);
+            actions.resetForm({ initialState });
+          }}
+        >
+          {({ values }) => (
+            <Form>
+              <div className={styles.form}>
+                <label className={styles.labelName}>
+                  <p className={styles.labelNameTitle}>Title</p>
+                  <Field
+                    className={styles.labelNameInput}
+                    type="text"
+                    placeholder="..."
+                    value={values.title}
+                    name={'title'}
+                  />
+                  <ErrorMessage name="title" />
+                </label>
+                <label className={styles.labelName}>
+                  <p className={styles.labelNameTitle}>Author</p>
+                  <Field
+                    className={styles.labelAuthorInput}
+                    type="text"
+                    placeholder="..."
+                    value={values.author}
+                    name="author"
+                  />
+                  <ErrorMessage name="author" className={styles.formError} />
+                </label>
+                <label className={styles.labelYear}>
+                  <p className={styles.labelYearTitle}>Publication date</p>
+                  <Field
+                    className={styles.labelYearInput}
+                    type="text"
+                    placeholder="..."
+                    name="year"
+                    value={values.year}
+                  />
+                  <ErrorMessage name="year" />
+                </label>
+                <label className={styles.labelPage}>
+                  <p className={styles.labelPageTitle}>Amount of pages</p>
+                  <Field
+                    className={styles.labelPageInput}
+                    type="text"
+                    placeholder="..."
+                    name="totalPages"
+                    value={values.totalPages}
+                  />
+                  <ErrorMessage name="totalPages" />
+                </label>
+                <button type="submit">Ok</button>
+                <LibraryBookEditor onAddBook={this.handleSubmit} />
+              </div>
+            </Form>
+          )}
+        </Formik>
+
         <form onSubmit={this.handleSubmit} className={styles.form}>
           <label className={styles.labelName}>
             <p className={styles.labelNameTitle}>Book title</p>
@@ -117,3 +172,53 @@ const mapDispatchToProps = {
 };
 
 export default connect(null, mapDispatchToProps)(LibraryForm);
+
+// <>
+//   <form onSubmit={this.handleSubmit} className={styles.form}>
+//     <label className={styles.labelName}>
+//       <p className={styles.labelNameTitle}>Book title</p>
+//       <input
+//         type="text"
+//         placeholder="..."
+//         name="title"
+//         value={title}
+//         onChange={this.handleChange}
+//         className={styles.labelNameInput}
+//       />
+//     </label>
+//     <label className={styles.labelAuthor}>
+//       <p className={styles.labelAuthorTitle}>Author</p>
+//       <input
+//         type="text"
+//         placeholder="..."
+//         name="author"
+//         value={author}
+//         onChange={this.handleChange}
+//         className={styles.labelAuthorInput}
+//       />
+//     </label>
+//     <label className={styles.labelYear}>
+//       <p className={styles.labelYearTitle}>Publication date</p>
+//       <input
+//         type="text"
+//         placeholder="..."
+//         name="year"
+//         value={year}
+//         onChange={this.handleChange}
+//         className={styles.labelYearInput}
+//       />
+//     </label>
+//     <label className={styles.labelPage}>
+//       <p className={styles.labelPageTitle}>Amount of pages</p>
+//       <input
+//         type="text"
+//         placeholder="..."
+//         name="totalPages"
+//         value={totalPages}
+//         onChange={this.handleChange}
+//         className={styles.labelPageInput}
+//       />
+//     </label>
+//     <LibraryBookEditor onAddBook={this.handleSubmit} />
+//   </form>
+// </>
