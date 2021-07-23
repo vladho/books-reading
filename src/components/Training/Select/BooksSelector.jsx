@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
 import { trainingSelectors } from '../../../redux/training/';
 
-const BooksSelector = ({ onChange, selectedBooks }) => {
+const BooksSelector = ({ onChange }) => {
   const booksToRead = useSelector(trainingSelectors.getPlanNotSelectBooks);
 
   const bookSelect = booksToRead.map(book => ({
@@ -11,10 +11,6 @@ const BooksSelector = ({ onChange, selectedBooks }) => {
     label: book.title,
     value: book.title,
   }));
-
-  useEffect(() => {
-    console.log('object');
-  }, [selectedBooks]);
 
   const customStyles = {
     input: (provided, state) => ({

@@ -3,103 +3,155 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import booksSelectors from '../../../redux/books/booksSelectors';
+import booksOperations from '../../../redux/books/booksOperations';
 
 import styles from './LibraryList.module.scss';
-import bookUnRead from '../../../assets/icons/bookUnRead.svg';
-import bookRead from '../../../assets/icons/bookRead.svg';
-import bookReadDone from '../../../assets/icons/bookReadDone.svg';
+import book from '../../../assets/icons/book.svg';
+import trash from '../../../assets/icons/delete.svg';
 
-function LibraryList({ books }) {
+function LibraryList({ books, onRemove }) {
   return (
-    <div className={styles.container}>
+    <>
       {books.some(book => book.status === 'done') && (
-        <ul className={styles.category}>
-          <p className={styles.categoryTitle}>Прочитано</p>
-          <ul className={styles.categoryListTitle}>
-            <li className={styles.categoryListTitleItemNameDone}>
-              Назва книги
-            </li>
-            <li className={styles.categoryListTitleItemAuthorDone}>Автор</li>
-            <li className={styles.categoryListTitleItemYearDone}>Рік</li>
-            <li className={styles.categoryListTitleItemPageDone}>Стор.</li>
-            <li className={styles.categoryListTitleItemRate}>Рейтинг книги</li>
-          </ul>
-          <ul className={styles.bookList}>
+        <div className={styles.category}>
+          <h2 className={styles.categoryTitle}>Already read</h2>
+          <div className={styles.categoryListTitle}>
+            <h3 className={styles.categoryListTitleItemNameDone}>Book title</h3>
+            <h3 className={styles.categoryListTitleItemAuthorDone}>Author</h3>
+            <h3 className={styles.categoryListTitleItemYearDone}>Year</h3>
+            <h3 className={styles.categoryListTitleItemPageDone}>Pages</h3>
+            <h3 className={styles.categoryListTitleItemRateDone}>Rating</h3>
+          </div>
+          <ul>
             {books.map(
               ({ _id, title, author, year, totalPages, status }) =>
                 status === 'done' && (
                   <li key={_id} className={styles.bookListItem}>
-                    <ReactSVG src={bookReadDone} className={styles.icons} />
-                    <p className={styles.bookListItemNameDone}>{title}</p>
-                    <p className={styles.bookListItemAuthorDone}>{author}</p>
-                    <p className={styles.bookListItemYearDone}>{year}</p>
-                    <p className={styles.bookListItemPageDone}>{totalPages}</p>
-                    <div className={styles.stars}></div>
+                    <ReactSVG src={book} className={styles.iconDone} />
+                    <div className={styles.bookListItemNameDone}>
+                      <span>
+                        <ReactSVG src={book} className={styles.iconDoneMob} />
+                      </span>
+                      {title}
+                    </div>
+                    <p className={styles.bookListItemAuthorDone}>
+                      <span className={styles.bookListItemMob}>Author:</span>
+                      {author}
+                    </p>
+                    <p className={styles.bookListItemYearDone}>
+                      <span className={styles.bookListItemMob}>Year:</span>
+                      {year}
+                    </p>
+                    <p className={styles.bookListItemPageDone}>
+                      <span className={styles.bookListItemMob}>Pages:</span>
+                      {totalPages}
+                    </p>
+                    <div className={styles.stars}>
+                      <span className={styles.bookListItemMob}>Rating:</span>
+                    </div>
                     <button type="button" className={styles.buttonRezume}>
-                      Резюме
+                      Resume
                     </button>
                   </li>
                 ),
             )}
           </ul>
-        </ul>
+        </div>
       )}
       {books.some(book => book.status === 'read') && (
-        <ul className={styles.category}>
-          <p className={styles.categoryTitle}>Читаю</p>
-          <ul className={styles.categoryListTitle}>
-            <li className={styles.categoryListTitleItemName}>Назва книги</li>
-            <li className={styles.categoryListTitleItemAuthor}>Автор</li>
-            <li className={styles.categoryListTitleItemYear}>Рік</li>
-            <li className={styles.categoryListTitleItemPage}>Стор.</li>
-          </ul>
-          <ul className={styles.bookList}>
+        <div className={styles.category}>
+          <h2 className={styles.categoryTitle}>Reading now</h2>
+          <div className={styles.categoryListTitle}>
+            <h3 className={styles.categoryListTitleItemName}>Book title</h3>
+            <h3 className={styles.categoryListTitleItemAuthor}>Author</h3>
+            <h3 className={styles.categoryListTitleItemYear}>Year</h3>
+            <h3 className={styles.categoryListTitleItemPage}>Pages</h3>
+          </div>
+          <ul>
             {books.map(
               ({ _id, title, author, year, totalPages, status }) =>
                 status === 'read' && (
                   <li key={_id} className={styles.bookListItem}>
-                    <ReactSVG src={bookRead} className={styles.icons} />
-                    <p className={styles.bookListItemName}>{title}</p>
-                    <p className={styles.bookListItemAuthor}>{author}</p>
-                    <p className={styles.bookListItemYear}>{year}</p>
-                    <p className={styles.bookListItemPage}>{totalPages}</p>
+                    <ReactSVG src={book} className={styles.iconRead} />
+                    <div className={styles.bookListItemName}>
+                      <span>
+                        <ReactSVG src={book} className={styles.iconReadMob} />
+                      </span>
+                      {title}
+                    </div>
+                    <p className={styles.bookListItemAuthor}>
+                      <span className={styles.bookListItemMob}>Author:</span>
+                      {author}
+                    </p>
+                    <p className={styles.bookListItemYear}>
+                      <span className={styles.bookListItemMob}>Year:</span>
+                      {year}
+                    </p>
+                    <p className={styles.bookListItemPage}>
+                      <span className={styles.bookListItemMob}>Pages:</span>
+                      {totalPages}
+                    </p>
                   </li>
                 ),
             )}
           </ul>
-        </ul>
+        </div>
       )}
       {books.some(book => book.status === 'plan') && (
-        <ul className={styles.category}>
-          <p className={styles.categoryTitle}>Маю намір прочитати</p>
-          <ul className={styles.categoryListTitle}>
-            <li className={styles.categoryListTitleItemName}>Назва книги</li>
-            <li className={styles.categoryListTitleItemAuthor}>Автор</li>
-            <li className={styles.categoryListTitleItemYear}>Рік</li>
-            <li className={styles.categoryListTitleItemPage}>Стор.</li>
-          </ul>
-          <ul className={styles.bookList}>
+        <div className={styles.category}>
+          <h2 className={styles.categoryTitle}>Going to read</h2>
+          <div className={styles.categoryListTitle}>
+            <h3 className={styles.categoryListTitleItemName}>Book title</h3>
+            <h3 className={styles.categoryListTitleItemAuthor}>Author</h3>
+            <h3 className={styles.categoryListTitleItemYear}>Year</h3>
+            <h3 className={styles.categoryListTitleItemPage}>Pages</h3>
+          </div>
+          <ul>
             {books.map(
               ({ _id, title, author, year, totalPages, status }) =>
                 status === 'plan' && (
                   <li key={_id} className={styles.bookListItem}>
-                    <ReactSVG src={bookUnRead} className={styles.icons} />
-                    <p className={styles.bookListItemName}>{title}</p>
-                    <p className={styles.bookListItemAuthor}>{author}</p>
-                    <p className={styles.bookListItemYear}>{year}</p>
-                    <p className={styles.bookListItemPage}>{totalPages}</p>
+                    <ReactSVG src={book} className={styles.iconPlan} />
+                    <div className={styles.bookListItemName}>
+                      <span>
+                        <ReactSVG src={book} className={styles.iconPlanMob} />
+                      </span>
+                      {title}
+                    </div>
+                    <p className={styles.bookListItemAuthor}>
+                      <span className={styles.bookListItemMob}>Author:</span>
+                      {author}
+                    </p>
+                    <p className={styles.bookListItemYear}>
+                      <span className={styles.bookListItemMob}>Year:</span>
+                      {year}
+                    </p>
+                    <p className={styles.bookListItemPage}>
+                      <span className={styles.bookListItemMob}>Pages:</span>
+                      {totalPages}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => onRemove(_id)}
+                      className={styles.btnTrash}
+                    >
+                      <ReactSVG src={trash} className={styles.trash} />
+                    </button>
                   </li>
                 ),
             )}
           </ul>
           <NavLink to="/training" className={styles.link}>
-            <button type="button" className={styles.button}>
-              Далі
+            <button type="button" className={styles.btnNext}>
+              Next
             </button>
           </NavLink>
-        </ul>
+          <button type="button" className={styles.btnAddMob}>
+            +
+          </button>
+        </div>
       )}
-    </div>
+    </>
   );
 }
 
@@ -107,4 +159,8 @@ const mapStateToProps = state => ({
   books: booksSelectors.getAllBooks(state),
 });
 
-export default connect(mapStateToProps)(LibraryList);
+const mapDispatchToProps = {
+  onRemove: booksOperations.removeBook,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LibraryList);

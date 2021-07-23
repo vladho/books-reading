@@ -1,6 +1,6 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import booksActions from './booksActions';
-import tempBooks from '../../json/trainingListBooks.json';
+// import tempBooks from '../../json/trainingListBooks.json';
 
 const {
   fetchBooksRequest,
@@ -15,17 +15,16 @@ const {
 } = booksActions;
 
 const addBook = (state = [], action) => {
-  return [...state, action.payload];
+  return [...state, action.payload.data];
 };
 
 const removeBook = (state, action) => {
   return state.filter(book => book._id !== action.payload);
 };
 
-const items = createReducer(tempBooks, {
+const items = createReducer([], {
   [fetchBooksRequest]: () => [],
   [fetchBooksSuccess]: (_, { payload }) => payload.data.books,
-  // [fetchBooksSuccess]: (state, action) => action.payload,
   [addBookSuccess]: addBook,
   [removeBookSuccess]: removeBook,
 });

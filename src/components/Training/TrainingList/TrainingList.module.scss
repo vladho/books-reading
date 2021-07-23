@@ -83,3 +83,31 @@
   scrollbar-color: #b1b5c2 rgba(177, 181, 194, 0.25);
   scrollbar-width: thin;
 }
+
+.listNotEmpty {
+  @include for-size(desktop) {
+    height: 173px;
+    overflow-y: scroll;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  // 📌 Скроллбар Chrome
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgba(177, 181, 194, 0.25);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #b1b5c2;
+  }
+
+  // 📌 Скроллбар Firefox
+
+  scrollbar-color: #b1b5c2 rgba(177, 181, 194, 0.25);
+  scrollbar-width: thin;
+}

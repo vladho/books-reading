@@ -1,0 +1,44 @@
+@import 'styles/shared.scss';
+
+.container {
+  width: 390px;
+  height: 206px;
+
+  @include for-size(mobile-only) {
+    width: 270px;
+    height: 223px;
+  }
+}
+
+.title {
+  font-size: 16px;
+  line-height: 1.375;
+
+  width: 331px;
+  padding-top: 47px;
+  margin-right: auto;
+  margin-left: auto;
+
+  text-align: center;
+
+  @include for-size(mobile-only) {
+    width: 237px;
+  }
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+
+  @include for-size(mobile-only) {
+    margin-top: 20px;
+  }
+}
+
+.btn {
+  margin-right: 30px;
+  @include for-size(mobile-only) {
+    margin-right: 15px;
+  }
+}

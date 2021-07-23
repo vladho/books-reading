@@ -1,5 +1,7 @@
 const getAccessToken = state => state.auth.token.token;
 
+const getUserName = state => state.auth.user.name;
+
 const getIsAuth = state => !!getAccessToken(state);
 
 const getRefreshToken = state => state.auth.token;
@@ -20,5 +22,6 @@ const authSelectors = {
   getUserEmail,
   getError,
   getLoading,
+  getUserName,
 };
 export default authSelectors;

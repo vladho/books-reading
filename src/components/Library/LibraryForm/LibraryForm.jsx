@@ -8,10 +8,10 @@ import booksOperations from '../../../redux/books/booksOperations';
 import styles from './LibraryForm.module.scss';
 
 const initialState = {
-  name: '',
+  title: '',
   author: '',
   year: '',
-  pages: '',
+  totalPages: '',
 };
 
 // const schema = Yup.object().shape({
@@ -56,24 +56,24 @@ class LibraryForm extends Component {
   };
 
   render() {
-    const { name, author, year, pages } = this.state;
+    const { title, author, year, totalPages } = this.state;
 
     return (
       <>
         <form onSubmit={this.handleSubmit} className={styles.form}>
           <label className={styles.labelName}>
-            <p className={styles.labelNameTitle}>Назва книги</p>
+            <p className={styles.labelNameTitle}>Book title</p>
             <input
               type="text"
               placeholder="..."
-              name="name"
-              value={name}
+              name="title"
+              value={title}
               onChange={this.handleChange}
               className={styles.labelNameInput}
             />
           </label>
           <label className={styles.labelAuthor}>
-            <p className={styles.labelAuthorTitle}>Автор книги</p>
+            <p className={styles.labelAuthorTitle}>Author</p>
             <input
               type="text"
               placeholder="..."
@@ -84,7 +84,7 @@ class LibraryForm extends Component {
             />
           </label>
           <label className={styles.labelYear}>
-            <p className={styles.labelYearTitle}>Рік випуску</p>
+            <p className={styles.labelYearTitle}>Publication date</p>
             <input
               type="text"
               placeholder="..."
@@ -95,12 +95,12 @@ class LibraryForm extends Component {
             />
           </label>
           <label className={styles.labelPage}>
-            <p className={styles.labelPageTitle}>Кількість сторінок</p>
+            <p className={styles.labelPageTitle}>Amount of pages</p>
             <input
               type="text"
               placeholder="..."
-              name="pages"
-              value={pages}
+              name="totalPages"
+              value={totalPages}
               onChange={this.handleChange}
               className={styles.labelPageInput}
             />
