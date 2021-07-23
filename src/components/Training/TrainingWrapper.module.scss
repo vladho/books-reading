@@ -11,22 +11,29 @@
 
   @include for-size(desktop) {
     display: flex;
-    // height: 100vh;
-    // margin-top: -60px;
+    flex-direction: column;
     justify-content: space-between;
-    padding-top: 50px;
-    padding-bottom: 40px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 
-.rightPart {
+.innerWrapper {
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+
+.upperPart {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
 }
 
-.leftPart {
+.lowerPart {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+}
+
+.trainingInfo {
+  flex-grow: 1;
+  padding-right: 40px;
 }
