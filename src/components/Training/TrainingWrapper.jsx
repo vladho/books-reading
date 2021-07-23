@@ -54,7 +54,7 @@ const TrainingWrapper = () => {
           <>
             <MyGoals books={books.length} days={days} />
             <TrainingList />
-            {!!books.length && days >= 0 && <StartTrainingBtn />}
+            {!!books.length && !!days && <StartTrainingBtn />}
             <ChartModal />
             <CircuitButton openModal={openModal} />
             <TrainingModal
@@ -81,7 +81,7 @@ const TrainingWrapper = () => {
             <MyGoals books={books.length} days={days} />
             <TrainingForm />
             <TrainingList />
-            {!!books.length && days >= 0 && <StartTrainingBtn />}
+            {!!books.length && !!days && <StartTrainingBtn />}
             <ChartModal />
           </>
         )}
@@ -110,7 +110,7 @@ const TrainingWrapper = () => {
                 <TrainingForm />
                 <TrainingList />
               </div>
-              {!!books.length && days >= 0 && <StartTrainingBtn />}
+              {!!books.length && !!days && <StartTrainingBtn />}
               <ChartModal />
             </div>
             <div className={styles.leftPart}>
