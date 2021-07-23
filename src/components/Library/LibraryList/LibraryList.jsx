@@ -13,13 +13,14 @@ import trash from '../../../assets/icons/delete.svg';
 import trainingSelectors from '../../../redux/training/trainingSelectors';
 
 function LibraryList({ books, onRemove, isAuth, isTraining }) {
-  // console.log(
-  //   'books, onRemove, isAuth, isTraining:',
-  //   books,
-  //   onRemove,
-  //   isAuth,
-  //   isTraining,
-  // );
+  console.log(
+    'books, onRemove, isAuth, isTraining:',
+    books,
+    onRemove,
+    isAuth,
+    isTraining,
+    !isTraining,
+  );
   return (
     <>
       {books.some(book => book.status === 'done') && (
@@ -152,11 +153,13 @@ function LibraryList({ books, onRemove, isAuth, isTraining }) {
                 ),
             )}
           </ul>
-          <NavLink to="/training" className={styles.link}>
-            <button type="button" className={styles.btnNext}>
-              Next
-            </button>
-          </NavLink>
+          {!isTraining && (
+            <NavLink to="/training" className={styles.link}>
+              <button type="button" className={styles.btnNext}>
+                Next
+              </button>
+            </NavLink>
+          )}
           <button type="button" className={styles.btnAddMob}>
             +
           </button>
