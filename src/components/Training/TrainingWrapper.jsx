@@ -29,7 +29,7 @@ const TrainingWrapper = () => {
   const end = useSelector(trainingSelectors.selectEndDate);
   const startUnix = new Date(start.split('.').reverse().join('.')).getTime();
   const endUnix = new Date(end.split('.').reverse().join('.')).getTime();
-  const days = (endUnix - startUnix) / 1000 / 60 / 60 / 24 || 0;
+  const days = (endUnix - startUnix) / 1000 / 60 / 60 / 24 + 1 || 0;
 
   const openModal = () => {
     setIsTrainingModalShown(!isTrainingModalShown);
@@ -72,7 +72,6 @@ const TrainingWrapper = () => {
           <>
             <Timer />
             <MyGoals books={books.length} days={days} />
-            {/* <TrainingForm /> */}
             <TrainingList />
             <ChartModal />
             <Results />
