@@ -29,16 +29,18 @@ const TrainingWrapper = () => {
   const end = useSelector(trainingSelectors.selectEndDate);
   const startUnix = new Date(start.split('.').reverse().join('.')).getTime();
   const endUnix = new Date(end.split('.').reverse().join('.')).getTime();
-  const days = (endUnix - startUnix) / 1000 / 60 / 60 / 24 || 0;
+  const days = (endUnix - startUnix) / 1000 / 60 / 60 / 24 + 1 || 0;
 
   const openModal = () => {
     setIsTrainingModalShown(!isTrainingModalShown);
   };
 
   const books = useSelector(trainingSelectors.getSelectBooks);
-  // const isTrainingStarted = useSelector(trainingSelectors.getIsStarted)
-  const isTrainingStarted = false;
+  const isTrainingStarted = useSelector(trainingSelectors.getIsStarted);
+  // const isTrainingStarted = true;
 
+  const isListNotEmpty = !!books.length;
+  console.log(isListNotEmpty);
   return (
     <div className={styles.wrapper}>
       <Mobile>
@@ -54,7 +56,7 @@ const TrainingWrapper = () => {
           <>
             <MyGoals books={books.length} days={days} />
             <TrainingList />
-            {!!books.length && days >= 0 && <StartTrainingBtn />}
+            {!!books.length && !!days && <StartTrainingBtn />}
             <ChartModal />
             <CircuitButton openModal={openModal} />
             <TrainingModal
@@ -72,7 +74,6 @@ const TrainingWrapper = () => {
           <>
             <Timer />
             <MyGoals books={books.length} days={days} />
-            {/* <TrainingForm /> */}
             <TrainingList />
             <ChartModal />
             <Results />
@@ -82,7 +83,7 @@ const TrainingWrapper = () => {
             <MyGoals books={books.length} days={days} />
             <TrainingForm />
             <TrainingList />
-            {!!books.length && days >= 0 && <StartTrainingBtn />}
+            {!!books.length && !!days && <StartTrainingBtn />}
             <ChartModal />
           </>
         )}
@@ -90,34 +91,34 @@ const TrainingWrapper = () => {
 
       <Desktop>
         {isTrainingStarted ? (
-          <>
-            <div className={styles.rightPart}>
-              <div>
+          <div className={styles.innerWrapper}>
+            <div className={styles.upperPart}>
+              <div className={styles.trainingInfo}>
                 <Timer />
-                <TrainingList />
+                <TrainingList booklist={isListNotEmpty} />
               </div>
-              <ChartModal />
+              <MyGoals books={books.length} days={days} />
             </div>
 
-            <div className={styles.leftPart}>
-              <MyGoals books={books.length} days={days} />
+            <div className={styles.lowerPart}>
+              <ChartModal />
               <Results />
             </div>
-          </>
+          </div>
         ) : (
-          <>
-            <div className={styles.rightPart}>
-              <div>
+          <div className={styles.innerWrapper}>
+            <div className={styles.upperPart}>
+              <div className={styles.trainingInfo}>
                 <TrainingForm />
                 <TrainingList />
+                {!!books.length && !!days && <StartTrainingBtn />}
               </div>
-              {!!books.length && days >= 0 && <StartTrainingBtn />}
-              <ChartModal />
-            </div>
-            <div className={styles.leftPart}>
               <MyGoals books={books.length} days={days} />
             </div>
-          </>
+            <div className={styles.lowerPart}>
+              <ChartModal />
+            </div>
+          </div>
         )}
       </Desktop>
     </div>

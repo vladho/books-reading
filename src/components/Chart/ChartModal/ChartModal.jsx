@@ -9,7 +9,3 @@ export default function ChartModal() {
     </div>
   );
 }
-
-// add to TrainingWrapper
-// import ChartModal from '../../components/Chart/ChartModal/ChartModal';
-// <ChartModal />
