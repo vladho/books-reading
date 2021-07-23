@@ -13,13 +13,13 @@ import trash from '../../../assets/icons/delete.svg';
 import trainingSelectors from '../../../redux/training/trainingSelectors';
 
 function LibraryList({ books, onRemove, isAuth, isTraining }) {
-  console.log(
-    'books, onRemove, isAuth, isTraining:',
-    books,
-    onRemove,
-    isAuth,
-    isTraining,
-  );
+  // console.log(
+  //   'books, onRemove, isAuth, isTraining:',
+  //   books,
+  //   onRemove,
+  //   isAuth,
+  //   isTraining,
+  // );
   return (
     <>
       {books.some(book => book.status === 'done') && (
