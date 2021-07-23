@@ -26,7 +26,7 @@ const MyGoals = ({ days }) => {
               </li>
               <li className={styles.myGoalsStatsListitem}>
                 <span className={styles.myGoalsStatsDigitBox}>
-                  <p className={styles.myGoalsStatsDigit}>{days}</p>
+                  <p className={styles.myGoalsStatsDigit}>{days + 1}</p>
                 </span>
                 <span className={styles.myGoalsStatsText}>Amount of days</span>
               </li>

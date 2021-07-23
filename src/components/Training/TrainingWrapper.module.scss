@@ -11,8 +11,9 @@
 
   @include for-size(desktop) {
     display: flex;
+    // height: 100vh;
+    // margin-top: -60px;
     justify-content: space-between;
-
     padding-top: 50px;
     padding-bottom: 40px;
   }

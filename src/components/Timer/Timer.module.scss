@@ -7,5 +7,10 @@
 
   @include for-size(mobile-only) {
     flex-wrap: wrap;
+    padding-top: 20px; // comment zavalniuk
+  }
+
+  @include for-size(tablet-only) {
+    padding-top: 35px; // comment zavalniuk
   }
 }

@@ -15,7 +15,7 @@ const {
 } = booksActions;
 
 const addBook = (state = [], action) => {
-  return [...state, action.payload.data.book];
+  return [...state, action.payload.data];
 };
 
 const removeBook = (state, action) => {
@@ -23,7 +23,7 @@ const removeBook = (state, action) => {
 };
 
 const items = createReducer([], {
-  [fetchBooksSuccess]: (state, action) => action.payload.data.result,
+  [fetchBooksSuccess]: (state, action) => action.payload.data.books,
   [addBookSuccess]: addBook,
   [removeBookSuccess]: removeBook,
 });

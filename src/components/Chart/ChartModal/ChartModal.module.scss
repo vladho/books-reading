@@ -2,6 +2,7 @@
 
 .modalBox {
   background-color: $white;
+  // background-color: teal;
   box-shadow: $boxShadowChart;
 
   @include for-size(mobile-only) {

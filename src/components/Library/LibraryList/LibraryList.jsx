@@ -28,11 +28,27 @@ function LibraryList({ books, onRemove }) {
                 status === 'done' && (
                   <li key={_id} className={styles.bookListItem}>
                     <ReactSVG src={book} className={styles.iconDone} />
-                    <p className={styles.bookListItemNameDone}>{title}</p>
-                    <p className={styles.bookListItemAuthorDone}>{author}</p>
-                    <p className={styles.bookListItemYearDone}>{year}</p>
-                    <p className={styles.bookListItemPageDone}>{totalPages}</p>
-                    <div className={styles.stars}></div>
+                    <div className={styles.bookListItemNameDone}>
+                      <span>
+                        <ReactSVG src={book} className={styles.iconDoneMob} />
+                      </span>
+                      {title}
+                    </div>
+                    <p className={styles.bookListItemAuthorDone}>
+                      <span className={styles.bookListItemMob}>Author:</span>
+                      {author}
+                    </p>
+                    <p className={styles.bookListItemYearDone}>
+                      <span className={styles.bookListItemMob}>Year:</span>
+                      {year}
+                    </p>
+                    <p className={styles.bookListItemPageDone}>
+                      <span className={styles.bookListItemMob}>Pages:</span>
+                      {totalPages}
+                    </p>
+                    <div className={styles.stars}>
+                      <span className={styles.bookListItemMob}>Rating:</span>
+                    </div>
                     <button type="button" className={styles.buttonRezume}>
                       Resume
                     </button>
@@ -57,10 +73,24 @@ function LibraryList({ books, onRemove }) {
                 status === 'read' && (
                   <li key={_id} className={styles.bookListItem}>
                     <ReactSVG src={book} className={styles.iconRead} />
-                    <p className={styles.bookListItemName}>{title}</p>
-                    <p className={styles.bookListItemAuthor}>{author}</p>
-                    <p className={styles.bookListItemYear}>{year}</p>
-                    <p className={styles.bookListItemPage}>{totalPages}</p>
+                    <div className={styles.bookListItemName}>
+                      <span>
+                        <ReactSVG src={book} className={styles.iconReadMob} />
+                      </span>
+                      {title}
+                    </div>
+                    <p className={styles.bookListItemAuthor}>
+                      <span className={styles.bookListItemMob}>Author:</span>
+                      {author}
+                    </p>
+                    <p className={styles.bookListItemYear}>
+                      <span className={styles.bookListItemMob}>Year:</span>
+                      {year}
+                    </p>
+                    <p className={styles.bookListItemPage}>
+                      <span className={styles.bookListItemMob}>Pages:</span>
+                      {totalPages}
+                    </p>
                   </li>
                 ),
             )}
@@ -82,10 +112,24 @@ function LibraryList({ books, onRemove }) {
                 status === 'plan' && (
                   <li key={_id} className={styles.bookListItem}>
                     <ReactSVG src={book} className={styles.iconPlan} />
-                    <p className={styles.bookListItemName}>{title}</p>
-                    <p className={styles.bookListItemAuthor}>{author}</p>
-                    <p className={styles.bookListItemYear}>{year}</p>
-                    <p className={styles.bookListItemPage}>{totalPages}</p>
+                    <div className={styles.bookListItemName}>
+                      <span>
+                        <ReactSVG src={book} className={styles.iconPlanMob} />
+                      </span>
+                      {title}
+                    </div>
+                    <p className={styles.bookListItemAuthor}>
+                      <span className={styles.bookListItemMob}>Author:</span>
+                      {author}
+                    </p>
+                    <p className={styles.bookListItemYear}>
+                      <span className={styles.bookListItemMob}>Year:</span>
+                      {year}
+                    </p>
+                    <p className={styles.bookListItemPage}>
+                      <span className={styles.bookListItemMob}>Pages:</span>
+                      {totalPages}
+                    </p>
                     <button
                       type="button"
                       onClick={() => onRemove(_id)}
@@ -98,10 +142,13 @@ function LibraryList({ books, onRemove }) {
             )}
           </ul>
           <NavLink to="/training" className={styles.link}>
-            <button type="button" className={styles.button}>
+            <button type="button" className={styles.btnNext}>
               Next
             </button>
           </NavLink>
+          <button type="button" className={styles.btnAddMob}>
+            +
+          </button>
         </div>
       )}
     </>
