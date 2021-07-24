@@ -5,10 +5,22 @@ import { ReactComponent as Flag } from '../../../assets/icons/Flag.svg';
 import { ReactComponent as ArrowRight } from '../../../assets/icons/ArrowRight.svg';
 import {} from '../../../';
 import DoneButton from '../../common/ModalButton/DoneButton/DoneButton';
+import { useEffect } from 'react';
 
-const FirstVisit = () => {
+const FirstVisit = props => {
+  const { toogleModal, showModalTrue } = props;
+  // toogleModal();
+  // console.log(showModalTrue)
+
+  // useEffect(() => {
+  //   console.log('object1');
+  //   showModalTrue();
+  //   console.log('object2');
+  // }, []);
+
   return (
     <div className={styles.container}>
+      {/* {true && showModalTrue} */}
       <ul className={styles.list}>
         <li>
           <h2 className={styles.step}>Step 1.</h2>

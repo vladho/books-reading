@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
@@ -9,10 +9,28 @@ import RatingReadOnly from '../../ModalComponents/RatingBook/ChooseRating/Rating
 import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
+import NestingModal from '../../ModalHoc/NestingModal/NestingModal';
+import RatingBook from '../../ModalComponents/RatingBook/RatingBook';
 
 function LibraryList({ books, onRemove }) {
+  // const { books, onRemove } = props;
+  // console.log(props);
+  const [showResume, setShowResume] = useState(false);
+
+  const isShowResume = () => {
+    setShowResume(prev => !prev);
+  };
+
   return (
     <>
+      {showResume && (
+        <NestingModal>
+          {props => {
+            // console.log(props.toogleModal);
+            return <RatingBook {...props} test={setShowResume} />;
+          }}
+        </NestingModal>
+      )}
       {books.some(book => book.status === 'done') && (
         <div className={styles.category}>
           <h2 className={styles.categoryTitle}>Already read</h2>
@@ -51,7 +69,12 @@ function LibraryList({ books, onRemove }) {
                       <span className={styles.bookListItemMob}>Rating:</span>
                       <RatingReadOnly rating={rating} />
                     </div>
-                    <button type="button" className={styles.buttonRezume}>
+
+                    <button
+                      type="button"
+                      className={styles.buttonRezume}
+                      onClick={isShowResume}
+                    >
                       Resume
                     </button>
                   </li>

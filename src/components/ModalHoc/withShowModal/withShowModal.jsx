@@ -6,12 +6,26 @@ import NestingModal from '../NestingModal/NestingModal';
 
 const withShowModal = WrappedComponent => props => {
   const { children: Component, ...rest } = props;
+  // console.log('props', props);
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
+
+  // console.log('toogleModal 3', showModal);
 
   const toogleModal = () => {
+    console.log('toogleModal 5', showModal);
     setShowModal(prev => !prev);
+    // setShowModal(false);
+
+    // setShowModal(!showModal);
+
+    console.log('toogleModal 6', showModal);
   };
+
+  // const showModalTrue = () => {
+  //   console.log("showModalTrue");
+  //   setShowModal(true);
+  // };
 
   useEffect(() => {
     const handleEsc = e => {
@@ -33,15 +47,21 @@ const withShowModal = WrappedComponent => props => {
 
   return (
     <>
-      <button type="button" className="add-button" onClick={toogleModal}>
+      {/* <button type="button" className="add-button" onClick={toogleModal}>
         TESSSSSSSSSSSSSSSST
-      </button>
+      </button> */}
       {showModal && (
         <WrappedComponent
           {...rest}
-          component={() => <Component toogleModal={toogleModal} />}
+          component={() => (
+            <Component
+              toogleModal={toogleModal}
+              // showModalTrue={showModalTrue}
+            />
+          )}
           handleBackdropClick={handleBackdropClick}
           toogleModal={toogleModal}
+          // showModalTrue={showModalTrue}
         />
       )}
     </>

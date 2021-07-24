@@ -56,21 +56,21 @@ const TimerLogic = () => {
 
   return (
     <div className={styles.dateGroup}>
-      <div
-        className={classnames(styles.date, styles.days)}
-      >{`${time.days}`}</div>
+      <div className={classnames(styles.date, styles.days)}>{`${
+        time.days && '00'
+      }`}</div>
       <div className={styles.date}>{`:`}</div>
-      <div
-        className={classnames(styles.date, styles.hours)}
-      >{`${time.hours}`}</div>
+      <div className={classnames(styles.date, styles.hours)}>{`${
+        time.hours && '00'
+      }`}</div>
       <div className={styles.date}>{`:`}</div>
-      <div
-        className={classnames(styles.date, styles.minutes)}
-      >{`${time.minutes}`}</div>
+      <div className={classnames(styles.date, styles.minutes)}>{`${
+        time.minutes && '00'
+      }`}</div>
       <div className={styles.date}>{`:`}</div>
-      <div
-        className={classnames(styles.date, styles.seconds)}
-      >{`${time.seconds}`}</div>
+      <div className={classnames(styles.date, styles.seconds)}>{`${
+        time.seconds && '00'
+      }`}</div>
     </div>
   );
 };

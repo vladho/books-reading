@@ -19,6 +19,7 @@ const NestingModal = ({
   data,
   closeBtn,
   saveBtn,
+  showModalTrue,
 }) => {
   const modalRef = useRef();
 
@@ -28,10 +29,14 @@ const NestingModal = ({
   //   toogleModal();
   //   console.log('cancel button');
   // };
+  // console.log('toogleModalsadasdasd', showModalTrue);
+
+  // useEffect(() => {
+  //   showModalTrue();
+  // }, []);
 
   const onSave = e => {
     e.preventDefault();
-    // closeModal();
     toogleModal();
     console.log('save btn');
 
@@ -42,7 +47,6 @@ const NestingModal = ({
     <div className={styles.modal} ref={modalRef} onClick={handleBackdropClick}>
       <div className={styles.container}>
         <form onSubmit={onSave}>
-          {/* {children} */}
           <Component />
         </form>
       </div>
