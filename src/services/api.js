@@ -19,6 +19,8 @@ const register = async credentials =>
 const login = async credentials =>
   (await axios.post('/auth/login', credentials)).data.data;
 
+const loginGoogle = async () => await axios.get('/auth/google');
+
 const logOut = async credentials =>
   (await axios.post('/auth/logout', credentials)).data.data;
 
@@ -43,6 +45,7 @@ const api = {
 
   register,
   login,
+  loginGoogle,
   logOut,
   refresh,
 

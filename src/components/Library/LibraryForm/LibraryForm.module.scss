@@ -27,8 +27,12 @@
   }
 }
 
-.FormError {
-  color: orchid;
+.formError {
+  // padding-top: 5px;
+  padding-left: 5px;
+  color: $accent;
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 .label {
@@ -41,6 +45,7 @@
   height: 80px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 594px;
+    margin-bottom: 10px;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
     width: 270px;
@@ -236,4 +241,31 @@
   border: none;
   background: $white;
   box-shadow: $boxShadowInput;
+}
+
+.btnAddForm {
+  display: flex;
+  justify-content: center;
+  width: 170px;
+  height: 42px;
+  border: $buttonBorder;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $buttonText;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    margin-left: 212px;
+    margin-top: 40px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin-top: 35px;
+  }
+}
+
+.btnAddForm:hover,
+button:focus {
+  background-color: $accent;
+  border: none;
+  outline: none;
 }

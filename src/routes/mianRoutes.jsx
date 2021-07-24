@@ -3,7 +3,7 @@ import { lazy } from 'react';
 export const mainRoutes = [
   {
     name: 'Library',
-    exact: false,
+    exact: true,
     path: '/library',
     component: lazy(() => import('../pages/LibraryPage')),
     isPrivate: true,
@@ -11,7 +11,7 @@ export const mainRoutes = [
   },
   {
     name: 'Training',
-    exact: false,
+    exact: true,
     path: '/training',
     component: lazy(() => import('../pages/TrainingPage')),
     isPrivate: true,
