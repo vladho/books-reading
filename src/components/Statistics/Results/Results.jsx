@@ -13,8 +13,8 @@ import trainingSelectors from '../../../redux/training/trainingSelectors';
 const Results = () => {
   const dispatch = useDispatch();
 
-  const start = useSelector(trainingSelectors.selectStartDate);
-  const end = useSelector(trainingSelectors.selectEndDate);
+  const start = useSelector(trainingSelectors.getStartDate);
+  const end = useSelector(trainingSelectors.getEndDate);
   const results = useSelector(trainingSelectors.getResults);
 
   const [resultDate, setResultDate] = useState(null);
@@ -48,8 +48,8 @@ const Results = () => {
               selected={resultDate}
               onChange={date => setResultDate(date)}
               dateFormat="dd.MM.yyyy"
-              minDate={start}
-              maxDate={end}
+              minDate={new Date(start)}
+              maxDate={new Date(end)}
               className={styles.formInput}
             />
             <HiChevronDown className={styles.chevronDownIcon} />
@@ -71,7 +71,7 @@ const Results = () => {
             <span className={styles.horizontalBarLeft}></span>Statistics
             <span className={styles.horizontalBarRight}></span>
           </h3>
-          <ul>
+          <ul className={styles.statiscicsList}>
             {results.map(item => (
               <ResultItem
                 date={item.date}
@@ -87,3 +87,13 @@ const Results = () => {
 };
 
 export default Results;
+
+// const test = results
+//   .map(day => {
+//     const date = day.date;
+//     const res = day.stats.map(({ time, pages }) => {
+//       return { date, time, pages };
+//     });
+//     return res;
+//   })
+//   .flat();
