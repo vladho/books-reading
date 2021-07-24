@@ -1,10 +1,21 @@
-import React from 'react';
-
+import { useSelector } from 'react-redux';
 import styles from './StartTrainingBtn.module.scss';
+import {
+  trainingOperations as ops,
+  trainingSelectors as sls,
+} from '../../../redux/training';
 
 const StartTrainingBtn = () => {
+  const startDate = useSelector(sls.selectStartDate);
+  const finishDate = useSelector(sls.selectEndDate);
+  const books = useSelector(sls.getSelectIds);
+
   return (
-    <button type="submit" className={styles.button}>
+    <button
+      onClick={() => ops.startTraining({ startDate, finishDate, books })}
+      type="submit"
+      className={styles.button}
+    >
       Start training
     </button>
   );
