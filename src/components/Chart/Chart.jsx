@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import { extendMoment } from 'moment-range';
 import { Line } from 'react-chartjs-2';
 
 import { trainingSelectors } from '../../redux/training';
-import { booksSelectors } from '../../redux/books';
+// import { booksSelectors } from '../../redux/books';
 
 import css from './Chart.module.scss';
 
@@ -16,137 +16,154 @@ const Chart = () => {
     chartLine();
   }, []); // eslint-disable-line
 
-  const getSelectBooks = useSelector(trainingSelectors.getSelectBooks);
+  // const getSelectBooks = useSelector(trainingSelectors.getSelectBooks);
+  // const planedBooks = useSelector(booksSelectors.getPlanBooks);
+
   // const getResults = useSelector(trainingSelectors.getResults); // пока есть тестовый массив
-  const planedBooks = useSelector(booksSelectors.getPlanBooks);
   const startDate = useSelector(trainingSelectors.selectStartDate);
   const endDate = useSelector(trainingSelectors.selectEndDate);
 
-  // console.log('startDate :>> ', startDate);
-  // console.log('endDate :>> ', endDate);
-
-  // ===== кол-во дней
+  // ===== тестовые данные - имитация бэка
   const getResults = [
     {
-      date: '2021-07-20',
-      pages: '25',
-    },
-    {
-      date: '2021-07-22',
-      pages: '50',
-    },
-    {
       date: '2021-07-23',
-      pages: '38',
-    },
-    {
-      date: '2021-07-23',
-      pages: '42',
+      planedPages: 19,
+      factPages: 70,
+      stats: [
+        {
+          time: '12:08:26',
+          pages: 25,
+        },
+        {
+          time: '13:09:25',
+          pages: 25,
+        },
+        {
+          time: '14:10:25',
+          pages: 20,
+        },
+      ],
     },
     {
       date: '2021-07-24',
-      pages: '70',
+      planedPages: 60,
+      factPages: 30,
+      stats: [
+        {
+          time: '12:08:26',
+          pages: 10,
+        },
+        {
+          time: '13:09:25',
+          pages: 15,
+        },
+        {
+          time: '14:10:25',
+          pages: 5,
+        },
+      ],
+    },
+    {
+      date: '2021-07-25',
+      planedPages: 28,
+      factPages: 50,
+      stats: [
+        {
+          time: '12:08:26',
+          pages: 25,
+        },
+        {
+          time: '13:09:25',
+          pages: 15,
+        },
+        {
+          time: '14:10:25',
+          pages: 10,
+        },
+      ],
+    },
+    {
+      date: '2021-07-25',
+      planedPages: 19,
+      factPages: 48,
+      stats: [
+        {
+          time: '12:08:26',
+          pages: 25,
+        },
+        {
+          time: '13:09:25',
+          pages: 15,
+        },
+        {
+          time: '14:10:25',
+          pages: 10,
+        },
+      ],
     },
   ];
 
-  // ==== общее кол-во страниц
-  const planedPagesArray = () => {
-    return getSelectBooks.map(trainingBook => {
-      return trainingBook.totalPages;
-    });
-  };
-  const totalPages = planedPagesArray().reduce((acc, planedPage) => {
-    return acc + planedPage;
-  }, 0);
-  // console.log(totalPages);
+  const planedPagesArray = getResults.map(({ planedPages }) => {
+    return planedPages;
+  });
 
-  const dateNowStr = moment().format('YYYY-MM-DD');
+  const factPagesArray = getResults.map(({ factPages }) => {
+    return factPages;
+  });
 
-  // сравнение текущей даты с датой старта
-  // const actualStartDate = (dateNowStr, startDate) => {
-  //   return dateNowStr > startDate ? dateNowStr === startDate : startDate;
-  // };
-  // console.log('actualStartDate :>> ', actualStartDate());
+  const lastOfPlanedArray = planedPagesArray[planedPagesArray.length - 1];
+  const lastOfFactArray = factPagesArray[factPagesArray.length - 1];
 
-  const getResultForDay = resultsDate =>
-    getResults
-      .filter(({ date }) => date === resultsDate)
-      .reduce((acc, { pages }) => (acc += Number(pages)), 0);
-
-  const getReadedStats = ({ totalPages, endDate }) => {
-    const endDateUpdate = endDate.split('-').join('');
-    // console.log('endDateUpdate :>> ', endDateUpdate);
-
-    const daysToEnd =
-      +moment(endDateUpdate, 'YYYYMMDD').fromNow().split(' ')[1] + 1;
-    // console.log('daysToEnd :>> ', daysToEnd);
-
-    const avaregePgesPerDay = Math.ceil(totalPages / daysToEnd) || 0;
-
-    const factPages = getResultForDay(dateNowStr);
-    return {
-      avaregePgesPerDay,
-      factPages,
-    };
-  };
-
-  const stats = getReadedStats({ totalPages, endDate });
-  // console.log('stats :>> ', stats);
-
-  // ==== Массив дат графика====
-
-  // const startDtUpdate = startDate.split('-').join('');
-  // const endDtUpdate = endDate.split('-').join('');
-  // console.log('startDtUpdate :>> ', startDtUpdate);
-  // console.log('endDtUpdate :>> ', endDtUpdate);
-
-  // const getDatesArray = (startDate, endDate) => {
-  // let dateArray = [];
-  //   let currentDate = moment(startDate).format('YYYY-MM-DD');
-  //   const lastDate = moment(endDate).format('YYYY-MM-DD');
-  //   console.log('currentDate :>> ', currentDate);
-  //   console.log('lastDate :>> ', lastDate);
-  // while (currentDate <= lastDate) {
-  //   dateArray.push(moment(currentDate).format('YYYY-MM-DD'));
-  //   currentDate = moment(currentDate).add(1, 'days');
-  //     // console.log('whilecurrentDate :>> ', currentDate);
-  //   }
-  //   return dateArray;
-  // };
-  // console.log('getDatesArray :>> ', getDatesArray());
-
-  //  ================ Пример узла диапазона моментов: ===================
-
+  //  ================ Массив дат start to end: ===================
   const momentArr = extendMoment(moment);
-  // const start = moment(startDate).format('YYYY-MM-DD');
-  // const end = moment(endDate).format('YYYY-MM-DD');
-  const start = startDate;
-  const end = endDate;
+  const start = moment(startDate).format('YYYY-MM-DD');
+  const end = moment(endDate).format('YYYY-MM-DD');
+
   const getDates = moment.range(momentArr(start), momentArr(end));
-  // console.log('getDates>> ', getDates);
 
   const getDatesArray = () => {
-    return Array.from(getDates.by('day'));
+    return Array.from(getDates.by('day')).map(({ _d: date }) => {
+      return moment(date).format('MMM D');
+    });
   };
   // console.log('getDatesArray :>> ', getDatesArray());
-  // ===================================================================
+  // ==========  duration ==================
+  const duration = getDatesArray().length;
+  // console.log('duration :>> ', duration);
+
   // ==== Массивы для построения линий графика====
+
   const getPlanedLine = () => {
     let arr = [];
-    arr.push(stats.avaregePgesPerDay);
-    return arr;
-  };
 
-  const getActLine = () => {
-    let arr = [];
-    arr.push(stats.factPages);
-    return arr;
+    for (let i = 0; i < duration - planedPagesArray.length; i += 1) {
+      if (arr[i] !== lastOfPlanedArray) {
+        arr[i] = lastOfPlanedArray;
+      }
+    }
+    const resultArr = [...planedPagesArray, ...arr];
+
+    return resultArr;
   };
+  // console.log('getPlanedLine :>> ', getPlanedLine());
+
+  const getFactLine = () => {
+    let arr = [];
+
+    for (let i = 0; i < duration - factPagesArray.length; i += 1) {
+      if (arr[i] !== lastOfFactArray) {
+        arr[i] = lastOfFactArray;
+      }
+    }
+    const resultArr = [...factPagesArray, ...arr];
+
+    return resultArr;
+  };
+  // console.log('getFactLine :>> ', getFactLine());
 
   const chartLine = () => {
     setChartData({
-      // labels: ['Start', ...getDatesArray()],
-      labels: ['Start', ...getDatesArray()],
+      labels: [...getDatesArray()],
       datasets: [
         {
           label: 'Plan',
@@ -168,7 +185,7 @@ const Chart = () => {
           pointHoverRadius: 10,
           pointRadius: 8,
           pointHitRadius: 10,
-          data: [...getActLine()],
+          data: [...getFactLine()],
         },
       ],
     });
@@ -186,16 +203,13 @@ const Chart = () => {
       },
     },
     maintainAspectRatio: false,
-    // responsive: false,
   };
   return (
     <>
       <div className={css.chartBox}>
         <p className={css.title}>
           Amount of pages / Day{' '}
-          <span className={css.avaregePgesPerDay}>
-            {stats.avaregePgesPerDay}
-          </span>
+          <span className={css.planedPages}>{lastOfPlanedArray}</span>
         </p>
         <div className={css.lineBox}>
           <ul className={css.lineList}>

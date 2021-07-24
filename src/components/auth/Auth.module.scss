@@ -15,6 +15,7 @@
 }
 
 .formWraper {
+  padding: 0 -25px;
   width: 100%;
   min-height: 648px;
   background-image: linear-gradient(rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)),
@@ -153,7 +154,7 @@
 }
 
 .registerFormInput {
-  // width: 270px;
+  width: 270px;
   height: 42px;
   border: none;
   background: #f5f7fa;
@@ -183,13 +184,12 @@
   // margin-right: 100%;
   // margin-left: 40px;
   color: #ffffff;
-  margin-left: 25px;
 }
 
 .registerPageButton {
   cursor: pointer;
 
-  width: 220px;
+  width: 270px;
   height: 60px;
   background: #ff6b08;
 
@@ -317,8 +317,14 @@
 
 //-----------------------------------------Login-----------------------//
 
-.deskriptionText {
+.deskriptionTextWrapper {
+  width: 200px;
+  margin: 0 auto;
   position: relative;
+}
+
+.deskriptionText {
+  // position: relative;
   margin-top: 40px;
   font-family: Montserrat;
   font-style: normal;
@@ -330,14 +336,14 @@
   color: #898f9f;
 }
 
-.deskriptionText::after {
+.deskriptionText::before {
   content: '';
   background-color: rgba(36, 42, 55, 0.5);
   position: absolute;
   width: 100px;
   height: 1px;
   bottom: 13%;
-  left: 85px;
+  left: 50px;
   opacity: 1;
   margin-bottom: 20px;
 }
@@ -356,7 +362,7 @@
   width: 100%;
   height: 420px;
   background-image: linear-gradient(rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)),
-    url('../../assets/authImg//picMob.png');
+    url('../../assets/authImg/picMob.png');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -374,6 +380,7 @@
 }
 
 .titleLogin {
+  // position: relative;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
@@ -400,13 +407,14 @@
 }
 
 @media (min-width: 768px) {
-  .deskriptionText::after {
+  .deskriptionText::before {
     width: 150px;
     bottom: 10%;
-    left: 264px;
+    left: 24px;
   }
 
   .deskriptionText {
+    margin-bottom: 81px;
     font-size: 20px;
   }
   .deskriptionWraperLogin {
@@ -456,10 +464,9 @@
 }
 
 @media (min-width: 1280px) {
-  .deskriptionText::after {
+  .deskriptionText::before {
     width: 150px;
-
-    left: 32%;
+    left: 12%;
   }
 
   .formWraperLogin {

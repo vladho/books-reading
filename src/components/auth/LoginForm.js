@@ -4,9 +4,16 @@ import { NavLink } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginSchema } from '../../helpers/validation/AuthValidInput';
 import css from './Auth.module.scss';
+// import { GoogleLogin } from 'react-google-login';
+import api from '../../services/api';
 
 export default function Login() {
   const dispatch = useDispatch();
+  const onSubmit = async () => {
+    const data = await api.loginGoogle();
+    const { email, password } = data;
+    dispatch(authOps.login({ email, password }));
+  };
 
   return (
     <div className={css.mainWraper}>
@@ -20,9 +27,9 @@ export default function Login() {
             dispatch(authOps.login({ email, password }));
           }}
         >
-          {({ touched, errors, isSubmitting }) => (
+          {({ touched, errors }) => (
             <Form className={css.registerFormLogin}>
-              <button className={css.Google} type="button">
+              <button onClick={onSubmit} className={css.Google} type="button">
                 Google
               </button>
 
@@ -79,7 +86,9 @@ export default function Login() {
           <br></br>
           of time.
         </h1>
-        <p className={css.deskriptionText}>Francis Bacon</p>
+        <div className={css.deskriptionTextWrapper}>
+          <p className={css.deskriptionText}>Francis Bacon</p>
+        </div>
       </div>
     </div>
   );
