@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
+
+import { LangContext } from '../../App/App';
 import { trainingSelectors } from '../../../redux/training/';
 
 const BooksSelector = ({ onChange }) => {
+  const { language } = useContext(LangContext);
   const booksToRead = useSelector(trainingSelectors.getPlanNotSelectBooks);
 
   const bookSelect = booksToRead.map(book => ({
@@ -33,7 +36,7 @@ const BooksSelector = ({ onChange }) => {
   return (
     <Select
       defaultValue=""
-      placeholder="Choose books from the library"
+      placeholder={language.trainingPage.form.booksSelector}
       options={bookSelect}
       onChange={value => onChange(value)}
       styles={customStyles}

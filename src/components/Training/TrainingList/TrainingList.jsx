@@ -1,7 +1,10 @@
+import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
-import css from './TrainingList.module.scss';
+
+import { LangContext } from '../../App/App';
 import TrainingListItem from '../TrainingListItem';
 import { trainingSelectors } from '../../../redux/training';
+import css from './TrainingList.module.scss';
 
 const placeholder = (
   <TrainingListItem
@@ -14,6 +17,7 @@ const placeholder = (
 );
 
 export default function TrainingList({ booklist }) {
+  const { language } = useContext(LangContext);
   const isTrainStarted = useSelector(trainingSelectors.getIsStarted);
 
   const booksSelector = isTrainStarted
@@ -25,10 +29,16 @@ export default function TrainingList({ booklist }) {
   return (
     <div className={css.TrainingList}>
       <div className={css.header}>
-        <p className={css.title}>Book title</p>
-        <p className={css.author}>Author</p>
-        <p className={css.year}>Year</p>
-        <p className={css.pages}>Pages</p>
+        <p className={css.title}>
+          {language.libraryPage.tableHeader.book_title}
+        </p>
+        <p className={css.author}>
+          {language.libraryPage.tableHeader.book_author}
+        </p>
+        <p className={css.year}>{language.libraryPage.tableHeader.book_year}</p>
+        <p className={css.pages}>
+          {language.libraryPage.tableHeader.book_pages}
+        </p>
       </div>
 
       <ul className={booklist ? css.listNotEmpty : css.list}>
