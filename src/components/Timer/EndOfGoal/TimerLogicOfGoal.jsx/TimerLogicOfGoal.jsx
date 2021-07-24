@@ -9,9 +9,11 @@ const TimerLogic = () => {
 
   const goal = new Date(endDate).getTime();
 
+  const oneDay = 86400000;
+
   const [dateTime, setDateTime] = useState(new Date());
 
-  const diff = goal - new Date().getTime();
+  const diff = goal + oneDay - new Date().getTime();
 
   const days = () => {
     if (Math.floor(diff / (1000 * 60 * 60 * 24)) > 99) {

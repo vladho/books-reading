@@ -6,14 +6,11 @@ import { trainingSelectors } from '../../../../redux/training';
 
 const TimerLogic = () => {
   const year = new Date(new Date().getFullYear() + 1, 0, 1).getTime();
-  //   console.log(year);
-
-  // const endDate = useSelector(trainingSelectors.getEndDate);
-  // console.log(endDate);
 
   const [dateTime, setDateTime] = useState(new Date());
+  const oneDay = 86400000;
 
-  const diff = year - new Date().getTime();
+  const diff = year + oneDay - new Date().getTime();
 
   const days = () => {
     if (Math.floor(diff / (1000 * 60 * 60 * 24)) > 99) {

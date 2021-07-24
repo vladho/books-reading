@@ -12,6 +12,9 @@ const {
   removeBookRequest,
   removeBookSuccess,
   removeBookError,
+  updateResumeBookRequest,
+  updateResumeBookSuccess,
+  updateResumeBookError,
 } = booksActions;
 
 const fetchBooks = () => async dispatch => {
@@ -48,10 +51,28 @@ const removeBook = id => async dispatch => {
   }
 };
 
+const updateResumeBook = data => async dispatch => {
+  // dispatch(updateResumeBookRequest());
+  const { _id: id, resume, rating } = data;
+
+  try {
+    const result = await axios.patch(`http://localhost:8080/api/books/${id}`, {
+      rating,
+      resume,
+    });
+    console.log(result);
+    // dispatch(updateResumeBookSuccess());
+  } catch (error) {
+    console.log(error);
+    // dispatch(updateResumeBookError());
+  }
+};
+
 const booksOperations = {
   fetchBooks,
   addBook,
   removeBook,
+  updateResumeBook,
 };
 
 export default booksOperations;

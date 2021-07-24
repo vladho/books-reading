@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import booksSelectors from '../../../redux/books/booksSelectors';
@@ -14,23 +14,27 @@ import RatingBook from '../../ModalComponents/RatingBook/RatingBook';
 
 function LibraryList({ books, onRemove }) {
   // const { books, onRemove } = props;
-  // console.log(props);
+  // console.log(books);
   const [showResume, setShowResume] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [onResume, setOnResume] = useState('');
+
+  console.log(onResume);
+
+  const dispatch = useDispatch();
+
+  // dispatch(booksOperations.updateResumeBook());
+
+  const test = data => {
+    setOnResume(data);
+  };
 
   const isShowResume = () => {
-    setShowResume(prev => !prev);
+    setShowResume(!showResume);
   };
 
   return (
     <>
-      {showResume && (
-        <NestingModal>
-          {props => {
-            // console.log(props.toogleModal);
-            return <RatingBook {...props} test={setShowResume} />;
-          }}
-        </NestingModal>
-      )}
       {books.some(book => book.status === 'done') && (
         <div className={styles.category}>
           <h2 className={styles.categoryTitle}>Already read</h2>
@@ -43,42 +47,77 @@ function LibraryList({ books, onRemove }) {
           </div>
           <ul>
             {books.map(
-              ({ _id, title, author, year, totalPages, status, rating }) =>
-                status === 'done' && (
-                  <li key={_id} className={styles.bookListItem}>
-                    <ReactSVG src={book} className={styles.iconDone} />
-                    <div className={styles.bookListItemNameDone}>
-                      <span>
-                        <ReactSVG src={book} className={styles.iconDoneMob} />
-                      </span>
-                      {title}
-                    </div>
-                    <p className={styles.bookListItemAuthorDone}>
-                      <span className={styles.bookListItemMob}>Author:</span>
-                      {author}
-                    </p>
-                    <p className={styles.bookListItemYearDone}>
-                      <span className={styles.bookListItemMob}>Year:</span>
-                      {year}
-                    </p>
-                    <p className={styles.bookListItemPageDone}>
-                      <span className={styles.bookListItemMob}>Pages:</span>
-                      {totalPages}
-                    </p>
-                    <div className={styles.stars}>
-                      <span className={styles.bookListItemMob}>Rating:</span>
-                      <RatingReadOnly rating={rating} />
-                    </div>
-
-                    <button
-                      type="button"
-                      className={styles.buttonRezume}
-                      onClick={isShowResume}
+              ({
+                _id,
+                title,
+                author,
+                year,
+                totalPages,
+                status,
+                rating: showRating,
+                resume,
+              }) => (
+                <>
+                  {showResume && (
+                    <NestingModal
+                      toogleModal={isShowResume}
+                      addOperation={booksOperations.updateResumeBook}
+                      data={{ _id, rating, resume }}
+                      // key={_id}
                     >
-                      Resume
-                    </button>
-                  </li>
-                ),
+                      {props => {
+                        // console.log(props.toogleModal);
+                        return (
+                          <RatingBook
+                            // key={_id}
+                            {...props}
+                            toogleModal={isShowResume}
+                            setRating={setRating}
+                            setOnResume={test}
+                            resume={resume}
+                            // showResume={showResume}
+                          />
+                        );
+                      }}
+                    </NestingModal>
+                  )}
+                  {status === 'done' && (
+                    <li key={_id} className={styles.bookListItem}>
+                      <ReactSVG src={book} className={styles.iconDone} />
+                      <div className={styles.bookListItemNameDone}>
+                        <span>
+                          <ReactSVG src={book} className={styles.iconDoneMob} />
+                        </span>
+                        {title}
+                      </div>
+                      <p className={styles.bookListItemAuthorDone}>
+                        <span className={styles.bookListItemMob}>Author:</span>
+                        {author}
+                      </p>
+                      <p className={styles.bookListItemYearDone}>
+                        <span className={styles.bookListItemMob}>Year:</span>
+                        {year}
+                      </p>
+                      <p className={styles.bookListItemPageDone}>
+                        <span className={styles.bookListItemMob}>Pages:</span>
+                        {totalPages}
+                      </p>
+                      <div className={styles.stars}>
+                        <span className={styles.bookListItemMob}>Rating:</span>
+                        <RatingReadOnly rating={showRating} />
+                      </div>
+
+                      <button
+                        type="button"
+                        className={styles.buttonRezume}
+                        onClick={isShowResume}
+                      >
+                        Resume
+                      </button>
+                    </li>
+                  )}
+                </>
+              ),
             )}
           </ul>
         </div>

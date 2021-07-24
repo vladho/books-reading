@@ -23,6 +23,9 @@ const NestingModal = ({
 }) => {
   const modalRef = useRef();
 
+  const dispatch = useDispatch();
+
+  // console.log('data', Component);
   //   const dispatch = useDispatch();
 
   // const closeModal = () => {
@@ -38,9 +41,9 @@ const NestingModal = ({
   const onSave = e => {
     e.preventDefault();
     toogleModal();
-    console.log('save btn');
+    // console.log('save btn');
 
-    // dispatch(addOperation(data));
+    dispatch(addOperation(data));
   };
 
   return createPortal(
