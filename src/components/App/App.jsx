@@ -11,9 +11,7 @@ const App = () => {
         </Container>
       </HeaderWrapper>
 
-      <Container>
-        <NavigationRoutes />
-      </Container>
+      <NavigationRoutes />
     </>
   );
 };
