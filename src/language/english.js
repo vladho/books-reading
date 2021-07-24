@@ -70,7 +70,7 @@ const english = {
       backBtn: 'Back',
       saveBtn: 'Save',
     },
-    button: 'Next',
+    nextBtn: 'Next',
   },
   trainingPage: {
     form: {
@@ -83,6 +83,8 @@ const english = {
     chart: {
       chartY: 'Amount of pages / day',
       chartX: 'Time',
+      plan: 'Plan',
+      act: 'Act',
     },
     goalsCard: {
       title: 'My goals',
