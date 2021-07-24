@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { HiChevronDown } from 'react-icons/hi';
 import moment from 'moment';
 
+import { LangContext } from '../../App/App';
 import ResultItem from './ResultItem';
 import styles from './Results.module.scss';
 import trainingActions from '../../../redux/training/trainingActions';
 import trainingSelectors from '../../../redux/training/trainingSelectors';
 
 const Results = () => {
+  const { language } = useContext(LangContext);
   const dispatch = useDispatch();
 
   const start = useSelector(trainingSelectors.selectStartDate);
@@ -30,10 +32,16 @@ const Results = () => {
 
   return (
     <div className={styles.resultsMainBox}>
-      <h3 className={styles.resultsHeading}>Results</h3>
+      <h3 className={styles.resultsHeading}>
+        {language.trainingPage.resultsCard.title}
+      </h3>
       <div className={styles.inputLabelBox}>
-        <p className={styles.inputLabel}>Date</p>
-        <p className={styles.inputLabel}>Amount of pages</p>
+        <p className={styles.inputLabel}>
+          {language.trainingPage.resultsCard.date}
+        </p>
+        <p className={styles.inputLabel}>
+          {language.trainingPage.resultsCard.pages}
+        </p>
       </div>
 
       <div>
@@ -61,14 +69,15 @@ const Results = () => {
             />
           </div>
           <button type="submit" className={styles.formButton}>
-            Add results
+            {language.trainingPage.resultsCard.addBtn}
           </button>
         </form>
       </div>
       {results.length > 0 && (
         <div>
           <h3 className={styles.statisticsHeading}>
-            <span className={styles.horizontalBarLeft}></span>Statistics
+            <span className={styles.horizontalBarLeft}></span>
+            {language.trainingPage.statisticsCard.title}
             <span className={styles.horizontalBarRight}></span>
           </h3>
           <ul>
