@@ -117,7 +117,9 @@ const english = {
       exitBtn: 'Leave this app',
     },
     successModal: {
-      desc: 'Well done! but you need to be a little bit faster. You can do it)',
+      text1: 'Well done!',
+      text2: 'but you need to be a little bit faster.',
+      text3: 'You can do it)',
       okBtn: 'Ok',
     },
   },
