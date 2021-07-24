@@ -81,6 +81,7 @@ const refreshToken = prevOps => async (dispatch, getState) => {
 
 const authOperations = {
   register,
+  // loginGoogle,
   login,
   logOut,
   refreshToken,
