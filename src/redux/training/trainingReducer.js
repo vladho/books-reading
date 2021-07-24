@@ -5,6 +5,9 @@ const {
   getCurrTrainingRequest,
   getCurrTrainingSuccess,
   getCurrTrainingError,
+  startTrainingRequest,
+  startTrainingSuccess,
+  startTrainingError,
   addSelectedId,
   delSelectedId,
   clearSelectedIds,
@@ -18,33 +21,45 @@ const {
 const isStarted = createReducer(false, {
   [getCurrTrainingRequest]: () => false,
   // [getCurrTrainingSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
+
+  [startTrainingSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
 });
 
 // 📌 Данные при активной тренировке
 
+const setBooksOnSuccess = (_, { payload: { data } }) => {
+  const books = data?.books;
+
+  return Array.isArray(books) ? books : [];
+};
+
 const books = createReducer([], {
   [getCurrTrainingRequest]: () => [],
-  [getCurrTrainingSuccess]: (_, { payload: { data } }) => {
-    const books = data?.books;
+  [getCurrTrainingSuccess]: setBooksOnSuccess,
 
-    return Array.isArray(books) ? books : [];
-  },
+  [startTrainingSuccess]: setBooksOnSuccess,
 });
 
 const startDate = createReducer('', {
   [getCurrTrainingRequest]: () => '',
   [getCurrTrainingSuccess]: (_, { payload: { data } }) => data?.startDate || '',
+
+  [startTrainingSuccess]: (_, { payload: { data } }) => data?.startDate || '',
 });
 
 const endDate = createReducer('', {
   [getCurrTrainingRequest]: () => '',
   [getCurrTrainingSuccess]: (_, { payload: { data } }) =>
     data?.finishDate || '',
+
+  [startTrainingSuccess]: (_, { payload: { data } }) => data?.finishDate || '',
 });
 
 // 📌 Данные при неактивной тренировке
 
 const selectedIds = createReducer([], {
+  [startTrainingSuccess]: () => [],
+
   [addSelectedId]: (state, { payload }) => [...state, payload],
 
   [delSelectedId]: (state, { payload }) => state.filter(id => id !== payload),
