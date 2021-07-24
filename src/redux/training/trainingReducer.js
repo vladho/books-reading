@@ -10,7 +10,6 @@ const {
   startTrainingError,
   addSelectedId,
   delSelectedId,
-  clearSelectedIds,
   trainingStartDate,
   trainingEndDate,
   addResult,
@@ -58,20 +57,28 @@ const endDate = createReducer('', {
 // 📌 Данные при неактивной тренировке
 
 const selectedIds = createReducer([], {
+  [getCurrTrainingRequest]: () => [],
+
   [startTrainingSuccess]: () => [],
 
   [addSelectedId]: (state, { payload }) => [...state, payload],
 
   [delSelectedId]: (state, { payload }) => state.filter(id => id !== payload),
-
-  [clearSelectedIds]: () => [],
 });
 
 const selectStartDate = createReducer('', {
+  [getCurrTrainingRequest]: () => '',
+
+  [startTrainingSuccess]: () => '',
+
   [trainingStartDate]: (_, { payload }) => payload,
 });
 
 const selectEndDate = createReducer('', {
+  [getCurrTrainingRequest]: () => '',
+
+  [startTrainingSuccess]: () => '',
+
   [trainingEndDate]: (_, { payload }) => payload,
 });
 
@@ -81,11 +88,18 @@ const loading = createReducer(false, {
   [getCurrTrainingRequest]: () => true,
   [getCurrTrainingSuccess]: () => false,
   [getCurrTrainingError]: () => false,
+
+  [startTrainingRequest]: () => true,
+  [startTrainingSuccess]: () => false,
+  [startTrainingError]: () => false,
 });
 
 const error = createReducer(null, {
   [getCurrTrainingRequest]: () => null,
   [getCurrTrainingError]: (_, { payload }) => payload,
+
+  [startTrainingRequest]: () => null,
+  [startTrainingError]: (_, { payload }) => payload,
 });
 
 //Результаты

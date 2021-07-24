@@ -1,17 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import TrainingWrapper from '../components/Training/TrainingWrapper';
-import { trainingOperations, trainingActions } from '../redux/training';
+import { trainingOperations } from '../redux/training';
 
 const TrainingPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(trainingOperations.getTrainingPageData());
-
-    return () => {
-      dispatch(trainingActions.clearSelectedIds());
-    };
   }, [dispatch]);
 
   return <TrainingWrapper />;
