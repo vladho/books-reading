@@ -7,7 +7,7 @@ import moment from 'moment';
 
 import ResultItem from './ResultItem';
 import styles from './Results.module.scss';
-import trainingActions from '../../../redux/training/trainingActions';
+import trainingOperations from '../../../redux/training/trainingOperations';
 import trainingSelectors from '../../../redux/training/trainingSelectors';
 
 const Results = () => {
@@ -25,7 +25,7 @@ const Results = () => {
     const date = e.target.resultDate.value;
     const time = moment().format('h:mm:ss');
     const pages = e.target.resultPages.value;
-    dispatch(trainingActions.addResult({ date, time, pages }));
+    dispatch(trainingOperations.addResult({ date, time, pages }));
   };
 
   return (
@@ -87,13 +87,3 @@ const Results = () => {
 };
 
 export default Results;
-
-// const test = results
-//   .map(day => {
-//     const date = day.date;
-//     const res = day.stats.map(({ time, pages }) => {
-//       return { date, time, pages };
-//     });
-//     return res;
-//   })
-//   .flat();
