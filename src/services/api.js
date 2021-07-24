@@ -38,6 +38,9 @@ const getAllBooks = async () => (await axios.get('/books')).data;
 
 const getCurrTraining = async () => (await axios.get('/training')).data;
 
+const startTraining = async details =>
+  (await axios.post('/training', details)).data;
+
 const api = {
   unsetToken,
   setToken,
@@ -51,6 +54,7 @@ const api = {
 
   getAllBooks,
   getCurrTraining,
+  startTraining,
   // postOneBook,
   // deleteOneBook,
 };
