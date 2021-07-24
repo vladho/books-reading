@@ -1,5 +1,6 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import booksActions from './booksActions';
+import authActions from '../auth/authActions';
 // import tempBooks from '../../json/trainingListBooks.json';
 
 const {
@@ -14,6 +15,8 @@ const {
   removeBookError,
 } = booksActions;
 
+const { logoutRequest, logoutSuccess, logoutError } = authActions;
+
 const addBook = (state = [], action) => {
   return [...state, action.payload.data];
 };
@@ -27,6 +30,7 @@ const items = createReducer([], {
   [fetchBooksSuccess]: (_, { payload }) => payload.data.books,
   [addBookSuccess]: addBook,
   [removeBookSuccess]: removeBook,
+  [logoutSuccess]: () => [],
 });
 
 const loading = createReducer(false, {
@@ -39,11 +43,21 @@ const loading = createReducer(false, {
   [removeBookRequest]: () => true,
   [removeBookSuccess]: () => false,
   [removeBookError]: () => false,
+  [logoutRequest]: () => true,
+  [logoutSuccess]: () => false,
+  [logoutError]: () => false,
 });
 
 const error = createReducer(null, {
   [fetchBooksRequest]: () => null,
+  [addBookRequest]: () => null,
+  [removeBookRequest]: () => null,
+  [logoutRequest]: () => null,
+
   [fetchBooksError]: (_, { payload }) => payload,
+  [addBookError]: (_, { payload }) => payload,
+  [removeBookError]: (_, { payload }) => payload,
+  [logoutError]: (_, { payload }) => payload,
 });
 
 export default combineReducers({
