@@ -19,7 +19,7 @@ const {
 
 const isStarted = createReducer(false, {
   [getCurrTrainingRequest]: () => false,
-  // [getCurrTrainingSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
+  [getCurrTrainingSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
 
   [startTrainingSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
 });
