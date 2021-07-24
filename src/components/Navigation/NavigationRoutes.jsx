@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { Switch } from 'react-router-dom';
+import { Redirect, Switch } from 'react-router-dom';
 import { mainRoutes } from '../../routes/mianRoutes';
 import PrivateRoute from '../Routes/PrivateRoute';
 import PublicRoute from '../Routes/PublicRoute';
@@ -20,6 +20,7 @@ const NavigationRoutes = () => {
             <PublicRoute {...route} isAuth={isAuth} key={route.name} />
           ),
         )}
+        <Redirect to="/login" />
       </Switch>
     </Suspense>
   );
