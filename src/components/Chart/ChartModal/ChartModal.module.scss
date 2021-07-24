@@ -13,6 +13,7 @@
   @include for-size(tablet) {
     width: 678px;
     height: 340px;
+    padding-bottom: 10px;
   }
 
   @include for-size(desktop) {
