@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import Container from '../components/Container/Container';
 import TrainingWrapper from '../components/Training/TrainingWrapper';
 import { trainingOperations, trainingActions } from '../redux/training';
 
@@ -14,7 +15,11 @@ const TrainingPage = () => {
     };
   }, [dispatch]);
 
-  return <TrainingWrapper />;
+  return (
+    <Container>
+      <TrainingWrapper />
+    </Container>
+  );
 };
 
 export default TrainingPage;
