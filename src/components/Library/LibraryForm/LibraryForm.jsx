@@ -26,7 +26,6 @@ class LibraryForm extends Component {
         <Formik
           initialValues={initialState}
           validationSchema={schemaValidAddBook}
-          validateOnBlur
           onSubmit={(values, actions) => {
             onHandleSubmit({ ...values });
             actions.resetForm({ initialState });
