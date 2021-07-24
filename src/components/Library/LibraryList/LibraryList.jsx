@@ -5,22 +5,12 @@ import { ReactSVG } from 'react-svg';
 import booksSelectors from '../../../redux/books/booksSelectors';
 import booksOperations from '../../../redux/books/booksOperations';
 import RatingReadOnly from '../../ModalComponents/RatingBook/ChooseRating/RatingReadOnly';
-import authSelectors from '../../../redux/auth/authSelectors';
 
 import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
-import trainingSelectors from '../../../redux/training/trainingSelectors';
 
-function LibraryList({ books, onRemove, isAuth, isTraining }) {
-  console.log(
-    'books, onRemove, isAuth, isTraining:',
-    books,
-    onRemove,
-    isAuth,
-    isTraining,
-    !isTraining,
-  );
+function LibraryList({ books, onRemove }) {
   return (
     <>
       {books.some(book => book.status === 'done') && (
@@ -153,13 +143,11 @@ function LibraryList({ books, onRemove, isAuth, isTraining }) {
                 ),
             )}
           </ul>
-          {!isTraining && (
-            <NavLink to="/training" className={styles.link}>
-              <button type="button" className={styles.btnNext}>
-                Next
-              </button>
-            </NavLink>
-          )}
+          <NavLink to="/training" className={styles.link}>
+            <button type="button" className={styles.btnNext}>
+              Next
+            </button>
+          </NavLink>
           <button type="button" className={styles.btnAddMob}>
             +
           </button>
@@ -171,8 +159,6 @@ function LibraryList({ books, onRemove, isAuth, isTraining }) {
 
 const mapStateToProps = state => ({
   books: booksSelectors.getAllBooks(state),
-  isAuth: authSelectors.getIsAuth(state),
-  isTraining: trainingSelectors.getIsStarted(state),
 });
 
 const mapDispatchToProps = {
