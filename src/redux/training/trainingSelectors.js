@@ -55,6 +55,14 @@ const getResults = state =>
       return b.date.split('.').join('') - a.date.split('.').join('');
     });
 
+const getChartResults = state =>
+  state.training.results.map(day => {
+    const date = day.date;
+    const plannedPages = day.plannedPages;
+    const factPages = day.factPages;
+    return { date, plannedPages, factPages };
+  });
+
 const trainingSelectors = {
   getIsStarted,
   getBooks,
@@ -68,6 +76,7 @@ const trainingSelectors = {
   getLoading,
   getError,
   getResults,
+  getChartResults,
 };
 export default trainingSelectors;
 
