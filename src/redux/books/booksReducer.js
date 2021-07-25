@@ -10,6 +10,9 @@ const {
   addBookRequest,
   addBookSuccess,
   addBookError,
+  updateResumeBookRequest,
+  updateResumeBookSuccess,
+  updateResumeBookError,
   removeBookRequest,
   removeBookSuccess,
   removeBookError,
@@ -31,6 +34,17 @@ const items = createReducer([], {
   [fetchBooksRequest]: () => [],
   [fetchBooksSuccess]: (_, { payload }) => payload.data.books,
   [addBookSuccess]: addBook,
+  [updateResumeBookSuccess]: (state, action) => {
+    const id = action.payload.data.data.book._id;
+    const resume = action.payload.data.data.book.resume;
+    const raiting = action.payload.data.data.book.raiting;
+    const stateBook = action.payload.data.data.book;
+    console.log(resume, raiting);
+
+    return state.map(book =>
+      book._id === id ? { ...book, ...stateBook } : book,
+    );
+  },
   [removeBookSuccess]: removeBook,
   [logoutSuccess]: () => [],
 });
@@ -45,6 +59,9 @@ const loading = createReducer(false, {
   [removeBookRequest]: () => true,
   [removeBookSuccess]: () => false,
   [removeBookError]: () => false,
+  [updateResumeBookRequest]: () => true,
+  [updateResumeBookSuccess]: () => false,
+  [updateResumeBookError]: () => false,
   [logoutRequest]: () => true,
   [logoutSuccess]: () => false,
   [logoutError]: () => false,
@@ -53,11 +70,13 @@ const loading = createReducer(false, {
 const error = createReducer(null, {
   [fetchBooksRequest]: () => null,
   [addBookRequest]: () => null,
+  [updateResumeBookRequest]: () => null,
   [removeBookRequest]: () => null,
   [logoutRequest]: () => null,
 
   [fetchBooksError]: (_, { payload }) => payload,
   [addBookError]: (_, { payload }) => payload,
+  [updateResumeBookError]: (_, { payload }) => payload,
   [removeBookError]: (_, { payload }) => payload,
   [logoutError]: (_, { payload }) => payload,
 });

@@ -14,7 +14,6 @@ const Library = () => {
   const isLoadingBook = useSelector(booksSelectors.getLoading);
   const isFirstVisit = useSelector(booksSelectors.isFirstVisit);
 
-  console.log(isFirstVisit);
   useEffect(() => {
     dispatch(booksOperations.fetchBooks());
   }, []);

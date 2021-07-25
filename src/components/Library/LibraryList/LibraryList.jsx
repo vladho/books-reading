@@ -13,13 +13,15 @@ import RatingBook from '../../ModalComponents/RatingBook/RatingBook';
 
 function LibraryList({ books, onRemove }) {
   const [showModal, setShowModal] = useState(false);
-  const [rating, setRating] = useState(0);
 
-  const [resumeValue, setResumeValue] = useState('');
+  const [id, setId] = useState(null);
+  // const [rating, setRating] = useState(0);
+  // const [resumeValue, setResumeValue] = useState('');
 
   const dispatch = useDispatch();
 
-  const isShowModal = () => {
+  const isShowModal = id => {
+    setId(id);
     setShowModal(!showModal);
   };
 
@@ -27,11 +29,13 @@ function LibraryList({ books, onRemove }) {
     <>
       {showModal && (
         <RatingBook
-          setRating={setRating}
-          setResumeValue={setResumeValue}
-          resumeValue={resumeValue}
+          // setRating={setRating}
+          // setResumeValue={setResumeValue}
+          // resumeValue={resumeValue}
+          id={id}
           showModal={showModal}
           setShowModal={setShowModal}
+          // rating={rating}
         />
       )}
       {books.some(book => book.status === 'done') && (
@@ -53,7 +57,7 @@ function LibraryList({ books, onRemove }) {
                 year,
                 totalPages,
                 status,
-                rating: showRating,
+                rating,
                 resume,
               }) =>
                 status === 'done' && (
@@ -79,13 +83,13 @@ function LibraryList({ books, onRemove }) {
                     </p>
                     <div className={styles.stars}>
                       <span className={styles.bookListItemMob}>Rating:</span>
-                      <RatingReadOnly rating={showRating} />
+                      <RatingReadOnly rating={rating} />
                     </div>
 
                     <button
                       type="button"
                       className={styles.buttonRezume}
-                      onClick={isShowModal}
+                      onClick={() => isShowModal(_id)}
                     >
                       Resume
                     </button>
