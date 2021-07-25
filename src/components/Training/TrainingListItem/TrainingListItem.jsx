@@ -1,3 +1,4 @@
+import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import css from './TrainingListItem.module.scss';
 import { ReactComponent as BookIcon } from '../../../assets/training/bookIcon.svg';
@@ -5,6 +6,7 @@ import { ReactComponent as DeleteIcon } from '../../../assets/training/deleteIco
 import IconButton from '../../common/IconButton';
 import TrainingCheckbox from '../TrainingCheckbox';
 import { trainingActions, trainingSelectors } from '../../../redux/training';
+import { LangContext } from '../../App/App';
 
 export default function TrainingListItem({
   id,
@@ -15,6 +17,7 @@ export default function TrainingListItem({
   status,
   placeholder,
 }) {
+  const { language } = useContext(LangContext);
   const dispatch = useDispatch();
 
   const isTrainStarted = useSelector(trainingSelectors.getIsStarted);
@@ -34,15 +37,21 @@ export default function TrainingListItem({
 
       <p className={css.title}>{title}</p>
       <p className={css.author}>
-        <span className={css.prefix}>Author:</span>
+        <span className={css.prefix}>
+          {language.libraryPage.tableHeader.book_author}:
+        </span>
         {author}
       </p>
       <p className={css.year}>
-        <span className={css.prefix}>Year:</span>
+        <span className={css.prefix}>
+          {language.libraryPage.tableHeader.book_year}:
+        </span>
         {year}
       </p>
       <p className={css.pages}>
-        <span className={css.prefix}>Pages:</span>
+        <span className={css.prefix}>
+          {language.libraryPage.tableHeader.book_pages}:
+        </span>
         {pages}
       </p>
 
