@@ -66,20 +66,20 @@ const Chart = () => {
     {
       date: '2021-07-25',
       planedPages: 28,
-      factPages: 50,
+      factPages: 0,
       stats: [
-        {
-          time: '12:08:26',
-          pages: 25,
-        },
-        {
-          time: '13:09:25',
-          pages: 15,
-        },
-        {
-          time: '14:10:25',
-          pages: 10,
-        },
+        // {
+        //   time: '12:08:26',
+        //   pages: 25,
+        // },
+        // {
+        //   time: '13:09:25',
+        //   pages: 15,
+        // },
+        // {
+        //   time: '14:10:25',
+        //   pages: 10,
+        // },
       ],
     },
     {
