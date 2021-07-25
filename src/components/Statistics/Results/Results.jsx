@@ -38,7 +38,7 @@ const Results = () => {
     const date = e.target.resultDate.value;
     const time = moment().format('h:mm:ss');
     const pages = +e.target.resultPages.value;
-    // console.log(resultPages);
+    console.log(resultDate);
     // message = pages <= plannedPages / duration ? messages[0] : messages[1];
 
     if (!date || !time || !pages) {
@@ -51,20 +51,13 @@ const Results = () => {
   return (
     <>
       {showModal && (
-        //  <SomeMotivation showModal={showModal} setShowModal={setShowModal} />
-        <NestingModal toogleModal={isShowModal}>
-          {props => (
-            <SomeMotivation
-              {...props}
-              toogleModal={isShowModal}
-              message={
-                resultPages <= plannedPages / duration
-                  ? messages[0]
-                  : messages[1]
-              }
-            />
-          )}
-        </NestingModal>
+        <SomeMotivation
+          showModal={showModal}
+          setShowModal={setShowModal}
+          message={
+            resultPages <= plannedPages / duration ? messages[0] : messages[1]
+          }
+        />
       )}
       <div className={styles.resultsMainBox}>
         <h3 className={styles.resultsHeading}>
@@ -99,7 +92,8 @@ const Results = () => {
               <input
                 type="number"
                 name="resultPages"
-                onChange={pages => setResultPages(pages)}
+                value={resultPages}
+                onChange={e => setResultPages(e.target.value)}
                 className={styles.formInput}
                 min={1}
               />
