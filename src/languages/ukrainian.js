@@ -48,7 +48,7 @@ const ukrainian = {
       step2_text: 'Визначте ціль, оберіть період, розпочинайте тренування.',
     },
     tableHeader: {
-      book_title: 'Назва книги',
+      book_title: 'Назва',
       book_author: 'Автор',
       book_year: 'Рік',
       book_pages: 'Cтор.',
