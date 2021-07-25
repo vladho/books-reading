@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import { extendMoment } from 'moment-range';
 import { Line } from 'react-chartjs-2';
-
 import { trainingSelectors } from '../../redux/training';
-// import { booksSelectors } from '../../redux/books';
 
 import css from './Chart.module.scss';
 
@@ -16,85 +13,41 @@ const Chart = () => {
     chartLine();
   }, []); // eslint-disable-line
 
-  const getChartResults = useSelector(trainingSelectors.getChartResults); // пока есть тестовый массив
+  const getChartResults = useSelector(trainingSelectors.getChartResults);
   const startDate = useSelector(trainingSelectors.selectStartDate);
   const endDate = useSelector(trainingSelectors.selectEndDate);
   const getStartDate = useSelector(trainingSelectors.getStartDate);
   const getEndDate = useSelector(trainingSelectors.getEndDate);
   const getIsStarted = useSelector(trainingSelectors.getIsStarted);
 
-  // ===== тестовые данные - имитация бэка
-  // const getChartResults = [
-  //   {
-  //     date: '2021-07-23',
-  //     planedPages: 19,
-  //     factPages: 70,
-  //     stats: [
-  //       {
-  //         time: '12:08:26',
-  //         pages: 25,
-  //       },
-  //       {
-  //         time: '13:09:25',
-  //         pages: 25,
-  //       },
-  //       {
-  //         time: '14:10:25',
-  //         pages: 20,
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     date: '2021-07-24',
-  //     planedPages: 60,
-  //     factPages: 30,
-  //     stats: [
-  //       {
-  //         time: '12:08:26',
-  //         pages: 10,
-  //       },
-  //       {
-  //         time: '13:09:25',
-  //         pages: 15,
-  //       },
-  //       {
-  //         time: '14:10:25',
-  //         pages: 5,
-  //       },
-  //     ],
-  //   },
-  // ];
-
-  const planedPagesArray = getChartResults.map(({ plannedPages }) => {
-    return plannedPages;
-  });
-
-  const factPagesArray = getChartResults.map(({ factPages }) => {
-    return factPages;
-  });
-
-  const lastOfPlanedArray = planedPagesArray[planedPagesArray.length - 1];
-  const lastOfFactArray = factPagesArray[factPagesArray.length - 1];
-
-  //  ================ Массив дат start to end: ===================
   const momentArr = extendMoment(moment);
-
   const start = getIsStarted ? getStartDate : startDate;
   const end = getIsStarted ? getEndDate : endDate;
-
   const getDates = moment.range(momentArr(start), momentArr(end));
-
   const getDatesArray = () => {
     return Array.from(getDates.by('day')).map(({ _d: date }) => {
       return moment(date).format('MMM D');
     });
   };
-  // console.log('getDatesArray :>> ', getDatesArray());
-  // ==========  duration ==================
-  const duration = getDatesArray().length;
-  // console.log('duration :>> ', duration);
 
-  // ==== Массивы для построения линий графика====
+  const datesArray = getDatesArray();
+  const completeDatesObj = {};
+  datesArray.map(val => {
+    completeDatesObj[val] = 0;
+  });
+
+  getChartResults.map(({ date, factPages }) => {
+    completeDatesObj[moment(date, 'DD-MM-YYYY').format('MMM D')] = factPages;
+    return moment(date, 'DD-MM-YYYY').format('MMM D');
+  });
+  const factPagesArray = Object.values(completeDatesObj);
+
+  const planedPagesArray = getChartResults.map(({ plannedPages }) => {
+    return plannedPages;
+  });
+  const lastOfPlanedArray = planedPagesArray[planedPagesArray.length - 1];
+
+  const duration = datesArray.length;
 
   const getPlanedLine = () => {
     let arr = [];
@@ -109,22 +62,9 @@ const Chart = () => {
     return resultArr;
   };
 
-  const getFactLine = () => {
-    let arr = [];
-
-    for (let i = 0; i < duration - factPagesArray.length; i += 1) {
-      if (arr[i] !== lastOfFactArray) {
-        arr[i] = lastOfFactArray;
-      }
-    }
-    const resultArr = [...factPagesArray, ...arr];
-
-    return resultArr;
-  };
-
   const chartLine = () => {
     setChartData({
-      labels: [...getDatesArray()],
+      labels: [...datesArray],
       datasets: [
         {
           label: 'Plan',
@@ -146,7 +86,7 @@ const Chart = () => {
           pointHoverRadius: 10,
           pointRadius: 8,
           pointHitRadius: 10,
-          data: [...getFactLine()],
+          data: [...factPagesArray],
         },
       ],
     });
