@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GoHome, GoBook } from 'react-icons/go';
 import { authSls, authOps } from '../../../redux/auth';
 
 import css from './AppBar.module.scss';
 import { NavLink } from 'react-router-dom';
+import { LangContext } from '../../App/App';
 
 export default function AppBar() {
+  const { language } = useContext(LangContext);
   const dispatch = useDispatch();
   const onLogout = () => dispatch(authOps.logOut());
 
@@ -34,7 +36,7 @@ export default function AppBar() {
       </div>
 
       <button type="button" className={css.logoutButton} onClick={onLogout}>
-        <span className={css.logoutText}>Log Out</span>
+        <span className={css.logoutText}>{language.logout}</span>
       </button>
     </div>
   );
