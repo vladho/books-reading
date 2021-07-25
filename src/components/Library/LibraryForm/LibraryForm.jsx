@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { connect } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
+import { LangContext } from '../../App/App';
 import booksOperations from '../../../redux/books/booksOperations';
 import schemaValidAddBook from '../../../helpers/validation/schemaValidAddBook';
 import styles from './LibraryForm.module.scss';
+import languages from '../../../languages';
 
 const initialState = {
   title: '',
@@ -15,6 +17,8 @@ const initialState = {
 
 class LibraryForm extends Component {
   state = { ...initialState };
+
+  // const { language } = useContext(LangContext);
 
   render() {
     const onHandleSubmit = values => {
@@ -36,6 +40,9 @@ class LibraryForm extends Component {
               <div className={styles.form}>
                 <label className={styles.labelName}>
                   <p className={styles.labelNameTitle}>Book title</p>
+                  {/* <p className={styles.labelNameTitle}>
+                    {language.libraryPage.bookForm.title}
+                  </p> */}
                   <Field
                     className={styles.labelNameInput}
                     type="text"
@@ -51,6 +58,9 @@ class LibraryForm extends Component {
                 </label>
                 <label className={styles.labelAuthor}>
                   <p className={styles.labelAuthorTitle}>Author</p>
+                  {/* <p className={styles.labelAuthorTitle}>
+                    {language.libraryPage.bookForm.author}
+                  </p> */}
                   <Field
                     className={styles.labelAuthorInput}
                     type="text"
@@ -66,6 +76,9 @@ class LibraryForm extends Component {
                 </label>
                 <label className={styles.labelYear}>
                   <p className={styles.labelYearTitle}>Publication date</p>
+                  {/* <p className={styles.labelYearTitle}>
+                    {language.libraryPage.bookForm.publication}
+                  </p> */}
                   <Field
                     className={styles.labelYearInput}
                     type="text"
@@ -81,6 +94,9 @@ class LibraryForm extends Component {
                 </label>
                 <label className={styles.labelPage}>
                   <p className={styles.labelPageTitle}>Amount of pages</p>
+                  {/* <p className={styles.labelPageTitle}>
+                    {language.libraryPage.bookForm.pages}
+                  </p> */}
                   <Field
                     className={styles.labelPageInput}
                     type="text"
@@ -97,6 +113,9 @@ class LibraryForm extends Component {
                 <button type="submit" className={styles.btnAddForm}>
                   Add
                 </button>
+                {/* <button type="submit" className={styles.btnAddForm}>
+                  {language.libraryPage.bookForm.button}
+                </button> */}
               </div>
             </Form>
           )}

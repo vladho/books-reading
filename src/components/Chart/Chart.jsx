@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useSelector } from 'react-redux';
 // import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import { extendMoment } from 'moment-range';
 import { Line } from 'react-chartjs-2';
 
+import { LangContext } from '../App/App';
 import { trainingSelectors } from '../../redux/training';
 // import { booksSelectors } from '../../redux/books';
 
 import css from './Chart.module.scss';
 
 const Chart = () => {
+  const { language } = useContext(LangContext);
   const [chartData, setChartData] = useState({});
   useEffect(() => {
     chartLine();
@@ -169,17 +171,17 @@ const Chart = () => {
     <>
       <div className={css.chartBox}>
         <p className={css.title}>
-          Amount of pages / Day{' '}
+          {language.trainingPage.chart.chartY}{' '}
           <span className={css.planedPages}>{lastOfPlanedArray}</span>
         </p>
         <div className={css.lineBox}>
           <ul className={css.lineList}>
-            <li className={css.lineItem}>Plan</li>
-            <li className={css.lineItem}>Act</li>
+            <li className={css.lineItem}>{language.trainingPage.chart.plan}</li>
+            <li className={css.lineItem}>{language.trainingPage.chart.act}</li>
           </ul>
         </div>
         <Line data={chartData} options={options} />
-        <p className={css.chartValue}>Time</p>
+        <p className={css.chartValue}>{language.trainingPage.chart.chartX}</p>
       </div>
     </>
   );

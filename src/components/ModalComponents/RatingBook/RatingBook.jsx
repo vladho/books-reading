@@ -1,44 +1,50 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { booksOperations } from '../../../redux/books';
+import { useState, useContext } from 'react';
 import CancelButton from '../../common/ModalButton/CancelButton/CancelButton';
 import DoneButton from '../../common/ModalButton/DoneButton/DoneButton';
+import withModal from '../../ModalHoc/withModal/withModal';
 import ChooseRating from './ChooseRating/ChooseRating';
 import styles from './RatingBook.module.scss';
+import { LangContext } from '../../App/App';
 
-const RatingBook = ({ toogleModal, setRating, setOnResume, onResume }) => {
-  const [resume, setResume] = useState('');
-
+const RatingBook = ({
+  toogleModal,
+  setRating,
+  setResumeValue,
+  resumeValue,
+}) => {
   const onChangeResume = e => {
-    // setResume(e.target.value);
-    // e.preventDefault();
-    setResume(e.target.value);
+    setResumeValue(e.target.value);
   };
 
-  // const testSubmit = e => {
-  //   // e.preventDefault();
-  //   test(resume);
-  // };
+  const { language } = useContext(LangContext);
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Choose rating of the book</h2>
-      <ChooseRating setRating={setRating} />
-      <h2 className={styles.title}>Resume</h2>
-      <textarea
-        placeholder="..."
-        type="text"
-        name="resume"
-        className={styles.textarea}
-        value={resume}
-        onChange={onChangeResume}
-      ></textarea>
-      <CancelButton styleBtn={styles.canselBtn} onCbClick={toogleModal}>
-        Back
-      </CancelButton>
-      <DoneButton styleBtn={styles.doneBtn}>Save</DoneButton>
-    </div>
+    <form>
+      <div className={styles.container}>
+        <h2 className={styles.title}>
+          {language.libraryPage.resumeModal.rating}
+        </h2>
+        <ChooseRating setRating={setRating} />
+        <h2 className={styles.title}>
+          {language.libraryPage.resumeModal.textFieldTitle}
+        </h2>
+        <textarea
+          placeholder="..."
+          type="text"
+          name="resume"
+          className={styles.textarea}
+          value={resumeValue}
+          onChange={onChangeResume}
+        ></textarea>
+        <CancelButton styleBtn={styles.canselBtn} onCbClick={toogleModal}>
+          {language.libraryPage.resumeModal.backBtn}
+        </CancelButton>
+        <DoneButton styleBtn={styles.doneBtn}>
+          {language.libraryPage.resumeModal.saveBtn}
+        </DoneButton>
+      </div>
+    </form>
   );
 };
 
-export default RatingBook;
+export default withModal(RatingBook);

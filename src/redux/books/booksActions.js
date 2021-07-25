@@ -16,6 +16,9 @@ const updateResumeBookRequest = createAction('books/update/request');
 const updateResumeBookSuccess = createAction('books/update/success');
 const updateResumeBookError = createAction('books/update/error');
 
+const firstVisitSuccess = createAction('books/firstVisit/Success');
+const secondVisitSuccess = createAction('books/secondVisit/Success');
+
 const booksActions = {
   addBookRequest,
   addBookSuccess,
@@ -29,5 +32,7 @@ const booksActions = {
   updateResumeBookRequest,
   updateResumeBookSuccess,
   updateResumeBookError,
+  firstVisitSuccess,
+  secondVisitSuccess,
 };
 export default booksActions;

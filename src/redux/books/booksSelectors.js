@@ -9,12 +9,14 @@ const getPlanBooks = createSelector([getAllBooks], books =>
 const getLoading = state => state.books.loading;
 
 const getError = state => state.books.error;
+const isFirstVisit = state => state.books.firstVisit;
 
 const booksSelectors = {
   getAllBooks,
   getPlanBooks,
   getLoading,
   getError,
+  isFirstVisit,
 };
 export default booksSelectors;
 
