@@ -148,11 +148,11 @@ function LibraryList({ books, onRemove }) {
               Next
             </button>
           </NavLink>
-          <button type="button" className={styles.btnAddMob}>
-            +
-          </button>
         </div>
       )}
+      <button type="button" className={styles.btnAddMob}>
+        +
+      </button>
     </>
   );
 }
