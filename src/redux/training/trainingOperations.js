@@ -9,6 +9,9 @@ const {
   startTrainingRequest,
   startTrainingSuccess,
   startTrainingError,
+  addResultRequest,
+  addResultSuccess,
+  addResultError,
 } = trainingActions;
 
 const getCurrTraining = () => async dispatch => {
@@ -43,9 +46,21 @@ const startTraining = details => async dispatch => {
   }
 };
 
+const addResult = body => async dispatch => {
+  dispatch(addResultRequest());
+  try {
+    const data = await api.addResult(body);
+
+    dispatch(addResultSuccess(data));
+  } catch (error) {
+    dispatch(addResultError(api.formatError(error)));
+  }
+};
+
 const trainingOperations = {
   getCurrTraining,
   getTrainingPageData,
   startTraining,
+  addResult,
 };
 export default trainingOperations;
