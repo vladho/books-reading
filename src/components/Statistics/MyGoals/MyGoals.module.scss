@@ -30,6 +30,7 @@
   background-color: $primaryBg;
 
   @include for-size(tablet-only) {
+    background: $white;
     width: 678px;
     height: 125px;
     display: flex;
