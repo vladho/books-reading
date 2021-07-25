@@ -4,16 +4,29 @@ import { NavLink } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginSchema } from '../../helpers/validation/AuthValidInput';
 import css from './Auth.module.scss';
-// import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin } from 'react-google-login';
 import api from '../../services/api';
+require('dotenv').config();
 
 export default function Login() {
-  const dispatch = useDispatch();
-  const onSubmit = async () => {
-    const data = await api.loginGoogle();
-    const { email, password } = data;
+  const handleLogin = async credentials => {
+    const password = credentials.googleId;
+    const email = credentials.Ts.Et;
+    const name = credentials.Ts.Me;
+    const token = credentials.tokenId;
+    console.log(credentials);
+    const data = await api.loginGoogle({ email, password, name, token });
+    await dispatch(authOps.register({ name, email, password }));
+
     dispatch(authOps.login({ email, password }));
   };
+
+  const dispatch = useDispatch();
+  // const onSubmit = async () => {
+  //   const data = await api.loginGoogle();
+  //   const { email, password } = data;
+  //   dispatch(authOps.login({ email, password }));
+  // };
 
   return (
     <div className={css.mainWraper}>
@@ -29,9 +42,16 @@ export default function Login() {
         >
           {({ touched, errors }) => (
             <Form className={css.registerFormLogin}>
-              <button onClick={onSubmit} className={css.Google} type="button">
+              {/* <button onClick={onSubmit} className={css.Google} type="button">
                 Google
-              </button>
+              </button> */}
+
+              <GoogleLogin
+                clientId="845032362218-gc7ptsskpdk7s2tld7jmc0kg7a0uo0g4.apps.googleusercontent.com"
+                buttonText="Log in with Google"
+                onSuccess={handleLogin}
+                onFailure={handleLogin}
+              />
 
               <label className={css.inputTitle}>
                 Email <span className={css.required}>*</span>

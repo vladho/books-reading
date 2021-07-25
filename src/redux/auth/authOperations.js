@@ -42,6 +42,18 @@ const login = credentials => async dispatch => {
     dispatch(loginError(api.formatError(error)));
   }
 };
+const loginGoogle = credentials => async dispatch => {
+  dispatch(loginRequest());
+  const { email, password, name, token } = credentials;
+  try {
+    const data = await api.loginGoogle({ email, password, name, token });
+
+    api.setToken(token);
+    dispatch(loginSuccess(data));
+  } catch (error) {
+    dispatch(loginError(api.formatError(error)));
+  }
+};
 
 const logOut = () => async dispatch => {
   dispatch(logoutRequest());
@@ -81,7 +93,7 @@ const refreshToken = prevOps => async (dispatch, getState) => {
 
 const authOperations = {
   register,
-  // loginGoogle,
+  loginGoogle,
   login,
   logOut,
   refreshToken,
