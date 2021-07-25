@@ -19,13 +19,15 @@ const {
 
 // 📌 Идет ли тренировка
 
+const setIsStartedOnSuccess = (_, { payload: { data } }) => !!data?.inProgress;
+
 const isStarted = createReducer(false, {
   [getCurrTrainingRequest]: () => false,
-  [getCurrTrainingSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
+  [getCurrTrainingSuccess]: setIsStartedOnSuccess,
 
-  [startTrainingSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
+  [startTrainingSuccess]: setIsStartedOnSuccess,
 
-  [addResultSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
+  [addResultSuccess]: setIsStartedOnSuccess,
 });
 
 // 📌 Данные при активной тренировке
@@ -45,23 +47,28 @@ const books = createReducer([], {
   [addResultSuccess]: setBooksOnSuccess,
 });
 
+const setStartDateOnSuccess = (_, { payload: { data } }) =>
+  data?.startDate || '';
+
 const startDate = createReducer('', {
   [getCurrTrainingRequest]: () => '',
-  [getCurrTrainingSuccess]: (_, { payload: { data } }) => data?.startDate || '',
+  [getCurrTrainingSuccess]: setStartDateOnSuccess,
 
-  [startTrainingSuccess]: (_, { payload: { data } }) => data?.startDate || '',
+  [startTrainingSuccess]: setStartDateOnSuccess,
 
-  [addResultSuccess]: (_, { payload: { data } }) => data?.startDate || '',
+  [addResultSuccess]: setStartDateOnSuccess,
 });
+
+const setEndDateOnSuccess = (_, { payload: { data } }) =>
+  data?.finishDate || '';
 
 const endDate = createReducer('', {
   [getCurrTrainingRequest]: () => '',
-  [getCurrTrainingSuccess]: (_, { payload: { data } }) =>
-    data?.finishDate || '',
+  [getCurrTrainingSuccess]: setEndDateOnSuccess,
 
-  [startTrainingSuccess]: (_, { payload: { data } }) => data?.finishDate || '',
+  [startTrainingSuccess]: setEndDateOnSuccess,
 
-  [addResultSuccess]: (_, { payload: { data } }) => data?.finishDate || '',
+  [addResultSuccess]: setEndDateOnSuccess,
 });
 
 const setResultsOnSuccess = (_, { payload: { data } }) => {
@@ -123,15 +130,17 @@ const loading = createReducer(false, {
   [addResultError]: () => false,
 });
 
+const setError = (_, { payload }) => payload;
+
 const error = createReducer(null, {
   [getCurrTrainingRequest]: () => null,
-  [getCurrTrainingError]: (_, { payload }) => payload,
+  [getCurrTrainingError]: setError,
 
   [startTrainingRequest]: () => null,
-  [startTrainingError]: (_, { payload }) => payload,
+  [startTrainingError]: setError,
 
   [addResultRequest]: () => null,
-  [addResultError]: (_, { payload }) => payload,
+  [addResultError]: setError,
 });
 
 export default combineReducers({
