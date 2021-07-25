@@ -5,24 +5,14 @@ import { ReactComponent as Flag } from '../../../assets/icons/Flag.svg';
 import { ReactComponent as ArrowRight } from '../../../assets/icons/ArrowRight.svg';
 import {} from '../../../';
 import DoneButton from '../../common/ModalButton/DoneButton/DoneButton';
-import { useEffect } from 'react';
+import withModal from '../../ModalHoc/withModal/withModal';
+import CancelButton from '../../common/ModalButton/CancelButton/CancelButton';
 
-const FirstVisit = props => {
-  const { toogleModal, showModalTrue } = props;
-  // toogleModal();
-  // console.log(showModalTrue)
-
-  // useEffect(() => {
-  //   console.log('object1');
-  //   showModalTrue();
-  //   console.log('object2');
-  // }, []);
-
+const FirstVisit = ({ toogleModal }) => {
   return (
     <div className={styles.container}>
-      {/* {true && showModalTrue} */}
       <ul className={styles.list}>
-        <li>
+        <li className={styles.item}>
           <h2 className={styles.step}>Step 1.</h2>
           <div className={styles.titleGoup}>
             <BookIcon className={styles.bookIcon} />
@@ -35,7 +25,7 @@ const FirstVisit = props => {
             </p>
           </div>
         </li>
-        <li>
+        <li className={styles.item}>
           <h2 className={styles.step}>Step 2.</h2>
           <div className={styles.titleGoup}>
             <Flag className={styles.bookIcon} />
@@ -50,9 +40,11 @@ const FirstVisit = props => {
         </li>
       </ul>
 
-      <DoneButton styleBtn={styles.btn}>ok</DoneButton>
+      <CancelButton styleBtn={styles.btn} onCbClick={toogleModal}>
+        ok
+      </CancelButton>
     </div>
   );
 };
 
-export default FirstVisit;
+export default withModal(FirstVisit);

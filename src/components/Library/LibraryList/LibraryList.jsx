@@ -9,57 +9,30 @@ import RatingReadOnly from '../../ModalComponents/RatingBook/ChooseRating/Rating
 import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
-import NestingModal from '../../ModalHoc/NestingModal/NestingModal';
 import RatingBook from '../../ModalComponents/RatingBook/RatingBook';
 
 function LibraryList({ books, onRemove }) {
-  // const { books, onRemove } = props;
-  // console.log(books);
-  const [showResume, setShowResume] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [rating, setRating] = useState(0);
 
   const [resumeValue, setResumeValue] = useState('');
 
-  // console.log(onResume);
-
   const dispatch = useDispatch();
 
-  // dispatch(booksOperations.updateResumeBook());
-
-  // const test = data => {
-  //   setOnResume(data);
-  // };
-
-  const isShowResume = () => {
-    setShowResume(!showResume);
+  const isShowModal = () => {
+    setShowModal(!showModal);
   };
 
   return (
     <>
-      {showResume && (
-        <NestingModal
-          toogleModal={isShowResume}
-          showResume={showResume}
-          addOperation={booksOperations.updateResumeBook}
-          data={{ _id: 28, rating: 1, resume: 'vdfgdf' }}
+      {showModal && (
+        <RatingBook
+          setRating={setRating}
           setResumeValue={setResumeValue}
-        >
-          {props => {
-            // console.log(props.toogleModal);
-            return (
-              <RatingBook
-                {...props}
-                // test={test}
-                toogleModal={isShowResume}
-                setRating={setRating}
-                // setOnResume={setOnResume}
-                // onResume={onResume}
-                // resume={"fdf"}
-                // showResume={showResume}
-              />
-            );
-          }}
-        </NestingModal>
+          resumeValue={resumeValue}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
       )}
       {books.some(book => book.status === 'done') && (
         <div className={styles.category}>
@@ -112,7 +85,7 @@ function LibraryList({ books, onRemove }) {
                     <button
                       type="button"
                       className={styles.buttonRezume}
-                      onClick={isShowResume}
+                      onClick={isShowModal}
                     >
                       Resume
                     </button>

@@ -40,9 +40,7 @@ const Results = () => {
   return (
     <>
       {showModal && (
-        <NestingModal toogleModal={isShowModal}>
-          {props => <SomeMotivation {...props} toogleModal={isShowModal} />}
-        </NestingModal>
+        <SomeMotivation showModal={showModal} setShowModal={setShowModal} />
       )}
       <div className={styles.resultsMainBox}>
         <h3 className={styles.resultsHeading}>Results</h3>
