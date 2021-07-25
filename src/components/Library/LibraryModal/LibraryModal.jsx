@@ -2,26 +2,24 @@ import React from 'react';
 import { HiOutlineArrowNarrowLeft } from 'react-icons/hi';
 
 import LibraryForm from '../LibraryForm/LibraryForm';
-import styles from '../../Training/TrainingModal/TrainingModal.module.scss';
+import styles from './LibraryModal.module.scss';
 
-const TrainingModal = ({ isTrainingModalShown, setIsTrainingModalShown }) => {
+const LibraryModal = ({ isBookModal, setIsBookModal }) => {
   return (
     <>
-      {isTrainingModalShown && (
+      {isBookModal && (
         <div className={styles.modalBackdrop}>
-          <div className={styles.modalWrapper}>
-            <HiOutlineArrowNarrowLeft
-              fontSize="32"
-              arial-label="go back button"
-              onClick={() => setIsTrainingModalShown(!isTrainingModalShown)}
-              className={styles.goBack}
-            />
-            <LibraryForm />
-          </div>
+          <HiOutlineArrowNarrowLeft
+            fontSize="32"
+            arial-label="go back button"
+            onClick={() => setIsBookModal(!isBookModal)}
+            className={styles.goBack}
+          />
+          <LibraryForm />
         </div>
       )}
     </>
   );
 };
 
-export default TrainingModal;
+export default LibraryModal;

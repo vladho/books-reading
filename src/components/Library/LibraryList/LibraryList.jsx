@@ -9,10 +9,12 @@ import RatingReadOnly from '../../ModalComponents/RatingBook/ChooseRating/Rating
 import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
+import LibraryModal from '../LibraryModal/LibraryModal';
+import LibraryForm from '../LibraryForm/LibraryForm';
 
 function LibraryList({ books, onRemove }) {
-  const [addBookModal, setAddBookModal] = useState(false);
-  const openAddBookModal = () => setAddBookModal(!addBookModal);
+  const [isBookModal, setIsBookModal] = useState(false);
+  const openAddBookModal = () => setIsBookModal(!isBookModal);
   return (
     <>
       {books.some(book => book.status === 'done') && (
@@ -145,7 +147,11 @@ function LibraryList({ books, onRemove }) {
                 ),
             )}
           </ul>
-          <button type="button" className={styles.btnAddMob}>
+          <button
+            type="button"
+            className={styles.btnAddMob}
+            onClick={openAddBookModal}
+          >
             +
           </button>
           <NavLink to="/training" className={styles.link}>
@@ -164,8 +170,12 @@ function LibraryList({ books, onRemove }) {
           +
         </button>
       )}
-
-      {/* <TrainingModal isTrainingModalShown={openAddBookModal} /> */}
+      {openAddBookModal && (
+        <LibraryModal
+          isBookModal={isBookModal}
+          setIsBookModal={setIsBookModal}
+        />
+      )}
     </>
   );
 }
