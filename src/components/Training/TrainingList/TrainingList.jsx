@@ -13,7 +13,7 @@ const placeholder = (
   />
 );
 
-export default function TrainingList({ booklist }) {
+export default function TrainingList() {
   const isTrainStarted = useSelector(trainingSelectors.getIsStarted);
 
   const booksSelector = isTrainStarted
@@ -31,7 +31,7 @@ export default function TrainingList({ booklist }) {
         <p className={css.pages}>Pages</p>
       </div>
 
-      <ul className={booklist ? css.listNotEmpty : css.list}>
+      <ul className={css.list}>
         {books.length
           ? books.map(({ _id, title, author, year, totalPages, status }) => (
               <TrainingListItem
