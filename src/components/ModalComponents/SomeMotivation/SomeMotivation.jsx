@@ -1,8 +1,9 @@
 import styles from './SomeMotivation.module.scss';
 import { ReactComponent as ThumpUp } from '../../../assets/icons/thumbUp.svg';
 import DoneButton from '../../common/ModalButton/DoneButton/DoneButton';
+import CancelButton from '../../common/ModalButton/CancelButton/CancelButton';
 
-const SomeMotivation = () => {
+const SomeMotivation = ({ toogleModal }) => {
   return (
     <div className={styles.container}>
       <div className={styles.thump}>
@@ -10,12 +11,14 @@ const SomeMotivation = () => {
       </div>
       <h2 className={styles.title}>
         Well done!
-        <p /> but you need to be a little bit faster.
-        <p /> You can do it)
+        <br /> but you need to be a little bit faster.
+        <br /> You can do it)
       </h2>
-      <div className={styles.btn}>
-        <DoneButton>Ok</DoneButton>
-      </div>
+      {/* <div className={styles.btnGroup}> */}
+      <CancelButton onCbClick={toogleModal} styleBtn={styles.btn}>
+        Ok
+      </CancelButton>
+      {/* </div> */}
     </div>
   );
 };

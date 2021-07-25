@@ -15,15 +15,20 @@ const Library = () => {
   const isLoadingBook = useSelector(booksSelectors.getLoading);
   const getAllBooks = useSelector(booksSelectors.getAllBooks);
   const getAuthLoading = useSelector(authSls.getLoading);
+  const loading = useSelector(state => state.books.loading);
 
   useEffect(() => {
     dispatch(booksOperations.fetchBooks());
   }, []);
 
+  console.log(isLoadingBook);
+  console.log(getAllBooks);
+  console.log(loading);
+
   return (
     <>
       <LibraryForm />
-      {getAuthLoading && getAllBooks.length === 0 && (
+      {!isLoadingBook && getAllBooks.length === 0 && (
         <NestingModal>{props => <FirstVisit {...props} />}</NestingModal>
       )}
       {isLoadingBook ? <Spinner /> : <LibraryList />}
