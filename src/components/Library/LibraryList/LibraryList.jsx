@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import booksSelectors from '../../../redux/books/booksSelectors';
 import booksOperations from '../../../redux/books/booksOperations';
 import RatingReadOnly from '../../ModalComponents/RatingBook/ChooseRating/RatingReadOnly';
+import { LangContext } from '../../App/App';
 
 import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
@@ -19,6 +20,7 @@ function LibraryList({ books, onRemove }) {
   // const [resumeValue, setResumeValue] = useState('');
 
   const dispatch = useDispatch();
+  const { language } = useContext(LangContext);
 
   const isShowModal = id => {
     setId(id);
@@ -40,13 +42,25 @@ function LibraryList({ books, onRemove }) {
       )}
       {books.some(book => book.status === 'done') && (
         <div className={styles.category}>
-          <h2 className={styles.categoryTitle}>Already read</h2>
+          <h2 className={styles.categoryTitle}>
+            {language.libraryPage.readList.title}
+          </h2>
           <div className={styles.categoryListTitle}>
-            <h3 className={styles.categoryListTitleItemNameDone}>Book title</h3>
-            <h3 className={styles.categoryListTitleItemAuthorDone}>Author</h3>
-            <h3 className={styles.categoryListTitleItemYearDone}>Year</h3>
-            <h3 className={styles.categoryListTitleItemPageDone}>Pages</h3>
-            <h3 className={styles.categoryListTitleItemRateDone}>Rating</h3>
+            <h3 className={styles.categoryListTitleItemNameDone}>
+              {language.libraryPage.tableHeader.book_title}
+            </h3>
+            <h3 className={styles.categoryListTitleItemAuthorDone}>
+              {language.libraryPage.tableHeader.book_author}
+            </h3>
+            <h3 className={styles.categoryListTitleItemYearDone}>
+              {language.libraryPage.tableHeader.book_year}
+            </h3>
+            <h3 className={styles.categoryListTitleItemPageDone}>
+              {language.libraryPage.tableHeader.book_pages}
+            </h3>
+            <h3 className={styles.categoryListTitleItemRateDone}>
+              {language.libraryPage.tableHeader.book_rating}
+            </h3>
           </div>
           <ul>
             {books.map(
@@ -70,19 +84,27 @@ function LibraryList({ books, onRemove }) {
                       {title}
                     </div>
                     <p className={styles.bookListItemAuthorDone}>
-                      <span className={styles.bookListItemMob}>Author:</span>
+                      <span className={styles.bookListItemMob}>
+                        {language.libraryPage.tableHeader.book_author}:
+                      </span>
                       {author}
                     </p>
                     <p className={styles.bookListItemYearDone}>
-                      <span className={styles.bookListItemMob}>Year:</span>
+                      <span className={styles.bookListItemMob}>
+                        {language.libraryPage.tableHeader.book_year}:
+                      </span>
                       {year}
                     </p>
                     <p className={styles.bookListItemPageDone}>
-                      <span className={styles.bookListItemMob}>Pages:</span>
+                      <span className={styles.bookListItemMob}>
+                        {language.libraryPage.tableHeader.book_pages}:
+                      </span>
                       {totalPages}
                     </p>
                     <div className={styles.stars}>
-                      <span className={styles.bookListItemMob}>Rating:</span>
+                      <span className={styles.bookListItemMob}>
+                        {language.libraryPage.tableHeader.book_rating}:
+                      </span>
                       <RatingReadOnly rating={rating} />
                     </div>
 
@@ -91,7 +113,7 @@ function LibraryList({ books, onRemove }) {
                       className={styles.buttonRezume}
                       onClick={() => isShowModal(_id)}
                     >
-                      Resume
+                      {language.libraryPage.readList.button}
                     </button>
                   </li>
                 ),
@@ -101,12 +123,22 @@ function LibraryList({ books, onRemove }) {
       )}
       {books.some(book => book.status === 'read') && (
         <div className={styles.category}>
-          <h2 className={styles.categoryTitle}>Reading now</h2>
+          <h2 className={styles.categoryTitle}>
+            {language.libraryPage.readingList.title}
+          </h2>
           <div className={styles.categoryListTitle}>
-            <h3 className={styles.categoryListTitleItemName}>Book title</h3>
-            <h3 className={styles.categoryListTitleItemAuthor}>Author</h3>
-            <h3 className={styles.categoryListTitleItemYear}>Year</h3>
-            <h3 className={styles.categoryListTitleItemPage}>Pages</h3>
+            <h3 className={styles.categoryListTitleItemName}>
+              {language.libraryPage.tableHeader.book_title}
+            </h3>
+            <h3 className={styles.categoryListTitleItemAuthor}>
+              {language.libraryPage.tableHeader.book_author}
+            </h3>
+            <h3 className={styles.categoryListTitleItemYear}>
+              {language.libraryPage.tableHeader.book_year}
+            </h3>
+            <h3 className={styles.categoryListTitleItemPage}>
+              {language.libraryPage.tableHeader.book_pages}
+            </h3>
           </div>
           <ul>
             {books.map(
@@ -121,15 +153,21 @@ function LibraryList({ books, onRemove }) {
                       {title}
                     </div>
                     <p className={styles.bookListItemAuthor}>
-                      <span className={styles.bookListItemMob}>Author:</span>
+                      <span className={styles.bookListItemMob}>
+                        {language.libraryPage.tableHeader.book_author}:
+                      </span>
                       {author}
                     </p>
                     <p className={styles.bookListItemYear}>
-                      <span className={styles.bookListItemMob}>Year:</span>
+                      <span className={styles.bookListItemMob}>
+                        {language.libraryPage.tableHeader.book_year}:
+                      </span>
                       {year}
                     </p>
                     <p className={styles.bookListItemPage}>
-                      <span className={styles.bookListItemMob}>Pages:</span>
+                      <span className={styles.bookListItemMob}>
+                        {language.libraryPage.tableHeader.book_pages}:
+                      </span>
                       {totalPages}
                     </p>
                   </li>
@@ -140,12 +178,22 @@ function LibraryList({ books, onRemove }) {
       )}
       {books.some(book => book.status === 'plan') && (
         <div className={styles.category}>
-          <h2 className={styles.categoryTitle}>Going to read</h2>
+          <h2 className={styles.categoryTitle}>
+            {language.libraryPage.plannedList.title}
+          </h2>
           <div className={styles.categoryListTitle}>
-            <h3 className={styles.categoryListTitleItemName}>Book title</h3>
-            <h3 className={styles.categoryListTitleItemAuthor}>Author</h3>
-            <h3 className={styles.categoryListTitleItemYear}>Year</h3>
-            <h3 className={styles.categoryListTitleItemPage}>Pages</h3>
+            <h3 className={styles.categoryListTitleItemName}>
+              {language.libraryPage.tableHeader.book_title}
+            </h3>
+            <h3 className={styles.categoryListTitleItemAuthor}>
+              {language.libraryPage.tableHeader.book_author}
+            </h3>
+            <h3 className={styles.categoryListTitleItemYear}>
+              {language.libraryPage.tableHeader.book_year}
+            </h3>
+            <h3 className={styles.categoryListTitleItemPage}>
+              {language.libraryPage.tableHeader.book_pages}
+            </h3>
           </div>
           <ul>
             {books.map(
@@ -160,15 +208,21 @@ function LibraryList({ books, onRemove }) {
                       {title}
                     </div>
                     <p className={styles.bookListItemAuthor}>
-                      <span className={styles.bookListItemMob}>Author:</span>
+                      <span className={styles.bookListItemMob}>
+                        {language.libraryPage.tableHeader.book_author}:
+                      </span>
                       {author}
                     </p>
                     <p className={styles.bookListItemYear}>
-                      <span className={styles.bookListItemMob}>Year:</span>
+                      <span className={styles.bookListItemMob}>
+                        {language.libraryPage.tableHeader.book_year}:
+                      </span>
                       {year}
                     </p>
                     <p className={styles.bookListItemPage}>
-                      <span className={styles.bookListItemMob}>Pages:</span>
+                      <span className={styles.bookListItemMob}>
+                        {language.libraryPage.tableHeader.book_pages}:
+                      </span>
                       {totalPages}
                     </p>
                     <button
@@ -184,7 +238,7 @@ function LibraryList({ books, onRemove }) {
           </ul>
           <NavLink to="/training" className={styles.link}>
             <button type="button" className={styles.btnNext}>
-              Next
+              {language.libraryPage.nextBtn}
             </button>
           </NavLink>
           <button type="button" className={styles.btnAddMob}>

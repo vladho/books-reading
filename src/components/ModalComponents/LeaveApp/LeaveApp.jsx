@@ -1,9 +1,13 @@
+import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
+
 import CancelButton from '../../common/ModalButton/CancelButton/CancelButton';
 import DoneButton from '../../common/ModalButton/DoneButton/DoneButton';
 import { authOps } from '../../../redux/auth';
 import styles from './LeaveApp.module.scss';
+import { LangContext } from '../../App/App';
+
 import withModal from '../../ModalHoc/withModal/withModal';
 
 const LeaveApp = ({ toogleModal, addOperation }) => {
@@ -17,21 +21,24 @@ const LeaveApp = ({ toogleModal, addOperation }) => {
     dispatch(authOps.logOut());
   };
 
+  const { language } = useContext(LangContext);
+
   return (
     <form onSubmit={onSave}>
       <div className={styles.container}>
         <h2 className={styles.title}>
-          The changes you made will be lost if you navigate away from this
-          application
+          {language.trainingPage.logoutModal.desc}
         </h2>
         <div className={styles.btnGroup}>
           <CancelButton styleBtn={styles.btn} onCbClick={toogleModal}>
-            Сancel
+            {language.trainingPage.logoutModal.cancelBtn}
           </CancelButton>
           {isMobile ? (
-            <DoneButton>Leave</DoneButton>
+            <DoneButton>
+              {language.trainingPage.logoutModal.exitBtnMobile}
+            </DoneButton>
           ) : (
-            <DoneButton>Leave this app</DoneButton>
+            <DoneButton>{language.trainingPage.logoutModal.exitBtn}</DoneButton>
           )}
         </div>
       </div>
