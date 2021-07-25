@@ -10,13 +10,13 @@ require('dotenv').config();
 
 export default function Login() {
   const handleLogin = async credentials => {
+    console.log(credentials);
     const password = credentials.googleId;
     const email = credentials.Ts.Et;
-    const name = credentials.Ts.Me;
-    const token = credentials.tokenId;
-    console.log(credentials);
-    const data = await api.loginGoogle({ email, password, name, token });
-    await dispatch(authOps.register({ name, email, password }));
+    // const name = credentials.Ts.Me;
+    // const token = credentials.tokenId;
+    // console.log(password);
+    await api.loginGoogle();
 
     dispatch(authOps.login({ email, password }));
   };

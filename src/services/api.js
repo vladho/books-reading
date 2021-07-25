@@ -19,8 +19,7 @@ const register = async credentials =>
 const login = async credentials =>
   (await axios.post('/auth/login', credentials)).data.data;
 
-const loginGoogle = async ({ email, password, name, token }) =>
-  (await axios.get('/auth/google', { email, password, name, token })).data.data;
+const loginGoogle = async () => await axios.get('/auth/google');
 
 const logOut = async credentials =>
   (await axios.post('/auth/logout', credentials)).data.data;

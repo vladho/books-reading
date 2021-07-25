@@ -32,8 +32,10 @@ const register = credentials => async dispatch => {
 
 const login = credentials => async dispatch => {
   dispatch(loginRequest());
+
   try {
     const { email, password } = credentials;
+
     const data = await api.login({ email, password });
 
     api.setToken(data.user.token);
@@ -44,8 +46,13 @@ const login = credentials => async dispatch => {
 };
 const loginGoogle = credentials => async dispatch => {
   dispatch(loginRequest());
-  const { email, password, name, token } = credentials;
+  // const password = credentials.googleId;
+  // const email = credentials.Ts.Et;
+  // const name = credentials.Ts.Me;
+  // const token = credentials.tokenId;
   try {
+    const { email, password, name, token } = credentials;
+    console.log(password);
     const data = await api.loginGoogle({ email, password, name, token });
 
     api.setToken(token);
