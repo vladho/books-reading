@@ -1,3 +1,4 @@
+import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOps } from '../../redux/auth';
 import { NavLink } from 'react-router-dom';
@@ -5,8 +6,10 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { regSchema } from '../../helpers/validation/AuthValidInput';
 import css from './Auth.module.scss';
 import useDeviceSizes from './utilsAuth/useDeviceSize';
+import { LangContext } from '../App/App';
 
 export default function Register() {
+  const { language } = useContext(LangContext);
   const dispatch = useDispatch();
 
   const { isMobileDevice } = useDeviceSizes();
@@ -31,10 +34,11 @@ export default function Register() {
           {({ touched, errors, isSubmitting }) => (
             <Form className={css.registerForm}>
               <button className={css.Google} type="button">
-                Google
+                {language.registrationPage.google}
               </button>
               <label className={css.inputTitle}>
-                Name <span className={css.required}>*</span>
+                {language.registrationPage.name}{' '}
+                <span className={css.required}>*</span>
               </label>
               <Field
                 type="name"
@@ -50,7 +54,8 @@ export default function Register() {
                 component="div"
               />
               <label className={css.inputTitle}>
-                Email <span className={css.required}>*</span>
+                {language.registrationPage.email}{' '}
+                <span className={css.required}>*</span>
               </label>
               <Field
                 type="email"
@@ -66,7 +71,8 @@ export default function Register() {
                 component="div"
               />
               <label className={css.inputTitle}>
-                Password <span className={css.required}>*</span>
+                {language.registrationPage.password}{' '}
+                <span className={css.required}>*</span>
               </label>
               <Field
                 autoComplete="on"
@@ -83,7 +89,8 @@ export default function Register() {
                 component="div"
               />
               <label className={css.inputTitle}>
-                Confirm password <span className={css.required}>*</span>
+                {language.registrationPage.confirmPassword}{' '}
+                <span className={css.required}>*</span>
               </label>
               <Field
                 autoComplete="on"
@@ -100,13 +107,13 @@ export default function Register() {
                 component="div"
               />
               <button className={css.registerPageButton} type="submit">
-                Register
+                {language.registrationPage.button}
               </button>
 
               <p className={css.registerFormText}>
-                Already have an account? {'  '}
+                {language.registrationPage.linkQuestion} {'  '}
                 <NavLink className={css.registerFormTextLinc} to="/login" exact>
-                  Log in
+                  {language.registrationPage.link}
                 </NavLink>
               </p>
             </Form>
@@ -115,28 +122,34 @@ export default function Register() {
       </div>
       {!isMobileDevice && (
         <div>
-          <h1 className={css.title}>Books Reading</h1>
+          <h1 className={css.title}>{language.registrationPage.infoTitle}</h1>
           <div className={css.deskriptionWraper}>
-            <h2 className={css.secondaryTitle}>Will help you to</h2>
+            <h2 className={css.secondaryTitle}>
+              {language.registrationPage.infoSubtitle1}
+            </h2>
             <ul className={css.list}>
               <li className={css.listItem}>
-                Create your goal faster and proceed to read
+                {language.registrationPage.subTitle1_text1}
               </li>
               <li className={css.listItem}>
-                Divide process proportionally for each day{' '}
+                {language.registrationPage.subTitle1_text2}{' '}
               </li>
-              <li className={css.listItem}>Track your success</li>
+              <li className={css.listItem}>
+                {language.registrationPage.subTitle1_text3}
+              </li>
             </ul>
-            <h2 className={css.secondaryTitle}>You may also</h2>
+            <h2 className={css.secondaryTitle}>
+              {language.registrationPage.infoSubtitle2}
+            </h2>
             <ul className={css.list}>
               <li className={css.listItem}>
-                Pose your own independent point of view
+                {language.registrationPage.subTitle2_text1}
               </li>
               <li className={css.listItem}>
-                Improve your professional skills according to new knowledge
+                {language.registrationPage.subTitle2_text2}
               </li>
               <li className={css.listItem}>
-                Become an interesting interlocutor
+                {language.registrationPage.subTitle2_text3}
               </li>
             </ul>
           </div>

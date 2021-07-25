@@ -1,4 +1,5 @@
 @import '../Container/Container.module.scss';
+@import 'styles/shared.scss';
 
 .deskriptionWraper {
   padding-left: 90px;
@@ -389,7 +390,19 @@
   line-height: 17px;
   text-align: center;
   color: #242a37;
-  margin: 0;
+  margin: 0 auto;
+
+  @include for-size(mobile-only) {
+    width: 229px;
+  }
+
+  @include for-size(tablet-only) {
+    width: 500px;
+  }
+
+  @include for-size(desktop) {
+    width: 397px;
+  }
 }
 
 .errorMessageEmailLogin {
