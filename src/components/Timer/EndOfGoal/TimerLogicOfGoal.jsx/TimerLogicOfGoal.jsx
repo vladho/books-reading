@@ -9,9 +9,11 @@ const TimerLogic = () => {
 
   const goal = new Date(endDate).getTime();
 
+  const oneDay = 86400000;
+
   const [dateTime, setDateTime] = useState(new Date());
 
-  const diff = goal - new Date().getTime();
+  const diff = goal + oneDay - new Date().getTime();
 
   const days = () => {
     if (Math.floor(diff / (1000 * 60 * 60 * 24)) > 99) {
@@ -56,21 +58,21 @@ const TimerLogic = () => {
 
   return (
     <div className={styles.dateGroup}>
-      <div
-        className={classnames(styles.date, styles.days)}
-      >{`${time.days}`}</div>
+      <div className={classnames(styles.date, styles.days)}>{`${
+        time.days || '00'
+      }`}</div>
       <div className={styles.date}>{`:`}</div>
-      <div
-        className={classnames(styles.date, styles.hours)}
-      >{`${time.hours}`}</div>
+      <div className={classnames(styles.date, styles.hours)}>{`${
+        time.hours || '00'
+      }`}</div>
       <div className={styles.date}>{`:`}</div>
-      <div
-        className={classnames(styles.date, styles.minutes)}
-      >{`${time.minutes}`}</div>
+      <div className={classnames(styles.date, styles.minutes)}>{`${
+        time.minutes || '00'
+      }`}</div>
       <div className={styles.date}>{`:`}</div>
-      <div
-        className={classnames(styles.date, styles.seconds)}
-      >{`${time.seconds}`}</div>
+      <div className={classnames(styles.date, styles.seconds)}>{`${
+        time.seconds || '00'
+      }`}</div>
     </div>
   );
 };

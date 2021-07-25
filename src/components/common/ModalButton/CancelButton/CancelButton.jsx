@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './CancelButton.module.scss';
 
 const CancelButton = ({ onCbClick, children, styleBtn }) => {
-  console.log('close modal');
+  // console.log('close modal');
   return (
     <button
       type="button"

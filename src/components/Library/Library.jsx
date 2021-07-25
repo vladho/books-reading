@@ -1,33 +1,34 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import booksOperations from '../../redux/books/booksOperations';
 import booksSelectors from '../../redux/books/booksSelectors';
 
 import Spinner from '../Spinner/Spinner';
 import LibraryForm from '../Library/LibraryForm/LibraryForm';
 import LibraryList from '../Library/LibraryList/LibraryList';
+import NestingModal from '../ModalHoc/NestingModal/NestingModal';
+import FirstVisit from '../ModalComponents/FirstVisit/FirstVisit';
 
-class Library extends Component {
-  componentDidMount() {
-    this.props.onFetchBooks();
-  }
+const Library = () => {
+  const dispatch = useDispatch();
+  const isLoadingAddBook = useSelector(booksSelectors.getLoading);
+  const getAllBooks = useSelector(booksSelectors.getAllBooks);
 
-  render() {
-    return (
-      <div>
-        <LibraryForm />
-        {this.props.isLoadingAddBook ? <Spinner /> : <LibraryList />}
-      </div>
-    );
-  }
-}
+  // console.log(getAllBooks);
 
-const mapStateToProps = state => ({
-  isLoadingAddBook: booksSelectors.getLoading(state),
-});
+  useEffect(() => {
+    dispatch(booksOperations.fetchBooks());
+  }, []);
 
-const mapDispatchToProps = {
-  onFetchBooks: booksOperations.fetchBooks,
+  return (
+    <>
+      <LibraryForm />
+      {!isLoadingAddBook && getAllBooks.length === 0 && (
+        <NestingModal>{props => <FirstVisit {...props} />}</NestingModal>
+      )}
+      {isLoadingAddBook ? <Spinner /> : <LibraryList />}
+    </>
+  );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Library);
+export default Library;
