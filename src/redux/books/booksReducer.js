@@ -31,7 +31,6 @@ const removeBook = (state, action) => {
 };
 
 const items = createReducer([], {
-  // [fetchBooksRequest]: () => [],
   [fetchBooksSuccess]: (_, { payload }) => payload.data.books,
   [addBookSuccess]: addBook,
   [updateResumeBookSuccess]: (state, { payload }) => {

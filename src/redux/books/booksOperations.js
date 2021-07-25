@@ -68,7 +68,6 @@ const updateResumeBook = (id, rating, resume) => async dispatch => {
         resume,
       },
     );
-    console.log('result', data);
     dispatch(updateResumeBookSuccess(data));
   } catch (error) {
     console.log(error);
