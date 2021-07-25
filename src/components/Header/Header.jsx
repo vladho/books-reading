@@ -18,7 +18,8 @@ const Header = () => {
           <p className={css.logo}>BR</p>
         </NavLink>
         <LanguageSelect />
-        <nav>{isAuth && <AppBar />}</nav>
+        {isAuth && <AppBar />}
+        {/* <nav>{isAuth && <AppBar />}</nav> */}
       </nav>
     </header>
   );
