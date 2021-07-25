@@ -33,7 +33,7 @@ const items = createReducer([], {
   [logoutSuccess]: () => [],
 });
 
-const loading = createReducer(false, {
+const loading = createReducer(true, {
   [fetchBooksRequest]: () => true,
   [fetchBooksSuccess]: () => false,
   [fetchBooksError]: () => false,
