@@ -19,30 +19,23 @@ const NestingModal = ({
   data,
   closeBtn,
   saveBtn,
+  showModalTrue,
+  setResumeValue,
 }) => {
   const modalRef = useRef();
 
-  //   const dispatch = useDispatch();
-
-  // const closeModal = () => {
-  //   toogleModal();
-  //   console.log('cancel button');
-  // };
+  const dispatch = useDispatch();
 
   const onSave = e => {
     e.preventDefault();
-    // closeModal();
     toogleModal();
-    console.log('save btn');
-
-    // dispatch(addOperation(data));
+    dispatch(addOperation(data));
   };
 
   return createPortal(
     <div className={styles.modal} ref={modalRef} onClick={handleBackdropClick}>
       <div className={styles.container}>
         <form onSubmit={onSave}>
-          {/* {children} */}
           <Component />
         </form>
       </div>

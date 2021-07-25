@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GoHome, GoBook } from 'react-icons/go';
 import { authSls, authOps } from '../../../redux/auth';
 
 import css from './AppBar.module.scss';
 import { NavLink } from 'react-router-dom';
+import NestingModal from '../../ModalHoc/NestingModal/NestingModal';
+import LeaveApp from '../../ModalComponents/LeaveApp/LeaveApp';
 
 export default function AppBar() {
+  const [showModal, setShowModal] = useState(false);
+
+  const isShowModal = () => {
+    setShowModal(!showModal);
+  };
+
   const dispatch = useDispatch();
-  const onLogout = () => dispatch(authOps.logOut());
+
+  const onLogout = () => {
+    isShowModal();
+    // dispatch(authOps.logOut())
+  };
 
   const userName = useSelector(authSls.getUserName);
   const userFirstLetter = userName?.substring(0, 1);
@@ -33,6 +45,11 @@ export default function AppBar() {
         <p className={css.userName}>{userName}</p>
       </div>
 
+      {showModal && (
+        <NestingModal addOperation={authOps.logOut} toogleModal={isShowModal}>
+          {props => <LeaveApp {...props} toogleModal={isShowModal} />}
+        </NestingModal>
+      )}
       <button type="button" className={css.logoutButton} onClick={onLogout}>
         <span className={css.logoutText}>Log Out</span>
       </button>

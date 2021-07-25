@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import NestingModal from '../NestingModal/NestingModal';
 // import './ModalHoc.scss';
 // import sprite from '../../../assets/icons/sprite.svg';
 // import SidebarModal from '../sidebarModal/SidebarModal';
 
 const withShowModal = WrappedComponent => props => {
-  const { children: Component, ...rest } = props;
+  const { children: Component, showResume, ...rest } = props;
+  const [showModal, setShowModal] = useState(true);
 
-  const [showModal, setShowModal] = useState(false);
-
-  const toogleModal = () => {
+  const toogleModal = props => {
     setShowModal(prev => !prev);
   };
 
   useEffect(() => {
     const handleEsc = e => {
       if (e.code === 'Escape') {
-        setShowModal(false);
+        setShowModal(prev => !prev);
       }
     };
     window.addEventListener('keydown', handleEsc);
@@ -27,21 +27,27 @@ const withShowModal = WrappedComponent => props => {
 
   const handleBackdropClick = e => {
     if (e.target === e.currentTarget) {
-      setShowModal(false);
+      setShowModal(prev => !prev);
     }
   };
 
+  const ChildrenComponent = useMemo(
+    () => <Component toogleModal={toogleModal} />,
+    [showModal],
+  );
+
   return (
     <>
-      <button type="button" className="add-button" onClick={toogleModal}>
+      {/* <button type="button" className="add-button" onClick={toogleModal}>
         TESSSSSSSSSSSSSSSST
-      </button>
+      </button> */}
       {showModal && (
         <WrappedComponent
           {...rest}
-          component={() => <Component toogleModal={toogleModal} />}
+          component={ChildrenComponent}
           handleBackdropClick={handleBackdropClick}
-          toogleModal={toogleModal}
+          // toogleModal={toogleModal}
+          // showModalTrue={showModalTrue}
         />
       )}
     </>
