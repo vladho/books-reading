@@ -31,10 +31,10 @@ const withShowModal = WrappedComponent => props => {
     }
   };
 
-  const ChildrenComponent = useMemo(
-    () => <Component toogleModal={toogleModal} />,
-    [showModal],
-  );
+  // const ChildrenComponent = useMemo(
+  //   () => <Component toogleModal={toogleModal} />,
+  //   [showModal],
+  // );
 
   return (
     <>
@@ -44,7 +44,8 @@ const withShowModal = WrappedComponent => props => {
       {showModal && (
         <WrappedComponent
           {...rest}
-          component={ChildrenComponent}
+          // component={ChildrenComponent}
+          component={() => <Component toogleModal={toogleModal} />}
           handleBackdropClick={handleBackdropClick}
           // toogleModal={toogleModal}
           // showModalTrue={showModalTrue}
