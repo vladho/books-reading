@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
@@ -11,6 +11,8 @@ import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
 
 function LibraryList({ books, onRemove }) {
+  const [addBookModal, setAddBookModal] = useState(false);
+  const openAddBookModal = () => setAddBookModal(!addBookModal);
   return (
     <>
       {books.some(book => book.status === 'done') && (
@@ -154,10 +156,16 @@ function LibraryList({ books, onRemove }) {
         </div>
       )}
       {!books.some(book => book.status === 'plan') && (
-        <button type="button" className={styles.btnAddMobEmpty}>
+        <button
+          type="button"
+          className={styles.btnAddMobEmpty}
+          onClick={openAddBookModal}
+        >
           +
         </button>
       )}
+
+      {/* <TrainingModal isTrainingModalShown={openAddBookModal} /> */}
     </>
   );
 }
