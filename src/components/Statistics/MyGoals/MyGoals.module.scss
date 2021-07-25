@@ -9,7 +9,7 @@
 
   @include for-size(tablet) {
     width: 678px;
-    height: 105px;
+    // height: 105px;
     display: flex;
     align-items: center;
     margin-bottom: 40px;
@@ -18,7 +18,7 @@
 
   @include for-size(desktop) {
     width: 275px;
-    height: 258px;
+    // height: 258px;
     display: block;
     box-shadow: $boxShadow;
   }
@@ -29,15 +29,15 @@
   margin: 0 auto;
   background-color: $white;
 
-  @include for-size(tablet) {
+  @include for-size(tablet-only) {
     width: 678px;
     height: 125px;
     display: flex;
   }
 
   @include for-size(desktop) {
+    margin-bottom: 40px;
     width: 275px;
-    display: block;
   }
 }
 
