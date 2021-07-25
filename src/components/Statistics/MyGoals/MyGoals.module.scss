@@ -27,9 +27,10 @@
 .myGoalsMainBox_training {
   width: 270px;
   margin: 0 auto;
-  background-color: $white;
+  background-color: $primaryBg;
 
   @include for-size(tablet-only) {
+    background: $white;
     width: 678px;
     height: 125px;
     display: flex;
@@ -229,8 +230,8 @@
 .myGoalsStatsText {
   font-family: Montserrat;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 1.21;
+  font-size: 11px;
+  line-height: 1.18;
   text-align: center;
   color: $secondaryText;
   margin-top: 14px;
@@ -244,11 +245,11 @@
   }
 
   @include for-size(desktop) {
-    font-size: 14px;
-    line-height: 1.21;
+    font-size: 12px;
+    line-height: 1.18;
     text-align: center;
     color: $secondaryText;
     margin-top: 14px;
-    max-width: 61px;
+    max-width: 66px;
   }
 }

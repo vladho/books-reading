@@ -15,6 +15,8 @@ const {
   updateResumeBookRequest,
   updateResumeBookSuccess,
   updateResumeBookError,
+  firstVisitSuccess,
+  secondVisitSuccess,
 } = booksActions;
 
 const fetchBooks = () => async dispatch => {
@@ -22,8 +24,13 @@ const fetchBooks = () => async dispatch => {
 
   try {
     const data = await api.getAllBooks();
-
     dispatch(fetchBooksSuccess(data));
+    if (data.data.books.length === 0) {
+      dispatch(firstVisitSuccess());
+    }
+    if (data.data.books.length > 0) {
+      dispatch(secondVisitSuccess());
+    }
   } catch (error) {
     dispatch(fetchBooksError(api.formatError(error)));
   }
@@ -51,20 +58,18 @@ const removeBook = id => async dispatch => {
   }
 };
 
-const updateResumeBook = data => async dispatch => {
-  // dispatch(updateResumeBookRequest());
-  const { _id: id, resume, rating } = data;
-
+const updateResumeBook = (id, rating, resume) => async dispatch => {
+  dispatch(updateResumeBookRequest());
   try {
     const result = await axios.patch(`http://localhost:8080/api/books/${id}`, {
       rating,
       resume,
     });
-    console.log(result);
-    // dispatch(updateResumeBookSuccess());
+    console.log('result', result);
+    dispatch(updateResumeBookSuccess(result));
   } catch (error) {
     console.log(error);
-    // dispatch(updateResumeBookError());
+    dispatch(updateResumeBookError());
   }
 };
 

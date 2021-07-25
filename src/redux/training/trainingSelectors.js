@@ -55,6 +55,20 @@ const getResults = state =>
       return b.date.split('.').join('') - a.date.split('.').join('');
     });
 
+const getTotalPages = state =>
+  state.training.books.reduce(function (acc, { totalPages }) {
+    return acc + totalPages;
+  }, 0);
+
+//График
+const getChartResults = state =>
+  state.training.results.map(day => {
+    const date = day.date;
+    const plannedPages = day.plannedPages;
+    const factPages = day.factPages;
+    return { date, plannedPages, factPages };
+  });
+
 const trainingSelectors = {
   getIsStarted,
   getBooks,
@@ -68,6 +82,8 @@ const trainingSelectors = {
   getLoading,
   getError,
   getResults,
+  getTotalPages,
+  getChartResults,
 };
 export default trainingSelectors;
 

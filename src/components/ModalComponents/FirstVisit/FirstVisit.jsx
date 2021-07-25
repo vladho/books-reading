@@ -1,58 +1,62 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './FirstVisit.module.scss';
 import { ReactComponent as BookIcon } from '../../../assets/icons/bookUnRead.svg';
 import { ReactComponent as Flag } from '../../../assets/icons/Flag.svg';
 import { ReactComponent as ArrowRight } from '../../../assets/icons/ArrowRight.svg';
 import {} from '../../../';
 import DoneButton from '../../common/ModalButton/DoneButton/DoneButton';
-import { useEffect } from 'react';
+import { LangContext } from '../../App/App';
 
-const FirstVisit = props => {
-  const { toogleModal, showModalTrue } = props;
-  // toogleModal();
-  // console.log(showModalTrue)
+import withModal from '../../ModalHoc/withModal/withModal';
+import CancelButton from '../../common/ModalButton/CancelButton/CancelButton';
 
-  // useEffect(() => {
-  //   console.log('object1');
-  //   showModalTrue();
-  //   console.log('object2');
-  // }, []);
+const FirstVisit = ({ toogleModal }) => {
+  const { language } = useContext(LangContext);
 
   return (
     <div className={styles.container}>
-      {/* {true && showModalTrue} */}
       <ul className={styles.list}>
-        <li>
-          <h2 className={styles.step}>Step 1.</h2>
+        <li className={styles.item}>
+          <h2 className={styles.step}>{language.libraryPage.greet.step1}</h2>
+
           <div className={styles.titleGoup}>
             <BookIcon className={styles.bookIcon} />
-            <h3 className={styles.title}>Create your own library</h3>
+            <h3 className={styles.title}>
+              {language.libraryPage.greet.step1_title}
+            </h3>
           </div>
           <div className={styles.textGoup}>
             <ArrowRight />
             <p className={styles.text}>
-              Add there books which you are going to read.
+              {language.libraryPage.greet.step1_text}
             </p>
           </div>
         </li>
-        <li>
-          <h2 className={styles.step}>Step 2.</h2>
+
+        <li className={styles.item}>
+          <h2 className={styles.step}>{language.libraryPage.greet.step2}</h2>
+
           <div className={styles.titleGoup}>
             <Flag className={styles.bookIcon} />
-            <h3 className={styles.title}>Create your first training</h3>
+            <h3 className={styles.title}>
+              {' '}
+              {language.libraryPage.greet.step2_title}
+            </h3>
           </div>
           <div className={styles.textGoup}>
             <ArrowRight />
             <p className={styles.text}>
-              Set a goal, choose period, start training.
+              {language.libraryPage.greet.step2_text}
             </p>
           </div>
         </li>
       </ul>
 
-      <DoneButton styleBtn={styles.btn}>ok</DoneButton>
+      <CancelButton styleBtn={styles.btn} onCbClick={toogleModal}>
+        ok
+      </CancelButton>
     </div>
   );
 };
 
-export default FirstVisit;
+export default withModal(FirstVisit);
