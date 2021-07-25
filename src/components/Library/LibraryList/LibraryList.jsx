@@ -170,15 +170,21 @@ function LibraryList({ books, onRemove }) {
                       {title}
                     </div>
                     <p className={styles.bookListItemAuthor}>
-                      <span className={styles.bookListItemMob}>Author:</span>
+                      <span className={styles.bookListItemMob}>
+                        {language.libraryPage.tableHeader.book_author}:
+                      </span>
                       {author}
                     </p>
                     <p className={styles.bookListItemYear}>
-                      <span className={styles.bookListItemMob}>Year:</span>
+                      <span className={styles.bookListItemMob}>
+                        {language.libraryPage.tableHeader.book_year}:
+                      </span>
                       {year}
                     </p>
                     <p className={styles.bookListItemPage}>
-                      <span className={styles.bookListItemMob}>Pages:</span>
+                      <span className={styles.bookListItemMob}>
+                        {language.libraryPage.tableHeader.book_pages}:
+                      </span>
                       {totalPages}
                     </p>
                     <button
