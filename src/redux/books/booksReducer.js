@@ -13,6 +13,8 @@ const {
   removeBookRequest,
   removeBookSuccess,
   removeBookError,
+  firstVisitSuccess,
+  secondVisitSuccess,
 } = booksActions;
 
 const { logoutRequest, logoutSuccess, logoutError } = authActions;
@@ -33,7 +35,7 @@ const items = createReducer([], {
   [logoutSuccess]: () => [],
 });
 
-const loading = createReducer(true, {
+const loading = createReducer(false, {
   [fetchBooksRequest]: () => true,
   [fetchBooksSuccess]: () => false,
   [fetchBooksError]: () => false,
@@ -60,8 +62,15 @@ const error = createReducer(null, {
   [logoutError]: (_, { payload }) => payload,
 });
 
+const firstVisit = createReducer(false, {
+  [firstVisitSuccess]: () => true,
+  [secondVisitSuccess]: () => false,
+  [logoutSuccess]: () => false,
+});
+
 export default combineReducers({
   items,
+  firstVisit,
   loading,
   error,
 });

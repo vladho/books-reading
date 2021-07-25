@@ -1,7 +1,7 @@
 import styles from './SomeMotivation.module.scss';
 import { ReactComponent as ThumpUp } from '../../../assets/icons/thumbUp.svg';
-import DoneButton from '../../common/ModalButton/DoneButton/DoneButton';
 import CancelButton from '../../common/ModalButton/CancelButton/CancelButton';
+import withModal from '../../ModalHoc/withModal/withModal';
 
 const SomeMotivation = ({ toogleModal }) => {
   return (
@@ -14,13 +14,11 @@ const SomeMotivation = ({ toogleModal }) => {
         <br /> but you need to be a little bit faster.
         <br /> You can do it)
       </h2>
-      {/* <div className={styles.btnGroup}> */}
       <CancelButton onCbClick={toogleModal} styleBtn={styles.btn}>
         Ok
       </CancelButton>
-      {/* </div> */}
     </div>
   );
 };
 
-export default SomeMotivation;
+export default withModal(SomeMotivation);

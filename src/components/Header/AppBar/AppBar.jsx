@@ -15,13 +15,6 @@ export default function AppBar() {
     setShowModal(!showModal);
   };
 
-  const dispatch = useDispatch();
-
-  const onLogout = () => {
-    isShowModal();
-    // dispatch(authOps.logOut())
-  };
-
   const userName = useSelector(authSls.getUserName);
   const userFirstLetter = userName?.substring(0, 1);
 
@@ -46,11 +39,13 @@ export default function AppBar() {
       </div>
 
       {showModal && (
-        <NestingModal addOperation={authOps.logOut} toogleModal={isShowModal}>
-          {props => <LeaveApp {...props} toogleModal={isShowModal} />}
-        </NestingModal>
+        <LeaveApp
+          toogleModal={isShowModal}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
       )}
-      <button type="button" className={css.logoutButton} onClick={onLogout}>
+      <button type="button" className={css.logoutButton} onClick={isShowModal}>
         <span className={css.logoutText}>Log Out</span>
       </button>
     </div>

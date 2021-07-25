@@ -17,7 +17,9 @@
     padding-left: 15px;
   }
 }
-
+.item:not(:first-child) {
+  margin-top: 25px;
+}
 .step {
   font-weight: 600;
   font-size: 19px;
@@ -61,8 +63,12 @@
 }
 
 .btn {
-  // width: 127px;
-  // height: 40px;
+  background-color: $accent;
+  box-shadow: $boxShadowBtn;
+  border: none;
+  outline: none;
+  color: $white;
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
 
   margin-top: 35px;
   margin-left: 71px;
