@@ -143,6 +143,9 @@ function LibraryList({ books, onRemove }) {
                 ),
             )}
           </ul>
+          <button type="button" className={styles.btnAddMob}>
+            +
+          </button>
           <NavLink to="/training" className={styles.link}>
             <button type="button" className={styles.btnNext}>
               Next
@@ -150,9 +153,11 @@ function LibraryList({ books, onRemove }) {
           </NavLink>
         </div>
       )}
-      <button type="button" className={styles.btnAddMob}>
-        +
-      </button>
+      {!books.some(book => book.status === 'plan') && (
+        <button type="button" className={styles.btnAddMobEmpty}>
+          +
+        </button>
+      )}
     </>
   );
 }
