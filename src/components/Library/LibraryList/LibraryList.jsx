@@ -200,7 +200,7 @@ function LibraryList({ books, onRemove }) {
           </ul>
           <NavLink to="/training" className={styles.link}>
             <button type="button" className={styles.btnNext}>
-              Next
+              {language.libraryPage.nextBtn}
             </button>
           </NavLink>
           <button type="button" className={styles.btnAddMob}>
