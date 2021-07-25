@@ -61,12 +61,15 @@ const removeBook = id => async dispatch => {
 const updateResumeBook = (id, rating, resume) => async dispatch => {
   dispatch(updateResumeBookRequest());
   try {
-    const result = await axios.patch(`http://localhost:8080/api/books/${id}`, {
-      rating,
-      resume,
-    });
-    console.log('result', result);
-    dispatch(updateResumeBookSuccess(result));
+    const { data } = await axios.patch(
+      `http://localhost:8080/api/books/${id}`,
+      {
+        rating,
+        resume,
+      },
+    );
+    console.log('result', data);
+    dispatch(updateResumeBookSuccess(data));
   } catch (error) {
     console.log(error);
     dispatch(updateResumeBookError());

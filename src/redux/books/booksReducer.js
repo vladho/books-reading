@@ -31,15 +31,12 @@ const removeBook = (state, action) => {
 };
 
 const items = createReducer([], {
-  [fetchBooksRequest]: () => [],
+  // [fetchBooksRequest]: () => [],
   [fetchBooksSuccess]: (_, { payload }) => payload.data.books,
   [addBookSuccess]: addBook,
-  [updateResumeBookSuccess]: (state, action) => {
-    const id = action.payload.data.data.book._id;
-    const resume = action.payload.data.data.book.resume;
-    const raiting = action.payload.data.data.book.raiting;
-    const stateBook = action.payload.data.data.book;
-    console.log(resume, raiting);
+  [updateResumeBookSuccess]: (state, { payload }) => {
+    const id = payload.data.book._id;
+    const stateBook = payload.data.book;
 
     return state.map(book =>
       book._id === id ? { ...book, ...stateBook } : book,
