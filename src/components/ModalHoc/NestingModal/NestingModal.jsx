@@ -20,29 +20,15 @@ const NestingModal = ({
   closeBtn,
   saveBtn,
   showModalTrue,
+  setResumeValue,
 }) => {
   const modalRef = useRef();
 
   const dispatch = useDispatch();
 
-  // console.log('data', Component);
-  //   const dispatch = useDispatch();
-
-  // const closeModal = () => {
-  //   toogleModal();
-  //   console.log('cancel button');
-  // };
-  // console.log('toogleModalsadasdasd', showModalTrue);
-
-  // useEffect(() => {
-  //   showModalTrue();
-  // }, []);
-
   const onSave = e => {
     e.preventDefault();
     toogleModal();
-    // console.log('save btn');
-
     dispatch(addOperation(data));
   };
 

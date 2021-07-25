@@ -8,13 +8,13 @@ import LibraryForm from '../Library/LibraryForm/LibraryForm';
 import LibraryList from '../Library/LibraryList/LibraryList';
 import NestingModal from '../ModalHoc/NestingModal/NestingModal';
 import FirstVisit from '../ModalComponents/FirstVisit/FirstVisit';
+import { authSls } from '../../redux/auth';
 
 const Library = () => {
   const dispatch = useDispatch();
-  const isLoadingAddBook = useSelector(booksSelectors.getLoading);
+  const isLoadingBook = useSelector(booksSelectors.getLoading);
   const getAllBooks = useSelector(booksSelectors.getAllBooks);
-
-  // console.log(getAllBooks);
+  const getAuthLoading = useSelector(authSls.getLoading);
 
   useEffect(() => {
     dispatch(booksOperations.fetchBooks());
@@ -23,10 +23,10 @@ const Library = () => {
   return (
     <>
       <LibraryForm />
-      {!isLoadingAddBook && getAllBooks.length === 0 && (
+      {getAuthLoading && getAllBooks.length === 0 && (
         <NestingModal>{props => <FirstVisit {...props} />}</NestingModal>
       )}
-      {isLoadingAddBook ? <Spinner /> : <LibraryList />}
+      {isLoadingBook ? <Spinner /> : <LibraryList />}
     </>
   );
 };

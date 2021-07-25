@@ -17,17 +17,18 @@ function LibraryList({ books, onRemove }) {
   // console.log(books);
   const [showResume, setShowResume] = useState(false);
   const [rating, setRating] = useState(0);
-  const [onResume, setOnResume] = useState('');
 
-  console.log(onResume);
+  const [resumeValue, setResumeValue] = useState('');
+
+  // console.log(onResume);
 
   const dispatch = useDispatch();
 
   // dispatch(booksOperations.updateResumeBook());
 
-  const test = data => {
-    setOnResume(data);
-  };
+  // const test = data => {
+  //   setOnResume(data);
+  // };
 
   const isShowResume = () => {
     setShowResume(!showResume);
@@ -35,6 +36,31 @@ function LibraryList({ books, onRemove }) {
 
   return (
     <>
+      {showResume && (
+        <NestingModal
+          toogleModal={isShowResume}
+          showResume={showResume}
+          addOperation={booksOperations.updateResumeBook}
+          data={{ _id: 28, rating: 1, resume: 'vdfgdf' }}
+          setResumeValue={setResumeValue}
+        >
+          {props => {
+            // console.log(props.toogleModal);
+            return (
+              <RatingBook
+                {...props}
+                // test={test}
+                toogleModal={isShowResume}
+                setRating={setRating}
+                // setOnResume={setOnResume}
+                // onResume={onResume}
+                // resume={"fdf"}
+                // showResume={showResume}
+              />
+            );
+          }}
+        </NestingModal>
+      )}
       {books.some(book => book.status === 'done') && (
         <div className={styles.category}>
           <h2 className={styles.categoryTitle}>Already read</h2>
@@ -58,29 +84,6 @@ function LibraryList({ books, onRemove }) {
                 resume,
               }) => (
                 <>
-                  {showResume && (
-                    <NestingModal
-                      toogleModal={isShowResume}
-                      addOperation={booksOperations.updateResumeBook}
-                      data={{ _id, rating, resume }}
-                      // key={_id}
-                    >
-                      {props => {
-                        // console.log(props.toogleModal);
-                        return (
-                          <RatingBook
-                            // key={_id}
-                            {...props}
-                            toogleModal={isShowResume}
-                            setRating={setRating}
-                            setOnResume={test}
-                            resume={resume}
-                            // showResume={showResume}
-                          />
-                        );
-                      }}
-                    </NestingModal>
-                  )}
                   {status === 'done' && (
                     <li key={_id} className={styles.bookListItem}>
                       <ReactSVG src={book} className={styles.iconDone} />

@@ -6,18 +6,20 @@ import DoneButton from '../../common/ModalButton/DoneButton/DoneButton';
 import ChooseRating from './ChooseRating/ChooseRating';
 import styles from './RatingBook.module.scss';
 
-const RatingBook = ({ toogleModal, setRating, setOnResume }) => {
+const RatingBook = ({ toogleModal, setRating, setOnResume, onResume }) => {
   const [resume, setResume] = useState('');
 
   const onChangeResume = e => {
+    // setResume(e.target.value);
+    // e.preventDefault();
     setResume(e.target.value);
-    // setOnResume(resume);
+    setOnResume(resume);
   };
 
-  const testSubmit = e => {
-    e.preventDefault();
-    setOnResume({ resume });
-  };
+  // const testSubmit = e => {
+  //   // e.preventDefault();
+  //   test(resume);
+  // };
 
   return (
     <div className={styles.container}>
@@ -31,7 +33,7 @@ const RatingBook = ({ toogleModal, setRating, setOnResume }) => {
         className={styles.textarea}
         value={resume}
         onChange={onChangeResume}
-      />
+      ></textarea>
       <CancelButton styleBtn={styles.canselBtn} onCbClick={toogleModal}>
         Back
       </CancelButton>
