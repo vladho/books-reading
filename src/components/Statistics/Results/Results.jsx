@@ -8,40 +8,58 @@ import moment from 'moment';
 import ResultItem from './ResultItem';
 import styles from './Results.module.scss';
 import trainingOperations from '../../../redux/training/trainingOperations';
+import countDaysNumber from '../../../helpers/countDaysNumber';
+import messages from '../../../helpers/modalMessages';
 import trainingSelectors from '../../../redux/training/trainingSelectors';
 import NestingModal from '../../ModalHoc/NestingModal/NestingModal';
 import SomeMotivation from '../../ModalComponents/SomeMotivation/SomeMotivation';
 
 const Results = () => {
-  const [showModal, setShowModal] = useState(false);
-
-  const isShowModal = () => {
-    setShowModal(!showModal);
-  };
-
   const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
+  const [resultDate, setResultDate] = useState(null);
+  const [resultPages, setResultPages] = useState(0);
 
   const start = useSelector(trainingSelectors.getStartDate);
   const end = useSelector(trainingSelectors.getEndDate);
   const results = useSelector(trainingSelectors.getResults);
+  const plannedPages = useSelector(trainingSelectors?.getTotalPages);
+  const duration = countDaysNumber(start, end);
 
-  const [resultDate, setResultDate] = useState(null);
-  const [resultPages, setResultPages] = useState(null);
+  const isShowModal = () => {
+    setShowModal(!showModal);
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
     const date = e.target.resultDate.value;
     const time = moment().format('h:mm:ss');
     const pages = +e.target.resultPages.value;
-    dispatch(trainingOperations.addResult({ date, time, pages }));
+    // console.log(resultPages);
+    // message = pages <= plannedPages / duration ? messages[0] : messages[1];
+
+    if (!date || !time || !pages) {
+      return;
+    }
     isShowModal();
+    dispatch(trainingOperations.addResult({ date, time, pages }));
   };
 
   return (
     <>
       {showModal && (
         <NestingModal toogleModal={isShowModal}>
-          {props => <SomeMotivation {...props} toogleModal={isShowModal} />}
+          {props => (
+            <SomeMotivation
+              {...props}
+              toogleModal={isShowModal}
+              message={
+                resultPages <= plannedPages / duration
+                  ? messages[0]
+                  : messages[1]
+              }
+            />
+          )}
         </NestingModal>
       )}
       <div className={styles.resultsMainBox}>
@@ -73,6 +91,7 @@ const Results = () => {
                 name="resultPages"
                 onChange={pages => setResultPages(pages)}
                 className={styles.formInput}
+                min={1}
               />
             </div>
             <button type="submit" className={styles.formButton}>
