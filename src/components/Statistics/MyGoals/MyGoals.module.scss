@@ -27,7 +27,7 @@
 .myGoalsMainBox_training {
   width: 270px;
   margin: 0 auto;
-  background-color: $white;
+  background-color: $primaryBg;
 
   @include for-size(tablet-only) {
     width: 678px;

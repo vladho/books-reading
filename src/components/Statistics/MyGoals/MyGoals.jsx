@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import styles from './MyGoals.module.scss';
 import trainingSelectors from '../../../redux/training/trainingSelectors';
+import countDaysNumber from '../../../helpers/countDaysNumber';
 
 const MyGoals = ({ days: daysSelected }) => {
   const isTraining = useSelector(trainingSelectors.getIsStarted);
@@ -13,9 +14,11 @@ const MyGoals = ({ days: daysSelected }) => {
 
   const start = useSelector(trainingSelectors.getStartDate);
   const end = useSelector(trainingSelectors.getEndDate);
-  const startUnix = new Date(start.split('.').reverse().join('.')).getTime();
-  const endUnix = new Date(end.split('.').reverse().join('.')).getTime();
-  const days = (endUnix - startUnix) / 1000 / 60 / 60 / 24 + 1 || 0;
+  // const startUnix = new Date(start.split('.').reverse().join('.')).getTime();
+  // const endUnix = new Date(end.split('.').reverse().join('.')).getTime();
+  // const days = (endUnix - startUnix) / 1000 / 60 / 60 / 24 + 1 || 0;
+
+  const days = countDaysNumber(start, end);
 
   return (
     <>
