@@ -19,7 +19,9 @@ const trainingStartDate = createAction('training/trainingStartDate');
 const trainingEndDate = createAction('training/trainingEndDate');
 
 // Добавление результата
-const addResult = createAction('training/addResult');
+const addResultRequest = createAction('training/addResult/request');
+const addResultSuccess = createAction('training/addResult/success');
+const addResultError = createAction('training/addResult/error');
 
 const trainingActions = {
   getCurrTrainingRequest,
@@ -32,6 +34,8 @@ const trainingActions = {
   delSelectedId,
   trainingStartDate,
   trainingEndDate,
-  addResult,
+  addResultRequest,
+  addResultSuccess,
+  addResultError,
 };
 export default trainingActions;

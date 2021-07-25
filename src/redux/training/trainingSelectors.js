@@ -41,7 +41,19 @@ const getLoading = state => state.training.loading;
 const getError = state => state.training.error;
 
 //Результаты
-const getResults = state => state.training.results;
+const getResults = state =>
+  state.training.results
+    .map(day => {
+      const date = day.date;
+      const res = day.stats.map(({ time, pages }) => {
+        return { date, time, pages };
+      });
+      return res;
+    })
+    .flat()
+    .sort(function (a, b) {
+      return b.date.split('.').join('') - a.date.split('.').join('');
+    });
 
 const trainingSelectors = {
   getIsStarted,

@@ -12,7 +12,9 @@ const {
   delSelectedId,
   trainingStartDate,
   trainingEndDate,
-  addResult,
+  addResultRequest,
+  addResultSuccess,
+  addResultError,
 } = trainingActions;
 
 // 📌 Идет ли тренировка
@@ -92,6 +94,10 @@ const loading = createReducer(false, {
   [startTrainingRequest]: () => true,
   [startTrainingSuccess]: () => false,
   [startTrainingError]: () => false,
+
+  [addResultRequest]: () => true,
+  [addResultSuccess]: () => false,
+  [addResultError]: () => false,
 });
 
 const error = createReducer(null, {
@@ -100,11 +106,15 @@ const error = createReducer(null, {
 
   [startTrainingRequest]: () => null,
   [startTrainingError]: (_, { payload }) => payload,
+
+  [addResultRequest]: () => null,
+  [addResultError]: (_, { payload }) => payload,
 });
 
 //Результаты
 const results = createReducer([], {
-  [addResult]: (state, { payload }) => [...state, payload],
+  [getCurrTrainingRequest]: () => [],
+  [getCurrTrainingSuccess]: (_, { payload: { data } }) => data?.result || [],
 });
 
 export default combineReducers({
