@@ -8,6 +8,10 @@ const startTrainingRequest = createAction('training/startTraining/request');
 const startTrainingSuccess = createAction('training/startTraining/success');
 const startTrainingError = createAction('training/startTraining/error');
 
+const addResultRequest = createAction('training/addResult/request');
+const addResultSuccess = createAction('training/addResult/success');
+const addResultError = createAction('training/addResult/error');
+
 // Добавление книги в список тренировки
 const addSelectedId = createAction('training/addSelectedId');
 
@@ -18,11 +22,6 @@ const delSelectedId = createAction('training/delSelectedId');
 const trainingStartDate = createAction('training/trainingStartDate');
 const trainingEndDate = createAction('training/trainingEndDate');
 
-// Добавление результата
-const addResultRequest = createAction('training/addResult/request');
-const addResultSuccess = createAction('training/addResult/success');
-const addResultError = createAction('training/addResult/error');
-
 const trainingActions = {
   getCurrTrainingRequest,
   getCurrTrainingSuccess,
@@ -30,12 +29,12 @@ const trainingActions = {
   startTrainingRequest,
   startTrainingSuccess,
   startTrainingError,
+  addResultRequest,
+  addResultSuccess,
+  addResultError,
   addSelectedId,
   delSelectedId,
   trainingStartDate,
   trainingEndDate,
-  addResultRequest,
-  addResultSuccess,
-  addResultError,
 };
 export default trainingActions;

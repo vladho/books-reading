@@ -8,13 +8,13 @@ const {
   startTrainingRequest,
   startTrainingSuccess,
   startTrainingError,
+  addResultRequest,
+  addResultSuccess,
+  addResultError,
   addSelectedId,
   delSelectedId,
   trainingStartDate,
   trainingEndDate,
-  addResultRequest,
-  addResultSuccess,
-  addResultError,
 } = trainingActions;
 
 // 📌 Идет ли тренировка
@@ -24,6 +24,8 @@ const isStarted = createReducer(false, {
   [getCurrTrainingSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
 
   [startTrainingSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
+
+  [addResultSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
 });
 
 // 📌 Данные при активной тренировке
@@ -39,6 +41,8 @@ const books = createReducer([], {
   [getCurrTrainingSuccess]: setBooksOnSuccess,
 
   [startTrainingSuccess]: setBooksOnSuccess,
+
+  [addResultSuccess]: setBooksOnSuccess,
 });
 
 const startDate = createReducer('', {
@@ -46,6 +50,8 @@ const startDate = createReducer('', {
   [getCurrTrainingSuccess]: (_, { payload: { data } }) => data?.startDate || '',
 
   [startTrainingSuccess]: (_, { payload: { data } }) => data?.startDate || '',
+
+  [addResultSuccess]: (_, { payload: { data } }) => data?.startDate || '',
 });
 
 const endDate = createReducer('', {
@@ -54,6 +60,23 @@ const endDate = createReducer('', {
     data?.finishDate || '',
 
   [startTrainingSuccess]: (_, { payload: { data } }) => data?.finishDate || '',
+
+  [addResultSuccess]: (_, { payload: { data } }) => data?.finishDate || '',
+});
+
+const setResultsOnSuccess = (_, { payload: { data } }) => {
+  const results = data?.result;
+
+  return Array.isArray(results) ? results : [];
+};
+
+const results = createReducer([], {
+  [getCurrTrainingRequest]: () => [],
+  [getCurrTrainingSuccess]: setResultsOnSuccess,
+
+  [startTrainingSuccess]: setResultsOnSuccess,
+
+  [addResultSuccess]: setResultsOnSuccess,
 });
 
 // 📌 Данные при неактивной тренировке
@@ -111,21 +134,15 @@ const error = createReducer(null, {
   [addResultError]: (_, { payload }) => payload,
 });
 
-//Результаты
-const results = createReducer([], {
-  [getCurrTrainingRequest]: () => [],
-  [getCurrTrainingSuccess]: (_, { payload: { data } }) => data?.result || [],
-});
-
 export default combineReducers({
   isStarted,
   books,
   startDate,
   endDate,
+  results,
   selectedIds,
   selectStartDate,
   selectEndDate,
   loading,
   error,
-  results,
 });
