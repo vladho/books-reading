@@ -28,14 +28,16 @@ const MyGoals = ({ days: daysSelected }) => {
             <ul className={styles.myGoalsStatsList}>
               <li className={styles.myGoalsStatsListitem}>
                 <span className={styles.myGoalsStatsDigitBox}>
-                  <p className={styles.myGoalsStatsDigit}>{books.length}</p>
+                  <p className={styles.myGoalsStatsDigit}>
+                    {booksSelected.length}
+                  </p>
                 </span>
                 <span className={styles.myGoalsStatsText}>Amount of books</span>
               </li>
               <li className={styles.myGoalsStatsListitem}>
                 <span className={styles.myGoalsStatsDigitBox}>
                   <p className={styles.myGoalsStatsDigit}>
-                    {isTraining ? daysSelected : days}
+                    {!isTraining ? daysSelected : days}
                   </p>
                 </span>
                 <span className={styles.myGoalsStatsText}>Amount of days</span>
