@@ -24,7 +24,7 @@ const Results = () => {
     e.preventDefault();
     const date = e.target.resultDate.value;
     const time = moment().format('h:mm:ss');
-    const pages = e.target.resultPages.value;
+    const pages = +e.target.resultPages.value;
     dispatch(trainingOperations.addResult({ date, time, pages }));
   };
 
