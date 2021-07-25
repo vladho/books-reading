@@ -1,33 +1,39 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import booksOperations from '../../redux/books/booksOperations';
 import booksSelectors from '../../redux/books/booksSelectors';
 
 import Spinner from '../Spinner/Spinner';
 import LibraryForm from '../Library/LibraryForm/LibraryForm';
 import LibraryList from '../Library/LibraryList/LibraryList';
+import FirstVisit from '../ModalComponents/FirstVisit/FirstVisit';
 
-class Library extends Component {
-  componentDidMount() {
-    this.props.onFetchBooks();
-  }
+const Library = () => {
+  const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
+  const isLoadingBook = useSelector(booksSelectors.getLoading);
+  const isFirstVisit = useSelector(booksSelectors.isFirstVisit);
 
-  render() {
-    return (
-      <div>
-        <LibraryForm />
-        {this.props.isLoadingAddBook ? <Spinner /> : <LibraryList />}
-      </div>
-    );
-  }
-}
+  console.log(isFirstVisit);
+  useEffect(() => {
+    dispatch(booksOperations.fetchBooks());
+  }, []);
 
-const mapStateToProps = state => ({
-  isLoadingAddBook: booksSelectors.getLoading(state),
-});
+  useEffect(() => {
+    isFirstVisit && isShowModal();
+  }, [isFirstVisit]);
 
-const mapDispatchToProps = {
-  onFetchBooks: booksOperations.fetchBooks,
+  const isShowModal = () => {
+    setShowModal(!showModal);
+  };
+
+  return (
+    <>
+      <LibraryForm />
+      <FirstVisit showModal={showModal} setShowModal={setShowModal} />
+      {isLoadingBook ? <Spinner /> : <LibraryList />}
+    </>
+  );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Library);
+export default Library;

@@ -8,11 +8,20 @@ import moment from 'moment';
 import { LangContext } from '../../App/App';
 import ResultItem from './ResultItem';
 import styles from './Results.module.scss';
-import trainingActions from '../../../redux/training/trainingActions';
+import trainingOperations from '../../../redux/training/trainingOperations';
 import trainingSelectors from '../../../redux/training/trainingSelectors';
+import NestingModal from '../../ModalHoc/NestingModal/NestingModal';
+import SomeMotivation from '../../ModalComponents/SomeMotivation/SomeMotivation';
 
 const Results = () => {
   const { language } = useContext(LangContext);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const isShowModal = () => {
+    setShowModal(!showModal);
+  };
+
   const dispatch = useDispatch();
 
   const start = useSelector(trainingSelectors.getStartDate);
@@ -26,83 +35,79 @@ const Results = () => {
     e.preventDefault();
     const date = e.target.resultDate.value;
     const time = moment().format('h:mm:ss');
-    const pages = e.target.resultPages.value;
-    dispatch(trainingActions.addResult({ date, time, pages }));
+    const pages = +e.target.resultPages.value;
+    dispatch(trainingOperations.addResult({ date, time, pages }));
+    isShowModal();
   };
 
   return (
-    <div className={styles.resultsMainBox}>
-      <h3 className={styles.resultsHeading}>
-        {language.trainingPage.resultsCard.title}
-      </h3>
-      <div className={styles.inputLabelBox}>
-        <p className={styles.inputLabel}>
-          {language.trainingPage.resultsCard.date}
-        </p>
-        <p className={styles.inputLabel}>
-          {language.trainingPage.resultsCard.pages}
-        </p>
-      </div>
-
-      <div>
-        <form
-          onSubmit={handleSubmit}
-          className={styles.form}
-          autoComplete="off"
-        >
-          <div className={styles.inputsBox}>
-            <DatePicker
-              name="resultDate"
-              selected={resultDate}
-              onChange={date => setResultDate(date)}
-              dateFormat="dd.MM.yyyy"
-              minDate={new Date(start)}
-              maxDate={new Date(end)}
-              className={styles.formInput}
-            />
-            <HiChevronDown className={styles.chevronDownIcon} />
-            <input
-              type="number"
-              name="resultPages"
-              onChange={pages => setResultPages(pages)}
-              className={styles.formInput}
-            />
-          </div>
-          <button type="submit" className={styles.formButton}>
-            {language.trainingPage.resultsCard.addBtn}
-          </button>
-        </form>
-      </div>
-      {results.length > 0 && (
-        <div>
-          <h3 className={styles.statisticsHeading}>
-            <span className={styles.horizontalBarLeft}></span>
-            {language.trainingPage.statisticsCard.title}
-            <span className={styles.horizontalBarRight}></span>
-          </h3>
-          <ul className={styles.statiscicsList}>
-            {results.map(item => (
-              <ResultItem
-                date={item.date}
-                time={item.time}
-                pages={item.pages}
-              />
-            ))}
-          </ul>
-        </div>
+    <>
+      {showModal && (
+        <SomeMotivation showModal={showModal} setShowModal={setShowModal} />
       )}
-    </div>
+      <div className={styles.resultsMainBox}>
+        <h3 className={styles.resultsHeading}>
+          {language.trainingPage.resultsCard.title}
+        </h3>
+        <div className={styles.inputLabelBox}>
+          <p className={styles.inputLabel}>
+            {language.trainingPage.resultsCard.date}
+          </p>
+          <p className={styles.inputLabel}>
+            {language.trainingPage.resultsCard.pages}
+          </p>
+        </div>
+
+        <div>
+          <form
+            onSubmit={handleSubmit}
+            className={styles.form}
+            autoComplete="off"
+          >
+            <div className={styles.inputsBox}>
+              <DatePicker
+                name="resultDate"
+                selected={resultDate}
+                onChange={date => setResultDate(date)}
+                dateFormat="dd.MM.yyyy"
+                minDate={new Date(start)}
+                maxDate={new Date(end)}
+                className={styles.formInput}
+              />
+              <HiChevronDown className={styles.chevronDownIcon} />
+              <input
+                type="number"
+                name="resultPages"
+                onChange={pages => setResultPages(pages)}
+                className={styles.formInput}
+              />
+            </div>
+            <button type="submit" className={styles.formButton}>
+              {language.trainingPage.resultsCard.addBtn}
+            </button>
+          </form>
+        </div>
+        {results.length > 0 && (
+          <div>
+            <h3 className={styles.statisticsHeading}>
+              <span className={styles.horizontalBarLeft}></span>
+              {language.trainingPage.statisticsCard.title}
+              <span className={styles.horizontalBarRight}></span>
+            </h3>
+            <ul className={styles.statiscicsList}>
+              {results.map(item => (
+                <ResultItem
+                  date={item.date}
+                  time={item.time}
+                  pages={item.pages}
+                />
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
 export default Results;
-
-// const test = results
-//   .map(day => {
-//     const date = day.date;
-//     const res = day.stats.map(({ time, pages }) => {
-//       return { date, time, pages };
-//     });
-//     return res;
-//   })
-//   .flat();

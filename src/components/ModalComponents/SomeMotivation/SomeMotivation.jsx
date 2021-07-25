@@ -3,9 +3,10 @@ import React, { useContext } from 'react';
 import { LangContext } from '../../App/App';
 import styles from './SomeMotivation.module.scss';
 import { ReactComponent as ThumpUp } from '../../../assets/icons/thumbUp.svg';
-import DoneButton from '../../common/ModalButton/DoneButton/DoneButton';
+import CancelButton from '../../common/ModalButton/CancelButton/CancelButton';
+import withModal from '../../ModalHoc/withModal/withModal';
 
-const SomeMotivation = () => {
+const SomeMotivation = ({ toogleModal }) => {
   const { language } = useContext(LangContext);
 
   return (
@@ -15,14 +16,14 @@ const SomeMotivation = () => {
       </div>
       <h2 className={styles.title}>
         {language.trainingPage.successModal.text1}
-        <p>{language.trainingPage.successModal.text2}</p>
-        <p>{language.trainingPage.successModal.text3}</p>
+        <br /> {language.trainingPage.successModal.text2}
+        <br /> {language.trainingPage.successModal.text3}
       </h2>
-      <div className={styles.btn}>
-        <DoneButton>{language.trainingPage.successModal.okBtn}</DoneButton>
-      </div>
+      <CancelButton onCbClick={toogleModal} styleBtn={styles.btn}>
+        {language.trainingPage.successModal.okBtn}
+      </CancelButton>
     </div>
   );
 };
 
-export default SomeMotivation;
+export default withModal(SomeMotivation);

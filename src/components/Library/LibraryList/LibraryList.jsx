@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useContext } from 'react';
+import { connect, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import booksSelectors from '../../../redux/books/booksSelectors';
@@ -10,12 +10,32 @@ import { LangContext } from '../../App/App';
 import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
+import RatingBook from '../../ModalComponents/RatingBook/RatingBook';
 
 function LibraryList({ books, onRemove }) {
+  const [showModal, setShowModal] = useState(false);
+  const [rating, setRating] = useState(0);
+
+  const [resumeValue, setResumeValue] = useState('');
+
+  const dispatch = useDispatch();
   const { language } = useContext(LangContext);
+
+  const isShowModal = () => {
+    setShowModal(!showModal);
+  };
 
   return (
     <>
+      {showModal && (
+        <RatingBook
+          setRating={setRating}
+          setResumeValue={setResumeValue}
+          resumeValue={resumeValue}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+      )}
       {books.some(book => book.status === 'done') && (
         <div className={styles.category}>
           <h2 className={styles.categoryTitle}>
@@ -40,7 +60,16 @@ function LibraryList({ books, onRemove }) {
           </div>
           <ul>
             {books.map(
-              ({ _id, title, author, year, totalPages, status, rating }) =>
+              ({
+                _id,
+                title,
+                author,
+                year,
+                totalPages,
+                status,
+                rating: showRating,
+                resume,
+              }) =>
                 status === 'done' && (
                   <li key={_id} className={styles.bookListItem}>
                     <ReactSVG src={book} className={styles.iconDone} />
@@ -72,9 +101,14 @@ function LibraryList({ books, onRemove }) {
                       <span className={styles.bookListItemMob}>
                         {language.libraryPage.tableHeader.book_rating}:
                       </span>
-                      <RatingReadOnly rating={rating} />
+                      <RatingReadOnly rating={showRating} />
                     </div>
-                    <button type="button" className={styles.buttonRezume}>
+
+                    <button
+                      type="button"
+                      className={styles.buttonRezume}
+                      onClick={isShowModal}
+                    >
                       {language.libraryPage.readList.button}
                     </button>
                   </li>

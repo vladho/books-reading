@@ -2,7 +2,10 @@ import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './MyGoals.module.scss';
 import trainingSelectors from '../../../redux/training/trainingSelectors';
+
 import { LangContext } from '../../App/App';
+
+import countDaysNumber from '../../../helpers/countDaysNumber';
 
 const MyGoals = ({ days: daysSelected }) => {
   const { language } = useContext(LangContext);
@@ -16,9 +19,7 @@ const MyGoals = ({ days: daysSelected }) => {
 
   const start = useSelector(trainingSelectors.getStartDate);
   const end = useSelector(trainingSelectors.getEndDate);
-  const startUnix = new Date(start.split('.').reverse().join('.')).getTime();
-  const endUnix = new Date(end.split('.').reverse().join('.')).getTime();
-  const days = (endUnix - startUnix) / 1000 / 60 / 60 / 24 + 1 || 0;
+  const days = countDaysNumber(start, end);
 
   return (
     <>
@@ -33,7 +34,9 @@ const MyGoals = ({ days: daysSelected }) => {
             <ul className={styles.myGoalsStatsList}>
               <li className={styles.myGoalsStatsListitem}>
                 <span className={styles.myGoalsStatsDigitBox}>
-                  <p className={styles.myGoalsStatsDigit}>{books.length}</p>
+                  <p className={styles.myGoalsStatsDigit}>
+                    {booksSelected.length}
+                  </p>
                 </span>
                 <span className={styles.myGoalsStatsText}>
                   {language.trainingPage.goalsCard.books}
@@ -42,7 +45,7 @@ const MyGoals = ({ days: daysSelected }) => {
               <li className={styles.myGoalsStatsListitem}>
                 <span className={styles.myGoalsStatsDigitBox}>
                   <p className={styles.myGoalsStatsDigit}>
-                    {isTraining ? daysSelected : days}
+                    {!isTraining ? daysSelected : days}
                   </p>
                 </span>
                 <span className={styles.myGoalsStatsText}>

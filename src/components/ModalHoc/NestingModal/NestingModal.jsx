@@ -1,54 +1,12 @@
-import React, { useRef, useEffect, useContext } from 'react';
-import { createPortal } from 'react-dom';
-// import sprite from '../../../assets/icons/sprite.svg';
-// import FormButton from '../formButton/FormButton';
-import { useDispatch } from 'react-redux';
-import CancelButton from '../../common/ModalButton/CancelButton/CancelButton';
+import React from 'react';
 import styles from './NestingModal.module.scss';
-import withShowModal from '../withShowModal/withShowModal';
 
-const modalRoot = document.querySelector('#modal_root');
-
-const NestingModal = ({
-  component: Component,
-  children,
-  showModal,
-  toogleModal,
-  handleBackdropClick,
-  addOperation,
-  data,
-  closeBtn,
-  saveBtn,
-}) => {
-  const modalRef = useRef();
-
-  //   const dispatch = useDispatch();
-
-  // const closeModal = () => {
-  //   toogleModal();
-  //   console.log('cancel button');
-  // };
-
-  const onSave = e => {
-    e.preventDefault();
-    // closeModal();
-    toogleModal();
-    console.log('save btn');
-
-    // dispatch(addOperation(data));
-  };
-
-  return createPortal(
-    <div className={styles.modal} ref={modalRef} onClick={handleBackdropClick}>
-      <div className={styles.container}>
-        <form onSubmit={onSave}>
-          {/* {children} */}
-          <Component />
-        </form>
-      </div>
-    </div>,
-    modalRoot,
+const NestingModal = ({ children, handleBackdropClick }) => {
+  return (
+    <div className={styles.modal} onClick={handleBackdropClick}>
+      <div className={styles.container}>{children}</div>
+    </div>
   );
 };
 
-export default withShowModal(NestingModal);
+export default NestingModal;

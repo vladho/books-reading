@@ -115,6 +115,7 @@ const ukrainian = {
       desc: 'Якщо Ви вийдете з програми незбережені дані будуть втрачені',
       cancelBtn: 'Відміна',
       exitBtn: 'Вийти',
+      exitBtnMobile: 'Вийти',
     },
     successModal: {
       text1: 'Ти молодчина,',

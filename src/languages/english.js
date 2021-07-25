@@ -115,6 +115,7 @@ const english = {
       desc: 'The changes you made will be lost if you navigate away from this application',
       cancelBtn: 'Cancel',
       exitBtn: 'Leave this app',
+      exitBtnMobile: 'Leave',
     },
     successModal: {
       text1: 'Well done!',

@@ -12,6 +12,13 @@ const removeBookRequest = createAction('books/remove/request');
 const removeBookSuccess = createAction('books/remove/success');
 const removeBookError = createAction('books/remove/error');
 
+const updateResumeBookRequest = createAction('books/update/request');
+const updateResumeBookSuccess = createAction('books/update/success');
+const updateResumeBookError = createAction('books/update/error');
+
+const firstVisitSuccess = createAction('books/firstVisit/Success');
+const secondVisitSuccess = createAction('books/secondVisit/Success');
+
 const booksActions = {
   addBookRequest,
   addBookSuccess,
@@ -22,5 +29,10 @@ const booksActions = {
   removeBookRequest,
   removeBookSuccess,
   removeBookError,
+  updateResumeBookRequest,
+  updateResumeBookSuccess,
+  updateResumeBookError,
+  firstVisitSuccess,
+  secondVisitSuccess,
 };
 export default booksActions;

@@ -13,6 +13,7 @@ import CircuitButton from '../common/CirciutButton/CircuitButton';
 import TrainingModal from './TrainingModal/TrainingModal';
 import styles from './TrainingWrapper.module.scss';
 import trainingSelectors from '../../redux/training/trainingSelectors';
+import countDaysNumber from '../../helpers/countDaysNumber';
 
 const TrainingWrapper = () => {
   const Mobile = props => <Responsive {...props} maxWidth={767} />;
@@ -27,9 +28,11 @@ const TrainingWrapper = () => {
 
   const start = useSelector(trainingSelectors.selectStartDate);
   const end = useSelector(trainingSelectors.selectEndDate);
-  const startUnix = new Date(start.split('.').reverse().join('.')).getTime();
-  const endUnix = new Date(end.split('.').reverse().join('.')).getTime();
-  const days = (endUnix - startUnix) / 1000 / 60 / 60 / 24 + 1 || 0;
+  // const startUnix = new Date(start.split('.').reverse().join('.')).getTime();
+  // const endUnix = new Date(end.split('.').reverse().join('.')).getTime();
+  // const days = (endUnix - startUnix) / 1000 / 60 / 60 / 24 + 1 || 0;
+
+  const days = countDaysNumber(start, end);
 
   const openModal = () => {
     setIsTrainingModalShown(!isTrainingModalShown);
@@ -37,24 +40,21 @@ const TrainingWrapper = () => {
 
   const books = useSelector(trainingSelectors.getSelectBooks);
   const isTrainingStarted = useSelector(trainingSelectors.getIsStarted);
-  // const isTrainingStarted = true;
 
-  const isListNotEmpty = !!books.length;
-  console.log(isListNotEmpty);
   return (
     <div className={styles.wrapper}>
       <Mobile>
         {isTrainingStarted ? (
           <>
             <Timer />
-            <MyGoals books={books.length} days={days} />
+            <MyGoals days={days} />
             <TrainingList />
             <ChartModal />
             <Results />
           </>
         ) : (
           <>
-            <MyGoals books={books.length} days={days} />
+            <MyGoals days={days} />
             <TrainingList />
             {!!books.length && !!days && <StartTrainingBtn />}
             <ChartModal />
@@ -73,14 +73,14 @@ const TrainingWrapper = () => {
         {isTrainingStarted ? (
           <>
             <Timer />
-            <MyGoals books={books.length} days={days} />
+            <MyGoals days={days} />
             <TrainingList />
             <ChartModal />
             <Results />
           </>
         ) : (
           <>
-            <MyGoals books={books.length} days={days} />
+            <MyGoals days={days} />
             <TrainingForm />
             <TrainingList />
             {!!books.length && !!days && <StartTrainingBtn />}
@@ -95,9 +95,9 @@ const TrainingWrapper = () => {
             <div className={styles.upperPart}>
               <div className={styles.trainingInfo}>
                 <Timer />
-                <TrainingList booklist={isListNotEmpty} />
+                <TrainingList />
               </div>
-              <MyGoals books={books.length} days={days} />
+              <MyGoals days={days} />
             </div>
 
             <div className={styles.lowerPart}>
@@ -113,7 +113,7 @@ const TrainingWrapper = () => {
                 <TrainingList />
                 {!!books.length && !!days && <StartTrainingBtn />}
               </div>
-              <MyGoals books={books.length} days={days} />
+              <MyGoals days={days} />
             </div>
             <div className={styles.lowerPart}>
               <ChartModal />
