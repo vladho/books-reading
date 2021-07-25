@@ -13,7 +13,6 @@ const RatingBook = ({ toogleModal, setRating, setOnResume, onResume }) => {
     // setResume(e.target.value);
     // e.preventDefault();
     setResume(e.target.value);
-    setOnResume(resume);
   };
 
   // const testSubmit = e => {

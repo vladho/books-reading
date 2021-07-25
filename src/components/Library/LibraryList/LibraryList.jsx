@@ -82,45 +82,42 @@ function LibraryList({ books, onRemove }) {
                 status,
                 rating: showRating,
                 resume,
-              }) => (
-                <>
-                  {status === 'done' && (
-                    <li key={_id} className={styles.bookListItem}>
-                      <ReactSVG src={book} className={styles.iconDone} />
-                      <div className={styles.bookListItemNameDone}>
-                        <span>
-                          <ReactSVG src={book} className={styles.iconDoneMob} />
-                        </span>
-                        {title}
-                      </div>
-                      <p className={styles.bookListItemAuthorDone}>
-                        <span className={styles.bookListItemMob}>Author:</span>
-                        {author}
-                      </p>
-                      <p className={styles.bookListItemYearDone}>
-                        <span className={styles.bookListItemMob}>Year:</span>
-                        {year}
-                      </p>
-                      <p className={styles.bookListItemPageDone}>
-                        <span className={styles.bookListItemMob}>Pages:</span>
-                        {totalPages}
-                      </p>
-                      <div className={styles.stars}>
-                        <span className={styles.bookListItemMob}>Rating:</span>
-                        <RatingReadOnly rating={showRating} />
-                      </div>
+              }) =>
+                status === 'done' && (
+                  <li key={_id} className={styles.bookListItem}>
+                    <ReactSVG src={book} className={styles.iconDone} />
+                    <div className={styles.bookListItemNameDone}>
+                      <span>
+                        <ReactSVG src={book} className={styles.iconDoneMob} />
+                      </span>
+                      {title}
+                    </div>
+                    <p className={styles.bookListItemAuthorDone}>
+                      <span className={styles.bookListItemMob}>Author:</span>
+                      {author}
+                    </p>
+                    <p className={styles.bookListItemYearDone}>
+                      <span className={styles.bookListItemMob}>Year:</span>
+                      {year}
+                    </p>
+                    <p className={styles.bookListItemPageDone}>
+                      <span className={styles.bookListItemMob}>Pages:</span>
+                      {totalPages}
+                    </p>
+                    <div className={styles.stars}>
+                      <span className={styles.bookListItemMob}>Rating:</span>
+                      <RatingReadOnly rating={showRating} />
+                    </div>
 
-                      <button
-                        type="button"
-                        className={styles.buttonRezume}
-                        onClick={isShowResume}
-                      >
-                        Resume
-                      </button>
-                    </li>
-                  )}
-                </>
-              ),
+                    <button
+                      type="button"
+                      className={styles.buttonRezume}
+                      onClick={isShowResume}
+                    >
+                      Resume
+                    </button>
+                  </li>
+                ),
             )}
           </ul>
         </div>
