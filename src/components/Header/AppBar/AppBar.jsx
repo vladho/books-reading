@@ -2,12 +2,13 @@ import React, { useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { GoHome, GoBook } from 'react-icons/go';
 import { authSls } from '../../../redux/auth';
-
+import { CSSTransition } from 'react-transition-group';
 import css from './AppBar.module.scss';
 import { NavLink } from 'react-router-dom';
 import { LangContext } from '../../App/App';
 
 import LeaveApp from '../../ModalComponents/LeaveApp/LeaveApp';
+import '../../../styles/animation.scss';
 
 export default function AppBar() {
   const { language } = useContext(LangContext);
@@ -39,14 +40,18 @@ export default function AppBar() {
         <p className={css.userIcon}>{userFirstLetter}</p>
         <p className={css.userName}>{userName}</p>
       </div>
-
-      {showModal && (
+      <CSSTransition
+        classNames="option"
+        timeout={600}
+        in={showModal}
+        unmountOnExit
+      >
         <LeaveApp
           toogleModal={isShowModal}
           showModal={showModal}
           setShowModal={setShowModal}
         />
-      )}
+      </CSSTransition>
       <button type="button" className={css.logoutButton} onClick={isShowModal}>
         <span className={css.logoutText}>{language.logout}</span>
       </button>

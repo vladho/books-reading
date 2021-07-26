@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
@@ -6,7 +6,6 @@ import { LangContext } from '../../App/App';
 import booksOperations from '../../../redux/books/booksOperations';
 import schemaValidAddBook from '../../../helpers/validation/schemaValidAddBook';
 import styles from './LibraryForm.module.scss';
-import languages from '../../../languages';
 
 const initialState = {
   title: '',
@@ -16,6 +15,8 @@ const initialState = {
 };
 
 const LibraryForm = () => {
+  const { language } = useContext(LangContext);
+
   const dispatch = useDispatch();
 
   const onHandleSubmit = values => {
@@ -36,10 +37,10 @@ const LibraryForm = () => {
           <Form>
             <div className={styles.form}>
               <label className={styles.labelName}>
-                <p className={styles.labelNameTitle}>Book title</p>
-                {/* <p className={styles.labelNameTitle}>
-                    {language.libraryPage.bookForm.title}
-                  </p> */}
+                {/* <p className={styles.labelNameTitle}>Book title</p> */}
+                <p className={styles.labelNameTitle}>
+                  {language.libraryPage.bookForm.title}
+                </p>
                 <Field
                   className={styles.labelNameInput}
                   autocomplete="off"
@@ -55,10 +56,10 @@ const LibraryForm = () => {
                 />
               </label>
               <label className={styles.labelAuthor}>
-                <p className={styles.labelAuthorTitle}>Author</p>
-                {/* <p className={styles.labelAuthorTitle}>
-                    {language.libraryPage.bookForm.author}
-                  </p> */}
+                {/* <p className={styles.labelAuthorTitle}>Author</p> */}
+                <p className={styles.labelAuthorTitle}>
+                  {language.libraryPage.bookForm.author}
+                </p>
                 <Field
                   className={styles.labelAuthorInput}
                   autocomplete="off"
@@ -74,10 +75,10 @@ const LibraryForm = () => {
                 />
               </label>
               <label className={styles.labelYear}>
-                <p className={styles.labelYearTitle}>Publication date</p>
-                {/* <p className={styles.labelYearTitle}>
-                    {language.libraryPage.bookForm.publication}
-                  </p> */}
+                {/* <p className={styles.labelYearTitle}>Publication date</p> */}
+                <p className={styles.labelYearTitle}>
+                  {language.libraryPage.bookForm.publication}
+                </p>
                 <Field
                   className={styles.labelYearInput}
                   autocomplete="off"
@@ -93,10 +94,10 @@ const LibraryForm = () => {
                 />
               </label>
               <label className={styles.labelPage}>
-                <p className={styles.labelPageTitle}>Amount of pages</p>
-                {/* <p className={styles.labelPageTitle}>
-                    {language.libraryPage.bookForm.pages}
-                  </p> */}
+                {/* <p className={styles.labelPageTitle}>Amount of pages</p> */}
+                <p className={styles.labelPageTitle}>
+                  {language.libraryPage.bookForm.pages}
+                </p>
                 <Field
                   className={styles.labelPageInput}
                   autocomplete="off"
@@ -111,12 +112,12 @@ const LibraryForm = () => {
                   component="div"
                 />
               </label>
-              <button type="submit" className={styles.btnAddForm}>
-                Add
-              </button>
               {/* <button type="submit" className={styles.btnAddForm}>
-                  {language.libraryPage.bookForm.button}
-                </button> */}
+                Add
+              </button> */}
+              <button type="submit" className={styles.btnAddForm}>
+                {language.libraryPage.bookForm.button}
+              </button>
             </div>
           </Form>
         )}
