@@ -13,17 +13,20 @@ import trash from '../../../assets/icons/delete.svg';
 import RatingBook from '../../ModalComponents/RatingBook/RatingBook';
 
 function LibraryList({ books, onRemove }) {
-  const [showModal, setShowModal] = useState(false);
-
-  const [id, setId] = useState(null);
-  // const [rating, setRating] = useState(0);
-  // const [resumeValue, setResumeValue] = useState('');
-
-  const dispatch = useDispatch();
   const { language } = useContext(LangContext);
 
-  const isShowModal = id => {
+  const [showModal, setShowModal] = useState(false);
+  const [resume, setResume] = useState('');
+  const [rating, setRating] = useState(0);
+
+  const [id, setId] = useState(null);
+
+  const dispatch = useDispatch();
+
+  const isShowModal = ({ id, resume, rating }) => {
     setId(id);
+    setResume(resume);
+    setRating(rating);
     setShowModal(!showModal);
   };
 
@@ -31,13 +34,11 @@ function LibraryList({ books, onRemove }) {
     <>
       {showModal && (
         <RatingBook
-          // setRating={setRating}
-          // setResumeValue={setResumeValue}
-          // resumeValue={resumeValue}
           id={id}
           showModal={showModal}
           setShowModal={setShowModal}
-          // rating={rating}
+          resume={resume}
+          rating={rating}
         />
       )}
       {books.some(book => book.status === 'done') && (
@@ -111,7 +112,7 @@ function LibraryList({ books, onRemove }) {
                     <button
                       type="button"
                       className={styles.buttonRezume}
-                      onClick={() => isShowModal(_id)}
+                      onClick={() => isShowModal({ _id, resume, rating })}
                     >
                       {language.libraryPage.readList.button}
                     </button>

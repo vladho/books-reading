@@ -67,7 +67,7 @@ const ukrainian = {
     resumeModal: {
       rating: 'Обрати рейтинг книги',
       textFieldTitle: 'Резюме',
-      backBtn: 'BaНазадck',
+      backBtn: 'Назад',
       saveBtn: 'Зберегти',
     },
     nextBtn: 'Далі',

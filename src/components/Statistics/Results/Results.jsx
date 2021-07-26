@@ -12,7 +12,6 @@ import trainingOperations from '../../../redux/training/trainingOperations';
 import countDaysNumber from '../../../helpers/countDaysNumber';
 import messages from '../../../helpers/modalMessages';
 import trainingSelectors from '../../../redux/training/trainingSelectors';
-import NestingModal from '../../ModalHoc/NestingModal/NestingModal';
 import SomeMotivation from '../../ModalComponents/SomeMotivation/SomeMotivation';
 
 const Results = () => {
