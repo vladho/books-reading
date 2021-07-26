@@ -134,11 +134,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  @include for-size(mobile-tablet) {
-    white-space: normal;
-    overflow: visible;
-    text-overflow: none;
-  }
+  // @include for-size(mobile-tablet) {
+  //   white-space: normal;
+  //   overflow: visible;
+  //   text-overflow: none;
+  // }
   &:hover {
     line-height: 1.25;
     white-space: normal;
