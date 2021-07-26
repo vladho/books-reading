@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import styles from './TimerLogicOfGoal.module.scss';
 import { useSelector } from 'react-redux';
@@ -11,7 +11,7 @@ const TimerLogic = () => {
 
   const oneDay = 86400000;
 
-  const [dateTime, setDateTime] = useState(new Date());
+  const [, setDateTime] = useState(new Date());
 
   const diff = goal + oneDay - new Date().getTime();
 

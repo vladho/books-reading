@@ -1,13 +1,11 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import styles from './TimerLogicOfYear.module.scss';
-import { useSelector } from 'react-redux';
-import { trainingSelectors } from '../../../../redux/training';
 
 const TimerLogic = () => {
   const year = new Date(new Date().getFullYear() + 1, 0, 1).getTime();
 
-  const [dateTime, setDateTime] = useState(new Date());
+  const [, setDateTime] = useState(new Date());
   const oneDay = 86400000;
 
   const diff = year + oneDay - new Date().getTime();
