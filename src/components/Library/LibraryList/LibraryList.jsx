@@ -14,6 +14,7 @@ import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
 import LibraryListPlan from '../LibraryListPlan/LibraryListPlan';
 import LibraryListRead from '../LibraryListRead.jsx/LibraryListRead';
+import LibraryListDone from '../LibraryListDone/LibraryListDone';
 
 const LibraryList = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const LibraryList = () => {
 
   return (
     <>
-      {showModal && (
+      {/* {showModal && (
         <RatingBook
           id={id}
           showModal={showModal}
@@ -131,8 +132,9 @@ const LibraryList = () => {
             )}
           </ul>
         </div>
-      )}
-      {books.some(book => book.status === 'read') && (
+      )} */}
+      <LibraryListDone />
+      {/* {books.some(book => book.status === 'read') && (
         <div className={styles.category}>
           <h2 className={styles.categoryTitle}>
             {language.libraryPage.readingList.title}
@@ -186,7 +188,7 @@ const LibraryList = () => {
             )}
           </ul>
         </div>
-      )}
+      )} */}
       <LibraryListRead />
       {/* {books.some(book => book.status === 'plan') && (
         <div className={styles.category}>
