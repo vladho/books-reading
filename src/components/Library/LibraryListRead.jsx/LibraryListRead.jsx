@@ -5,20 +5,36 @@ import { ReactSVG } from 'react-svg';
 
 import booksSelectors from '../../../redux/books/booksSelectors';
 import booksOperations from '../../../redux/books/booksOperations';
+import RatingReadOnly from '../../ModalComponents/RatingBook/ChooseRating/RatingReadOnly';
 import LibraryModal from '../LibraryModal/LibraryModal';
+import RatingBook from '../../ModalComponents/RatingBook/RatingBook';
 import { LangContext } from '../../App/App';
 
 import styles from '../LibraryList/LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
+import LibraryListPlan from '../LibraryListPlan/LibraryListPlan';
 
-const LibraryListPlan = () => {
+const LibraryListRead = () => {
   const dispatch = useDispatch();
+
   const { language } = useContext(LangContext);
+  const [showModal, setShowModal] = useState(false);
+  const [resume, setResume] = useState('');
+  const [rating, setRating] = useState(0);
 
   const books = useSelector(booksSelectors.getAllBooks);
   const onRemove = _id => {
     dispatch(booksOperations.removeBook(_id));
+  };
+
+  const [id, setId] = useState(null);
+
+  const isShowModal = ({ _id: id, resume, rating }) => {
+    setId(id);
+    setResume(resume);
+    setRating(rating);
+    setShowModal(!showModal);
   };
 
   const [isBookModal, setIsBookModal] = useState(false);
@@ -26,10 +42,10 @@ const LibraryListPlan = () => {
 
   return (
     <>
-      {books.some(book => book.status === 'plan') && (
+      {books.some(book => book.status === 'read') && (
         <div className={styles.category}>
           <h2 className={styles.categoryTitle}>
-            {language.libraryPage.plannedList.title}
+            {language.libraryPage.readingList.title}
           </h2>
           <div className={styles.categoryListTitle}>
             <h3 className={styles.categoryListTitleItemName}>
@@ -48,12 +64,12 @@ const LibraryListPlan = () => {
           <ul>
             {books.map(
               ({ _id, title, author, year, totalPages, status }) =>
-                status === 'plan' && (
+                status === 'read' && (
                   <li key={_id} className={styles.bookListItem}>
-                    <ReactSVG src={book} className={styles.iconPlan} />
+                    <ReactSVG src={book} className={styles.iconRead} />
                     <div className={styles.bookListItemName}>
                       <span>
-                        <ReactSVG src={book} className={styles.iconPlanMob} />
+                        <ReactSVG src={book} className={styles.iconReadMob} />
                       </span>
                       <span className={styles.titleBookName}>{title}</span>
                     </div>
@@ -75,48 +91,14 @@ const LibraryListPlan = () => {
                       </span>
                       {totalPages}
                     </p>
-                    <button
-                      type="button"
-                      onClick={() => onRemove(_id)}
-                      className={styles.btnTrash}
-                    >
-                      <ReactSVG src={trash} className={styles.trash} />
-                    </button>
                   </li>
                 ),
             )}
           </ul>
-          <button
-            type="button"
-            className={styles.btnAddMob}
-            onClick={openAddBookModal}
-          >
-            +
-          </button>
-          <NavLink to="/training" className={styles.link}>
-            <button type="button" className={styles.btnNext}>
-              {language.libraryPage.nextBtn}
-            </button>
-          </NavLink>
         </div>
-      )}
-      {!books.some(book => book.status === 'plan') && (
-        <button
-          type="button"
-          className={styles.btnAddMobEmpty}
-          onClick={openAddBookModal}
-        >
-          +
-        </button>
-      )}
-      {openAddBookModal && (
-        <LibraryModal
-          isBookModal={isBookModal}
-          setIsBookModal={setIsBookModal}
-        />
       )}
     </>
   );
 };
 
-export default LibraryListPlan;
+export default LibraryListRead;

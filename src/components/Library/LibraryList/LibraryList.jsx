@@ -13,6 +13,7 @@ import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
 import LibraryListPlan from '../LibraryListPlan/LibraryListPlan';
+import LibraryListRead from '../LibraryListRead.jsx/LibraryListRead';
 
 const LibraryList = () => {
   const dispatch = useDispatch();
@@ -186,7 +187,8 @@ const LibraryList = () => {
           </ul>
         </div>
       )}
-      {books.some(book => book.status === 'plan') && (
+      <LibraryListRead />
+      {/* {books.some(book => book.status === 'plan') && (
         <div className={styles.category}>
           <h2 className={styles.categoryTitle}>
             {language.libraryPage.plannedList.title}
@@ -259,7 +261,7 @@ const LibraryList = () => {
             </button>
           </NavLink>
         </div>
-      )}
+      )} */}
       {/* {!books.some(book => book.status === 'plan') && (
         <button
           type="button"
