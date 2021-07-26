@@ -12,11 +12,12 @@ import { LangContext } from '../../App/App';
 import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
+import LibraryListPlan from '../LibraryListPlan/LibraryListPlan';
 
 const LibraryList = () => {
-  const { language } = useContext(LangContext);
-
   const dispatch = useDispatch();
+
+  const { language } = useContext(LangContext);
   const [showModal, setShowModal] = useState(false);
   const [resume, setResume] = useState('');
   const [rating, setRating] = useState(0);
@@ -259,7 +260,7 @@ const LibraryList = () => {
           </NavLink>
         </div>
       )}
-      {!books.some(book => book.status === 'plan') && (
+      {/* {!books.some(book => book.status === 'plan') && (
         <button
           type="button"
           className={styles.btnAddMobEmpty}
@@ -267,13 +268,14 @@ const LibraryList = () => {
         >
           +
         </button>
-      )}
-      {openAddBookModal && (
+      )} */}
+      <LibraryListPlan />
+      {/* {openAddBookModal && (
         <LibraryModal
           isBookModal={isBookModal}
           setIsBookModal={setIsBookModal}
         />
-      )}
+      )} */}
     </>
   );
 };
