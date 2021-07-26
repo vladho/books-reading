@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import booksSelectors from '../../../redux/books/booksSelectors';
@@ -13,15 +13,19 @@ import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
 
-function LibraryList({ books, onRemove }) {
-  // function LibraryList({ books, onRemove }) {
+const LibraryList = () => {
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
+
+  const books = useSelector(booksSelectors.getAllBooks);
+  const onRemove = _id => {
+    dispatch(booksOperations.removeBook(_id));
+  };
 
   const [id, setId] = useState(null);
   // const [rating, setRating] = useState(0);
   // const [resumeValue, setResumeValue] = useState('');
 
-  const dispatch = useDispatch();
   const { language } = useContext(LangContext);
 
   const isShowModal = id => {
@@ -86,7 +90,7 @@ function LibraryList({ books, onRemove }) {
                       <span>
                         <ReactSVG src={book} className={styles.iconDoneMob} />
                       </span>
-                      {title}
+                      <span className={styles.titleBookName}>{title}</span>
                     </div>
                     <p className={styles.bookListItemAuthorDone}>
                       <span className={styles.bookListItemMob}>
@@ -155,7 +159,7 @@ function LibraryList({ books, onRemove }) {
                       <span>
                         <ReactSVG src={book} className={styles.iconReadMob} />
                       </span>
-                      {title}
+                      <span className={styles.titleBookName}>{title}</span>
                     </div>
                     <p className={styles.bookListItemAuthor}>
                       <span className={styles.bookListItemMob}>
@@ -210,7 +214,7 @@ function LibraryList({ books, onRemove }) {
                       <span>
                         <ReactSVG src={book} className={styles.iconPlanMob} />
                       </span>
-                      {title}
+                      <span className={styles.titleBookName}>{title}</span>
                     </div>
                     <p className={styles.bookListItemAuthor}>
                       <span className={styles.bookListItemMob}>
@@ -272,14 +276,6 @@ function LibraryList({ books, onRemove }) {
       )}
     </>
   );
-}
-
-const mapStateToProps = state => ({
-  books: booksSelectors.getAllBooks(state),
-});
-
-const mapDispatchToProps = {
-  onRemove: booksOperations.removeBook,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LibraryList);
+export default LibraryList;
