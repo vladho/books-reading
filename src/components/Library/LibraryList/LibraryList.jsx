@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import React, { useState, useContext, useEffect } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import booksSelectors from '../../../redux/books/booksSelectors';
@@ -13,15 +13,33 @@ import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
 
-function LibraryList({ books, onRemove }) {
+const LibraryList = () => {
   // function LibraryList({ books, onRemove }) {
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
+
+  // const isLoadingBook = useSelector(booksSelectors.getLoading);
+  // useEffect(() => {
+  //   dispatch(booksOperations.fetchBooks());
+  // }, []);
+
+  const books = useSelector(booksSelectors.getAllBooks);
+
+  // const mapStateToProps = state => ({
+  //   books: booksSelectors.getAllBooks(state),
+  // });
+
+  const onRemove = useEffect(() => {
+    dispatch(booksOperations.renoveBook);
+  }, []);
+  // const mapDispatchToProps = {
+  //   onRemove: booksOperations.removeBook,
+  // };
 
   const [id, setId] = useState(null);
   // const [rating, setRating] = useState(0);
   // const [resumeValue, setResumeValue] = useState('');
 
-  const dispatch = useDispatch();
   const { language } = useContext(LangContext);
 
   const isShowModal = id => {
@@ -272,14 +290,16 @@ function LibraryList({ books, onRemove }) {
       )}
     </>
   );
-}
-
-const mapStateToProps = state => ({
-  books: booksSelectors.getAllBooks(state),
-});
-
-const mapDispatchToProps = {
-  onRemove: booksOperations.removeBook,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LibraryList);
+// const mapStateToProps = state => ({
+//   books: booksSelectors.getAllBooks(state),
+// });
+
+// const mapDispatchToProps = {
+//   onRemove: booksOperations.removeBook,
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(LibraryList);
+
+export default LibraryList;
