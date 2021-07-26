@@ -35,9 +35,24 @@ const login = credentials => async dispatch => {
   try {
     const { email, password } = credentials;
     const data = await api.login({ email, password });
+    console.log(data);
 
     api.setToken(data.user.token);
     dispatch(loginSuccess(data));
+  } catch (error) {
+    dispatch(loginError(api.formatError(error)));
+  }
+};
+
+const loginGoogle = credentials => async dispatch => {
+  const { email, token } = credentials;
+  const user = { email, token };
+  console.log(user);
+  dispatch(loginRequest());
+
+  try {
+    dispatch(refreshSuccess(token));
+    dispatch(loginSuccess({ user }));
   } catch (error) {
     dispatch(loginError(api.formatError(error)));
   }
@@ -81,7 +96,7 @@ const refreshToken = prevOps => async (dispatch, getState) => {
 
 const authOperations = {
   register,
-  // loginGoogle,
+  loginGoogle,
   login,
   logOut,
   refreshToken,

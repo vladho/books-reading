@@ -1,27 +1,17 @@
 import React, { useContext } from 'react';
+
 import { useDispatch } from 'react-redux';
 import { authOps } from '../../redux/auth';
 import { NavLink } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginSchema } from '../../helpers/validation/AuthValidInput';
 import css from './Auth.module.scss';
-import { GoogleLogin } from 'react-google-login';
-import api from '../../services/api';
+
 import { LangContext } from '../App/App';
 
 export default function Login() {
   const { language } = useContext(LangContext);
   const dispatch = useDispatch();
-
-  const onSubmit = async credentials => {
-    console.log(credentials);
-    const password = credentials.googleId;
-    const email = credentials.Ts.Et;
-
-    // await api.loginGoogle();
-
-    dispatch(authOps.login({ email, password }));
-  };
 
   return (
     <div className={css.mainWraper}>
@@ -37,14 +27,12 @@ export default function Login() {
         >
           {({ touched, errors }) => (
             <Form className={css.registerFormLogin}>
-              <a
-                href="http://localhost:8080/api/auth/google"
-                onClick={onSubmit}
-              >
-                <button className={css.Google} type="button">
+              <a href="http://localhost:8080/api/auth/google">
+                <span className={css.Google} type="button">
                   {language.loginPage.google}
-                </button>
+                </span>
               </a>
+
               <label className={css.inputTitle}>
                 {language.loginPage.email}{' '}
                 <span className={css.required}>*</span>
