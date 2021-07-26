@@ -90,7 +90,7 @@ const LibraryList = () => {
                       <span>
                         <ReactSVG src={book} className={styles.iconDoneMob} />
                       </span>
-                      {title}
+                      <span className={styles.titleBookName}>{title}</span>
                     </div>
                     <p className={styles.bookListItemAuthorDone}>
                       <span className={styles.bookListItemMob}>
@@ -159,7 +159,7 @@ const LibraryList = () => {
                       <span>
                         <ReactSVG src={book} className={styles.iconReadMob} />
                       </span>
-                      {title}
+                      <span className={styles.titleBookName}>{title}</span>
                     </div>
                     <p className={styles.bookListItemAuthor}>
                       <span className={styles.bookListItemMob}>
@@ -214,7 +214,7 @@ const LibraryList = () => {
                       <span>
                         <ReactSVG src={book} className={styles.iconPlanMob} />
                       </span>
-                      {title}
+                      <span className={styles.titleBookName}>{title}</span>
                     </div>
                     <p className={styles.bookListItemAuthor}>
                       <span className={styles.bookListItemMob}>

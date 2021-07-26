@@ -130,6 +130,23 @@
   align-items: center;
 }
 
+.titleBookName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @media screen and (min-width: 320px) and (max-width: 1279px) {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: none;
+  }
+  &:hover {
+    line-height: 1.25;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: none;
+  }
+}
+
 .icons {
   margin: auto 15px;
   @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -201,10 +218,6 @@
   width: 260px;
   margin-right: 41px;
 
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 135px;
     margin-right: 21px;
@@ -218,17 +231,6 @@
     width: 270px;
     height: max-content;
     padding-top: 20px;
-    white-space: normal;
-    overflow: visible;
-    text-overflow: none;
-  }
-}
-
-.bookListItemNameDone:hover {
-  white-space: normal;
-  overflow: visible;
-  line-height: 1.25;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
     white-space: normal;
     overflow: visible;
     text-overflow: none;
