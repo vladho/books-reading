@@ -20,6 +20,23 @@
     margin-top: 20px;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.formMob {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $secondaryText;
     width: 270px;
     height: max-content;
     flex-wrap: wrap;
