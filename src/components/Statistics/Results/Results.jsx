@@ -4,6 +4,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { HiChevronDown } from 'react-icons/hi';
 import { v4 as uuidv4 } from 'uuid';
+import { CSSTransition } from 'react-transition-group';
+
 import moment from 'moment';
 
 import { LangContext } from '../../App/App';
@@ -14,6 +16,7 @@ import countDaysNumber from '../../../helpers/countDaysNumber';
 import messages from '../../../helpers/modalMessages';
 import trainingSelectors from '../../../redux/training/trainingSelectors';
 import SomeMotivation from '../../ModalComponents/SomeMotivation/SomeMotivation';
+import '../../../styles/animation.scss';
 
 const Results = () => {
   const { language } = useContext(LangContext);
@@ -49,7 +52,12 @@ const Results = () => {
 
   return (
     <>
-      {showModal && (
+      <CSSTransition
+        classNames="option"
+        timeout={600}
+        in={showModal}
+        unmountOnExit
+      >
         <SomeMotivation
           showModal={showModal}
           setShowModal={setShowModal}
@@ -57,7 +65,7 @@ const Results = () => {
             resultPages <= plannedPages / duration ? messages[0] : messages[1]
           }
         />
-      )}
+      </CSSTransition>
       <div className={styles.resultsMainBox}>
         <h3 className={styles.resultsHeading}>
           {language.trainingPage.resultsCard.title}
