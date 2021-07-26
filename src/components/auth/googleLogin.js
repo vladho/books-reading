@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authOps } from '../../redux/auth';
@@ -8,7 +8,7 @@ export default function LocatinTocen() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(location.search);
+    return location;
   }, [location]);
 
   if (location.pathname === '/api/training') {
@@ -21,9 +21,10 @@ export default function LocatinTocen() {
         paramMap[param[0]] = param[1];
       });
 
-    // console.log(paramMap);
+    const name = decodeURI(paramMap.name);
+    const token = paramMap.token;
+    const email = paramMap.email;
 
-    dispatch(authOps.loginGoogle(paramMap));
-    return paramMap.token;
+    dispatch(authOps.loginGoogle({ name, token, email }));
   }
 }
