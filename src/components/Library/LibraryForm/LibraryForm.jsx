@@ -1,5 +1,5 @@
-import React, { Component, useContext } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 import { LangContext } from '../../App/App';
@@ -15,118 +15,110 @@ const initialState = {
   totalPages: '',
 };
 
-class LibraryForm extends Component {
-  state = { ...initialState };
+const LibraryForm = () => {
+  const dispatch = useDispatch();
 
-  // const { language } = useContext(LangContext);
+  const onHandleSubmit = values => {
+    dispatch(booksOperations.addBook(values));
+  };
 
-  render() {
-    const onHandleSubmit = values => {
-      this.props.onAddBook(values);
-    };
-
-    return (
-      <>
-        <Formik
-          initialValues={initialState}
-          validationSchema={schemaValidAddBook}
-          onSubmit={(values, actions) => {
-            onHandleSubmit({ ...values });
-            actions.resetForm({ initialState });
-          }}
-        >
-          {({ values }) => (
-            <Form>
-              <div className={styles.form}>
-                <label className={styles.labelName}>
-                  <p className={styles.labelNameTitle}>Book title</p>
-                  {/* <p className={styles.labelNameTitle}>
+  return (
+    <>
+      <Formik
+        initialValues={initialState}
+        validationSchema={schemaValidAddBook}
+        onSubmit={(values, actions) => {
+          onHandleSubmit({ ...values });
+          actions.resetForm({ initialState });
+        }}
+      >
+        {({ values }) => (
+          <Form>
+            <div className={styles.form}>
+              <label className={styles.labelName}>
+                <p className={styles.labelNameTitle}>Book title</p>
+                {/* <p className={styles.labelNameTitle}>
                     {language.libraryPage.bookForm.title}
                   </p> */}
-                  <Field
-                    className={styles.labelNameInput}
-                    type="text"
-                    placeholder="..."
-                    value={values.title}
-                    name="title"
-                  />
-                  <ErrorMessage
-                    name="title"
-                    className={styles.formError}
-                    component="div"
-                  />
-                </label>
-                <label className={styles.labelAuthor}>
-                  <p className={styles.labelAuthorTitle}>Author</p>
-                  {/* <p className={styles.labelAuthorTitle}>
+                <Field
+                  className={styles.labelNameInput}
+                  type="text"
+                  placeholder="..."
+                  value={values.title}
+                  name="title"
+                />
+                <ErrorMessage
+                  name="title"
+                  className={styles.formError}
+                  component="div"
+                />
+              </label>
+              <label className={styles.labelAuthor}>
+                <p className={styles.labelAuthorTitle}>Author</p>
+                {/* <p className={styles.labelAuthorTitle}>
                     {language.libraryPage.bookForm.author}
                   </p> */}
-                  <Field
-                    className={styles.labelAuthorInput}
-                    type="text"
-                    placeholder="..."
-                    value={values.author}
-                    name="author"
-                  />
-                  <ErrorMessage
-                    name="author"
-                    className={styles.formError}
-                    component="div"
-                  />
-                </label>
-                <label className={styles.labelYear}>
-                  <p className={styles.labelYearTitle}>Publication date</p>
-                  {/* <p className={styles.labelYearTitle}>
+                <Field
+                  className={styles.labelAuthorInput}
+                  type="text"
+                  placeholder="..."
+                  value={values.author}
+                  name="author"
+                />
+                <ErrorMessage
+                  name="author"
+                  className={styles.formError}
+                  component="div"
+                />
+              </label>
+              <label className={styles.labelYear}>
+                <p className={styles.labelYearTitle}>Publication date</p>
+                {/* <p className={styles.labelYearTitle}>
                     {language.libraryPage.bookForm.publication}
                   </p> */}
-                  <Field
-                    className={styles.labelYearInput}
-                    type="text"
-                    placeholder="..."
-                    name="year"
-                    value={values.year}
-                  />
-                  <ErrorMessage
-                    name="year"
-                    className={styles.formError}
-                    component="div"
-                  />
-                </label>
-                <label className={styles.labelPage}>
-                  <p className={styles.labelPageTitle}>Amount of pages</p>
-                  {/* <p className={styles.labelPageTitle}>
+                <Field
+                  className={styles.labelYearInput}
+                  type="text"
+                  placeholder="..."
+                  name="year"
+                  value={values.year}
+                />
+                <ErrorMessage
+                  name="year"
+                  className={styles.formError}
+                  component="div"
+                />
+              </label>
+              <label className={styles.labelPage}>
+                <p className={styles.labelPageTitle}>Amount of pages</p>
+                {/* <p className={styles.labelPageTitle}>
                     {language.libraryPage.bookForm.pages}
                   </p> */}
-                  <Field
-                    className={styles.labelPageInput}
-                    type="text"
-                    placeholder="..."
-                    name="totalPages"
-                    value={values.totalPages}
-                  />
-                  <ErrorMessage
-                    name="totalPages"
-                    className={styles.formError}
-                    component="div"
-                  />
-                </label>
-                <button type="submit" className={styles.btnAddForm}>
-                  Add
-                </button>
-                {/* <button type="submit" className={styles.btnAddForm}>
+                <Field
+                  className={styles.labelPageInput}
+                  type="text"
+                  placeholder="..."
+                  name="totalPages"
+                  value={values.totalPages}
+                />
+                <ErrorMessage
+                  name="totalPages"
+                  className={styles.formError}
+                  component="div"
+                />
+              </label>
+              <button type="submit" className={styles.btnAddForm}>
+                Add
+              </button>
+              {/* <button type="submit" className={styles.btnAddForm}>
                   {language.libraryPage.bookForm.button}
                 </button> */}
-              </div>
-            </Form>
-          )}
-        </Formik>
-      </>
-    );
-  }
-}
-
-const mapDispatchToProps = {
-  onAddBook: booksOperations.addBook,
+            </div>
+          </Form>
+        )}
+      </Formik>
+    </>
+  );
 };
 
-export default connect(null, mapDispatchToProps)(LibraryForm);
+export default LibraryForm;

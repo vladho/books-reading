@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import React, { useState, useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import booksSelectors from '../../../redux/books/booksSelectors';
@@ -14,27 +14,13 @@ import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
 
 const LibraryList = () => {
-  // function LibraryList({ books, onRemove }) {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
 
-  // const isLoadingBook = useSelector(booksSelectors.getLoading);
-  // useEffect(() => {
-  //   dispatch(booksOperations.fetchBooks());
-  // }, []);
-
   const books = useSelector(booksSelectors.getAllBooks);
-const onRemove = useEffect();
-  // const mapStateToProps = state => ({
-  //   books: booksSelectors.getAllBooks(state),
-  // });
-
-  useEffect(() => {
-    dispatch(booksOperations.renoveBook);
-  }, []);
-  // const mapDispatchToProps = {
-  //   onRemove: booksOperations.removeBook,
-  // };
+  const onRemove = _id => {
+    dispatch(booksOperations.removeBook(_id));
+  };
 
   const [id, setId] = useState(null);
   // const [rating, setRating] = useState(0);
@@ -291,15 +277,5 @@ const onRemove = useEffect();
     </>
   );
 };
-
-// const mapStateToProps = state => ({
-//   books: booksSelectors.getAllBooks(state),
-// });
-
-// const mapDispatchToProps = {
-//   onRemove: booksOperations.removeBook,
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(LibraryList);
 
 export default LibraryList;
