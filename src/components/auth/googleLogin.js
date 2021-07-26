@@ -8,10 +8,8 @@ export default function LocatinTocen() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    return location;
+    console.log(location.search);
   }, [location]);
-
-  const [token, setToken] = useState(0);
 
   if (location.pathname === '/api/training') {
     const paramMap = {};
@@ -23,9 +21,8 @@ export default function LocatinTocen() {
         paramMap[param[0]] = param[1];
       });
 
-    // const token = paramMap.token;
-    // // console.log(token);
-    // // setToken((token = token));
+    // console.log(paramMap);
+
     dispatch(authOps.loginGoogle(paramMap));
     return paramMap.token;
   }

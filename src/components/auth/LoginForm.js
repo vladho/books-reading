@@ -28,9 +28,9 @@ export default function Login() {
           {({ touched, errors }) => (
             <Form className={css.registerFormLogin}>
               <a href="http://localhost:8080/api/auth/google">
-                <span className={css.Google} type="button">
+                <button className={css.Google} type="button">
                   {language.loginPage.google}
-                </span>
+                </button>
               </a>
 
               <label className={css.inputTitle}>

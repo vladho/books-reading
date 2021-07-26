@@ -1,6 +1,5 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import authActs from './authActions';
-import LocatinTocen from '../../components/auth/googleLogin';
 
 const {
   registerRequest,
@@ -16,13 +15,6 @@ const {
   refreshSuccess,
   refreshError,
 } = authActs;
-
-// const loginGoogle = () => {
-//   const data = LocatinTocen();
-//   console.log(data);
-//   return data;
-// };
-// const test = loginGoogle();
 
 const initUser = { email: null, name: null };
 
