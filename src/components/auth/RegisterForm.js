@@ -31,7 +31,7 @@ export default function Register() {
             dispatch(authOps.register({ name, email, password }));
           }}
         >
-          {({ touched, errors, isSubmitting }) => (
+          {({ touched, errors }) => (
             <Form className={css.registerForm}>
               <a href="http://localhost:8080/api/auth/google">
                 <button className={css.Google} type="button">

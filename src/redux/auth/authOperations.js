@@ -46,8 +46,9 @@ const login = credentials => async dispatch => {
 
 const loginGoogle = credentials => async dispatch => {
   const { email, token, name } = credentials;
+
   const user = { email, token, name };
-  console.log(user);
+
   dispatch(loginRequest());
 
   try {
