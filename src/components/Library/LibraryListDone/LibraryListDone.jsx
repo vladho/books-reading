@@ -1,32 +1,21 @@
 import React, { useState, useContext } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { ReactSVG } from 'react-svg';
 import booksSelectors from '../../../redux/books/booksSelectors';
-import booksOperations from '../../../redux/books/booksOperations';
 import RatingReadOnly from '../../ModalComponents/RatingBook/ChooseRating/RatingReadOnly';
-import LibraryModal from '../LibraryModal/LibraryModal';
 import RatingBook from '../../ModalComponents/RatingBook/RatingBook';
 import { LangContext } from '../../App/App';
 
 import styles from '../LibraryList/LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
-import trash from '../../../assets/icons/delete.svg';
-import LibraryListPlan from '../LibraryListPlan/LibraryListPlan';
-import LibraryListRead from '../LibraryListRead.jsx/LibraryListRead';
 
 const LibraryListDone = () => {
-  const dispatch = useDispatch();
-
   const { language } = useContext(LangContext);
   const [showModal, setShowModal] = useState(false);
   const [resume, setResume] = useState('');
   const [rating, setRating] = useState(0);
 
   const books = useSelector(booksSelectors.getAllBooks);
-  const onRemove = _id => {
-    dispatch(booksOperations.removeBook(_id));
-  };
 
   const [id, setId] = useState(null);
 
@@ -36,9 +25,6 @@ const LibraryListDone = () => {
     setRating(rating);
     setShowModal(!showModal);
   };
-
-  const [isBookModal, setIsBookModal] = useState(false);
-  const openAddBookModal = () => setIsBookModal(!isBookModal);
 
   return (
     <>
