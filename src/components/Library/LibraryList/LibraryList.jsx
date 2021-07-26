@@ -5,14 +5,16 @@ import { ReactSVG } from 'react-svg';
 import booksSelectors from '../../../redux/books/booksSelectors';
 import booksOperations from '../../../redux/books/booksOperations';
 import RatingReadOnly from '../../ModalComponents/RatingBook/ChooseRating/RatingReadOnly';
+import LibraryModal from '../LibraryModal/LibraryModal';
+import RatingBook from '../../ModalComponents/RatingBook/RatingBook';
 import { LangContext } from '../../App/App';
 
 import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
-import RatingBook from '../../ModalComponents/RatingBook/RatingBook';
 
 function LibraryList({ books, onRemove }) {
+  // function LibraryList({ books, onRemove }) {
   const [showModal, setShowModal] = useState(false);
 
   const [id, setId] = useState(null);
@@ -26,6 +28,9 @@ function LibraryList({ books, onRemove }) {
     setId(id);
     setShowModal(!showModal);
   };
+
+  const [isBookModal, setIsBookModal] = useState(false);
+  const openAddBookModal = () => setIsBookModal(!isBookModal);
 
   return (
     <>
@@ -236,15 +241,34 @@ function LibraryList({ books, onRemove }) {
                 ),
             )}
           </ul>
+          <button
+            type="button"
+            className={styles.btnAddMob}
+            onClick={openAddBookModal}
+          >
+            +
+          </button>
           <NavLink to="/training" className={styles.link}>
             <button type="button" className={styles.btnNext}>
               {language.libraryPage.nextBtn}
             </button>
           </NavLink>
-          <button type="button" className={styles.btnAddMob}>
-            +
-          </button>
         </div>
+      )}
+      {!books.some(book => book.status === 'plan') && (
+        <button
+          type="button"
+          className={styles.btnAddMobEmpty}
+          onClick={openAddBookModal}
+        >
+          +
+        </button>
+      )}
+      {openAddBookModal && (
+        <LibraryModal
+          isBookModal={isBookModal}
+          setIsBookModal={setIsBookModal}
+        />
       )}
     </>
   );

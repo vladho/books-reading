@@ -1,0 +1,21 @@
+@import 'styles/shared.scss';
+
+.modalBody {
+  position: fixed;
+  top: 60px;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: #f6f7fb;
+}
+
+.modalContent {
+  height: 600px;
+  overflow-x: scroll;
+}
+
+.goBack {
+  margin-top: 25px;
+  margin-bottom: -40px;
+  color: $accent;
+  cursor: pointer;
+}
