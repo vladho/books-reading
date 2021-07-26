@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginSchema } from '../../helpers/validation/AuthValidInput';
 import css from './Auth.module.scss';
-// import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin } from 'react-google-login';
 import api from '../../services/api';
 import { LangContext } from '../App/App';
 
@@ -13,9 +13,13 @@ export default function Login() {
   const { language } = useContext(LangContext);
   const dispatch = useDispatch();
 
-  const onSubmit = async data => {
-    console.log(data);
-    const { email, password } = await data;
+  const onSubmit = async credentials => {
+    console.log(credentials);
+    const password = credentials.googleId;
+    const email = credentials.Ts.Et;
+
+    // await api.loginGoogle();
+
     dispatch(authOps.login({ email, password }));
   };
 
