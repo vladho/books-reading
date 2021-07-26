@@ -13,7 +13,6 @@ const ResultItem = ({ date, time, pages }) => {
       <p className={styles.statisticsText}>
         {pages}
         <span className={styles.statisticsTextSecondary}>
-          {' '}
           {language.trainingPage.statisticsCard.pages}
         </span>
       </p>
