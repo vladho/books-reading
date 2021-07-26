@@ -1,0 +1,38 @@
+@import 'styles/shared.scss';
+
+.box {
+  position: relative;
+
+  width: 290px;
+  height: 60px;
+
+  background-color: $white;
+  box-shadow: $boxShadowTimer;
+
+  @include for-size(tablet) {
+    margin-right: 30px;
+  }
+
+  @include for-size(desktop) {
+    margin-right: 68px;
+  }
+
+  @include for-size(mobile-only) {
+    margin-bottom: 49px;
+  }
+}
+
+.box::before {
+  content: 'Year countdown';
+
+  position: absolute;
+  top: -38px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  line-height: 2.71;
+  font-size: 14px;
+  font-weight: 500;
+
+  color: $secondaryText;
+}

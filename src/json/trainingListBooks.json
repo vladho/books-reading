@@ -1,0 +1,50 @@
+[
+  {
+    "_id": 1,
+    "title": "Scrum. A revolutionary method of project management",
+    "author": "Jeff Sutherland",
+    "year": 2014,
+    "totalPages": 25,
+    "status": "done"
+  },
+  {
+    "_id": 2,
+    "title": "Deadline. A novel about project management",
+    "author": "Tom DeMarco",
+    "year": 2006,
+    "totalPages": 188,
+    "status": "done"
+  },
+  {
+    "_id": 3,
+    "title": "5 Defects of the team. Proverbs about leadership",
+    "author": "Patrick Lencioni",
+    "year": 2011,
+    "totalPages": 125,
+    "status": "read"
+  },
+  {
+    "_id": 4,
+    "title": "Development of valuable proposals",
+    "author": "Alex Osterwalder, Yves Pigneur",
+    "year": 2013,
+    "totalPages": 368,
+    "status": "plan"
+  },
+  {
+    "_id": 5,
+    "title": "Product management in Scrum. Agile methods for your business",
+    "author": "Roman Pichler",
+    "year": 2010,
+    "totalPages": 92,
+    "status": "plan"
+  },
+  {
+    "_id": 6,
+    "title": "A mental hospital in",
+    "author": "Cooper Alan",
+    "year": 2009,
+    "totalPages": 183,
+    "status": "plan"
+  }
+]

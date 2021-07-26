@@ -1,0 +1,28 @@
+@import 'styles/shared.scss';
+
+.modalBackdrop {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  padding-right: 25px;
+  padding-left: 25px;
+
+  background-color: $primaryBg;
+  z-index: 20;
+}
+
+.modalWrapper {
+  padding: 25px 0;
+}
+
+.goBack {
+  margin-bottom: 25px;
+  color: $accent;
+  cursor: pointer;
+
+  @include for-size(tablet) {
+    display: none;
+  }
+}

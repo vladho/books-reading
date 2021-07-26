@@ -1,0 +1,80 @@
+@import 'styles/shared.scss';
+
+.container {
+  width: 570px;
+  height: 270px;
+  @include for-size(mobile-only) {
+    width: 270px;
+    height: 425px;
+  }
+}
+
+.list {
+  padding-top: 15px;
+  padding-left: 30px;
+  @include for-size(mobile-only) {
+    padding-top: 51px;
+    padding-left: 15px;
+  }
+}
+.item:not(:first-child) {
+  margin-top: 25px;
+}
+.step {
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 2;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 2.714;
+  margin-left: 9px;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 2.714;
+  color: $secondaryText;
+  margin-left: 9px;
+
+  @include for-size(mobile-only) {
+    line-height: 1.214;
+  }
+}
+
+.bookIcon {
+  width: 22px;
+  height: 17px;
+  fill: $secondaryText;
+}
+
+.titleGoup {
+  display: flex;
+  align-items: center;
+}
+
+.textGoup {
+  display: flex;
+  align-items: baseline;
+  margin-left: 31px;
+}
+
+.btn {
+  background-color: $accent;
+  box-shadow: $boxShadowBtn;
+  border: none;
+  outline: none;
+  color: $white;
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  margin-top: 35px;
+  margin-left: 71px;
+  width: 127px;
+
+  @include for-size(tablet) {
+    display: none;
+  }
+}

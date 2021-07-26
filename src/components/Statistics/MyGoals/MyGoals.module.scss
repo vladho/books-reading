@@ -1,0 +1,257 @@
+@import 'styles/shared.scss';
+
+.myGoalsMainBox {
+  width: 270px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  background-color: $white;
+  box-shadow: $boxShadow;
+
+  @include for-size(tablet-only) {
+    width: 678px;
+    height: 105px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    box-shadow: $boxShadowChart;
+  }
+
+  @include for-size(desktop) {
+    width: 275px;
+    height: 318px;
+    display: block;
+    box-shadow: $boxShadow;
+  }
+}
+
+.myGoalsMainBox_training {
+  width: 270px;
+  margin: 0 auto;
+  background-color: $primaryBg;
+  margin-bottom: 30px;
+
+  @include for-size(tablet-only) {
+    background: $white;
+    width: 678px;
+    height: 125px;
+    display: flex;
+    margin-bottom: 40px;
+  }
+
+  @include for-size(desktop) {
+    margin-bottom: 40px;
+    width: 275px;
+  }
+}
+
+.myGoalsHeadingBox {
+  padding: 11px 0;
+  background-color: $titleBg;
+  box-shadow: $boxShadow;
+
+  @include for-size(tablet) {
+    width: 275px;
+    height: 60px;
+    margin-top: 3px;
+    margin-left: 45px;
+  }
+  @include for-size(desktop) {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.myGoalsHeadingBox_training {
+  padding: 11px 0;
+  background-color: $titleBg;
+  box-shadow: $boxShadow;
+
+  @include for-size(tablet) {
+    width: 275px;
+    height: 60px;
+    margin-top: 23px;
+    margin-left: 30px;
+  }
+  @include for-size(desktop) {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.myGoalsHeading {
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.9;
+  color: $white;
+}
+
+.statsBox {
+  display: flex;
+  height: 258px;
+  background-color: $white;
+  box-shadow: $boxShadow;
+  align-items: center;
+  justify-content: space-between;
+
+  @include for-size(tablet-only) {
+    height: 100%;
+    box-shadow: none;
+    margin-left: auto;
+  }
+
+  @include for-size(desktop) {
+    width: 275px;
+  }
+}
+
+.myGoalsStatsList {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  @include for-size(tablet) {
+    margin-top: 20px;
+    margin-right: 45px;
+    margin-left: 19px;
+  }
+  @include for-size(desktop) {
+    margin: 0;
+  }
+}
+
+.myGoalsStatsList_training {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  @include for-size(tablet) {
+    margin-right: 30px;
+    margin-left: 19px;
+  }
+  @include for-size(desktop) {
+    margin: 0 auto;
+  }
+}
+
+.myGoalsStatsListitem,
+.myGoalsStatsListitem_training {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.myGoalsStatsListitem:not(:first-child) {
+  margin-left: 20px;
+
+  @include for-size(tablet) {
+    margin-left: 35px;
+  }
+}
+
+.myGoalsStatsListitem_training:not(:first-child) {
+  margin-left: 22px;
+
+  @include for-size(tablet-only) {
+    margin-left: 12px;
+  }
+}
+
+.myGoalsStatsDigitBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background: $inputAuthBorder;
+  box-shadow: $boxShadowTimer;
+
+  @include for-size(tablet) {
+    height: 60px;
+  }
+
+  @include for-size(desktop) {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.myGoalsStatsDigitBox_training {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 66px;
+  height: 66px;
+  background: $inputAuthBorder;
+  box-shadow: $boxShadowTimer;
+
+  @include for-size(tablet) {
+    width: 100px;
+  }
+
+  @include for-size(desktop) {
+    width: 66px;
+    height: 66px;
+  }
+}
+
+.myGoalsStatsDigit {
+  font-family: Open Sans;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 1.18;
+  text-align: center;
+  color: $timerText;
+
+  @include for-size(tablet) {
+    font-size: 40px;
+  }
+  @include for-size(desktop) {
+    font-size: 45px;
+  }
+}
+
+.myGoalsStatsDigit_training {
+  font-family: Open Sans;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.05;
+  color: $timerText;
+  text-align: center;
+}
+
+.myGoalsStatsDigit_training_accent {
+  font-family: Open Sans;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.05;
+  color: $accent;
+  text-align: center;
+}
+
+.myGoalsStatsText {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.18;
+  text-align: center;
+  color: $secondaryText;
+  margin-top: 14px;
+  max-width: 61px;
+
+  @include for-size(tablet) {
+    margin-top: 4px;
+    max-width: 100px;
+    font-size: 11px;
+    line-height: 1.18;
+  }
+
+  @include for-size(desktop) {
+    font-size: 12px;
+    line-height: 1.18;
+    text-align: center;
+    color: $secondaryText;
+    margin-top: 14px;
+    max-width: 66px;
+  }
+}

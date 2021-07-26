@@ -1,0 +1,113 @@
+@import 'styles/shared.scss';
+
+.TrainingList {
+  margin-bottom: 30px;
+
+  border-top: 1px solid #e0e5eb;
+  border-bottom: 1px solid #e0e5eb;
+
+  @include for-size(tablet) {
+    margin-bottom: 40px;
+  }
+}
+
+.header {
+  display: none;
+
+  border-bottom: 1px solid #e0e5eb;
+
+  line-height: 2.7;
+  color: $secondaryText;
+
+  @include for-size(tablet) {
+    display: flex;
+  }
+}
+
+.title {
+  margin-right: 18px;
+  width: 246px;
+
+  @include for-size(desktop) {
+    width: 344px;
+  }
+}
+
+.author {
+  margin-right: 18px;
+  width: 144px;
+
+  @include for-size(desktop) {
+    width: 184px;
+  }
+}
+
+.year {
+  margin-right: 18px;
+  width: 52px;
+
+  text-align: right;
+}
+
+.pages {
+  width: 76px;
+  margin-right: 18px;
+
+  text-align: right;
+}
+
+.list {
+  @include for-size(tablet) {
+    max-height: 182px;
+    overflow-y: scroll;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  // 📌 Скроллбар Chrome
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgba(177, 181, 194, 0.25);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #b1b5c2;
+  }
+
+  // 📌 Скроллбар Firefox
+
+  scrollbar-color: #b1b5c2 rgba(177, 181, 194, 0.25);
+  scrollbar-width: thin;
+}
+
+.listNotEmpty {
+  @include for-size(desktop) {
+    height: 173px;
+    overflow-y: scroll;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  // 📌 Скроллбар Chrome
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgba(177, 181, 194, 0.25);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #b1b5c2;
+  }
+
+  // 📌 Скроллбар Firefox
+
+  scrollbar-color: #b1b5c2 rgba(177, 181, 194, 0.25);
+  scrollbar-width: thin;
+}

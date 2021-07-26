@@ -1,0 +1,39 @@
+@import 'styles/shared.scss';
+
+.wrapper {
+  position: relative;
+  padding-top: 30px;
+  padding-bottom: 50px;
+
+  @include for-size(tablet) {
+    padding-bottom: 60px;
+  }
+
+  @include for-size(desktop) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.innerWrapper {
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+
+.upperPart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lowerPart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trainingInfo {
+  flex-grow: 1;
+  padding-right: 40px;
+}

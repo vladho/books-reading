@@ -1,0 +1,63 @@
+@import 'styles/shared.scss';
+
+.dateGroup {
+  display: flex;
+}
+
+.date {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 1.52;
+  margin-left: 10px;
+
+  color: $timerText;
+}
+
+.date:first-child {
+  margin-left: auto;
+}
+.date:last-child {
+  margin-right: auto;
+}
+
+.days,
+.hours,
+.minutes,
+.seconds {
+  position: relative;
+}
+
+.days:before,
+.hours:before,
+.minutes:before,
+.seconds:before {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 3.8;
+
+  color: $secondaryText;
+}
+
+.days:before {
+  content: 'DAYS';
+}
+
+.hours:before {
+  content: 'HRS';
+}
+
+.minutes:before {
+  content: 'MINS';
+}
+
+.seconds:before {
+  content: 'SECS';
+}

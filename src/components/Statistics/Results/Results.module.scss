@@ -1,0 +1,206 @@
+@import 'styles/shared.scss';
+
+.resultsMainBox {
+  width: 270px;
+  padding: 13px 13px 13px 17px;
+  margin-top: 30px;
+  background: $white;
+  box-shadow: $boxShadowTitle;
+
+  @include for-size(tablet-only) {
+    width: 100%;
+    align-items: center;
+    padding: 30px 84px;
+  }
+
+  @include for-size(desktop) {
+    width: 275px;
+    height: 340px; // comment zavalniuk
+    margin-top: 0;
+    padding: 25px 16px 17px 19px;
+  }
+}
+
+.resultsHeading {
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $buttonBorder;
+  margin-bottom: 15px;
+
+  @include for-size(tablet-only) {
+    margin-bottom: 25px;
+  }
+  @include for-size(desktop) {
+    font-size: 12px;
+  }
+}
+
+.form {
+  @include for-size(tablet-only) {
+    display: flex;
+    align-items: baseline;
+  }
+}
+
+.inputLabelBox {
+  display: flex;
+  gap: 105px;
+  margin-bottom: 5px;
+}
+
+.inputLabel {
+  font-weight: 500;
+  font-size: 11px;
+  color: $secondaryText;
+}
+
+.inputsBox {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  margin-top: 7px;
+
+  @include for-size(tablet-only) {
+    width: 240px;
+  }
+}
+
+.formInput {
+  width: 110px;
+  height: 42px;
+  padding-left: 13px;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $buttonBorder;
+  background: $inputBg;
+  border: 1px solid $inputTextColor;
+}
+
+.chevronDownIcon {
+  position: absolute;
+  left: 35%;
+  transform: translateY(50%);
+  width: 20px;
+  height: 20px;
+  color: $primaryText;
+}
+
+.formButton {
+  display: block;
+  margin: 21px auto;
+  width: 171px;
+  text-align: center;
+  background-color: $accent;
+  color: $white;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  border: none;
+
+  &:hover {
+    box-shadow: 0px 2px 3px $boxShadowTitle;
+  }
+
+  @include for-size(tablet-only) {
+    height: 40px;
+    margin: 0 0 0 30px;
+    width: 240px;
+  }
+  @include for-size(tablet) {
+    font-size: 16px;
+  }
+
+  @include for-size(desktop) {
+    width: 100%;
+  }
+}
+
+.statisticsHeading {
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: $buttonBorder;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include for-size(tablet-only) {
+    justify-content: start;
+    margin-top: 25px;
+    margin-bottom: 14px;
+  }
+  @include for-size(desktop) {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.horizontalBarLeft,
+.horizontalBarRight {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #e0e5eb;
+}
+
+.horizontalBarRight {
+  margin-left: 7px;
+  @include for-size(tablet-only) {
+    width: 128px;
+    margin-left: 32px;
+  }
+}
+
+.horizontalBarLeft {
+  margin-right: 7px;
+  @include for-size(tablet-only) {
+    display: none;
+  }
+}
+
+.statiscicsList {
+  @include for-size(desktop) {
+    height: 110px;
+    overflow-y: auto;
+    // overflow-x: hidden;
+    width: 245px;
+    // 📌 Скроллбар Chrome
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba(177, 181, 194, 0.25);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #b1b5c2;
+    }
+
+    // 📌 Скроллбар Firefox
+
+    scrollbar-color: #b1b5c2 rgba(177, 181, 194, 0.25);
+    scrollbar-width: thin;
+  }
+}
+
+.statiscicsListItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 240px;
+}
+
+.statisticsText,
+.statisticsTextSecondary {
+  font-size: 14px;
+  color: $primaryText;
+}
+
+.statisticsTextSecondary {
+  color: $secondaryText;
+}

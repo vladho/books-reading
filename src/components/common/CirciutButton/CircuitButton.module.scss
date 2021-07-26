@@ -1,0 +1,21 @@
+@import 'styles/shared.scss';
+
+.button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: -26px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: $accent;
+  cursor: pointer;
+}
+
+.plusIcon {
+  color: $white;
+}

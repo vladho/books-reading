@@ -1,0 +1,17 @@
+@import 'styles/shared.scss';
+
+.container {
+    margin: 0 auto;
+
+    width: 320px;
+    padding: 0 25px;
+
+    @include for-size(tablet) {
+        width: 768px;
+        padding: 0 45px;
+    }
+    @include for-size(desktop) {
+        width: 1280px;
+        padding: 0 40px;
+    }
+}

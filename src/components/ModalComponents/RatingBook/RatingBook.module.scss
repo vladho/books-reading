@@ -1,0 +1,62 @@
+@import 'styles/shared.scss';
+
+.container {
+  width: 570px;
+  height: 408px;
+
+  padding-top: 17px;
+  padding-left: 30px;
+
+  @include for-size(mobile-only) {
+    width: 270px;
+    height: 395px;
+  }
+}
+
+.title {
+  font-size: 16px;
+  line-height: 2.375;
+}
+
+.textarea {
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 2.714;
+
+  width: 510px;
+  height: 170px;
+  resize: none;
+
+  border: $inputBorder;
+
+  @include for-size(mobile-only) {
+    width: 210px;
+    height: 170px;
+  }
+}
+
+.canselBtn {
+  margin-top: 25px;
+  margin-left: 110px;
+
+  @include for-size(mobile-only) {
+    margin-left: 0px;
+  }
+}
+
+.doneBtn {
+  margin-top: 25px;
+  margin-left: 30px;
+
+  @include for-size(mobile-only) {
+    margin-left: 15px;
+  }
+}
+
+.errorMessage {
+  padding-left: 5px;
+  color: $accent;
+  font-size: 11px;
+  line-height: 1.5;
+}

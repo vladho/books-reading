@@ -1,0 +1,21 @@
+@import 'styles/shared.scss';
+
+.btn {
+  background-color: $accent;
+  box-shadow: $boxShadowBtn;
+  border: none;
+  outline: none;
+  color: $white;
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  width: 130px;
+  height: 40px;
+
+  @include for-size(mobile-only) {
+    width: 97px;
+  }
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}

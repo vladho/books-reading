@@ -1,0 +1,34 @@
+@import 'styles/shared.scss';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 171px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid $accent;
+  outline: none;
+
+  font-weight: 600;
+  line-height: 2.71;
+
+  color: $white;
+  background-color: $accent;
+  transition: all 0.3s;
+
+  @include for-size(tablet) {
+    height: 40px;
+    width: 200px;
+
+    font-size: 16px;
+    line-height: 2.375;
+  }
+
+  &:hover {
+    color: $accent;
+    background-color: transparent;
+  }
+}

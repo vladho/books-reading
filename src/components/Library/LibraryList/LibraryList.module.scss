@@ -1,0 +1,539 @@
+@import 'styles/shared.scss';
+
+.category {
+  width: 1202px;
+  margin-top: 30px;
+  @include for-size(tablet-only) {
+    width: 678px;
+    margin-top: 40px;
+  }
+  @include for-size(mobile-only) {
+    width: 270px;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.categoryTitle {
+  font-size: 19px;
+  line-height: 2;
+  color: $primaryText;
+}
+
+.categoryListTitle {
+  width: 1202px;
+  display: flex;
+  @include for-size(tablet-only) {
+    width: 678px;
+  }
+  @include for-size(mobile-only) {
+    width: 270px;
+    height: max-content;
+    display: none;
+  }
+}
+
+.categoryListTitleItems {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  height: 38px;
+  @include for-size(tablet-only) {
+    line-height: 1.21;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.categoryListTitleItemNameDone {
+  composes: categoryListTitleItems;
+  width: 92px;
+  margin-right: 269px;
+  @include for-size(tablet-only) {
+    margin-right: 124px;
+  }
+}
+
+.categoryListTitleItemAuthorDone {
+  composes: categoryListTitleItems;
+  width: 45px;
+  margin-right: 184px;
+  @include for-size(tablet-only) {
+    margin-right: 76px;
+  }
+}
+
+.categoryListTitleItemYearDone {
+  composes: categoryListTitleItems;
+  width: 25px;
+  margin-right: 70px;
+  @include for-size(tablet-only) {
+    margin-right: 37px;
+  }
+}
+
+.categoryListTitleItemPageDone {
+  composes: categoryListTitleItems;
+  width: 39px;
+  margin-right: 110px;
+  @include for-size(tablet-only) {
+    margin-right: 26px;
+  }
+}
+
+.categoryListTitleItemRateDone {
+  composes: categoryListTitleItems;
+  width: 110px;
+  @include for-size(tablet-only) {
+    width: 48px;
+  }
+}
+
+.bookListItem {
+  display: flex;
+  width: 1202px;
+  height: 62px;
+  align-items: center;
+  margin-bottom: 10px;
+  background: $white;
+  box-shadow: $boxShadowTitle;
+  @include for-size(tablet-only) {
+    width: 678px;
+  }
+  @include for-size(mobile-only) {
+    width: 270px;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    margin-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+.bookListItemMob {
+  @include for-size(tablet) {
+    display: none;
+  }
+  display: flex;
+  width: 46px;
+  height: 38px;
+  margin-left: 55px;
+  margin-right: 25px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #898f9f;
+  align-items: center;
+}
+
+.titleBookName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // @include for-size(mobile-tablet) {
+  //   white-space: normal;
+  //   overflow: visible;
+  //   text-overflow: none;
+  // }
+  &:hover {
+    line-height: 1.25;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: none;
+  }
+}
+
+.icons {
+  margin: auto 15px;
+  @include for-size(tablet-only) {
+    margin: auto 20px;
+  }
+  @include for-size(mobile-only) {
+    display: none;
+  }
+}
+
+.iconDone {
+  composes: icons;
+  fill: #6d7a8d;
+}
+
+.iconDoneMob {
+  @include for-size(tablet) {
+    display: none;
+  }
+  @include for-size(mobile-only) {
+    display: flex;
+    fill: #6d7a8d;
+    margin-left: 20px;
+    margin-right: 15px;
+  }
+}
+
+.iconRead {
+  composes: icons;
+  fill: $accent;
+}
+
+.iconReadMob {
+  composes: iconDoneMob;
+  fill: $accent;
+}
+
+.iconPlan {
+  composes: icons;
+  fill: $inputTextColor;
+}
+
+.iconPlanMob {
+  composes: iconDoneMob;
+  fill: $inputTextColor;
+}
+
+.bookListItemNames {
+  composes: categoryListTitleItems;
+  color: $primaryText;
+  display: flex;
+  align-items: center;
+
+  @include for-size(tablet-only) {
+    margin: 0px;
+  }
+  @include for-size(mobile-only) {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 3.17;
+    text-align: start;
+    align-items: center;
+    padding-right: 25px;
+  }
+}
+
+.bookListItemNameDone {
+  composes: bookListItemNames;
+  width: 260px;
+  margin-right: 41px;
+
+  @include for-size(tablet-only) {
+    width: 135px;
+    margin-right: 21px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: none;
+  }
+  @include for-size(mobile-only) {
+    line-height: 1.25;
+    margin: 0px;
+    width: 270px;
+    height: max-content;
+    padding-top: 20px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: none;
+  }
+}
+
+.bookListItemAuthorDone {
+  composes: bookListItemNames;
+  width: 177px;
+  margin-right: 40px;
+  @include for-size(tablet-only) {
+    width: 87px;
+    margin-right: 29px;
+  }
+  @include for-size(mobile-only) {
+    line-height: 1.25;
+    margin: 0px;
+    width: 270px;
+    height: max-content;
+  }
+}
+
+.bookListItemYearDone {
+  composes: bookListItemNames;
+  width: 40px;
+  margin-right: 68px;
+  justify-content: flex-end;
+  @include for-size(tablet-only) {
+    margin-right: 48px;
+  }
+  @include for-size(mobile-only) {
+    margin: 0px;
+    width: 270px;
+    justify-content: end;
+  }
+}
+
+.bookListItemPageDone {
+  composes: bookListItemNames;
+  width: 40px;
+  margin-right: 110px;
+  justify-content: flex-end;
+  @include for-size(tablet-only) {
+    width: 28px;
+    margin-right: 16px;
+  }
+  @include for-size(mobile-only) {
+    margin: 0px;
+    width: 270px;
+    justify-content: end;
+  }
+}
+
+.stars {
+  composes: bookListItemNames;
+  width: 110px;
+  margin-right: 50px;
+  @include for-size(tablet-only) {
+    width: 97px;
+    margin-right: 18px;
+  }
+  @include for-size(mobile-only) {
+    display: flex;
+    margin: 0px;
+    width: 270px;
+  }
+}
+
+.buttonRezume {
+  width: 130px;
+  height: 40px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: #ffffff;
+  background: #6d7a8d;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+
+  @include for-size(tablet-only) {
+    width: 80px;
+    line-height: 1.21;
+  }
+  @include for-size(mobile-only) {
+    width: 127px;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+}
+
+.buttonRezume:hover {
+  outline: none;
+  background-color: $accent;
+}
+
+.categoryListTitleItemName {
+  composes: categoryListTitleItems;
+  width: 69px;
+  margin-right: 557px;
+  @include for-size(tablet-only) {
+    margin-right: 275px;
+  }
+}
+
+.categoryListTitleItemAuthor {
+  composes: categoryListTitleItems;
+  width: 50px;
+  margin-right: 298px;
+  @include for-size(tablet-only) {
+    margin-right: 133px;
+  }
+}
+
+.categoryListTitleItemYear {
+  composes: categoryListTitleItems;
+  width: 31px;
+  margin-right: 68px;
+  justify-content: flex-end;
+  @include for-size(tablet-only) {
+    margin-right: 50px;
+  }
+}
+
+.categoryListTitleItemPage {
+  composes: categoryListTitleItems;
+  width: 44px;
+  justify-content: flex-end;
+}
+
+.bookListItemName {
+  composes: bookListItemNames;
+  width: 430px;
+  margin-right: 136px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @include for-size(tablet-only) {
+    width: 244px;
+    margin-right: 40px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: none;
+  }
+  @include for-size(mobile-only) {
+    line-height: 1.25;
+    margin: 0px;
+    width: 270px;
+    height: max-content;
+    padding-top: 20px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: none;
+  }
+}
+
+.bookListItemName:hover {
+  white-space: normal;
+  overflow: visible;
+  line-height: 1.25;
+}
+
+.bookListItemAuthor {
+  composes: bookListItemNames;
+  width: 307px;
+  margin-right: 40px;
+  @include for-size(tablet-only) {
+    width: 143px;
+    margin-right: 40px;
+  }
+  @include for-size(mobile-only) {
+    line-height: 1.25;
+    margin: 0px;
+    width: 270px;
+    height: max-content;
+  }
+}
+
+.bookListItemYear {
+  composes: bookListItemNames;
+  width: 40px;
+  margin-right: 68px;
+  justify-content: flex-end;
+  @include for-size(tablet-only) {
+    margin-right: 40px;
+    justify-content: flex-end;
+  }
+  @include for-size(mobile-only) {
+    margin: 0px;
+    width: 270px;
+    justify-content: end;
+  }
+}
+
+.bookListItemPage {
+  composes: bookListItemNames;
+  width: 40px;
+  justify-content: flex-end;
+  @include for-size(mobile-only) {
+    margin: 0px;
+    width: 270px;
+    justify-content: end;
+  }
+}
+
+.link {
+  display: flex;
+  width: 200px;
+  height: 45px;
+  margin: 40px auto;
+  @include for-size(mobile-only) {
+    margin: auto;
+    width: auto;
+    height: auto;
+  }
+}
+
+.btnAddMob {
+  @include for-size(tablet) {
+    display: none;
+  }
+  @include for-size(mobile-only) {
+    overflow: visible;
+    overflow: overlay;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -35px;
+    margin-bottom: 15px;
+    margin-left: 110px;
+    width: 52px;
+    height: 52px;
+    background: $accent;
+    border-style: none;
+    border-radius: 50%;
+    justify-content: center;
+    align-content: center;
+    color: $white;
+    font-weight: 400;
+    font-size: 31px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s;
+  }
+}
+
+.btnAddMobEmpty {
+  composes: btnAddMob;
+  margin-top: 40px;
+}
+
+.btnNext {
+  width: 200px;
+  height: 40px;
+  background: $accent;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 2.37;
+  color: $white;
+  border: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s;
+  @include for-size(mobile-only) {
+    width: 171px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    margin-top: 35px;
+    margin-bottom: 25px;
+  }
+}
+.btnNext:hover {
+  outline: none;
+  background-color: $white;
+  color: $accent;
+  border: 1px solid $accent;
+}
+
+.btnTrash {
+  border: none;
+  outline: none;
+  display: flex;
+  margin-left: 35px;
+  background-color: $white;
+  fill: $inputTextColor;
+  @include for-size(tablet-only) {
+    margin-left: 5px;
+  }
+  @include for-size(mobile-only) {
+    margin: auto;
+    margin-right: 20px;
+  }
+}
+
+.btnTrash:hover {
+  outline: none;
+  fill: $accent;
+}
+
+.trash {
+  display: flex;
+  margin: auto;
+}

@@ -1,0 +1,22 @@
+@import 'styles/shared.scss';
+
+.modalBox {
+  background-color: $white;
+  // background-color: teal;
+  box-shadow: $boxShadowChart;
+
+  @include for-size(mobile-only) {
+    width: 270px;
+    height: 290px;
+  }
+
+  @include for-size(tablet) {
+    width: 678px;
+    height: 340px;
+    padding-bottom: 10px;
+  }
+
+  @include for-size(desktop) {
+    width: 886px;
+  }
+}

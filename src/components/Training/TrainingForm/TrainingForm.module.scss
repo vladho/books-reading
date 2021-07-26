@@ -1,0 +1,115 @@
+@import 'styles/shared.scss';
+
+.form {
+  display: grid;
+  align-items: start;
+
+  @include for-size(tablet) {
+    margin-bottom: 40px;
+  }
+
+  @include for-size(desktop) {
+    margin-bottom: 25px;
+  }
+}
+
+.formTitle {
+  height: 60px;
+  margin-bottom: 20px;
+  padding: 11px 0;
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.9;
+  text-align: center;
+
+  color: $white;
+  background-color: $titleBg;
+  box-shadow: $boxShadowTitle;
+
+  @include for-size(tablet) {
+    margin-bottom: 30px;
+  }
+
+  @include for-size(desktop) {
+    margin-bottom: 25px;
+  }
+}
+
+.calendarsContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  @include for-size(tablet) {
+    margin-bottom: 25px;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.datePickerWrapper {
+  position: relative;
+  border: $inputBorder;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+
+    @include for-size(tablet) {
+      margin-bottom: 0;
+      margin-right: 45px;
+    }
+  }
+}
+
+.selectAndButton {
+  display: flex;
+  flex-direction: column;
+
+  @include for-size(tablet) {
+    flex-direction: row;
+  }
+}
+
+.selectContainer {
+  position: relative;
+  margin-bottom: 35px;
+
+  background-color: $white;
+
+  @include for-size(tablet) {
+    flex-grow: 1;
+    margin-bottom: 0;
+    margin-right: 25px;
+  }
+
+  @include for-size(desktop) {
+    margin-right: 45px;
+  }
+}
+
+.formButton {
+  height: 42px;
+  align-self: center;
+  padding: 0 70px;
+  border: 1px solid $primaryText;
+
+  font-weight: inherit;
+  line-height: 2.71;
+
+  color: $black;
+  background: transparent;
+  transition: all 0.3s;
+
+  &:hover {
+    border: 1px solid $accent;
+    color: $white;
+    background-color: $accent;
+  }
+}
+
+.error {
+  position: absolute;
+  font-size: 11px;
+  color: $error;
+}

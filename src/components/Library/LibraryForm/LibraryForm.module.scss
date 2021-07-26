@@ -1,0 +1,289 @@
+@import 'styles/shared.scss';
+
+.form {
+  width: 1117px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  margin-top: 30px;
+  @include for-size(tablet-only) {
+    width: 594px;
+    height: max-content;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 20px;
+  }
+  @include for-size(mobile-only) {
+    display: none;
+  }
+}
+
+.formMob {
+  @include for-size(tablet) {
+    display: none;
+  }
+
+  @include for-size(mobile-only) {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $secondaryText;
+    width: 270px;
+    height: max-content;
+    flex-wrap: wrap;
+    margin-top: 52px;
+  }
+}
+
+.formError {
+  padding-left: 5px;
+  color: $accent;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.label {
+  width: 270px;
+  margin-bottom: 10px;
+}
+
+.labelName {
+  width: 346px;
+  height: 80px;
+  @include for-size(tablet-only) {
+    width: 594px;
+    margin-bottom: 10px;
+  }
+  @include for-size(mobile-only) {
+    width: 270px;
+    margin-bottom: 10px;
+  }
+}
+
+.labelNameTitle {
+  width: 92px;
+  height: 38px;
+}
+
+.labelNameInput {
+  width: 346px;
+  height: 42px;
+  background: $inputBg;
+  border: $inputBorder;
+  padding-left: 13px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  @include for-size(tablet-only) {
+    width: 594px;
+  }
+  @include for-size(mobile-only) {
+    width: 270px;
+  }
+}
+
+.labelNameInput:hover,
+.labelNameInput:focus {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: $white;
+  box-shadow: $boxShadowInput;
+}
+
+.labelPage {
+  width: 134px;
+  height: 80px;
+  margin-left: 15px;
+  margin-right: 45px;
+  @include for-size(tablet-only) {
+    width: 145px;
+    margin: 0px;
+  }
+  @include for-size(mobile-only) {
+    width: 270px;
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+}
+
+.labelPageTitle {
+  width: 134px;
+  height: 38px;
+}
+
+.labelPageInput {
+  width: 130px;
+  height: 42px;
+  background: $inputBg;
+  border: $inputBorder;
+  padding-left: 13px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  @include for-size(tablet-only) {
+    width: 145px;
+  }
+  @include for-size(mobile-only) {
+    width: 270px;
+  }
+}
+
+.labelPageInput:hover,
+.labelPageInput:focus {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: $white;
+  box-shadow: $boxShadowInput;
+}
+
+.labelYear {
+  width: 130px;
+  height: 80px;
+  margin-left: 15px;
+  @include for-size(tablet-only) {
+    width: 145px;
+    margin: 0px;
+  }
+  @include for-size(mobile-only) {
+    width: 270px;
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+}
+
+.labelYearTitle {
+  width: 86px;
+  height: 38px;
+}
+
+.labelYearInput {
+  width: 130px;
+  height: 42px;
+  background: $inputBg;
+  border: $inputBorder;
+  padding-left: 13px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  @include for-size(tablet-only) {
+    width: 145px;
+  }
+  @include for-size(mobile-only) {
+    width: 270px;
+  }
+}
+
+.labelYearInput:hover,
+.labelYearInput:focus {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: $white;
+  box-shadow: $boxShadowInput;
+}
+
+.labelAuthor {
+  width: 250px;
+  height: 80px;
+  margin-left: 15px;
+  @include for-size(tablet-only) {
+    width: 250px;
+    margin: 0px;
+  }
+  @include for-size(mobile-only) {
+    width: 270px;
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+}
+
+.labelAuthorTitle {
+  width: 93px;
+  height: 38px;
+}
+
+.labelAuthorInput {
+  width: 250px;
+  height: 42px;
+  background: $inputBg;
+  border: $inputBorder;
+  padding-left: 13px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  @include for-size(tablet-only) {
+    width: 250px;
+  }
+  @include for-size(mobile-only) {
+    width: 270px;
+  }
+}
+
+.labelAuthorInput:hover,
+.labelAuthorInput:focus {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $secondaryText;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: $white;
+  box-shadow: $boxShadowInput;
+}
+
+.btnAddForm {
+  display: flex;
+  justify-content: center;
+  width: 170px;
+  height: 42px;
+  border: $buttonBorder;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: $buttonText;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  background: transparent;
+  transition: all 0.3s;
+  @include for-size(tablet-only) {
+    margin-left: 212px;
+    margin-top: 40px;
+  }
+  @include for-size(mobile-only) {
+    margin-top: 35px;
+  }
+}
+
+.btnAddForm:hover,
+btnAddForm:focus {
+  background-color: $accent;
+  border: none;
+  outline: none;
+}

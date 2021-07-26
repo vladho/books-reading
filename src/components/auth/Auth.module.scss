@@ -1,0 +1,517 @@
+@import '../Container/Container.module.scss';
+@import 'styles/shared.scss';
+
+.deskriptionWraper {
+  padding-left: 90px;
+  min-width: 715px;
+  display: flex;
+  flex-direction: column;
+}
+.mainWraper {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.conteiner {
+  padding: 0;
+}
+
+.formWraper {
+  padding: 0 -25px;
+  width: 100%;
+  min-height: 648px;
+  background-image: linear-gradient(rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)),
+    url('../../assets/authImg/picMob.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+.listItem {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 271%;
+  /* identical to box height, or 271% */
+  padding-left: 15px;
+  color: #898f9f;
+  background-image: url('../../assets/authImg/Vector.svg');
+  fill: #ff6b08;
+  background-repeat: no-repeat;
+  background-position-x: 0%;
+  background-position-y: 50%;
+}
+
+.secondaryTitle {
+  margin: 0;
+  font-family: Montserrat;
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 38px;
+
+  color: #242a37;
+}
+
+@media (min-width: 768px) {
+  .deskriptionWraper {
+    padding-left: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 715px;
+  }
+
+  .title {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    text-align: center;
+
+    font-family: Abril Fatface;
+
+    font-size: 34px;
+    line-height: 38px;
+
+    color: #242a37;
+  }
+}
+
+@media (min-width: 1280px) {
+  .mainWraper {
+    display: flex;
+  }
+
+  .deskriptionWraper {
+    padding-left: 90px;
+  }
+
+  .formWraper {
+    width: 565px;
+    min-height: 800px;
+    padding-top: 92px;
+
+    background-image: linear-gradient(
+        rgba(9, 30, 63, 0.8),
+        rgba(9, 30, 63, 0.8)
+      ),
+      url('../../assets/authImg/pic.png');
+  }
+
+  .title {
+    margin-top: 133px;
+    margin-bottom: 52px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Abril Fatface;
+
+    font-size: 34px;
+    line-height: 38px;
+
+    color: #242a37;
+  }
+}
+
+//---------------------------------FORM--------------------------------//
+.required {
+  color: #ff6b08;
+}
+
+.Google {
+  width: 150px;
+  height: 40px;
+  border: none;
+  background: #f5f7fa;
+  box-shadow: 0px 2px 2px rgba(9, 30, 63, 0.15);
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+
+  text-align: center;
+  color: #707375;
+
+  margin-top: 39px;
+  margin-bottom: 14px;
+  background-image: url('../../assets/authImg/googleIcon.png');
+  background-repeat: no-repeat;
+
+  background-position-x: 10%;
+  background-position-y: 50%;
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 270px;
+  min-height: 610px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.registerFormInput {
+  width: 270px;
+  height: 42px;
+  border: none;
+  background: #f5f7fa;
+  box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+  margin-bottom: 10px;
+  padding: 10px;
+
+  color: rgba(24, 28, 39, 0.6);
+  font-size: 16px;
+
+  letter-spacing: 0.04em;
+
+  outline: none;
+}
+.registerFormInput.isinvalid {
+  border: 1px solid #ff6b08;
+  color: #ff6b08;
+}
+
+.inputTitle {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  align-self: start;
+  // margin-right: 100%;
+  // margin-left: 40px;
+  color: #ffffff;
+}
+
+.registerPageButton {
+  cursor: pointer;
+
+  width: 270px;
+  height: 60px;
+  background: #ff6b08;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 38px;
+
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  margin-top: 30px;
+}
+
+.registerFormText {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 38px;
+
+  text-align: center;
+
+  color: #898f9f;
+}
+
+.registerFormTextLinc {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 38px;
+
+  text-align: center;
+  color: #ff6b08;
+}
+
+.errorMessageName {
+  position: absolute;
+  font-size: 12px;
+  top: 235px;
+  color: rgba(248, 33, 33, 0.6);
+}
+.errorMessageEmail {
+  position: absolute;
+  font-size: 12px;
+  top: 325px;
+  color: rgba(248, 33, 33, 0.6);
+}
+.errorMessagePassword {
+  position: absolute;
+  font-size: 12px;
+  top: 410px;
+  color: rgba(248, 33, 33, 0.6);
+}
+
+.errorMessageConfirmPassword {
+  position: absolute;
+  font-size: 12px;
+  color: rgba(248, 33, 33, 0.6);
+  top: 500px;
+}
+@media (min-width: 768px) {
+  .registerPageButton {
+    width: 320px;
+    text-align: center;
+    color: #ffffff;
+    border: none;
+    margin-top: 36px;
+  }
+
+  .formWraper {
+    padding-top: 92px;
+
+    background-image: linear-gradient(
+        rgba(9, 30, 63, 0.8),
+        rgba(9, 30, 63, 0.8)
+      ),
+      url('../../assets/authImg/picTablet.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 790px;
+  }
+
+  .registerFormInput {
+    width: 320px;
+  }
+
+  .registerForm {
+    width: 400px;
+    height: 610px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    background: #fafafa;
+    box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+  }
+
+  .inputTitle {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: 40px;
+
+    color: #898f9f;
+  }
+
+  .errorMessageName {
+    top: 326px;
+  }
+
+  .errorMessageEmail {
+    top: 416px;
+  }
+
+  .errorMessagePassword {
+    top: 504px;
+  }
+
+  .errorMessageConfirmPassword {
+    top: 591px;
+  }
+}
+
+//-----------------------------------------Login-----------------------//
+
+.deskriptionTextWrapper {
+  width: 200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.deskriptionText {
+  // position: relative;
+  margin-top: 40px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.7%;
+  text-align: center;
+
+  color: #898f9f;
+}
+
+.deskriptionText::before {
+  content: '';
+  background-color: rgba(36, 42, 55, 0.5);
+  position: absolute;
+  width: 100px;
+  height: 1px;
+  bottom: 13%;
+  left: 50px;
+  opacity: 1;
+  margin-bottom: 20px;
+}
+
+.deskriptionWraperLogin {
+  background-image: url('../../assets/authImg/kovicki.svg');
+  background-repeat: no-repeat;
+
+  background-position-x: 49%;
+  background-position-y: 25%;
+
+  padding-top: 70px;
+}
+
+.formWraperLogin {
+  width: 100%;
+  height: 420px;
+  background-image: linear-gradient(rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)),
+    url('../../assets/authImg/picMob.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.registerFormLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 270px;
+  height: 610px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.titleLogin {
+  // position: relative;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #242a37;
+  margin: 0 auto;
+
+  @include for-size(mobile-only) {
+    width: 229px;
+  }
+
+  @include for-size(tablet-only) {
+    width: 500px;
+  }
+
+  @include for-size(desktop) {
+    width: 397px;
+  }
+}
+
+.errorMessageEmailLogin {
+  position: absolute;
+  font-size: 12px;
+  top: 236px;
+  color: rgba(250, 4, 4, 0.6);
+}
+
+.errorMessagePasswordLogin {
+  position: absolute;
+  font-size: 12px;
+  top: 323px;
+  color: rgba(250, 4, 4, 0.6);
+}
+
+@media (min-width: 768px) {
+  .deskriptionText::before {
+    width: 150px;
+    bottom: 10%;
+    left: 24px;
+  }
+
+  .deskriptionText {
+    margin-bottom: 81px;
+    font-size: 20px;
+  }
+  .deskriptionWraperLogin {
+    background-image: url('../../assets/authImg/kovicki.svg');
+    background-repeat: no-repeat;
+
+    background-position-x: 49%;
+    background-position-y: 36%;
+    padding-top: 143px;
+  }
+
+  .formWraperLogin {
+    padding-top: 92px;
+
+    background-image: linear-gradient(
+        rgba(9, 30, 63, 0.8),
+        rgba(9, 30, 63, 0.8)
+      ),
+      url('../../assets/authImg/picTablet.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 620px;
+  }
+  .titleLogin {
+    font-size: 24px;
+    line-height: 158%;
+  }
+  .errorMessageEmailLogin {
+    position: absolute;
+
+    top: 326px;
+  }
+
+  .errorMessagePasswordLogin {
+    top: 417px;
+  }
+
+  .registerFormLogin {
+    width: 400px;
+    height: 420px;
+    margin-left: auto;
+    margin-right: auto;
+
+    background: #fafafa;
+    box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+  }
+}
+
+@media (min-width: 1280px) {
+  .deskriptionText::before {
+    width: 150px;
+    left: 12%;
+  }
+
+  .formWraperLogin {
+    width: 565px;
+    min-height: 800px;
+
+    padding-top: 185px;
+
+    background-image: linear-gradient(
+        rgba(9, 30, 63, 0.8),
+        rgba(9, 30, 63, 0.8)
+      ),
+      url('../../assets/authImg/pic.png');
+  }
+
+  .deskriptionWraperLogin {
+    background-image: url('../../assets/authImg/kovicki.svg');
+    background-repeat: no-repeat;
+
+    background-position-x: 49%;
+    background-position-y: 36%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 336px;
+  }
+
+  .errorMessageEmailLogin {
+    top: 419px;
+  }
+
+  .errorMessagePasswordLogin {
+    top: 509px;
+  }
+}

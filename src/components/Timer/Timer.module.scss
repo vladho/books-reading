@@ -1,0 +1,16 @@
+@import 'styles/shared.scss';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 44px;
+
+  @include for-size(mobile-only) {
+    flex-wrap: wrap;
+    padding-top: 20px; // comment zavalniuk
+  }
+
+  @include for-size(tablet-only) {
+    padding-top: 35px; // comment zavalniuk
+  }
+}

@@ -1,0 +1,79 @@
+@import 'styles/shared.scss';
+
+.chartBox {
+  position: relative;
+  padding: 14px 22px;
+  background-color: $white;
+  width: 100%;
+  height: 75%;
+
+  @include for-size(tablet) {
+    padding: 25px 35px;
+    height: 90%;
+  }
+}
+
+.title,
+.lineList,
+.chartValue {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 2.5;
+  text-transform: uppercase;
+  color: $timerText;
+}
+.lineBox {
+  position: absolute;
+  height: auto;
+  right: 10px;
+  top: 100px;
+
+  @include for-size(tablet) {
+    right: 0px;
+    top: 130px;
+  }
+}
+.lineList {
+  padding: 0px;
+  margin: 0px;
+  text-align: right;
+}
+.lineItem {
+  margin-right: 10px;
+  background-color: rgba(245, 247, 250, 0.85); //добавить переменную в variables
+  box-shadow: $boxShadowTitle;
+  height: 30px;
+  width: 50px;
+  text-align: center;
+  color: $accent;
+
+  @include for-size(tablet) {
+    margin-right: 45px;
+  }
+}
+
+.lineItem:not(:last-child) {
+  margin-bottom: 10px;
+  color: $primaryText;
+}
+
+.avaregePgesPerDay {
+  width: 25px;
+  height: 25px;
+  padding: 4px;
+  background: $inputBg;
+}
+.chartValue {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.planedPages {
+  width: 25px;
+  height: 25px;
+  padding: 4px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $primaryText;
+  background: $inputAuthBorder;
+}
