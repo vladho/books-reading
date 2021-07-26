@@ -56,7 +56,6 @@ const resetTokensWhenInvalidSession = (
 
 const user = createReducer(initUser, {
   [loginSuccess]: (_, { payload }) => {
-    console.log(payload.user.training);
     const { email, name, training } = payload.user;
 
     return { email, name, training };

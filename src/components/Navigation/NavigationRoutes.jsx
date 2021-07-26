@@ -6,9 +6,12 @@ import PublicRoute from '../Routes/PublicRoute';
 import Spinner from '../Spinner/Spinner';
 import { useSelector } from 'react-redux';
 import { authSls } from '../../redux/auth';
+import LocatinTocen from '../auth/googleLogin';
 
 const NavigationRoutes = () => {
   const isAuth = useSelector(authSls.getIsAuth);
+
+  LocatinTocen();
 
   return (
     <Suspense fallback={<Spinner />}>
