@@ -10,7 +10,6 @@ import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
 import LibraryModal from '../LibraryModal/LibraryModal';
-import LibraryForm from '../LibraryForm/LibraryForm';
 
 function LibraryList({ books, onRemove }) {
   const [isBookModal, setIsBookModal] = useState(false);

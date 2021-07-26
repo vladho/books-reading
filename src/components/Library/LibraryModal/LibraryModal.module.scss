@@ -1,13 +1,15 @@
 @import 'styles/shared.scss';
 
-.modalBackdrop {
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    position: fixed;
-    top: 60px;
-    height: 100%;
-    background-color: #f6f7fb;
-    // outline: 2px solid orchid;
-  }
+.modalBody {
+  position: fixed;
+  top: 60px;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: #f6f7fb;
+}
+
+.modalContent {
+  height: 600px;
 }
 
 .goBack {
