@@ -24,12 +24,12 @@ const LibraryList = () => {
   // }, []);
 
   const books = useSelector(booksSelectors.getAllBooks);
-
+const onRemove = useEffect();
   // const mapStateToProps = state => ({
   //   books: booksSelectors.getAllBooks(state),
   // });
 
-  const onRemove = useEffect(() => {
+  useEffect(() => {
     dispatch(booksOperations.renoveBook);
   }, []);
   // const mapDispatchToProps = {
