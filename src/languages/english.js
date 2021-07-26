@@ -58,7 +58,7 @@ const english = {
       title: 'Going to read',
     },
     readingList: {
-      title: 'reading now',
+      title: 'Reading now',
     },
     readList: {
       title: 'Already read',

@@ -52,7 +52,7 @@ const ukrainian = {
       book_author: 'Автор',
       book_year: 'Рік',
       book_pages: 'Cтор.',
-      book_rating: 'Рейтинг книги',
+      book_rating: 'Рейтинг',
     },
     plannedList: {
       title: 'Маю намір прочитати',
@@ -67,7 +67,7 @@ const ukrainian = {
     resumeModal: {
       rating: 'Обрати рейтинг книги',
       textFieldTitle: 'Резюме',
-      backBtn: 'BaНазадck',
+      backBtn: 'Назад',
       saveBtn: 'Зберегти',
     },
     nextBtn: 'Далі',
