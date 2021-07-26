@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:8080/api';
+https: axios.defaults.baseURL =
+  'https://books-reading-backend.herokuapp.com/api';
 const setToken = token =>
   (axios.defaults.headers.common.Authorization = `Bearer ${token}`);
 
@@ -30,7 +31,7 @@ const refresh = async sid => (await axios.post('/refresh', { sid })).data.data;
 
 const getAllBooks = async () => (await axios.get('/books')).data;
 
-// const postOneBook = async () => (await axios.post('/books'), {book}).data;
+// const postOneBook = async data => (await axios.post('/books'), data).data;
 
 // const deleteOneBook = async () => await axios.delete(`/books/:{id}`);
 
