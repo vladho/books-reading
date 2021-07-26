@@ -13,20 +13,13 @@ export default function Login() {
     console.log(credentials);
     const password = credentials.googleId;
     const email = credentials.Ts.Et;
-    // const name = credentials.Ts.Me;
-    // const token = credentials.tokenId;
-    // console.log(password);
+
     await api.loginGoogle();
 
     dispatch(authOps.login({ email, password }));
   };
 
   const dispatch = useDispatch();
-  // const onSubmit = async () => {
-  //   const data = await api.loginGoogle();
-  //   const { email, password } = data;
-  //   dispatch(authOps.login({ email, password }));
-  // };
 
   return (
     <div className={css.mainWraper}>
@@ -42,10 +35,6 @@ export default function Login() {
         >
           {({ touched, errors }) => (
             <Form className={css.registerFormLogin}>
-              {/* <button onClick={onSubmit} className={css.Google} type="button">
-                Google
-              </button> */}
-
               <GoogleLogin
                 clientId="845032362218-gc7ptsskpdk7s2tld7jmc0kg7a0uo0g4.apps.googleusercontent.com"
                 buttonText="Log in with Google"
