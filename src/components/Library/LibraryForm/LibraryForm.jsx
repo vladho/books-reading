@@ -42,6 +42,7 @@ const LibraryForm = () => {
                   </p> */}
                 <Field
                   className={styles.labelNameInput}
+                  autocomplete="off"
                   type="text"
                   placeholder="..."
                   value={values.title}
@@ -60,6 +61,7 @@ const LibraryForm = () => {
                   </p> */}
                 <Field
                   className={styles.labelAuthorInput}
+                  autocomplete="off"
                   type="text"
                   placeholder="..."
                   value={values.author}
@@ -78,6 +80,7 @@ const LibraryForm = () => {
                   </p> */}
                 <Field
                   className={styles.labelYearInput}
+                  autocomplete="off"
                   type="text"
                   placeholder="..."
                   name="year"
@@ -96,6 +99,7 @@ const LibraryForm = () => {
                   </p> */}
                 <Field
                   className={styles.labelPageInput}
+                  autocomplete="off"
                   type="text"
                   placeholder="..."
                   name="totalPages"
