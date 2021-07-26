@@ -37,9 +37,6 @@
 }
 
 .canselBtn {
-  // width: 130px;
-  // height: 40px;
-
   margin-top: 25px;
   margin-left: 110px;
 
@@ -49,13 +46,17 @@
 }
 
 .doneBtn {
-  // width: 130px;
-  // height: 40px;
-
   margin-top: 25px;
   margin-left: 30px;
 
   @include for-size(mobile-only) {
     margin-left: 15px;
   }
+}
+
+.errorMessage {
+  padding-left: 5px;
+  color: $accent;
+  font-size: 11px;
+  line-height: 1.5;
 }

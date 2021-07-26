@@ -1,6 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 const getAllBooks = state => state.books.items;
+const getResume = state => state.books.items;
 
 const getPlanBooks = createSelector([getAllBooks], books =>
   books.filter(({ status }) => status === 'plan'),
@@ -17,9 +18,6 @@ const booksSelectors = {
   getLoading,
   getError,
   isFirstVisit,
+  getResume,
 };
 export default booksSelectors;
-
-// const getTrainBooks = createSelector([getAllBooks], books =>
-//   books.filter(({ training }) => training),
-// );

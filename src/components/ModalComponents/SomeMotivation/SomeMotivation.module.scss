@@ -48,6 +48,7 @@
   margin-top: 25px;
 
   @include for-size(mobile-only) {
+    margin-left: 86px;
     margin-top: 20px;
   }
 }

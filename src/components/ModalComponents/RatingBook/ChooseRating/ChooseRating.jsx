@@ -1,5 +1,6 @@
 import styles from './ChooseRating.module.scss';
 import ReactStars from 'react-rating-stars-component';
+import { useState } from 'react';
 
 const ChooseRating = ({ rating = 0, setRating }) => {
   return (

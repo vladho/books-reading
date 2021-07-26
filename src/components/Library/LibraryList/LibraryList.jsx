@@ -14,8 +14,12 @@ import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
 
 const LibraryList = () => {
+  const { language } = useContext(LangContext);
+
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
+  const [resume, setResume] = useState('');
+  const [rating, setRating] = useState(0);
 
   const books = useSelector(booksSelectors.getAllBooks);
   const onRemove = _id => {
@@ -23,13 +27,11 @@ const LibraryList = () => {
   };
 
   const [id, setId] = useState(null);
-  // const [rating, setRating] = useState(0);
-  // const [resumeValue, setResumeValue] = useState('');
 
-  const { language } = useContext(LangContext);
-
-  const isShowModal = id => {
+  const isShowModal = ({ _id: id, resume, rating }) => {
     setId(id);
+    setResume(resume);
+    setRating(rating);
     setShowModal(!showModal);
   };
 
@@ -40,13 +42,11 @@ const LibraryList = () => {
     <>
       {showModal && (
         <RatingBook
-          // setRating={setRating}
-          // setResumeValue={setResumeValue}
-          // resumeValue={resumeValue}
           id={id}
           showModal={showModal}
           setShowModal={setShowModal}
-          // rating={rating}
+          resume={resume}
+          rating={rating}
         />
       )}
       {books.some(book => book.status === 'done') && (
@@ -120,7 +120,7 @@ const LibraryList = () => {
                     <button
                       type="button"
                       className={styles.buttonRezume}
-                      onClick={() => isShowModal(_id)}
+                      onClick={() => isShowModal({ _id, resume, rating })}
                     >
                       {language.libraryPage.readList.button}
                     </button>
