@@ -12,9 +12,10 @@ import { LangContext } from '../App/App';
 export default function Login() {
   const { language } = useContext(LangContext);
   const dispatch = useDispatch();
-  const onSubmit = async () => {
-    const data = await api.loginGoogle();
-    const { email, password } = data;
+
+  const onSubmit = async data => {
+    console.log(data);
+    const { email, password } = await data;
     dispatch(authOps.login({ email, password }));
   };
 
@@ -32,10 +33,14 @@ export default function Login() {
         >
           {({ touched, errors }) => (
             <Form className={css.registerFormLogin}>
-              <button onClick={onSubmit} className={css.Google} type="button">
-                {language.loginPage.google}
-              </button>
-
+              <a
+                href="http://localhost:8080/api/auth/google"
+                onClick={onSubmit}
+              >
+                <button className={css.Google} type="button">
+                  {language.loginPage.google}
+                </button>
+              </a>
               <label className={css.inputTitle}>
                 {language.loginPage.email}{' '}
                 <span className={css.required}>*</span>
