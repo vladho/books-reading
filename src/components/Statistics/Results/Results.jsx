@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { HiChevronDown } from 'react-icons/hi';
+import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
 
 import { LangContext } from '../../App/App';
@@ -20,7 +21,7 @@ const Results = () => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [resultDate, setResultDate] = useState(null);
-  const [resultPages, setResultPages] = useState(0);
+  const [resultPages, setResultPages] = useState('');
 
   const start = useSelector(trainingSelectors.getStartDate);
   const end = useSelector(trainingSelectors.getEndDate);
@@ -37,14 +38,13 @@ const Results = () => {
     const date = e.target.resultDate.value;
     const time = moment().format('h:mm:ss');
     const pages = +e.target.resultPages.value;
-    console.log(resultDate);
-    // message = pages <= plannedPages / duration ? messages[0] : messages[1];
 
     if (!date || !time || !pages) {
       return;
+    } else {
+      dispatch(trainingOperations.addResult({ date, time, pages }));
+      isShowModal();
     }
-    isShowModal();
-    dispatch(trainingOperations.addResult({ date, time, pages }));
   };
 
   return (
@@ -112,6 +112,7 @@ const Results = () => {
             <ul className={styles.statiscicsList}>
               {results.map(item => (
                 <ResultItem
+                  key={uuidv4()}
                   date={item.date}
                   time={item.time}
                   pages={item.pages}
