@@ -35,7 +35,7 @@ const LibraryForm = () => {
       >
         {({ values }) => (
           <Form>
-            <div className={styles.form}>
+            <div className={styles.formMob}>
               <label className={styles.labelName}>
                 {/* <p className={styles.labelNameTitle}>Book title</p> */}
                 <p className={styles.labelNameTitle}>
@@ -43,7 +43,6 @@ const LibraryForm = () => {
                 </p>
                 <Field
                   className={styles.labelNameInput}
-                  autocomplete="off"
                   type="text"
                   placeholder="..."
                   value={values.title}
@@ -62,7 +61,6 @@ const LibraryForm = () => {
                 </p>
                 <Field
                   className={styles.labelAuthorInput}
-                  autocomplete="off"
                   type="text"
                   placeholder="..."
                   value={values.author}
@@ -81,7 +79,6 @@ const LibraryForm = () => {
                 </p>
                 <Field
                   className={styles.labelYearInput}
-                  autocomplete="off"
                   type="text"
                   placeholder="..."
                   name="year"
@@ -100,7 +97,6 @@ const LibraryForm = () => {
                 </p>
                 <Field
                   className={styles.labelPageInput}
-                  autocomplete="off"
                   type="text"
                   placeholder="..."
                   name="totalPages"

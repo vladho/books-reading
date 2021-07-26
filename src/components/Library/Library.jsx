@@ -16,7 +16,7 @@ const Library = () => {
 
   useEffect(() => {
     dispatch(booksOperations.fetchBooks());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     isFirstVisit && isShowModal();

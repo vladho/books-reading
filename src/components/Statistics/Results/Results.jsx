@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { HiChevronDown } from 'react-icons/hi';
+import { v4 as uuidv4 } from 'uuid';
+import { CSSTransition } from 'react-transition-group';
+
 import moment from 'moment';
 
 import { LangContext } from '../../App/App';
@@ -12,8 +15,8 @@ import trainingOperations from '../../../redux/training/trainingOperations';
 import countDaysNumber from '../../../helpers/countDaysNumber';
 import messages from '../../../helpers/modalMessages';
 import trainingSelectors from '../../../redux/training/trainingSelectors';
-import NestingModal from '../../ModalHoc/NestingModal/NestingModal';
 import SomeMotivation from '../../ModalComponents/SomeMotivation/SomeMotivation';
+import '../../../styles/animation.scss';
 
 const Results = () => {
   const { language } = useContext(LangContext);
@@ -21,7 +24,7 @@ const Results = () => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [resultDate, setResultDate] = useState(null);
-  const [resultPages, setResultPages] = useState(0);
+  const [resultPages, setResultPages] = useState('');
 
   const start = useSelector(trainingSelectors.getStartDate);
   const end = useSelector(trainingSelectors.getEndDate);
@@ -38,19 +41,23 @@ const Results = () => {
     const date = e.target.resultDate.value;
     const time = moment().format('h:mm:ss');
     const pages = +e.target.resultPages.value;
-    console.log(resultDate);
-    // message = pages <= plannedPages / duration ? messages[0] : messages[1];
 
     if (!date || !time || !pages) {
       return;
+    } else {
+      dispatch(trainingOperations.addResult({ date, time, pages }));
+      isShowModal();
     }
-    isShowModal();
-    dispatch(trainingOperations.addResult({ date, time, pages }));
   };
 
   return (
     <>
-      {showModal && (
+      <CSSTransition
+        classNames="option"
+        timeout={600}
+        in={showModal}
+        unmountOnExit
+      >
         <SomeMotivation
           showModal={showModal}
           setShowModal={setShowModal}
@@ -58,7 +65,7 @@ const Results = () => {
             resultPages <= plannedPages / duration ? messages[0] : messages[1]
           }
         />
-      )}
+      </CSSTransition>
       <div className={styles.resultsMainBox}>
         <h3 className={styles.resultsHeading}>
           {language.trainingPage.resultsCard.title}
@@ -113,6 +120,7 @@ const Results = () => {
             <ul className={styles.statiscicsList}>
               {results.map(item => (
                 <ResultItem
+                  key={uuidv4()}
                   date={item.date}
                   time={item.time}
                   pages={item.pages}

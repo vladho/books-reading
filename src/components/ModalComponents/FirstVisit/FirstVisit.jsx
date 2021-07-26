@@ -4,7 +4,6 @@ import { ReactComponent as BookIcon } from '../../../assets/icons/bookUnRead.svg
 import { ReactComponent as Flag } from '../../../assets/icons/Flag.svg';
 import { ReactComponent as ArrowRight } from '../../../assets/icons/ArrowRight.svg';
 import {} from '../../../';
-import DoneButton from '../../common/ModalButton/DoneButton/DoneButton';
 import { LangContext } from '../../App/App';
 
 import withModal from '../../ModalHoc/withModal/withModal';

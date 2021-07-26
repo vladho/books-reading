@@ -3,11 +3,11 @@
 .category {
   width: 1202px;
   margin-top: 30px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 678px;
     margin-top: 40px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     width: 270px;
     height: max-content;
     display: flex;
@@ -24,10 +24,10 @@
 .categoryListTitle {
   width: 1202px;
   display: flex;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 678px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     width: 270px;
     height: max-content;
     display: none;
@@ -40,7 +40,7 @@
   line-height: 2.71;
   color: $secondaryText;
   height: 38px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     line-height: 1.21;
     display: flex;
     align-items: center;
@@ -51,7 +51,7 @@
   composes: categoryListTitleItems;
   width: 92px;
   margin-right: 269px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     margin-right: 124px;
   }
 }
@@ -60,7 +60,7 @@
   composes: categoryListTitleItems;
   width: 45px;
   margin-right: 184px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     margin-right: 76px;
   }
 }
@@ -69,7 +69,7 @@
   composes: categoryListTitleItems;
   width: 25px;
   margin-right: 70px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     margin-right: 37px;
   }
 }
@@ -78,7 +78,7 @@
   composes: categoryListTitleItems;
   width: 39px;
   margin-right: 110px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     margin-right: 26px;
   }
 }
@@ -86,7 +86,7 @@
 .categoryListTitleItemRateDone {
   composes: categoryListTitleItems;
   width: 110px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 48px;
   }
 }
@@ -99,10 +99,10 @@
   margin-bottom: 10px;
   background: $white;
   box-shadow: $boxShadowTitle;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 678px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     width: 270px;
     height: max-content;
     display: flex;
@@ -115,7 +115,7 @@
 }
 
 .bookListItemMob {
-  @media screen and (min-width: 768px) {
+  @include for-size(tablet) {
     display: none;
   }
   display: flex;
@@ -130,12 +130,29 @@
   align-items: center;
 }
 
+.titleBookName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // @include for-size(mobile-tablet) {
+  //   white-space: normal;
+  //   overflow: visible;
+  //   text-overflow: none;
+  // }
+  &:hover {
+    line-height: 1.25;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: none;
+  }
+}
+
 .icons {
   margin: auto 15px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     margin: auto 20px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     display: none;
   }
 }
@@ -146,10 +163,10 @@
 }
 
 .iconDoneMob {
-  @media screen and (min-width: 768px) {
+  @include for-size(tablet) {
     display: none;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     display: flex;
     fill: #6d7a8d;
     margin-left: 20px;
@@ -183,10 +200,10 @@
   display: flex;
   align-items: center;
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     margin: 0px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     font-weight: 500;
     font-size: 12px;
     line-height: 3.17;
@@ -201,18 +218,14 @@
   width: 260px;
   margin-right: 41px;
 
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 135px;
     margin-right: 21px;
     white-space: normal;
     overflow: visible;
     text-overflow: none;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     line-height: 1.25;
     margin: 0px;
     width: 270px;
@@ -224,26 +237,15 @@
   }
 }
 
-.bookListItemNameDone:hover {
-  white-space: normal;
-  overflow: visible;
-  line-height: 1.25;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    white-space: normal;
-    overflow: visible;
-    text-overflow: none;
-  }
-}
-
 .bookListItemAuthorDone {
   composes: bookListItemNames;
   width: 177px;
   margin-right: 40px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 87px;
     margin-right: 29px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     line-height: 1.25;
     margin: 0px;
     width: 270px;
@@ -256,10 +258,10 @@
   width: 40px;
   margin-right: 68px;
   justify-content: flex-end;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     margin-right: 48px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     margin: 0px;
     width: 270px;
     justify-content: end;
@@ -271,11 +273,11 @@
   width: 40px;
   margin-right: 110px;
   justify-content: flex-end;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 28px;
     margin-right: 16px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     margin: 0px;
     width: 270px;
     justify-content: end;
@@ -286,11 +288,11 @@
   composes: bookListItemNames;
   width: 110px;
   margin-right: 50px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 97px;
     margin-right: 18px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     display: flex;
     margin: 0px;
     width: 270px;
@@ -308,11 +310,11 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border: none;
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 80px;
     line-height: 1.21;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     width: 127px;
     height: max-content;
     display: flex;
@@ -332,7 +334,7 @@
   composes: categoryListTitleItems;
   width: 69px;
   margin-right: 557px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     margin-right: 275px;
   }
 }
@@ -341,7 +343,7 @@
   composes: categoryListTitleItems;
   width: 50px;
   margin-right: 298px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     margin-right: 133px;
   }
 }
@@ -351,7 +353,7 @@
   width: 31px;
   margin-right: 68px;
   justify-content: flex-end;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     margin-right: 50px;
   }
 }
@@ -370,14 +372,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 244px;
     margin-right: 40px;
     white-space: normal;
     overflow: visible;
     text-overflow: none;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     line-height: 1.25;
     margin: 0px;
     width: 270px;
@@ -399,11 +401,11 @@
   composes: bookListItemNames;
   width: 307px;
   margin-right: 40px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 143px;
     margin-right: 40px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     line-height: 1.25;
     margin: 0px;
     width: 270px;
@@ -416,11 +418,11 @@
   width: 40px;
   margin-right: 68px;
   justify-content: flex-end;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     margin-right: 40px;
     justify-content: flex-end;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     margin: 0px;
     width: 270px;
     justify-content: end;
@@ -431,7 +433,7 @@
   composes: bookListItemNames;
   width: 40px;
   justify-content: flex-end;
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     margin: 0px;
     width: 270px;
     justify-content: end;
@@ -440,19 +442,26 @@
 
 .link {
   display: flex;
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  width: 200px;
+  height: 45px;
+  margin: 40px auto;
+  @include for-size(mobile-only) {
     margin: auto;
+    width: auto;
+    height: auto;
   }
 }
 
 .btnAddMob {
-  @media screen and (min-width: 768px) {
+  @include for-size(tablet) {
     display: none;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
+    overflow: visible;
+    overflow: overlay;
     display: flex;
     flex-wrap: wrap;
-    margin-top: -150px;
+    margin-top: -35px;
     margin-bottom: 15px;
     margin-left: 110px;
     width: 52px;
@@ -466,11 +475,16 @@
     font-weight: 400;
     font-size: 31px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s;
   }
 }
 
+.btnAddMobEmpty {
+  composes: btnAddMob;
+  margin-top: 40px;
+}
+
 .btnNext {
-  margin: 40px auto;
   width: 200px;
   height: 40px;
   background: $accent;
@@ -481,12 +495,13 @@
   color: $white;
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  transition: all 0.3s;
+  @include for-size(mobile-only) {
     width: 171px;
     font-weight: 500;
     font-size: 14px;
     line-height: 2.71;
-    margin-top: 50px;
+    margin-top: 35px;
     margin-bottom: 25px;
   }
 }
@@ -504,10 +519,10 @@
   margin-left: 35px;
   background-color: $white;
   fill: $inputTextColor;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     margin-left: 5px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     margin: auto;
     margin-right: 20px;
   }

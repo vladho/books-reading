@@ -11,7 +11,7 @@
   line-height: 2.71;
   color: $secondaryText;
   margin-top: 30px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 594px;
     height: max-content;
     flex-wrap: wrap;
@@ -19,7 +19,24 @@
     margin: auto;
     margin-top: 20px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
+    display: none;
+  }
+}
+
+.formMob {
+  @include for-size(tablet) {
+    display: none;
+  }
+
+  @include for-size(mobile-only) {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: $secondaryText;
     width: 270px;
     height: max-content;
     flex-wrap: wrap;
@@ -28,7 +45,6 @@
 }
 
 .formError {
-  // padding-top: 5px;
   padding-left: 5px;
   color: $accent;
   font-size: 11px;
@@ -43,11 +59,11 @@
 .labelName {
   width: 346px;
   height: 80px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 594px;
     margin-bottom: 10px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     width: 270px;
     margin-bottom: 10px;
   }
@@ -68,10 +84,10 @@
   font-size: 14px;
   line-height: 2.71;
   color: $secondaryText;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 594px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     width: 270px;
   }
 }
@@ -94,11 +110,11 @@
   height: 80px;
   margin-left: 15px;
   margin-right: 45px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 145px;
     margin: 0px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     width: 270px;
     margin: 0px;
     margin-bottom: 10px;
@@ -120,10 +136,10 @@
   font-size: 14px;
   line-height: 2.71;
   color: $secondaryText;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 145px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     width: 270px;
   }
 }
@@ -145,11 +161,11 @@
   width: 130px;
   height: 80px;
   margin-left: 15px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 145px;
     margin: 0px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     width: 270px;
     margin: 0px;
     margin-bottom: 10px;
@@ -171,10 +187,10 @@
   font-size: 14px;
   line-height: 2.71;
   color: $secondaryText;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 145px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     width: 270px;
   }
 }
@@ -196,11 +212,11 @@
   width: 250px;
   height: 80px;
   margin-left: 15px;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 250px;
     margin: 0px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     width: 270px;
     margin: 0px;
     margin-bottom: 10px;
@@ -222,10 +238,10 @@
   font-size: 14px;
   line-height: 2.71;
   color: $secondaryText;
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include for-size(tablet-only) {
     width: 250px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     width: 270px;
   }
 }
@@ -254,17 +270,19 @@
   line-height: 2.71;
   color: $buttonText;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  background: transparent;
+  transition: all 0.3s;
+  @include for-size(tablet-only) {
     margin-left: 212px;
     margin-top: 40px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @include for-size(mobile-only) {
     margin-top: 35px;
   }
 }
 
 .btnAddForm:hover,
-button:focus {
+btnAddForm:focus {
   background-color: $accent;
   border: none;
   outline: none;
