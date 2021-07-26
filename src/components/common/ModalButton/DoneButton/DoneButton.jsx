@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './DoneButton.module.scss';
 
 const DoneButton = ({ children, styleBtn }) => {
-  console.log('done btn');
+  // console.log('done btn');
   return (
     <button type="submit" className={classNames(styles.btn, styleBtn)}>
       {children}

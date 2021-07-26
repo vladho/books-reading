@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import moment from 'moment';
+
+import { LangContext } from '../../App/App';
 
 import trainingActions from '../../../redux/training/trainingActions';
 import trainingSelectors from '../../../redux/training/trainingSelectors';
@@ -12,6 +14,7 @@ import BooksSelector from '../Select/BooksSelector';
 import styles from './TrainingForm.module.scss';
 
 const TrainingForm = () => {
+  const { language } = useContext(LangContext);
   const start = useSelector(trainingSelectors.selectStartDate);
   const end = useSelector(trainingSelectors.selectEndDate);
   const selectedBooks = useSelector(trainingSelectors.getSelectBooks);
@@ -56,12 +59,12 @@ const TrainingForm = () => {
       className={styles.form}
       autoComplete="off"
     >
-      <h1 className={styles.formTitle}>My training</h1>
+      <h1 className={styles.formTitle}>{language.trainingPage.form.title}</h1>
       <div className={styles.calendarsContainer}>
         <div className={styles.datePickerWrapper}>
           <DatePickerInput
             value={formik.values.start}
-            placeholderText="Start"
+            placeholderText={language.trainingPage.form.startTraining}
             onChange={handleStartDate}
             pickedDate={start ? new Date(start) : ''}
           />
@@ -72,7 +75,7 @@ const TrainingForm = () => {
         <div className={styles.datePickerWrapper}>
           <DatePickerInput
             value={formik.values.end}
-            placeholderText="Finish"
+            placeholderText={language.trainingPage.form.endTraining}
             onChange={handleEndDate}
             pickedDate={end ? new Date(end) : ''}
           />
@@ -95,7 +98,7 @@ const TrainingForm = () => {
         </div>
 
         <button type="submit" className={styles.formButton}>
-          Add
+          {language.trainingPage.form.button}
         </button>
       </div>
     </form>

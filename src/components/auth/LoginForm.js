@@ -1,3 +1,4 @@
+import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOps } from '../../redux/auth';
 import { NavLink } from 'react-router-dom';
@@ -6,8 +7,10 @@ import { loginSchema } from '../../helpers/validation/AuthValidInput';
 import css from './Auth.module.scss';
 // import { GoogleLogin } from 'react-google-login';
 import api from '../../services/api';
+import { LangContext } from '../App/App';
 
 export default function Login() {
+  const { language } = useContext(LangContext);
   const dispatch = useDispatch();
   const onSubmit = async () => {
     const data = await api.loginGoogle();
@@ -30,11 +33,12 @@ export default function Login() {
           {({ touched, errors }) => (
             <Form className={css.registerFormLogin}>
               <button onClick={onSubmit} className={css.Google} type="button">
-                Google
+                {language.loginPage.google}
               </button>
 
               <label className={css.inputTitle}>
-                Email <span className={css.required}>*</span>
+                {language.loginPage.email}{' '}
+                <span className={css.required}>*</span>
               </label>
               <Field
                 autoComplete="on"
@@ -52,13 +56,14 @@ export default function Login() {
               />
 
               <label className={css.inputTitle}>
-                Password <span className={css.required}>*</span>
+                {language.loginPage.password}{' '}
+                <span className={css.required}>*</span>
               </label>
               <Field
                 autoComplete="on"
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder={language.loginPage.password}
                 className={`${css.registerFormInput}  ${
                   touched.password && errors.password ? ` ${css.isinvalid}` : ''
                 }`}
@@ -70,24 +75,20 @@ export default function Login() {
               />
 
               <button className={css.registerPageButton} type="submit">
-                Login
+                {language.loginPage.button}
               </button>
 
               <NavLink className={css.registerFormTextLinc} to="/register">
-                Register
+                {language.loginPage.link}
               </NavLink>
             </Form>
           )}
         </Formik>
       </div>
       <div className={css.deskriptionWraperLogin}>
-        <h1 className={css.titleLogin}>
-          Books are the ships of thoughts,<br></br> wandering through the waves{' '}
-          <br></br>
-          of time.
-        </h1>
+        <h1 className={css.titleLogin}>{language.loginPage.cite}</h1>
         <div className={css.deskriptionTextWrapper}>
-          <p className={css.deskriptionText}>Francis Bacon</p>
+          <p className={css.deskriptionText}>{language.loginPage.author}</p>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@
   background-color: $white;
   box-shadow: $boxShadow;
 
-  @include for-size(tablet) {
+  @include for-size(tablet-only) {
     width: 678px;
     height: 105px;
     display: flex;
@@ -18,7 +18,7 @@
 
   @include for-size(desktop) {
     width: 275px;
-    height: 258px;
+    height: 318px;
     display: block;
     box-shadow: $boxShadow;
   }
@@ -27,17 +27,20 @@
 .myGoalsMainBox_training {
   width: 270px;
   margin: 0 auto;
-  background-color: $white;
+  background-color: $primaryBg;
+  margin-bottom: 30px;
 
-  @include for-size(tablet) {
+  @include for-size(tablet-only) {
+    background: $white;
     width: 678px;
     height: 125px;
     display: flex;
+    margin-bottom: 40px;
   }
 
   @include for-size(desktop) {
+    margin-bottom: 40px;
     width: 275px;
-    display: block;
   }
 }
 
@@ -229,8 +232,8 @@
 .myGoalsStatsText {
   font-family: Montserrat;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 1.21;
+  font-size: 11px;
+  line-height: 1.18;
   text-align: center;
   color: $secondaryText;
   margin-top: 14px;
@@ -244,11 +247,11 @@
   }
 
   @include for-size(desktop) {
-    font-size: 14px;
-    line-height: 1.21;
+    font-size: 12px;
+    line-height: 1.18;
     text-align: center;
     color: $secondaryText;
     margin-top: 14px;
-    max-width: 61px;
+    max-width: 66px;
   }
 }

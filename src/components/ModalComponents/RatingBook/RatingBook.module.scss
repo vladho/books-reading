@@ -6,6 +6,11 @@
 
   padding-top: 17px;
   padding-left: 30px;
+
+  @include for-size(mobile-only) {
+    width: 270px;
+    height: 395px;
+  }
 }
 
 .title {
@@ -24,20 +29,33 @@
   resize: none;
 
   border: $inputBorder;
+
+  @include for-size(mobile-only) {
+    width: 210px;
+    height: 170px;
+  }
 }
 
 .canselBtn {
-  width: 130px;
-  height: 40px;
+  // width: 130px;
+  // height: 40px;
 
   margin-top: 25px;
   margin-left: 110px;
+
+  @include for-size(mobile-only) {
+    margin-left: 0px;
+  }
 }
 
 .doneBtn {
-  width: 130px;
-  height: 40px;
+  // width: 130px;
+  // height: 40px;
 
   margin-top: 25px;
   margin-left: 30px;
+
+  @include for-size(mobile-only) {
+    margin-left: 15px;
+  }
 }

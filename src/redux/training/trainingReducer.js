@@ -8,22 +8,26 @@ const {
   startTrainingRequest,
   startTrainingSuccess,
   startTrainingError,
+  addResultRequest,
+  addResultSuccess,
+  addResultError,
   addSelectedId,
   delSelectedId,
   trainingStartDate,
   trainingEndDate,
-  addResultRequest,
-  addResultSuccess,
-  addResultError,
 } = trainingActions;
 
 // 📌 Идет ли тренировка
 
+const setIsStartedOnSuccess = (_, { payload: { data } }) => !!data?.inProgress;
+
 const isStarted = createReducer(false, {
   [getCurrTrainingRequest]: () => false,
-  [getCurrTrainingSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
+  [getCurrTrainingSuccess]: setIsStartedOnSuccess,
 
-  [startTrainingSuccess]: (_, { payload: { data } }) => !!data?.inProgress,
+  [startTrainingSuccess]: setIsStartedOnSuccess,
+
+  [addResultSuccess]: setIsStartedOnSuccess,
 });
 
 // 📌 Данные при активной тренировке
@@ -39,21 +43,47 @@ const books = createReducer([], {
   [getCurrTrainingSuccess]: setBooksOnSuccess,
 
   [startTrainingSuccess]: setBooksOnSuccess,
+
+  [addResultSuccess]: setBooksOnSuccess,
 });
+
+const setStartDateOnSuccess = (_, { payload: { data } }) =>
+  data?.startDate || '';
 
 const startDate = createReducer('', {
   [getCurrTrainingRequest]: () => '',
-  [getCurrTrainingSuccess]: (_, { payload: { data } }) => data?.startDate || '',
+  [getCurrTrainingSuccess]: setStartDateOnSuccess,
 
-  [startTrainingSuccess]: (_, { payload: { data } }) => data?.startDate || '',
+  [startTrainingSuccess]: setStartDateOnSuccess,
+
+  [addResultSuccess]: setStartDateOnSuccess,
 });
+
+const setEndDateOnSuccess = (_, { payload: { data } }) =>
+  data?.finishDate || '';
 
 const endDate = createReducer('', {
   [getCurrTrainingRequest]: () => '',
-  [getCurrTrainingSuccess]: (_, { payload: { data } }) =>
-    data?.finishDate || '',
+  [getCurrTrainingSuccess]: setEndDateOnSuccess,
 
-  [startTrainingSuccess]: (_, { payload: { data } }) => data?.finishDate || '',
+  [startTrainingSuccess]: setEndDateOnSuccess,
+
+  [addResultSuccess]: setEndDateOnSuccess,
+});
+
+const setResultsOnSuccess = (_, { payload: { data } }) => {
+  const results = data?.result;
+
+  return Array.isArray(results) ? results : [];
+};
+
+const results = createReducer([], {
+  [getCurrTrainingRequest]: () => [],
+  [getCurrTrainingSuccess]: setResultsOnSuccess,
+
+  [startTrainingSuccess]: setResultsOnSuccess,
+
+  [addResultSuccess]: setResultsOnSuccess,
 });
 
 // 📌 Данные при неактивной тренировке
@@ -100,21 +130,17 @@ const loading = createReducer(false, {
   [addResultError]: () => false,
 });
 
+const setError = (_, { payload }) => payload;
+
 const error = createReducer(null, {
   [getCurrTrainingRequest]: () => null,
-  [getCurrTrainingError]: (_, { payload }) => payload,
+  [getCurrTrainingError]: setError,
 
   [startTrainingRequest]: () => null,
-  [startTrainingError]: (_, { payload }) => payload,
+  [startTrainingError]: setError,
 
   [addResultRequest]: () => null,
-  [addResultError]: (_, { payload }) => payload,
-});
-
-//Результаты
-const results = createReducer([], {
-  [getCurrTrainingRequest]: () => [],
-  [getCurrTrainingSuccess]: (_, { payload: { data } }) => data?.result || [],
+  [addResultError]: setError,
 });
 
 export default combineReducers({
@@ -122,10 +148,10 @@ export default combineReducers({
   books,
   startDate,
   endDate,
+  results,
   selectedIds,
   selectStartDate,
   selectEndDate,
   loading,
   error,
-  results,
 });

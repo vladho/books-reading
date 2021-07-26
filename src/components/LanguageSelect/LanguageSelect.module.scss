@@ -1,0 +1,32 @@
+@import 'styles/shared.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+
+  @include for-size(tablet) {
+    position: absolute;
+    top: 50%;
+    right: 30%;
+    transform: translateY(-50%);
+  }
+
+  @include for-size(desktop) {
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    transform: translateY(-50%);
+  }
+}
+
+.select {
+  width: 45px;
+  height: 25px;
+
+  border: none;
+  outline: none;
+}
+
+.option {
+  color: $primaryText;
+}

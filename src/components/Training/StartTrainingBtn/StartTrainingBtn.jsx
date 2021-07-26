@@ -1,11 +1,16 @@
+import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './StartTrainingBtn.module.scss';
+
+import { LangContext } from '../../App/App';
 import {
   trainingOperations as ops,
   trainingSelectors as sls,
 } from '../../../redux/training';
 
+import styles from './StartTrainingBtn.module.scss';
+
 const StartTrainingBtn = () => {
+  const { language } = useContext(LangContext);
   const dispatch = useDispatch();
 
   const startDate = useSelector(sls.selectStartDate);
@@ -20,7 +25,7 @@ const StartTrainingBtn = () => {
       type="submit"
       className={styles.button}
     >
-      Start training
+      {language.trainingPage.startBtn}
     </button>
   );
 };
