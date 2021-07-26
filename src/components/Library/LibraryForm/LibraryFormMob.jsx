@@ -34,7 +34,7 @@ const LibraryForm = () => {
       >
         {({ values }) => (
           <Form>
-            <div className={styles.form}>
+            <div className={styles.formMob}>
               <label className={styles.labelName}>
                 <p className={styles.labelNameTitle}>Book title</p>
                 {/* <p className={styles.labelNameTitle}>
