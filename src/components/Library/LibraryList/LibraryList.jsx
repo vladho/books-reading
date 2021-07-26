@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
+import { CSSTransition } from 'react-transition-group';
 import booksSelectors from '../../../redux/books/booksSelectors';
 import booksOperations from '../../../redux/books/booksOperations';
 import RatingReadOnly from '../../ModalComponents/RatingBook/ChooseRating/RatingReadOnly';
@@ -12,6 +13,8 @@ import { LangContext } from '../../App/App';
 import styles from './LibraryList.module.scss';
 import book from '../../../assets/icons/book.svg';
 import trash from '../../../assets/icons/delete.svg';
+
+import '../../../styles/animation.scss';
 
 const LibraryList = () => {
   const { language } = useContext(LangContext);
@@ -40,7 +43,12 @@ const LibraryList = () => {
 
   return (
     <>
-      {showModal && (
+      <CSSTransition
+        classNames="option"
+        timeout={600}
+        in={showModal}
+        unmountOnExit
+      >
         <RatingBook
           id={id}
           showModal={showModal}
@@ -48,7 +56,8 @@ const LibraryList = () => {
           resume={resume}
           rating={rating}
         />
-      )}
+      </CSSTransition>
+
       {books.some(book => book.status === 'done') && (
         <div className={styles.category}>
           <h2 className={styles.categoryTitle}>
