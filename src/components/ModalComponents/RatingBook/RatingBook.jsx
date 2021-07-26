@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { booksOperations, booksSelectors } from '../../../redux/books';
+import { useDispatch } from 'react-redux';
+import { booksOperations } from '../../../redux/books';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import CancelButton from '../../common/ModalButton/CancelButton/CancelButton';
 import DoneButton from '../../common/ModalButton/DoneButton/DoneButton';
