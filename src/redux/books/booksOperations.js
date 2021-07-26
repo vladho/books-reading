@@ -39,9 +39,11 @@ const fetchBooks = () => async dispatch => {
 const addBook = book => async dispatch => {
   dispatch(addBookRequest());
   try {
-    axios.post('http://localhost:8080/api/books', book).then(response => {
-      dispatch(addBookSuccess(response.data));
-    });
+    axios
+      .post('https://books-reading-backend.herokuapp.com/api/books', book)
+      .then(response => {
+        dispatch(addBookSuccess(response.data));
+      });
   } catch (error) {
     dispatch(addBookError(api.formatError(error)));
   }
@@ -51,7 +53,7 @@ const removeBook = id => async dispatch => {
   dispatch(removeBookRequest());
   try {
     axios
-      .delete(`http://localhost:8080/api/books/${id}`)
+      .delete(`https://books-reading-backend.herokuapp.com/api/books/${id}`)
       .then(() => dispatch(removeBookSuccess(id)));
   } catch (error) {
     dispatch(removeBookError(api.formatError(error)));
@@ -62,7 +64,7 @@ const updateResumeBook = (id, rating, resume) => async dispatch => {
   dispatch(updateResumeBookRequest());
   try {
     const { data } = await axios.patch(
-      `http://localhost:8080/api/books/${id}`,
+      `https://books-reading-backend.herokuapp.com/api/books/${id}`,
       {
         rating,
         resume,
