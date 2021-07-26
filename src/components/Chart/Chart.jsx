@@ -10,18 +10,18 @@ import { trainingSelectors } from '../../redux/training';
 import css from './Chart.module.scss';
 
 const Chart = () => {
-  const { language } = useContext(LangContext);
-  const [chartData, setChartData] = useState({});
-  useEffect(() => {
-    chartLine();
-  }, []); // eslint-disable-line
-
   const chartResults = useSelector(trainingSelectors.getChartResults);
   const startDate = useSelector(trainingSelectors.selectStartDate);
   const endDate = useSelector(trainingSelectors.selectEndDate);
   const getStartDate = useSelector(trainingSelectors.getStartDate);
   const getEndDate = useSelector(trainingSelectors.getEndDate);
   const getIsStarted = useSelector(trainingSelectors.getIsStarted);
+
+  const { language } = useContext(LangContext);
+  const [chartData, setChartData] = useState({});
+  useEffect(() => {
+    chartLine();
+  }, [chartResults]); // eslint-disable-line
 
   const getBooks = useSelector(trainingSelectors.getBooks);
   const getSelectBooks = useSelector(trainingSelectors.getSelectBooks);
