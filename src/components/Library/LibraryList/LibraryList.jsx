@@ -24,7 +24,7 @@ function LibraryList({ books, onRemove }) {
 
   const dispatch = useDispatch();
 
-  const isShowModal = ({ id, resume, rating }) => {
+  const isShowModal = ({ _id: id, resume, rating }) => {
     setId(id);
     setResume(resume);
     setRating(rating);
@@ -86,7 +86,7 @@ function LibraryList({ books, onRemove }) {
                       <span>
                         <ReactSVG src={book} className={styles.iconDoneMob} />
                       </span>
-                      {title}
+                      <div>{title}</div>
                     </div>
                     <p className={styles.bookListItemAuthorDone}>
                       <span className={styles.bookListItemMob}>

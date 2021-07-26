@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { booksOperations, booksSelectors } from '../../../redux/books';
-import { Formik, Form, Field, ErrorMessage, FastField } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import CancelButton from '../../common/ModalButton/CancelButton/CancelButton';
 import DoneButton from '../../common/ModalButton/DoneButton/DoneButton';
 import withModal from '../../ModalHoc/withModal/withModal';
@@ -14,51 +14,55 @@ const RatingBook = ({ toogleModal, id, resume, rating }) => {
   const { language } = useContext(LangContext);
   const [ratingValue, setRatingValue] = useState(rating);
 
-  const [resumeValue, setResumeValue] = useState(resume);
-
   const dispatch = useDispatch();
 
-  const onChangeResume = e => {
-    setResumeValue(e.target.value);
-  };
-
-  const onSave = e => {
-    e.preventDefault();
-    dispatch(booksOperations.updateResumeBook(id, ratingValue, resumeValue));
-    toogleModal();
+  const onSave = ({ resume }) => {
+    dispatch(booksOperations.updateResumeBook(id, ratingValue, resume));
   };
 
   return (
     <Formik
-      initialValues={{ rating, resume }}
+      initialValues={{ resume: resume }}
       validationSchema={schemaValidChooseRating}
       onSubmit={onSave}
     >
-      <Form>
-        <div className={styles.container}>
-          <h2 className={styles.title}>
-            {language.libraryPage.resumeModal.rating}
-          </h2>
-          <ChooseRating setRating={setRatingValue} rating={rating} />
-          <h2 className={styles.title}>
-            {language.libraryPage.resumeModal.textFieldTitle}
-          </h2>
-          <FastField
-            placeholder="..."
-            type="text"
-            name="resume"
-            className={styles.textarea}
-            value={resumeValue}
-            onChange={onChangeResume}
-          />
-          <CancelButton styleBtn={styles.canselBtn} onCbClick={toogleModal}>
-            {language.libraryPage.resumeModal.backBtn}
-          </CancelButton>
-          <DoneButton styleBtn={styles.doneBtn}>
-            {language.libraryPage.resumeModal.saveBtn}
-          </DoneButton>
-        </div>
-      </Form>
+      {({ touched, errors }) => (
+        <Form>
+          <div className={styles.container}>
+            <h2 className={styles.title}>
+              {language.libraryPage.resumeModal.rating}
+            </h2>
+            <ChooseRating
+              setRating={setRatingValue}
+              rating={rating}
+              name="rating"
+            />
+            <h2 className={styles.title}>
+              {language.libraryPage.resumeModal.textFieldTitle}
+            </h2>
+            <Field
+              as="textarea"
+              placeholder="..."
+              type="text"
+              name="resume"
+              className={
+                `${touched.resume && errors.resume}` ? `${styles.textarea}` : ''
+              }
+            />
+            <ErrorMessage
+              component="div"
+              name="resume"
+              className={styles.errorMessage}
+            />
+            <CancelButton styleBtn={styles.canselBtn} onCbClick={toogleModal}>
+              {language.libraryPage.resumeModal.backBtn}
+            </CancelButton>
+            <DoneButton styleBtn={styles.doneBtn}>
+              {language.libraryPage.resumeModal.saveBtn}
+            </DoneButton>
+          </div>
+        </Form>
+      )}
     </Formik>
   );
 };
