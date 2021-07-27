@@ -31,17 +31,15 @@ const withModal = WrappedComponent => props => {
 
   return (
     <>
-      {showModal &&
-        createPortal(
-          <NestingModal handleBackdropClick={handleBackdropClick}>
-            <WrappedComponent
-              {...props}
-              handleBackdropClick={handleBackdropClick}
-              toogleModal={isShowModal}
-            />
-          </NestingModal>,
-          modalRoot,
-        )}
+      {showModal && (
+        <NestingModal handleBackdropClick={handleBackdropClick}>
+          <WrappedComponent
+            {...props}
+            handleBackdropClick={handleBackdropClick}
+            toogleModal={isShowModal}
+          />
+        </NestingModal>
+      )}
     </>
   );
 };
